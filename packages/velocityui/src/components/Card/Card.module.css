@@ -1,6 +1,7 @@
 .card {
   background-color: var(--vui-card-bg, #ffffff);
-  border-radius: 0.75rem;
+  border-radius: var(--vui-card-radius, var(--vui-radius-lg, 0.75rem));
+  backdrop-filter: blur(var(--vui-backdrop-blur, 0px));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -8,15 +9,15 @@
 
 /* Variants */
 .bordered {
-  border: 1.5px solid var(--vui-card-border, #e5e7eb);
+  border: var(--vui-card-border-width, 1.5px) solid var(--vui-card-border, #e5e7eb);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--vui-card-shadow, var(--vui-shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.1)));
 }
 
 .elevated {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--vui-card-elevated-shadow, var(--vui-shadow-md, 0 4px 10px rgba(0, 0, 0, 0.12)));
 }
 
 .ghost {
@@ -28,24 +29,25 @@
 .sm .cardHeader,
 .sm .cardBody,
 .sm .cardFooter {
-  padding: 0.75rem;
+  padding: var(--vui-panel-space-sm, 0.75rem);
 }
 
 .md .cardHeader,
 .md .cardBody,
 .md .cardFooter {
-  padding: 1.25rem;
+  padding: var(--vui-panel-space-md, 1.25rem);
 }
 
 .lg .cardHeader,
 .lg .cardBody,
 .lg .cardFooter {
-  padding: 1.75rem;
+  padding: var(--vui-panel-space-lg, 1.75rem);
 }
 
 /* Sections */
 .cardHeader {
-  padding: 1.25rem;
+  padding: var(--vui-panel-space-md, 1.25rem);
+  background-color: var(--vui-card-header-bg, transparent);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -53,12 +55,13 @@
 }
 
 .cardBody {
-  padding: 1.25rem;
+  padding: var(--vui-panel-space-md, 1.25rem);
   flex: 1;
 }
 
 .cardFooter {
-  padding: 1.25rem;
+  padding: var(--vui-panel-space-md, 1.25rem);
+  background-color: var(--vui-card-footer-bg, transparent);
   border-top: 1.5px solid var(--vui-card-divider, #f3f4f6);
   display: flex;
   align-items: center;
@@ -72,6 +75,6 @@
 }
 
 .hoverable:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  box-shadow: var(--vui-card-hover-shadow, var(--vui-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1)));
+  transform: translateY(var(--vui-hover-lift, -1px));
 }

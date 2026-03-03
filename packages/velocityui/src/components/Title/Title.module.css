@@ -84,11 +84,11 @@
 }
 
 .primary {
-  color: var(--vui-color-primary, #6366f1);
+  color: var(--vui-primary, #6366f1);
 }
 
 .gradient {
-  background: linear-gradient(135deg, var(--vui-color-primary, #6366f1), var(--vui-color-gradient-end, #a855f7));
+  background: linear-gradient(135deg, var(--vui-primary, #6366f1), var(--vui-color-gradient-end, #a855f7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

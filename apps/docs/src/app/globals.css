@@ -4,15 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root {
-  --vui-color-primary: #6366f1;
-  --vui-color-primary-hover: #4f46e5;
-  --vui-color-secondary: #f1f5f9;
-  --vui-color-secondary-hover: #e2e8f0;
-  --vui-color-danger: #ef4444;
-  --vui-color-danger-hover: #dc2626;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -21,6 +12,9 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--vui-bg);
+  color: var(--vui-text);
+  transition: background-color 0.25s ease, color 0.2s ease;
 }
 
 /* Syntax highlight theme for code blocks */
@@ -54,10 +48,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--vui-border-strong, #cbd5e1);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--vui-text-subtle, #94a3b8);
 }

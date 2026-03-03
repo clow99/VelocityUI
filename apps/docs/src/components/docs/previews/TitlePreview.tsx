@@ -1,13 +1,12 @@
 'use client'
 
 import { Title } from 'velocityui'
-import 'velocityui/dist/style.css'
 
 export function TitlePreview() {
   return (
     <div className="flex flex-col gap-3 w-full">
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Sizes</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Sizes</p>
         <div className="flex flex-col gap-2">
           <Title level="h1" size="xxl">Display — xxl</Title>
           <Title level="h2" size="xl">Heading — xl</Title>
@@ -18,7 +17,7 @@ export function TitlePreview() {
         </div>
       </div>
       <div>
-        <p className="mb-3 mt-2 text-xs font-semibold uppercase tracking-wide text-gray-400">Color variants</p>
+        <p className="mb-3 mt-2 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Color variants</p>
         <div className="flex flex-col gap-2">
           <Title level="h3" color="default">Default color</Title>
           <Title level="h3" color="muted">Muted color</Title>

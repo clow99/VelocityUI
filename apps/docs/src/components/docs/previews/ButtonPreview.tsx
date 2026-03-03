@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from 'velocityui'
-import 'velocityui/dist/style.css'
 import { useState } from 'react'
 
 export function ButtonPreview() {
@@ -15,7 +14,7 @@ export function ButtonPreview() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Variants</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Variants</p>
         <div className="flex flex-wrap gap-2">
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -25,7 +24,7 @@ export function ButtonPreview() {
         </div>
       </div>
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Sizes</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Sizes</p>
         <div className="flex flex-wrap items-center gap-2">
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
@@ -33,7 +32,7 @@ export function ButtonPreview() {
         </div>
       </div>
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">States</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">States</p>
         <div className="flex flex-wrap items-center gap-2">
           <Button loading={loading} onClick={handleLoad}>
             {loading ? 'Saving...' : 'Click to load'}

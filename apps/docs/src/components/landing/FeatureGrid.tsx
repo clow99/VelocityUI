@@ -25,9 +25,9 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
       </svg>
     ),
-    title: 'CSS Variables Theming',
+    title: 'Named Theme System',
     description:
-      'Override any token with CSS custom properties. Light mode, dark mode, brand colors — all via CSS.',
+      'One class on body applies a full visual identity — colors, surfaces, shadows. Switch themes at runtime.',
   },
   {
     icon: (
@@ -65,12 +65,12 @@ export function FeatureGrid() {
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((f) => (
-        <div key={f.title} className="rounded-2xl border border-gray-100 bg-gray-50 p-6">
-          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 text-primary-600">
+        <div key={f.title} className="rounded-2xl border border-vui-border bg-vui-surface-muted p-6">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-vui-primary-soft text-vui-primary">
             {f.icon}
           </div>
-          <h3 className="mb-2 text-base font-semibold text-gray-900">{f.title}</h3>
-          <p className="text-sm text-gray-500 leading-relaxed">{f.description}</p>
+          <h3 className="mb-2 text-base font-semibold text-vui-text">{f.title}</h3>
+          <p className="text-sm text-vui-text-subtle leading-relaxed">{f.description}</p>
         </div>
       ))}
     </div>

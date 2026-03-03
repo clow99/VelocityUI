@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import 'velocityui/dist/style.css'
 import { Navbar } from '@/components/Navbar'
+import { ThemeProvider } from '@/components/ThemeContext'
 
 export const metadata: Metadata = {
   title: 'VelocityUI — Fast, Beautiful React Components',
@@ -15,10 +17,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-white text-gray-900 antialiased">
-        <Navbar />
-        {children}
+    <html lang="en" className="scroll-smooth vui-theme-default vui-density-comfortable">
+      <body className="antialiased">
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

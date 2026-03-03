@@ -3,11 +3,12 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: var(--vui-radius-md, 0.5rem);
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: var(--vui-control-border-width, 2px) solid transparent;
+  backdrop-filter: blur(var(--vui-backdrop-blur, 0px));
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
   white-space: nowrap;
   text-decoration: none;
@@ -17,7 +18,7 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--vui-color-primary, #6366f1);
+  outline: 2px solid var(--vui-primary, #6366f1);
   outline-offset: 2px;
 }
 
@@ -30,80 +31,83 @@
 
 /* Sizes */
 .sm {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.8125rem;
-  height: 2rem;
+  padding: var(--vui-control-py-sm, 0.375rem) var(--vui-control-px-sm, 0.75rem);
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  height: var(--vui-control-height-sm, 2rem);
 }
 
 .md {
-  padding: 0.5rem 1.125rem;
-  font-size: 0.9375rem;
-  height: 2.5rem;
+  padding: var(--vui-control-py-md, 0.5rem) var(--vui-control-px-md, 1.125rem);
+  font-size: var(--vui-font-size-md, 0.9375rem);
+  height: var(--vui-control-height-md, 2.5rem);
 }
 
 .lg {
-  padding: 0.625rem 1.5rem;
-  font-size: 1.0625rem;
-  height: 3rem;
+  padding: var(--vui-control-py-lg, 0.625rem) var(--vui-control-px-lg, 1.5rem);
+  font-size: var(--vui-font-size-lg, 1.0625rem);
+  height: var(--vui-control-height-lg, 3rem);
 }
 
 /* Variant: primary */
 .primary {
-  background-color: var(--vui-color-primary, #6366f1);
-  color: #ffffff;
-  border-color: var(--vui-color-primary, #6366f1);
+  background-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
+  border-color: var(--vui-primary, #6366f1);
 }
 
 .primary:hover:not(:disabled) {
-  background-color: var(--vui-color-primary-hover, #4f46e5);
-  border-color: var(--vui-color-primary-hover, #4f46e5);
+  background-color: var(--vui-primary-hover, #4f46e5);
+  border-color: var(--vui-primary-hover, #4f46e5);
+  box-shadow: var(--vui-shadow-sm, none);
 }
 
 /* Variant: secondary */
 .secondary {
-  background-color: var(--vui-color-secondary, #f1f5f9);
-  color: var(--vui-color-secondary-text, #1e293b);
-  border-color: var(--vui-color-secondary, #f1f5f9);
+  background-color: var(--vui-secondary, #f1f5f9);
+  color: var(--vui-secondary-text, #1e293b);
+  border-color: var(--vui-secondary, #f1f5f9);
 }
 
 .secondary:hover:not(:disabled) {
-  background-color: var(--vui-color-secondary-hover, #e2e8f0);
-  border-color: var(--vui-color-secondary-hover, #e2e8f0);
+  background-color: var(--vui-secondary-hover, #e2e8f0);
+  border-color: var(--vui-secondary-hover, #e2e8f0);
+  box-shadow: var(--vui-shadow-sm, none);
 }
 
 /* Variant: outline */
 .outline {
   background-color: transparent;
-  color: var(--vui-color-primary, #6366f1);
-  border-color: var(--vui-color-primary, #6366f1);
+  color: var(--vui-primary, #6366f1);
+  border-color: var(--vui-primary, #6366f1);
 }
 
 .outline:hover:not(:disabled) {
-  background-color: var(--vui-color-primary, #6366f1);
-  color: #ffffff;
+  background-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
 }
 
 /* Variant: ghost */
 .ghost {
   background-color: transparent;
-  color: var(--vui-color-primary, #6366f1);
+  color: var(--vui-primary, #6366f1);
   border-color: transparent;
 }
 
 .ghost:hover:not(:disabled) {
-  background-color: var(--vui-color-ghost-hover, rgba(99, 102, 241, 0.1));
+  background-color: var(--vui-ghost-hover, rgba(99, 102, 241, 0.1));
 }
 
 /* Variant: danger */
 .danger {
-  background-color: var(--vui-color-danger, #ef4444);
-  color: #ffffff;
-  border-color: var(--vui-color-danger, #ef4444);
+  background-color: var(--vui-danger, #ef4444);
+  color: var(--vui-danger-contrast, #ffffff);
+  border-color: var(--vui-danger, #ef4444);
 }
 
 .danger:hover:not(:disabled) {
-  background-color: var(--vui-color-danger-hover, #dc2626);
-  border-color: var(--vui-color-danger-hover, #dc2626);
+  background-color: var(--vui-danger-hover, #dc2626);
+  border-color: var(--vui-danger-hover, #dc2626);
+  box-shadow: var(--vui-shadow-sm, none);
 }
 
 /* Full width */

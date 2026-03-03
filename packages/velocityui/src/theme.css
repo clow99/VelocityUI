@@ -1,0 +1,830 @@
+/* ============================================================
+   VelocityUI Theme System
+   Apply a single class to <body> or any parent wrapper.
+   Usage:  <body class="vui-theme-forest vui-density-comfortable">
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Base tokens (Default theme — light, indigo)
+   ------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+
+  --vui-bg: #f8fafc;
+  --vui-surface: #ffffff;
+  --vui-surface-muted: #f1f5f9;
+  --vui-surface-translucent: rgba(255, 255, 255, 0.72);
+
+  --vui-text: #0f172a;
+  --vui-text-muted: #334155;
+  --vui-text-subtle: #64748b;
+  --vui-text-inverse: #ffffff;
+
+  --vui-border: #dbe2ea;
+  --vui-border-strong: #c3cfdd;
+  --vui-divider: #e5e7eb;
+
+  --vui-primary: #6366f1;
+  --vui-primary-hover: #4f46e5;
+  --vui-primary-contrast: #ffffff;
+  --vui-primary-soft: rgba(99, 102, 241, 0.1);
+
+  --vui-secondary: #f1f5f9;
+  --vui-secondary-hover: #e2e8f0;
+  --vui-secondary-text: #1e293b;
+
+  --vui-danger: #ef4444;
+  --vui-danger-hover: #dc2626;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-success-soft: #f0fdf4;
+  --vui-success-text: #15803d;
+  --vui-success-border: #bbf7d0;
+  --vui-warning-soft: #fffbeb;
+  --vui-warning-text: #b45309;
+  --vui-warning-border: #fde68a;
+  --vui-info-soft: #eff6ff;
+  --vui-info-text: #1d4ed8;
+  --vui-info-border: #bfdbfe;
+
+  --vui-focus-ring: rgba(99, 102, 241, 0.15);
+  --vui-focus-danger-ring: rgba(239, 68, 68, 0.15);
+
+  --vui-radius-sm: 0.375rem;
+  --vui-radius-md: 0.5rem;
+  --vui-radius-lg: 0.75rem;
+  --vui-radius-pill: 9999px;
+
+  --vui-font-size-sm: 0.8125rem;
+  --vui-font-size-md: 0.9375rem;
+  --vui-font-size-lg: 1.0625rem;
+  --vui-label-size: 0.875rem;
+  --vui-help-size: 0.8125rem;
+
+  --vui-control-height-sm: 2rem;
+  --vui-control-height-md: 2.5rem;
+  --vui-control-height-lg: 3rem;
+  --vui-control-px-sm: 0.75rem;
+  --vui-control-px-md: 1.125rem;
+  --vui-control-px-lg: 1.5rem;
+  --vui-control-py-sm: 0.375rem;
+  --vui-control-py-md: 0.5rem;
+  --vui-control-py-lg: 0.625rem;
+  --vui-panel-space-sm: 0.75rem;
+  --vui-panel-space-md: 1.25rem;
+  --vui-panel-space-lg: 1.75rem;
+
+  --vui-shadow-sm: 0 1px 3px rgba(2, 6, 23, 0.12);
+  --vui-shadow-md: 0 4px 10px rgba(2, 6, 23, 0.12);
+  --vui-shadow-lg: 0 12px 22px rgba(2, 6, 23, 0.16);
+  --vui-hover-lift: -1px;
+  --vui-backdrop-blur: 0px;
+
+  --vui-card-bg: var(--vui-surface);
+  --vui-card-border: var(--vui-border);
+  --vui-card-divider: var(--vui-divider);
+  --vui-card-shadow: var(--vui-shadow-sm);
+  --vui-card-elevated-shadow: var(--vui-shadow-md);
+  --vui-card-hover-shadow: var(--vui-shadow-lg);
+  --vui-card-radius: var(--vui-radius-lg);
+  --vui-card-header-bg: transparent;
+  --vui-card-footer-bg: transparent;
+  --vui-card-border-width: 1.5px;
+
+  --vui-input-bg: var(--vui-surface);
+  --vui-input-color: var(--vui-text);
+  --vui-input-border: var(--vui-border-strong);
+  --vui-input-focus-border: var(--vui-primary);
+  --vui-input-focus-ring: var(--vui-focus-ring);
+  --vui-input-disabled-bg: #f3f4f6;
+  --vui-input-disabled-color: #9ca3af;
+  --vui-input-placeholder: #94a3b8;
+  --vui-input-label-color: var(--vui-text-muted);
+  --vui-input-hint-color: var(--vui-text-subtle);
+  --vui-input-icon-color: var(--vui-text-subtle);
+
+  --vui-title-color: var(--vui-text);
+  --vui-title-muted-color: var(--vui-text-subtle);
+  --vui-color-gradient-end: #a855f7;
+
+  --vui-badge-default-bg: var(--vui-surface-muted);
+  --vui-badge-default-color: var(--vui-text-muted);
+  --vui-badge-default-border: var(--vui-border);
+  --vui-badge-info-bg: var(--vui-info-soft);
+  --vui-badge-info-color: var(--vui-info-text);
+  --vui-badge-info-border: var(--vui-info-border);
+  --vui-badge-success-bg: var(--vui-success-soft);
+  --vui-badge-success-color: var(--vui-success-text);
+  --vui-badge-success-border: var(--vui-success-border);
+  --vui-badge-warning-bg: var(--vui-warning-soft);
+  --vui-badge-warning-color: var(--vui-warning-text);
+  --vui-badge-warning-border: var(--vui-warning-border);
+  --vui-badge-danger-bg: #fef2f2;
+  --vui-badge-danger-color: #b91c1c;
+  --vui-badge-danger-border: #fecaca;
+
+  --vui-control-border-width: 2px;
+  --vui-ghost-hover: var(--vui-primary-soft);
+
+  /* Compatibility aliases */
+  --vui-color-primary: var(--vui-primary);
+  --vui-color-primary-hover: var(--vui-primary-hover);
+  --vui-color-secondary: var(--vui-secondary);
+  --vui-color-secondary-hover: var(--vui-secondary-hover);
+  --vui-color-secondary-text: var(--vui-secondary-text);
+  --vui-color-danger: var(--vui-danger);
+  --vui-color-danger-hover: var(--vui-danger-hover);
+}
+
+/* ------------------------------------------------------------
+   Default — same as :root, explicit class for toggling
+   ------------------------------------------------------------ */
+.vui-theme-default {
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------
+   Midnight — dark, sleek. Primary: Violet #7c3aed
+   ------------------------------------------------------------ */
+.vui-theme-midnight {
+  color-scheme: dark;
+
+  --vui-bg: #09090b;
+  --vui-surface: #18181b;
+  --vui-surface-muted: #27272a;
+  --vui-surface-translucent: rgba(24, 24, 27, 0.8);
+
+  --vui-text: #fafafa;
+  --vui-text-muted: #d4d4d8;
+  --vui-text-subtle: #a1a1aa;
+  --vui-text-inverse: #09090b;
+
+  --vui-border: #3f3f46;
+  --vui-border-strong: #52525b;
+  --vui-divider: #3f3f46;
+
+  --vui-primary: #a78bfa;
+  --vui-primary-hover: #7c3aed;
+  --vui-primary-contrast: #ffffff;
+  --vui-primary-soft: rgba(167, 139, 250, 0.18);
+
+  --vui-secondary: #27272a;
+  --vui-secondary-hover: #3f3f46;
+  --vui-secondary-text: #fafafa;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(167, 139, 250, 0.25);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
+
+  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.5);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.6);
+
+  --vui-input-disabled-bg: #27272a;
+  --vui-input-disabled-color: #71717a;
+  --vui-input-placeholder: #71717a;
+
+  --vui-success-soft: rgba(21, 128, 61, 0.25);
+  --vui-success-text: #86efac;
+  --vui-success-border: rgba(134, 239, 172, 0.3);
+  --vui-warning-soft: rgba(180, 83, 9, 0.25);
+  --vui-warning-text: #fcd34d;
+  --vui-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-info-soft: rgba(29, 78, 216, 0.25);
+  --vui-info-text: #93c5fd;
+  --vui-info-border: rgba(147, 197, 253, 0.3);
+
+  --vui-badge-default-bg: #27272a;
+  --vui-badge-default-color: #d4d4d8;
+  --vui-badge-default-border: #3f3f46;
+  --vui-badge-info-bg: rgba(29, 78, 216, 0.25);
+  --vui-badge-info-color: #93c5fd;
+  --vui-badge-info-border: rgba(147, 197, 253, 0.3);
+  --vui-badge-success-bg: rgba(21, 128, 61, 0.25);
+  --vui-badge-success-color: #86efac;
+  --vui-badge-success-border: rgba(134, 239, 172, 0.3);
+  --vui-badge-warning-bg: rgba(180, 83, 9, 0.25);
+  --vui-badge-warning-color: #fcd34d;
+  --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+}
+
+/* ------------------------------------------------------------
+   Forest — natural, earthy. Primary: Emerald #059669
+   ------------------------------------------------------------ */
+.vui-theme-forest {
+  color-scheme: dark;
+
+  --vui-bg: #0a120d;
+  --vui-surface: #0f1f14;
+  --vui-surface-muted: #162b1c;
+  --vui-surface-translucent: rgba(15, 31, 20, 0.8);
+
+  --vui-text: #ecfdf5;
+  --vui-text-muted: #d1fae5;
+  --vui-text-subtle: #6ee7b7;
+  --vui-text-inverse: #0a120d;
+
+  --vui-border: #1e4028;
+  --vui-border-strong: #2d5c3a;
+  --vui-divider: #1e4028;
+
+  --vui-primary: #34d399;
+  --vui-primary-hover: #059669;
+  --vui-primary-contrast: #022c22;
+  --vui-primary-soft: rgba(52, 211, 153, 0.18);
+
+  --vui-secondary: #162b1c;
+  --vui-secondary-hover: #1e4028;
+  --vui-secondary-text: #ecfdf5;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(52, 211, 153, 0.25);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
+
+  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.5);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.6);
+
+  --vui-input-disabled-bg: #162b1c;
+  --vui-input-disabled-color: #4b7a5c;
+  --vui-input-placeholder: #4b7a5c;
+
+  --vui-success-soft: rgba(5, 150, 105, 0.28);
+  --vui-success-text: #6ee7b7;
+  --vui-success-border: rgba(110, 231, 183, 0.3);
+  --vui-warning-soft: rgba(180, 83, 9, 0.25);
+  --vui-warning-text: #fcd34d;
+  --vui-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-info-soft: rgba(29, 78, 216, 0.2);
+  --vui-info-text: #93c5fd;
+  --vui-info-border: rgba(147, 197, 253, 0.25);
+
+  --vui-badge-default-bg: #162b1c;
+  --vui-badge-default-color: #d1fae5;
+  --vui-badge-default-border: #1e4028;
+  --vui-badge-info-bg: rgba(29, 78, 216, 0.2);
+  --vui-badge-info-color: #93c5fd;
+  --vui-badge-info-border: rgba(147, 197, 253, 0.25);
+  --vui-badge-success-bg: rgba(5, 150, 105, 0.28);
+  --vui-badge-success-color: #6ee7b7;
+  --vui-badge-success-border: rgba(110, 231, 183, 0.3);
+  --vui-badge-warning-bg: rgba(180, 83, 9, 0.25);
+  --vui-badge-warning-color: #fcd34d;
+  --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+}
+
+/* ------------------------------------------------------------
+   Ocean — cool, calming. Primary: Cyan #0891b2
+   ------------------------------------------------------------ */
+.vui-theme-ocean {
+  color-scheme: dark;
+
+  --vui-bg: #020d1a;
+  --vui-surface: #071b2e;
+  --vui-surface-muted: #0d2640;
+  --vui-surface-translucent: rgba(7, 27, 46, 0.8);
+
+  --vui-text: #e0f2fe;
+  --vui-text-muted: #bae6fd;
+  --vui-text-subtle: #7dd3fc;
+  --vui-text-inverse: #020d1a;
+
+  --vui-border: #0e3a5c;
+  --vui-border-strong: #154f7a;
+  --vui-divider: #0e3a5c;
+
+  --vui-primary: #22d3ee;
+  --vui-primary-hover: #0891b2;
+  --vui-primary-contrast: #022333;
+  --vui-primary-soft: rgba(34, 211, 238, 0.18);
+
+  --vui-secondary: #0d2640;
+  --vui-secondary-hover: #0e3a5c;
+  --vui-secondary-text: #e0f2fe;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(34, 211, 238, 0.25);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
+
+  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.55);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.55);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.65);
+
+  --vui-input-disabled-bg: #0d2640;
+  --vui-input-disabled-color: #2e6a8e;
+  --vui-input-placeholder: #2e6a8e;
+
+  --vui-success-soft: rgba(5, 150, 105, 0.25);
+  --vui-success-text: #6ee7b7;
+  --vui-success-border: rgba(110, 231, 183, 0.3);
+  --vui-warning-soft: rgba(180, 83, 9, 0.25);
+  --vui-warning-text: #fcd34d;
+  --vui-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-info-soft: rgba(34, 211, 238, 0.15);
+  --vui-info-text: #67e8f9;
+  --vui-info-border: rgba(103, 232, 249, 0.3);
+
+  --vui-badge-default-bg: #0d2640;
+  --vui-badge-default-color: #bae6fd;
+  --vui-badge-default-border: #0e3a5c;
+  --vui-badge-info-bg: rgba(34, 211, 238, 0.15);
+  --vui-badge-info-color: #67e8f9;
+  --vui-badge-info-border: rgba(103, 232, 249, 0.3);
+  --vui-badge-success-bg: rgba(5, 150, 105, 0.25);
+  --vui-badge-success-color: #6ee7b7;
+  --vui-badge-success-border: rgba(110, 231, 183, 0.3);
+  --vui-badge-warning-bg: rgba(180, 83, 9, 0.25);
+  --vui-badge-warning-color: #fcd34d;
+  --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+}
+
+/* ------------------------------------------------------------
+   Sunset — warm, vibrant. Primary: Amber #d97706
+   ------------------------------------------------------------ */
+.vui-theme-sunset {
+  color-scheme: dark;
+
+  --vui-bg: #100a03;
+  --vui-surface: #1c1108;
+  --vui-surface-muted: #271a0d;
+  --vui-surface-translucent: rgba(28, 17, 8, 0.8);
+
+  --vui-text: #fffbeb;
+  --vui-text-muted: #fde68a;
+  --vui-text-subtle: #fbbf24;
+  --vui-text-inverse: #100a03;
+
+  --vui-border: #3d2510;
+  --vui-border-strong: #573318;
+  --vui-divider: #3d2510;
+
+  --vui-primary: #f59e0b;
+  --vui-primary-hover: #d97706;
+  --vui-primary-contrast: #1c1108;
+  --vui-primary-soft: rgba(245, 158, 11, 0.18);
+
+  --vui-secondary: #271a0d;
+  --vui-secondary-hover: #3d2510;
+  --vui-secondary-text: #fffbeb;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(245, 158, 11, 0.25);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
+
+  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.5);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.6);
+
+  --vui-input-disabled-bg: #271a0d;
+  --vui-input-disabled-color: #7c5c30;
+  --vui-input-placeholder: #7c5c30;
+
+  --vui-success-soft: rgba(5, 150, 105, 0.25);
+  --vui-success-text: #6ee7b7;
+  --vui-success-border: rgba(110, 231, 183, 0.3);
+  --vui-warning-soft: rgba(245, 158, 11, 0.2);
+  --vui-warning-text: #fcd34d;
+  --vui-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-info-soft: rgba(29, 78, 216, 0.2);
+  --vui-info-text: #93c5fd;
+  --vui-info-border: rgba(147, 197, 253, 0.25);
+
+  --vui-badge-default-bg: #271a0d;
+  --vui-badge-default-color: #fde68a;
+  --vui-badge-default-border: #3d2510;
+  --vui-badge-info-bg: rgba(29, 78, 216, 0.2);
+  --vui-badge-info-color: #93c5fd;
+  --vui-badge-info-border: rgba(147, 197, 253, 0.25);
+  --vui-badge-success-bg: rgba(5, 150, 105, 0.25);
+  --vui-badge-success-color: #6ee7b7;
+  --vui-badge-success-border: rgba(110, 231, 183, 0.3);
+  --vui-badge-warning-bg: rgba(245, 158, 11, 0.2);
+  --vui-badge-warning-color: #fcd34d;
+  --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+}
+
+/* ------------------------------------------------------------
+   Construction — industrial, bold. Primary: Yellow #eab308
+   ------------------------------------------------------------ */
+.vui-theme-construction {
+  color-scheme: dark;
+
+  --vui-bg: #0e0e0e;
+  --vui-surface: #1a1a1a;
+  --vui-surface-muted: #252525;
+  --vui-surface-translucent: rgba(26, 26, 26, 0.8);
+
+  --vui-text: #fafafa;
+  --vui-text-muted: #e5e5e5;
+  --vui-text-subtle: #a3a3a3;
+  --vui-text-inverse: #0e0e0e;
+
+  --vui-border: #404040;
+  --vui-border-strong: #525252;
+  --vui-divider: #404040;
+
+  --vui-primary: #facc15;
+  --vui-primary-hover: #eab308;
+  --vui-primary-contrast: #0e0e0e;
+  --vui-primary-soft: rgba(250, 204, 21, 0.2);
+
+  --vui-secondary: #252525;
+  --vui-secondary-hover: #404040;
+  --vui-secondary-text: #fafafa;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #0e0e0e;
+
+  --vui-focus-ring: rgba(250, 204, 21, 0.3);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
+
+  --vui-radius-sm: 0.125rem;
+  --vui-radius-md: 0.25rem;
+  --vui-radius-lg: 0.375rem;
+
+  --vui-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.6);
+  --vui-shadow-md: 0 4px 10px rgba(0, 0, 0, 0.6);
+  --vui-shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.7);
+  --vui-control-border-width: 2px;
+
+  --vui-input-disabled-bg: #252525;
+  --vui-input-disabled-color: #737373;
+  --vui-input-placeholder: #737373;
+
+  --vui-success-soft: rgba(5, 150, 105, 0.25);
+  --vui-success-text: #86efac;
+  --vui-success-border: rgba(134, 239, 172, 0.3);
+  --vui-warning-soft: rgba(250, 204, 21, 0.18);
+  --vui-warning-text: #fde047;
+  --vui-warning-border: rgba(253, 224, 71, 0.3);
+  --vui-info-soft: rgba(29, 78, 216, 0.2);
+  --vui-info-text: #93c5fd;
+  --vui-info-border: rgba(147, 197, 253, 0.25);
+
+  --vui-badge-default-bg: #252525;
+  --vui-badge-default-color: #e5e5e5;
+  --vui-badge-default-border: #404040;
+  --vui-badge-info-bg: rgba(29, 78, 216, 0.2);
+  --vui-badge-info-color: #93c5fd;
+  --vui-badge-info-border: rgba(147, 197, 253, 0.25);
+  --vui-badge-success-bg: rgba(5, 150, 105, 0.25);
+  --vui-badge-success-color: #86efac;
+  --vui-badge-success-border: rgba(134, 239, 172, 0.3);
+  --vui-badge-warning-bg: rgba(250, 204, 21, 0.18);
+  --vui-badge-warning-color: #fde047;
+  --vui-badge-warning-border: rgba(253, 224, 71, 0.3);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+}
+
+/* ------------------------------------------------------------
+   Glass — frosted transparency. Primary: Violet. Blur effect.
+   Wrap the parent in a vibrant bg (gradient, image, etc.)
+   ------------------------------------------------------------ */
+.vui-theme-glass {
+  color-scheme: light;
+
+  --vui-bg: transparent;
+  --vui-surface: rgba(255, 255, 255, 0.18);
+  --vui-surface-muted: rgba(255, 255, 255, 0.1);
+  --vui-surface-translucent: rgba(255, 255, 255, 0.12);
+
+  --vui-text: #0f172a;
+  --vui-text-muted: #1e293b;
+  --vui-text-subtle: #475569;
+  --vui-text-inverse: #ffffff;
+
+  --vui-border: rgba(255, 255, 255, 0.45);
+  --vui-border-strong: rgba(255, 255, 255, 0.6);
+  --vui-divider: rgba(255, 255, 255, 0.3);
+
+  --vui-primary: #7c3aed;
+  --vui-primary-hover: #6d28d9;
+  --vui-primary-contrast: #ffffff;
+  --vui-primary-soft: rgba(124, 58, 237, 0.2);
+
+  --vui-secondary: rgba(255, 255, 255, 0.18);
+  --vui-secondary-hover: rgba(255, 255, 255, 0.3);
+  --vui-secondary-text: #1e293b;
+
+  --vui-danger: #ef4444;
+  --vui-danger-hover: #dc2626;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(124, 58, 237, 0.25);
+  --vui-focus-danger-ring: rgba(239, 68, 68, 0.2);
+
+  --vui-radius-sm: 0.5rem;
+  --vui-radius-md: 0.75rem;
+  --vui-radius-lg: 1rem;
+
+  --vui-shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+  --vui-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255,255,255,0.6);
+  --vui-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.2), inset 0 1px 0 rgba(255,255,255,0.6);
+  --vui-backdrop-blur: 14px;
+  --vui-control-border-width: 1.5px;
+
+  --vui-card-bg: rgba(255, 255, 255, 0.18);
+  --vui-card-border: rgba(255, 255, 255, 0.45);
+  --vui-card-shadow: var(--vui-shadow-sm);
+  --vui-input-bg: rgba(255, 255, 255, 0.22);
+  --vui-input-border: rgba(255, 255, 255, 0.5);
+  --vui-input-placeholder: rgba(71, 85, 105, 0.7);
+  --vui-input-disabled-bg: rgba(255, 255, 255, 0.08);
+  --vui-input-disabled-color: rgba(100, 116, 139, 0.6);
+
+  --vui-badge-default-bg: rgba(255, 255, 255, 0.2);
+  --vui-badge-default-color: #1e293b;
+  --vui-badge-default-border: rgba(255, 255, 255, 0.4);
+  --vui-badge-info-bg: rgba(59, 130, 246, 0.18);
+  --vui-badge-info-color: #1d4ed8;
+  --vui-badge-info-border: rgba(59, 130, 246, 0.3);
+  --vui-badge-success-bg: rgba(16, 185, 129, 0.15);
+  --vui-badge-success-color: #065f46;
+  --vui-badge-success-border: rgba(16, 185, 129, 0.3);
+  --vui-badge-warning-bg: rgba(245, 158, 11, 0.15);
+  --vui-badge-warning-color: #92400e;
+  --vui-badge-warning-border: rgba(245, 158, 11, 0.3);
+  --vui-badge-danger-bg: rgba(239, 68, 68, 0.15);
+  --vui-badge-danger-color: #991b1b;
+  --vui-badge-danger-border: rgba(239, 68, 68, 0.3);
+}
+
+/* ------------------------------------------------------------
+   Soft — neomorphic, gentle. Primary: Sky #0284c7
+   ------------------------------------------------------------ */
+.vui-theme-soft {
+  color-scheme: light;
+
+  --vui-bg: #e8edf5;
+  --vui-surface: #e8edf5;
+  --vui-surface-muted: #dfe7f0;
+  --vui-surface-translucent: rgba(232, 237, 245, 0.8);
+
+  --vui-text: #0f172a;
+  --vui-text-muted: #334155;
+  --vui-text-subtle: #64748b;
+  --vui-text-inverse: #ffffff;
+
+  --vui-border: #d1dae8;
+  --vui-border-strong: #c4cfdf;
+  --vui-divider: #d8e2ed;
+
+  --vui-primary: #0ea5e9;
+  --vui-primary-hover: #0284c7;
+  --vui-primary-contrast: #ffffff;
+  --vui-primary-soft: rgba(14, 165, 233, 0.12);
+
+  --vui-secondary: #dfe7f0;
+  --vui-secondary-hover: #d3dce8;
+  --vui-secondary-text: #1e293b;
+
+  --vui-danger: #ef4444;
+  --vui-danger-hover: #dc2626;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(14, 165, 233, 0.2);
+  --vui-focus-danger-ring: rgba(239, 68, 68, 0.15);
+
+  --vui-shadow-sm: 6px 6px 12px rgba(163, 177, 198, 0.38), -6px -6px 12px rgba(255, 255, 255, 0.96);
+  --vui-shadow-md: 8px 8px 16px rgba(163, 177, 198, 0.44), -8px -8px 16px rgba(255, 255, 255, 0.98);
+  --vui-shadow-lg: 10px 10px 20px rgba(163, 177, 198, 0.5), -10px -10px 20px rgba(255, 255, 255, 1);
+  --vui-control-border-width: 1.5px;
+
+  --vui-card-bg: var(--vui-surface);
+  --vui-card-border-width: 1px;
+  --vui-card-shadow: var(--vui-shadow-sm);
+  --vui-card-elevated-shadow: var(--vui-shadow-md);
+  --vui-card-hover-shadow: var(--vui-shadow-lg);
+  --vui-input-bg: var(--vui-surface);
+  --vui-input-disabled-bg: #d8e2ed;
+  --vui-input-disabled-color: #94a3b8;
+  --vui-input-placeholder: #94a3b8;
+
+  --vui-badge-default-bg: #dfe7f0;
+  --vui-badge-default-color: #334155;
+  --vui-badge-default-border: #cdd8e6;
+}
+
+/* ------------------------------------------------------------
+   High Contrast — WCAG accessible. Primary: Yellow #facc15
+   ------------------------------------------------------------ */
+.vui-theme-high-contrast {
+  color-scheme: dark;
+
+  --vui-bg: #000000;
+  --vui-surface: #000000;
+  --vui-surface-muted: #0a0a0a;
+  --vui-surface-translucent: rgba(0, 0, 0, 0.92);
+
+  --vui-text: #ffffff;
+  --vui-text-muted: #ffffff;
+  --vui-text-subtle: #e5e5e5;
+  --vui-text-inverse: #000000;
+
+  --vui-border: #ffffff;
+  --vui-border-strong: #ffffff;
+  --vui-divider: #ffffff;
+
+  --vui-primary: #facc15;
+  --vui-primary-hover: #fbbf24;
+  --vui-primary-contrast: #000000;
+  --vui-primary-soft: rgba(250, 204, 21, 0.28);
+
+  --vui-secondary: #000000;
+  --vui-secondary-hover: #1a1a1a;
+  --vui-secondary-text: #ffffff;
+
+  --vui-danger: #ff4d4d;
+  --vui-danger-hover: #ff3333;
+  --vui-danger-contrast: #000000;
+
+  --vui-focus-ring: rgba(250, 204, 21, 0.5);
+  --vui-focus-danger-ring: rgba(255, 77, 77, 0.5);
+
+  --vui-shadow-sm: none;
+  --vui-shadow-md: none;
+  --vui-shadow-lg: none;
+  --vui-control-border-width: 2px;
+
+  --vui-input-disabled-bg: #111111;
+  --vui-input-disabled-color: #888888;
+  --vui-input-placeholder: #888888;
+
+  --vui-success-soft: rgba(0, 200, 100, 0.2);
+  --vui-success-text: #00ff88;
+  --vui-success-border: rgba(0, 255, 136, 0.5);
+  --vui-warning-soft: rgba(250, 204, 21, 0.2);
+  --vui-warning-text: #facc15;
+  --vui-warning-border: rgba(250, 204, 21, 0.5);
+  --vui-info-soft: rgba(100, 180, 255, 0.2);
+  --vui-info-text: #64b4ff;
+  --vui-info-border: rgba(100, 180, 255, 0.5);
+
+  --vui-badge-default-bg: #000000;
+  --vui-badge-default-color: #ffffff;
+  --vui-badge-default-border: #ffffff;
+  --vui-badge-info-bg: rgba(100, 180, 255, 0.2);
+  --vui-badge-info-color: #64b4ff;
+  --vui-badge-info-border: rgba(100, 180, 255, 0.5);
+  --vui-badge-success-bg: rgba(0, 200, 100, 0.2);
+  --vui-badge-success-color: #00ff88;
+  --vui-badge-success-border: rgba(0, 255, 136, 0.5);
+  --vui-badge-warning-bg: rgba(250, 204, 21, 0.2);
+  --vui-badge-warning-color: #facc15;
+  --vui-badge-warning-border: rgba(250, 204, 21, 0.5);
+  --vui-badge-danger-bg: rgba(255, 77, 77, 0.2);
+  --vui-badge-danger-color: #ff4d4d;
+  --vui-badge-danger-border: rgba(255, 77, 77, 0.5);
+}
+
+/* ------------------------------------------------------------
+   Cyberpunk — neon, edgy. Primary: Fuchsia #e879f9
+   ------------------------------------------------------------ */
+.vui-theme-cyberpunk {
+  color-scheme: dark;
+
+  --vui-bg: #06000f;
+  --vui-surface: #100020;
+  --vui-surface-muted: #180030;
+  --vui-surface-translucent: rgba(16, 0, 32, 0.85);
+
+  --vui-text: #f0e6ff;
+  --vui-text-muted: #d8b4fe;
+  --vui-text-subtle: #a855f7;
+  --vui-text-inverse: #06000f;
+
+  --vui-border: #3b0764;
+  --vui-border-strong: #581c87;
+  --vui-divider: #3b0764;
+
+  --vui-primary: #e879f9;
+  --vui-primary-hover: #d946ef;
+  --vui-primary-contrast: #06000f;
+  --vui-primary-soft: rgba(232, 121, 249, 0.2);
+
+  --vui-secondary: #180030;
+  --vui-secondary-hover: #3b0764;
+  --vui-secondary-text: #f0e6ff;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(232, 121, 249, 0.3);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.3);
+
+  --vui-radius-sm: 0rem;
+  --vui-radius-md: 0.125rem;
+  --vui-radius-lg: 0.25rem;
+
+  --vui-shadow-sm: 0 0 8px rgba(232, 121, 249, 0.25);
+  --vui-shadow-md: 0 0 16px rgba(232, 121, 249, 0.3);
+  --vui-shadow-lg: 0 0 28px rgba(232, 121, 249, 0.4);
+  --vui-control-border-width: 1.5px;
+
+  --vui-input-disabled-bg: #180030;
+  --vui-input-disabled-color: #7c3aed;
+  --vui-input-placeholder: #7c3aed;
+
+  --vui-success-soft: rgba(0, 255, 136, 0.1);
+  --vui-success-text: #00ff88;
+  --vui-success-border: rgba(0, 255, 136, 0.35);
+  --vui-warning-soft: rgba(255, 170, 0, 0.12);
+  --vui-warning-text: #ffaa00;
+  --vui-warning-border: rgba(255, 170, 0, 0.35);
+  --vui-info-soft: rgba(14, 165, 233, 0.12);
+  --vui-info-text: #38bdf8;
+  --vui-info-border: rgba(56, 189, 248, 0.35);
+
+  --vui-badge-default-bg: #180030;
+  --vui-badge-default-color: #d8b4fe;
+  --vui-badge-default-border: #3b0764;
+  --vui-badge-info-bg: rgba(14, 165, 233, 0.12);
+  --vui-badge-info-color: #38bdf8;
+  --vui-badge-info-border: rgba(56, 189, 248, 0.35);
+  --vui-badge-success-bg: rgba(0, 255, 136, 0.1);
+  --vui-badge-success-color: #00ff88;
+  --vui-badge-success-border: rgba(0, 255, 136, 0.35);
+  --vui-badge-warning-bg: rgba(255, 170, 0, 0.12);
+  --vui-badge-warning-color: #ffaa00;
+  --vui-badge-warning-border: rgba(255, 170, 0, 0.35);
+  --vui-badge-danger-bg: rgba(248, 113, 113, 0.12);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.35);
+}
+
+/* ============================================================
+   Density modifiers — composable with any named theme
+   ============================================================ */
+
+.vui-density-compact {
+  --vui-control-height-sm: 1.875rem;
+  --vui-control-height-md: 2.25rem;
+  --vui-control-height-lg: 2.75rem;
+  --vui-control-px-sm: 0.625rem;
+  --vui-control-px-md: 1rem;
+  --vui-control-px-lg: 1.25rem;
+  --vui-control-py-sm: 0.25rem;
+  --vui-control-py-md: 0.375rem;
+  --vui-control-py-lg: 0.5rem;
+  --vui-panel-space-sm: 0.625rem;
+  --vui-panel-space-md: 1rem;
+  --vui-panel-space-lg: 1.375rem;
+}
+
+.vui-density-comfortable {
+  --vui-control-height-sm: 2rem;
+  --vui-control-height-md: 2.5rem;
+  --vui-control-height-lg: 3rem;
+  --vui-control-px-sm: 0.75rem;
+  --vui-control-px-md: 1.125rem;
+  --vui-control-px-lg: 1.5rem;
+  --vui-control-py-sm: 0.375rem;
+  --vui-control-py-md: 0.5rem;
+  --vui-control-py-lg: 0.625rem;
+  --vui-panel-space-sm: 0.75rem;
+  --vui-panel-space-md: 1.25rem;
+  --vui-panel-space-lg: 1.75rem;
+}
+
+.vui-density-spacious {
+  --vui-control-height-sm: 2.25rem;
+  --vui-control-height-md: 2.75rem;
+  --vui-control-height-lg: 3.25rem;
+  --vui-control-px-sm: 0.875rem;
+  --vui-control-px-md: 1.25rem;
+  --vui-control-px-lg: 1.75rem;
+  --vui-control-py-sm: 0.5rem;
+  --vui-control-py-md: 0.625rem;
+  --vui-control-py-lg: 0.75rem;
+  --vui-panel-space-sm: 0.875rem;
+  --vui-panel-space-md: 1.5rem;
+  --vui-panel-space-lg: 2rem;
+}

@@ -1,13 +1,12 @@
 'use client'
 
 import { Card, Button, Badge } from 'velocityui'
-import 'velocityui/dist/style.css'
 
 export function CardPreview() {
   return (
     <div className="flex flex-col gap-4 w-full max-w-sm">
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Bordered (default)</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Bordered (default)</p>
         <Card variant="bordered">
           <Card.Header>
             <div className="flex items-center justify-between">
@@ -28,7 +27,7 @@ export function CardPreview() {
         </Card>
       </div>
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Elevated + Hoverable</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Elevated + Hoverable</p>
         <Card variant="elevated" hoverable>
           <Card.Body>
             <p style={{ fontSize: '0.875rem', color: '#374151' }}>Hover over this card to see the lift effect.</p>

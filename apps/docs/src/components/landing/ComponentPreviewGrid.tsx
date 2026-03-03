@@ -7,13 +7,13 @@ const components = [
     description: 'Triggers actions with multiple variants, sizes, and a loading state.',
     preview: (
       <div className="flex flex-wrap items-center gap-2">
-        <button className="inline-flex h-9 items-center gap-2 rounded-lg bg-indigo-500 px-4 text-sm font-semibold text-white hover:bg-indigo-600 transition-colors">
+        <button className="inline-flex h-9 items-center gap-2 rounded-lg bg-vui-primary px-4 text-sm font-semibold text-vui-primary-contrast transition-colors hover:bg-vui-primary-hover">
           Primary
         </button>
-        <button className="inline-flex h-9 items-center gap-2 rounded-lg border-2 border-indigo-500 px-4 text-sm font-semibold text-indigo-500 hover:bg-indigo-500 hover:text-white transition-colors">
+        <button className="inline-flex h-9 items-center gap-2 rounded-lg border-2 border-vui-primary px-4 text-sm font-semibold text-vui-primary transition-colors hover:bg-vui-primary hover:text-vui-primary-contrast">
           Outline
         </button>
-        <button className="inline-flex h-9 items-center gap-2 rounded-lg bg-transparent px-4 text-sm font-semibold text-indigo-500 hover:bg-indigo-50 transition-colors">
+        <button className="inline-flex h-9 items-center gap-2 rounded-lg bg-transparent px-4 text-sm font-semibold text-vui-primary transition-colors hover:bg-vui-primary-soft">
           Ghost
         </button>
       </div>
@@ -26,21 +26,23 @@ const components = [
     preview: (
       <div className="flex flex-col gap-2 w-full">
         <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-700">Email address</label>
+          <label className="text-xs font-medium text-vui-text-muted">Email address</label>
           <input
             type="email"
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+            readOnly
+            className="w-full rounded-lg border border-vui-border bg-vui-surface px-3 py-2 text-sm text-vui-text placeholder:text-vui-text-subtle focus:outline-none"
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-700">Password</label>
+          <label className="text-xs font-medium text-vui-text-muted">Password</label>
           <input
             type="password"
             placeholder="••••••••"
-            className="w-full rounded-lg border border-red-400 px-3 py-2 text-sm focus:outline-none"
+            readOnly
+            className="w-full rounded-lg border border-vui-danger bg-vui-surface px-3 py-2 text-sm focus:outline-none"
           />
-          <span className="text-xs text-red-500">Password is required</span>
+          <span className="text-xs text-vui-danger">Password is required</span>
         </div>
       </div>
     ),
@@ -51,10 +53,10 @@ const components = [
     description: 'Semantic headings with size scale, weight, alignment, and color variants.',
     preview: (
       <div className="flex flex-col gap-1.5 w-full">
-        <p className="text-3xl font-extrabold text-gray-900 leading-tight">Display Heading</p>
-        <p className="text-xl font-bold text-gray-800 leading-tight">Section Title</p>
-        <p className="text-base font-semibold bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent leading-tight">
-          Gradient Title
+        <p className="text-3xl font-extrabold text-vui-text leading-tight">Display Heading</p>
+        <p className="text-xl font-bold text-vui-text-muted leading-tight">Section Title</p>
+        <p className="text-base font-semibold text-vui-primary leading-tight">
+          Primary Color Title
         </p>
       </div>
     ),
@@ -65,20 +67,20 @@ const components = [
     description: 'Status labels with dot indicators, multiple variants, and sizes.',
     preview: (
       <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-vui-badge-info-border bg-vui-badge-info-bg px-2.5 py-1 text-xs font-medium text-vui-badge-info-color">
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
           Info
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-vui-badge-success-border bg-vui-badge-success-bg px-2.5 py-1 text-xs font-medium text-vui-badge-success-color">
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
           Success
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-yellow-200 bg-yellow-50 px-2.5 py-1 text-xs font-medium text-yellow-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-vui-badge-warning-border bg-vui-badge-warning-bg px-2.5 py-1 text-xs font-medium text-vui-badge-warning-color">
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
           Warning
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-2.5 py-1 text-xs font-medium text-red-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-vui-badge-danger-border bg-vui-badge-danger-bg px-2.5 py-1 text-xs font-medium text-vui-badge-danger-color">
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
           Danger
         </span>
       </div>
@@ -89,19 +91,19 @@ const components = [
     slug: 'card',
     description: 'Flexible container with compound Header, Body, Footer slots and hover effects.',
     preview: (
-      <div className="w-full rounded-xl border border-gray-200 bg-white overflow-hidden shadow-sm">
-        <div className="border-b border-gray-100 px-4 py-3">
-          <p className="text-sm font-semibold text-gray-900">Card Title</p>
-          <p className="text-xs text-gray-500">Subtitle or metadata</p>
+      <div className="w-full rounded-xl border border-vui-border bg-vui-surface overflow-hidden shadow-sm">
+        <div className="border-b border-vui-divider px-4 py-3">
+          <p className="text-sm font-semibold text-vui-text">Card Title</p>
+          <p className="text-xs text-vui-text-subtle">Subtitle or metadata</p>
         </div>
         <div className="px-4 py-3">
-          <p className="text-sm text-gray-600">Card body content goes here. Accepts any children.</p>
+          <p className="text-sm text-vui-text-muted">Card body content goes here.</p>
         </div>
-        <div className="border-t border-gray-100 px-4 py-3 flex gap-2">
-          <button className="rounded-lg bg-indigo-500 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-600 transition-colors">
+        <div className="border-t border-vui-divider px-4 py-3 flex gap-2">
+          <button className="rounded-lg bg-vui-primary px-3 py-1.5 text-xs font-semibold text-vui-primary-contrast transition-colors hover:bg-vui-primary-hover">
             Action
           </button>
-          <button className="rounded-lg border border-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
+          <button className="rounded-lg border border-vui-border px-3 py-1.5 text-xs font-semibold text-vui-text-muted transition-colors hover:bg-vui-surface-muted">
             Cancel
           </button>
         </div>
@@ -117,18 +119,16 @@ export function ComponentPreviewGrid() {
         <Link
           key={c.slug}
           href={`/docs/${c.slug}`}
-          className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all hover:border-primary-200 hover:shadow-lg hover:shadow-primary-50 hover:-translate-y-1"
+          className="group flex flex-col overflow-hidden rounded-2xl border border-vui-border bg-vui-surface transition-all hover:border-vui-primary/40 hover:shadow-lg hover:-translate-y-1"
         >
-          {/* Preview */}
-          <div className="flex min-h-[140px] items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+          <div className="flex min-h-[140px] items-center justify-center bg-vui-surface-muted p-6">
             {c.preview}
           </div>
-          {/* Info */}
-          <div className="flex-1 p-5">
+          <div className="flex-1 p-5 bg-vui-surface">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-semibold text-gray-900">{c.name}</h3>
+              <h3 className="text-base font-semibold text-vui-text">{c.name}</h3>
               <svg
-                className="h-4 w-4 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary-500"
+                className="h-4 w-4 text-vui-text-subtle transition-transform group-hover:translate-x-0.5 group-hover:text-vui-primary"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -136,7 +136,7 @@ export function ComponentPreviewGrid() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            <p className="mt-1.5 text-sm text-gray-500 leading-relaxed">{c.description}</p>
+            <p className="mt-1.5 text-sm text-vui-text-subtle leading-relaxed">{c.description}</p>
           </div>
         </Link>
       ))}

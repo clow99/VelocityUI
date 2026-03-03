@@ -1,7 +1,6 @@
 'use client'
 
 import { Input } from 'velocityui'
-import 'velocityui/dist/style.css'
 
 const SearchIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -13,11 +12,11 @@ export function InputPreview() {
   return (
     <div className="flex flex-col gap-4 max-w-sm w-full">
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Basic</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Basic</p>
         <Input label="Email address" placeholder="you@example.com" type="email" />
       </div>
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">With error</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">With error</p>
         <Input
           label="Password"
           type="password"
@@ -26,7 +25,7 @@ export function InputPreview() {
         />
       </div>
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">With hint &amp; icon</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">With hint &amp; icon</p>
         <Input
           label="Search"
           placeholder="Search components..."
@@ -35,7 +34,7 @@ export function InputPreview() {
         />
       </div>
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-400">Disabled</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Disabled</p>
         <Input label="Read only" value="Cannot edit this" disabled />
       </div>
     </div>

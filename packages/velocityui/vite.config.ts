@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
@@ -29,5 +29,15 @@ export default defineConfig({
       },
     },
     cssCodeSplit: false,
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: './tests/setup.ts',
+    css: true,
+    globals: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+    },
   },
 })

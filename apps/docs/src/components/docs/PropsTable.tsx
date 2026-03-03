@@ -12,20 +12,20 @@ interface PropsTableProps {
 
 export function PropsTable({ rows }: PropsTableProps) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-gray-200">
+    <div className="overflow-x-auto rounded-xl border border-vui-border">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-gray-200 bg-gray-50">
-            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+          <tr className="border-b border-vui-border bg-vui-surface-muted">
+            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">
               Prop
             </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">
               Type
             </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">
               Default
             </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">
               Description
             </th>
           </tr>
@@ -34,31 +34,31 @@ export function PropsTable({ rows }: PropsTableProps) {
           {rows.map((row, i) => (
             <tr
               key={row.name}
-              className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}
+              className={i % 2 === 0 ? 'bg-vui-surface' : 'bg-vui-surface-muted/50'}
             >
               <td className="px-4 py-3 align-top">
-                <span className="font-mono text-xs font-semibold text-gray-900">
+                <span className="font-mono text-xs font-semibold text-vui-text">
                   {row.name}
                   {row.required && (
-                    <span className="ml-1 text-red-500" title="Required">*</span>
+                    <span className="ml-1 text-vui-danger" title="Required">*</span>
                   )}
                 </span>
               </td>
               <td className="px-4 py-3 align-top">
-                <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-xs text-violet-700">
+                <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">
                   {row.type}
                 </code>
               </td>
               <td className="px-4 py-3 align-top">
                 {row.default ? (
-                  <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-xs text-gray-600">
+                  <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-text-muted">
                     {row.default}
                   </code>
                 ) : (
-                  <span className="text-gray-400">—</span>
+                  <span className="text-vui-text-subtle">—</span>
                 )}
               </td>
-              <td className="px-4 py-3 align-top text-gray-600 leading-relaxed">
+              <td className="px-4 py-3 align-top text-vui-text-muted leading-relaxed">
                 {row.description}
               </td>
             </tr>
