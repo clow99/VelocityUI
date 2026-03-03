@@ -20,6 +20,7 @@ ARG NEXT_PUBLIC_APP_NAME
 
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+ENV NEXT_OUTPUT_STANDALONE=1
 
 RUN pnpm --filter velocityui build
 RUN pnpm --filter docs build
@@ -34,7 +35,8 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder --chown=nextjs:nodejs /app/apps/docs/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/docs/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/docs/.next/static ./apps/docs/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/docs/public ./apps/docs/public
 
 USER nextjs
 
@@ -42,4 +44,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["node", "apps/docs/server.js"]
