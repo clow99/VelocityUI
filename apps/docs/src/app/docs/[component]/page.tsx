@@ -42,8 +42,9 @@ export function generateStaticParams() {
   return Object.keys(componentDocs).map((slug) => ({ component: slug }))
 }
 
-export function generateMetadata({ params }: { params: { component: string } }) {
-  const doc = componentDocs[params.component]
+export async function generateMetadata({ params }: { params: Promise<{ component: string }> }) {
+  const { component } = await params
+  const doc = componentDocs[component]
   if (!doc) return {}
   return {
     title: `${doc.name} — VelocityUI`,
@@ -51,11 +52,12 @@ export function generateMetadata({ params }: { params: { component: string } }) 
   }
 }
 
-export default function ComponentPage({ params }: { params: { component: string } }) {
-  const doc = componentDocs[params.component]
+export default async function ComponentPage({ params }: { params: Promise<{ component: string }> }) {
+  const { component } = await params
+  const doc = componentDocs[component]
   if (!doc) notFound()
 
-  const Preview = previewMap[params.component]
+  const Preview = previewMap[component]
 
   return (
     <article className="max-w-3xl">

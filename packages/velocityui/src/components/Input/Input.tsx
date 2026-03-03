@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Input.module.css'
 
 export type InputSize = 'sm' | 'md' | 'lg'
+export type InputIconPosition = 'left' | 'right'
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string
@@ -10,10 +11,26 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   hint?: string
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
+  search?: boolean
+  searchIcon?: React.ReactNode
+  searchIconPosition?: InputIconPosition
+  leftIconClassName?: string
+  rightIconClassName?: string
   required?: boolean
   fullWidth?: boolean
   floatingLabel?: boolean
 }
+
+const DefaultSearchIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+    />
+  </svg>
+)
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
@@ -24,6 +41,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       hint,
       leftIcon,
       rightIcon,
+      search = false,
+      searchIcon,
+      searchIconPosition = 'left',
+      leftIconClassName,
+      rightIconClassName,
       required,
       fullWidth,
       floatingLabel,
@@ -37,14 +59,33 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputId = id ?? (label ? `vui-input-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined)
     const errorId = inputId ? `${inputId}-error` : undefined
     const hintId = inputId ? `${inputId}-hint` : undefined
+    const shouldRenderSearchIcon = search || !!searchIcon
+    const resolvedSearchIcon = searchIcon ?? <DefaultSearchIcon />
+
+    let resolvedLeftIcon = leftIcon
+    let resolvedRightIcon = rightIcon
+    let isSearchLeft = false
+    let isSearchRight = false
+
+    if (shouldRenderSearchIcon) {
+      if (searchIconPosition === 'right') {
+        if (!resolvedRightIcon) {
+          resolvedRightIcon = resolvedSearchIcon
+          isSearchRight = true
+        }
+      } else if (!resolvedLeftIcon) {
+        resolvedLeftIcon = resolvedSearchIcon
+        isSearchLeft = true
+      }
+    }
 
     const inputClasses = [
       styles.input,
       styles[size],
       floatingLabel ? styles.inputFloating : '',
       error ? styles.error : '',
-      leftIcon ? styles.hasLeft : '',
-      rightIcon ? styles.hasRight : '',
+      resolvedLeftIcon ? styles.hasLeft : '',
+      resolvedRightIcon ? styles.hasRight : '',
       className ?? '',
     ]
       .filter(Boolean)
@@ -53,7 +94,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const floatingLabelClasses = [
       styles.floatingLabelEl,
       styles[`floatingLabel${size.charAt(0).toUpperCase() + size.slice(1)}`],
-      leftIcon ? styles.floatingLabelWithLeft : '',
+      resolvedLeftIcon ? styles.floatingLabelWithLeft : '',
       error ? styles.floatingLabelError : '',
     ]
       .filter(Boolean)
@@ -68,9 +109,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <div className={`${styles.inputWrapper}${floatingLabel ? ` ${styles.floatingWrapper}` : ''}`}>
-          {leftIcon && (
-            <span className={styles.iconLeft} aria-hidden="true">
-              {leftIcon}
+          {resolvedLeftIcon && (
+            <span
+              className={[styles.iconLeft, leftIconClassName ?? ''].filter(Boolean).join(' ')}
+              data-slot="left-icon"
+              data-search-icon={isSearchLeft ? 'true' : undefined}
+              aria-hidden="true"
+            >
+              {resolvedLeftIcon}
             </span>
           )}
           <input
@@ -91,9 +137,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               {required && <span className={styles.required} aria-hidden="true">*</span>}
             </label>
           )}
-          {rightIcon && (
-            <span className={styles.iconRight} aria-hidden="true">
-              {rightIcon}
+          {resolvedRightIcon && (
+            <span
+              className={[styles.iconRight, rightIconClassName ?? ''].filter(Boolean).join(' ')}
+              data-slot="right-icon"
+              data-search-icon={isSearchRight ? 'true' : undefined}
+              aria-hidden="true"
+            >
+              {resolvedRightIcon}
             </span>
           )}
         </div>

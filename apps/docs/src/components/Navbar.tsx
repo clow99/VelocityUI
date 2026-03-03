@@ -16,7 +16,7 @@ export function Navbar() {
   const { theme, density, setTheme, setDensity } = useTheme()
 
   const selectClass =
-    'rounded-md border border-vui-border bg-vui-surface px-2 py-1 text-xs font-medium text-vui-text-muted transition-colors hover:border-vui-border-strong focus:outline-none focus:ring-2 focus:ring-vui-primary/30 cursor-pointer'
+    'w-full appearance-none rounded-lg border border-vui-border bg-vui-surface/90 pl-2.5 pr-8 py-1.5 text-xs font-medium text-vui-text shadow-sm transition-[border-color,box-shadow,background-color] hover:border-vui-primary/50 hover:bg-vui-surface focus:outline-none focus:ring-2 focus:ring-vui-primary/25 focus:border-vui-primary cursor-pointer'
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-vui-divider bg-vui-surface/80 backdrop-blur-md transition-colors">
@@ -58,34 +58,48 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <label className="flex items-center gap-1.5">
               <span className="text-xs text-vui-text-subtle">Theme</span>
-              <select
-                className={selectClass}
-                value={theme}
-                onChange={(e) => setTheme(e.target.value as ThemeName)}
-                aria-label="Select theme"
-              >
-                {THEMES.map((t) => (
-                  <option key={t.value} value={t.value}>
-                    {t.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative min-w-[8.25rem]">
+                <select
+                  className={selectClass}
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value as ThemeName)}
+                  aria-label="Select theme"
+                >
+                  {THEMES.map((t) => (
+                    <option key={t.value} value={t.value}>
+                      {t.label}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-1.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border border-vui-border bg-vui-surface-muted text-vui-text-subtle">
+                  <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </div>
             </label>
 
             <label className="flex items-center gap-1.5">
               <span className="text-xs text-vui-text-subtle">Size</span>
-              <select
-                className={selectClass}
-                value={density}
-                onChange={(e) => setDensity(e.target.value as DensityName)}
-                aria-label="Select density"
-              >
-                {DENSITIES.map((d) => (
-                  <option key={d.value} value={d.value}>
-                    {d.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative min-w-[8.25rem]">
+                <select
+                  className={selectClass}
+                  value={density}
+                  onChange={(e) => setDensity(e.target.value as DensityName)}
+                  aria-label="Select density"
+                >
+                  {DENSITIES.map((d) => (
+                    <option key={d.value} value={d.value}>
+                      {d.label}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-1.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border border-vui-border bg-vui-surface-muted text-vui-text-subtle">
+                  <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </div>
             </label>
           </div>
 
@@ -141,31 +155,45 @@ export function Navbar() {
           <div className="mt-3 border-t border-vui-divider pt-3 flex flex-col gap-2">
             <label className="flex items-center justify-between">
               <span className="text-xs font-medium text-vui-text-subtle">Theme</span>
-              <select
-                className={selectClass}
-                value={theme}
-                onChange={(e) => setTheme(e.target.value as ThemeName)}
-              >
-                {THEMES.map((t) => (
-                  <option key={t.value} value={t.value}>
-                    {t.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative min-w-[8.25rem]">
+                <select
+                  className={selectClass}
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value as ThemeName)}
+                >
+                  {THEMES.map((t) => (
+                    <option key={t.value} value={t.value}>
+                      {t.label}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-1.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border border-vui-border bg-vui-surface-muted text-vui-text-subtle">
+                  <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </div>
             </label>
             <label className="flex items-center justify-between">
               <span className="text-xs font-medium text-vui-text-subtle">Density</span>
-              <select
-                className={selectClass}
-                value={density}
-                onChange={(e) => setDensity(e.target.value as DensityName)}
-              >
-                {DENSITIES.map((d) => (
-                  <option key={d.value} value={d.value}>
-                    {d.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative min-w-[8.25rem]">
+                <select
+                  className={selectClass}
+                  value={density}
+                  onChange={(e) => setDensity(e.target.value as DensityName)}
+                >
+                  {DENSITIES.map((d) => (
+                    <option key={d.value} value={d.value}>
+                      {d.label}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-1.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border border-vui-border bg-vui-surface-muted text-vui-text-subtle">
+                  <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </div>
             </label>
           </div>
         </div>

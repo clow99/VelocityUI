@@ -127,7 +127,7 @@ export default function Example() {
     name: 'Input',
     slug: 'input',
     description:
-      'A fully accessible text input with an optional label, hint text, error message, icon slots, and multiple sizes. Forwards refs and spreads all native input attributes.',
+      'A fully accessible text input with an optional label, hint text, error message, icon slots, search-icon helpers, and multiple sizes. Forwards refs and spreads all native input attributes.',
     importLine: "import { Input } from 'velocityui'",
     props: [
       {
@@ -160,6 +160,35 @@ export default function Example() {
         name: 'rightIcon',
         type: 'ReactNode',
         description: 'Icon rendered inside the input on the right.',
+      },
+      {
+        name: 'search',
+        type: 'boolean',
+        default: 'false',
+        description:
+          'Renders a built-in search icon when no icon is provided in the configured searchIconPosition.',
+      },
+      {
+        name: 'searchIcon',
+        type: 'ReactNode',
+        description:
+          'Custom search icon node used when search behaviour is enabled (or standalone).',
+      },
+      {
+        name: 'searchIconPosition',
+        type: "'left' | 'right'",
+        default: "'left'",
+        description: 'Sets which side the search icon prefers to render on.',
+      },
+      {
+        name: 'leftIconClassName',
+        type: 'string',
+        description: 'Optional className applied to the left icon wrapper for styling overrides.',
+      },
+      {
+        name: 'rightIconClassName',
+        type: 'string',
+        description: 'Optional className applied to the right icon wrapper for styling overrides.',
       },
       {
         name: 'required',
@@ -222,6 +251,30 @@ export default function Example() {
       <Input size="sm" placeholder="Small" />
       <Input size="md" placeholder="Medium" />
       <Input size="lg" placeholder="Large" />
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Search style inputs',
+        code: `import { Input } from 'velocityui'
+
+const SearchIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+  </svg>
+)
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <Input search placeholder="Search users..." />
+      <Input search searchIconPosition="right" placeholder="Search products..." />
+      <Input
+        searchIcon={<SearchIcon />}
+        leftIconClassName="text-vui-primary"
+        placeholder="Custom search icon"
+      />
     </div>
   )
 }`,

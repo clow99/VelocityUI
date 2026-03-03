@@ -53,6 +53,30 @@ describe('velocityui components', () => {
     expect(input).toHaveAttribute('aria-describedby', 'email-error')
   })
 
+  it('renders built-in search icon on the left when search is enabled', () => {
+    const { container } = render(<Input label="Search" search placeholder="Search..." />)
+    const leftIcon = container.querySelector('[data-slot="left-icon"][data-search-icon="true"]')
+    const rightIcon = container.querySelector('[data-slot="right-icon"][data-search-icon="true"]')
+
+    expect(leftIcon).toBeInTheDocument()
+    expect(rightIcon).not.toBeInTheDocument()
+  })
+
+  it('renders search icon on the right and respects custom icon className', () => {
+    const { container } = render(
+      <Input
+        label="Search products"
+        search
+        searchIconPosition="right"
+        rightIconClassName="custom-search-right"
+      />
+    )
+
+    const rightIcon = container.querySelector('[data-slot="right-icon"][data-search-icon="true"]')
+    expect(rightIcon).toBeInTheDocument()
+    expect(rightIcon).toHaveClass('custom-search-right')
+  })
+
   it('renders card compound sections', () => {
     render(
       <Card variant="elevated">

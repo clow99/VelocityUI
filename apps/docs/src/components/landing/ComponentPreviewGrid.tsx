@@ -73,15 +73,15 @@ const components = [
         <label className="text-xs font-medium text-vui-text-muted">Country</label>
         <div className="relative">
           <select
-            className="w-full appearance-none rounded-lg border border-vui-border bg-vui-surface px-3 py-2 pr-8 text-sm text-vui-text focus:outline-none cursor-pointer"
+            className="w-full appearance-none rounded-lg border border-vui-border bg-vui-surface/90 pl-3 pr-9 py-2 text-sm text-vui-text shadow-sm transition-[border-color,box-shadow,background-color] hover:border-vui-primary/45 hover:bg-vui-surface focus:outline-none focus:ring-2 focus:ring-vui-primary/25 focus:border-vui-primary cursor-pointer"
             defaultValue="us"
           >
             <option value="us">United States</option>
             <option value="ca">Canada</option>
             <option value="gb">United Kingdom</option>
           </select>
-          <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-vui-text-subtle">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span className="pointer-events-none absolute right-1.5 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-vui-border bg-vui-surface-muted text-vui-text-subtle">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </span>

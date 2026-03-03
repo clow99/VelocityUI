@@ -24,6 +24,25 @@ export function InputPreview() {
         </div>
       </div>
       <div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Search presets</p>
+        <div className="flex flex-col gap-3">
+          <Input label="Search users" search placeholder="Type a name..." />
+          <Input
+            label="Search products"
+            search
+            searchIconPosition="right"
+            rightIconClassName="text-vui-primary"
+            placeholder="Type SKU or name..."
+          />
+          <Input
+            label="Custom search icon"
+            searchIcon={<SearchIcon />}
+            leftIconClassName="text-vui-danger"
+            placeholder="Custom icon color"
+          />
+        </div>
+      </div>
+      <div>
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">With error</p>
         <Input
           label="Password"

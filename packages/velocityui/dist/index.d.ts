@@ -2,7 +2,7 @@
 export { Button } from './components/Button';
 export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button';
 export { Input } from './components/Input';
-export type { InputProps, InputSize } from './components/Input';
+export type { InputProps, InputSize, InputIconPosition } from './components/Input';
 export { Title } from './components/Title';
 export type { TitleProps, TitleLevel, TitleSize, TitleWeight, TitleAlign, TitleColor } from './components/Title';
 export { Badge } from './components/Badge';
