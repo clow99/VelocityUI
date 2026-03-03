@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const navLinks = [
   { label: 'Components', href: '/docs/button' },
-  { label: 'GitHub', href: 'https://github.com/velocityui/velocityui', external: true },
+  { label: 'GitHub', href: 'https://github.com/clow99/VelocityUI', external: true },
 ]
 
 export function Navbar() {

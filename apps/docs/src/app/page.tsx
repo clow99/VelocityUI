@@ -43,7 +43,7 @@ export default function HomePage() {
               </svg>
             </Link>
             <a
-              href="https://github.com/velocityui/velocityui"
+              href="https://github.com/clow99/VelocityUI"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center gap-2 rounded-xl border border-gray-200 bg-white px-7 text-base font-semibold text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-50 hover:-translate-y-0.5"
