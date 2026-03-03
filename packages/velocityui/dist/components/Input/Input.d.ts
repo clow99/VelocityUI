@@ -10,5 +10,6 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
     rightIcon?: React.ReactNode;
     required?: boolean;
     fullWidth?: boolean;
+    floatingLabel?: boolean;
 }
 export declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;

@@ -465,4 +465,558 @@ export default function Example() {
       },
     ],
   },
+
+  textarea: {
+    name: 'Textarea',
+    slug: 'textarea',
+    description:
+      'A multi-line text input with label, hint, error, resize control, and three sizes. Mirrors the Input API with full accessibility wiring and ref forwarding.',
+    importLine: "import { Textarea } from 'velocityui'",
+    props: [
+      { name: 'label', type: 'string', description: 'Label rendered above the textarea.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls padding and font size.' },
+      { name: 'error', type: 'string', description: 'Error message below the field. Sets aria-invalid.' },
+      { name: 'hint', type: 'string', description: 'Helper text shown when there is no error.' },
+      { name: 'resize', type: "'none' | 'vertical' | 'horizontal' | 'both'", default: "'vertical'", description: 'CSS resize behaviour.' },
+      { name: 'required', type: 'boolean', default: 'false', description: 'Marks the field as required with a visual asterisk.' },
+      { name: 'fullWidth', type: 'boolean', default: 'false', description: 'Makes the wrapper fill its container.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Textarea } from 'velocityui'
+
+export default function Example() {
+  return <Textarea label="Message" placeholder="Write your message here..." rows={4} />
+}`,
+      },
+      {
+        title: 'With error',
+        code: `import { Textarea } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Textarea
+      label="Bio"
+      error="Bio must be at least 20 characters."
+      defaultValue="Too short"
+    />
+  )
+}`,
+      },
+      {
+        title: 'No resize',
+        code: `import { Textarea } from 'velocityui'
+
+export default function Example() {
+  return <Textarea label="Fixed height" resize="none" rows={3} />
+}`,
+      },
+    ],
+  },
+
+  select: {
+    name: 'Select',
+    slug: 'select',
+    description:
+      'A fully styled native select element with custom arrow, label, hint, error, and size variants. Accepts an options array or native <option> children.',
+    importLine: "import { Select } from 'velocityui'",
+    props: [
+      { name: 'label', type: 'string', description: 'Label rendered above the select.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls height and font size.' },
+      { name: 'options', type: 'SelectOption[]', description: 'Array of { value, label, disabled? } objects.' },
+      { name: 'placeholder', type: 'string', description: 'Renders a disabled first option used as a prompt.' },
+      { name: 'error', type: 'string', description: 'Error message below the field. Sets aria-invalid.' },
+      { name: 'hint', type: 'string', description: 'Helper text shown when there is no error.' },
+      { name: 'required', type: 'boolean', default: 'false', description: 'Marks the field as required.' },
+      { name: 'fullWidth', type: 'boolean', default: 'false', description: 'Makes the wrapper fill its container.' },
+    ],
+    examples: [
+      {
+        title: 'With options array',
+        code: `import { Select } from 'velocityui'
+
+const countries = [
+  { value: 'us', label: 'United States' },
+  { value: 'ca', label: 'Canada' },
+  { value: 'gb', label: 'United Kingdom' },
+]
+
+export default function Example() {
+  return (
+    <Select
+      label="Country"
+      placeholder="Select a country"
+      options={countries}
+    />
+  )
+}`,
+      },
+      {
+        title: 'With error',
+        code: `import { Select } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Select
+      label="Role"
+      error="Please select a role."
+      options={[
+        { value: 'admin', label: 'Administrator' },
+        { value: 'editor', label: 'Editor' },
+      ]}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  checkbox: {
+    name: 'Checkbox',
+    slug: 'checkbox',
+    description:
+      'A custom-styled accessible checkbox with label, description text, error state, and three sizes. Forwards refs and spreads all native input attributes.',
+    importLine: "import { Checkbox } from 'velocityui'",
+    props: [
+      { name: 'label', type: 'string', description: 'Label text rendered beside the checkbox.' },
+      { name: 'description', type: 'string', description: 'Helper text rendered below the label.' },
+      { name: 'error', type: 'string', description: 'Error message rendered below. Sets aria-invalid.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls the checkbox and label size.' },
+      { name: 'checked', type: 'boolean', description: 'Controlled checked state.' },
+      { name: 'defaultChecked', type: 'boolean', description: 'Uncontrolled default checked state.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the checkbox.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Checkbox } from 'velocityui'
+
+export default function Example() {
+  return <Checkbox label="Accept terms and conditions" />
+}`,
+      },
+      {
+        title: 'With description',
+        code: `import { Checkbox } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Checkbox
+      label="Email notifications"
+      description="Receive updates about your account activity."
+      defaultChecked
+    />
+  )
+}`,
+      },
+      {
+        title: 'Sizes',
+        code: `import { Checkbox } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <Checkbox size="sm" label="Small" defaultChecked />
+      <Checkbox size="md" label="Medium" defaultChecked />
+      <Checkbox size="lg" label="Large" defaultChecked />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  radiogroup: {
+    name: 'RadioGroup',
+    slug: 'radiogroup',
+    description:
+      'An accessible radio group rendered as a fieldset with a legend. Accepts an options array supporting labels, descriptions, and disabled states. Supports both vertical and horizontal layouts.',
+    importLine: "import { RadioGroup } from 'velocityui'",
+    props: [
+      { name: 'name', type: 'string', description: 'Shared name attribute for the radio inputs.' },
+      { name: 'label', type: 'string', description: 'Group label rendered as a <legend>.' },
+      { name: 'options', type: 'RadioOption[]', description: 'Array of { value, label, description?, disabled? }.' },
+      { name: 'value', type: 'string', description: 'Controlled selected value.' },
+      { name: 'defaultValue', type: 'string', description: 'Uncontrolled default selected value.' },
+      { name: 'onChange', type: '(value: string) => void', description: 'Callback fired when selection changes.' },
+      { name: 'orientation', type: "'vertical' | 'horizontal'", default: "'vertical'", description: 'Layout direction of the radio options.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls radio and label size.' },
+      { name: 'error', type: 'string', description: 'Error message for the entire group.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { RadioGroup } from 'velocityui'
+
+export default function Example() {
+  return (
+    <RadioGroup
+      name="plan"
+      label="Select a plan"
+      defaultValue="pro"
+      options={[
+        { value: 'free', label: 'Free', description: 'Up to 3 projects' },
+        { value: 'pro', label: 'Pro', description: 'Unlimited projects' },
+        { value: 'enterprise', label: 'Enterprise', description: 'Custom pricing' },
+      ]}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Horizontal',
+        code: `import { RadioGroup } from 'velocityui'
+
+export default function Example() {
+  return (
+    <RadioGroup
+      name="size"
+      label="T-shirt size"
+      orientation="horizontal"
+      options={[
+        { value: 's', label: 'S' },
+        { value: 'm', label: 'M' },
+        { value: 'l', label: 'L' },
+        { value: 'xl', label: 'XL' },
+      ]}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  switch: {
+    name: 'Switch',
+    slug: 'switch',
+    description:
+      'A toggle control rendered as a styled checkbox with role="switch". Accepts label and description text. Forwards refs and spreads native input attributes.',
+    importLine: "import { Switch } from 'velocityui'",
+    props: [
+      { name: 'label', type: 'string', description: 'Label text rendered beside the switch.' },
+      { name: 'description', type: 'string', description: 'Helper text rendered below.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls the switch track and thumb size.' },
+      { name: 'checked', type: 'boolean', description: 'Controlled checked state.' },
+      { name: 'defaultChecked', type: 'boolean', description: 'Uncontrolled default.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the switch.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Switch } from 'velocityui'
+
+export default function Example() {
+  return <Switch label="Enable notifications" defaultChecked />
+}`,
+      },
+      {
+        title: 'Sizes',
+        code: `import { Switch } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <Switch size="sm" label="Small" defaultChecked />
+      <Switch size="md" label="Medium" defaultChecked />
+      <Switch size="lg" label="Large" defaultChecked />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  alert: {
+    name: 'Alert',
+    slug: 'alert',
+    description:
+      'A notification banner with four semantic color variants, an automatic icon, an optional title, and an optional dismiss button. Rendered with role="alert" for screen readers.',
+    importLine: "import { Alert } from 'velocityui'",
+    props: [
+      { name: 'variant', type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'", description: 'Color scheme and icon of the alert.' },
+      { name: 'title', type: 'string', description: 'Bold title line rendered above the body.' },
+      { name: 'icon', type: 'ReactNode', description: 'Overrides the default icon. Pass null to hide.' },
+      { name: 'onClose', type: '() => void', description: 'When provided, renders a dismiss button.' },
+      { name: 'children', type: 'ReactNode', description: 'Alert body content.' },
+    ],
+    examples: [
+      {
+        title: 'Variants',
+        code: `import { Alert } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <Alert variant="info">Your session will expire in 5 minutes.</Alert>
+      <Alert variant="success" title="Payment confirmed">Your order has been placed.</Alert>
+      <Alert variant="warning">Review your details before submitting.</Alert>
+      <Alert variant="danger" title="Error">Failed to save changes. Please try again.</Alert>
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Dismissible',
+        code: `import { useState } from 'react'
+import { Alert } from 'velocityui'
+
+export default function Example() {
+  const [visible, setVisible] = useState(true)
+  if (!visible) return null
+  return (
+    <Alert variant="info" onClose={() => setVisible(false)}>
+      Click the X to dismiss this alert.
+    </Alert>
+  )
+}`,
+      },
+    ],
+  },
+
+  dialog: {
+    name: 'Dialog',
+    slug: 'dialog',
+    description:
+      'A modal dialog rendered with position:fixed, focus trapping, Escape-key close, and ARIA wiring. Supports compound sub-components Dialog.Header, Dialog.Body, and Dialog.Footer, plus four sizes.',
+    importLine: "import { Dialog } from 'velocityui'",
+    props: [
+      { name: 'open', type: 'boolean', description: 'Controls visibility of the dialog.' },
+      { name: 'onClose', type: '() => void', description: 'Called when the user closes the dialog via overlay click or Escape.' },
+      { name: 'title', type: 'string', description: 'Renders a built-in header with a title.' },
+      { name: 'description', type: 'string', description: 'Subtitle rendered under the title in the built-in header.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: 'Maximum width of the dialog panel.' },
+      { name: 'closeOnOverlayClick', type: 'boolean', default: 'true', description: 'Whether clicking outside closes the dialog.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { useState } from 'react'
+import { Button, Dialog } from 'velocityui'
+
+export default function Example() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)} title="Confirm action" description="This cannot be undone.">
+        <Dialog.Body>
+          Are you sure you want to delete this item?
+        </Dialog.Body>
+        <Dialog.Footer>
+          <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button variant="danger" onClick={() => setOpen(false)}>Delete</Button>
+        </Dialog.Footer>
+      </Dialog>
+    </>
+  )
+}`,
+      },
+      {
+        title: 'Custom header via compound parts',
+        code: `import { useState } from 'react'
+import { Button, Dialog, Badge } from 'velocityui'
+
+export default function Example() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <Dialog.Header>
+          <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700 }}>Settings</h2>
+          <Badge variant="info">Beta</Badge>
+        </Dialog.Header>
+        <Dialog.Body>Configure your preferences here.</Dialog.Body>
+        <Dialog.Footer>
+          <Button onClick={() => setOpen(false)}>Save</Button>
+        </Dialog.Footer>
+      </Dialog>
+    </>
+  )
+}`,
+      },
+    ],
+  },
+
+  tabs: {
+    name: 'Tabs',
+    slug: 'tabs',
+    description:
+      'An accessible tab component with keyboard navigation (Arrow keys, Home, End), three visual variants, and both controlled and uncontrolled modes.',
+    importLine: "import { Tabs } from 'velocityui'",
+    props: [
+      { name: 'items', type: 'TabItem[]', description: 'Array of { value, label, children, disabled? } tab definitions.' },
+      { name: 'defaultValue', type: 'string', description: 'Initial active tab for uncontrolled mode.' },
+      { name: 'value', type: 'string', description: 'Controlled active tab value.' },
+      { name: 'onChange', type: '(value: string) => void', description: 'Callback when a tab is selected.' },
+      { name: 'variant', type: "'underline' | 'pills' | 'boxed'", default: "'underline'", description: 'Visual style of the tab list.' },
+    ],
+    examples: [
+      {
+        title: 'Variants',
+        code: `import { Tabs } from 'velocityui'
+
+const items = [
+  { value: 'overview', label: 'Overview', children: <p>Overview content</p> },
+  { value: 'analytics', label: 'Analytics', children: <p>Analytics content</p> },
+  { value: 'settings', label: 'Settings', children: <p>Settings content</p> },
+]
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <Tabs items={items} defaultValue="overview" variant="underline" />
+      <Tabs items={items} defaultValue="overview" variant="pills" />
+      <Tabs items={items} defaultValue="overview" variant="boxed" />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  accordion: {
+    name: 'Accordion',
+    slug: 'accordion',
+    description:
+      'Collapsible content sections with smooth CSS grid animation. Supports single or multiple open items, three visual variants, and both controlled and uncontrolled modes.',
+    importLine: "import { Accordion } from 'velocityui'",
+    props: [
+      { name: 'items', type: 'AccordionItem[]', description: 'Array of { value, title, content, disabled? } definitions.' },
+      { name: 'defaultValue', type: 'string | string[]', description: 'Initially open item(s) for uncontrolled mode.' },
+      { name: 'value', type: 'string | string[]', description: 'Controlled open item(s).' },
+      { name: 'onChange', type: '(value: string | string[]) => void', description: 'Callback when open state changes.' },
+      { name: 'multiple', type: 'boolean', default: 'false', description: 'Allow multiple sections open simultaneously.' },
+      { name: 'variant', type: "'bordered' | 'flush' | 'separated'", default: "'bordered'", description: 'Visual style of the accordion container.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Accordion } from 'velocityui'
+
+const items = [
+  { value: 'q1', title: 'What is VelocityUI?', content: 'A modern, accessible React component library.' },
+  { value: 'q2', title: 'Is it free to use?', content: 'Yes, it is open source under the MIT license.' },
+  { value: 'q3', title: 'Does it support theming?', content: 'Yes, via CSS custom properties and named theme classes.' },
+]
+
+export default function Example() {
+  return <Accordion items={items} defaultValue="q1" />
+}`,
+      },
+      {
+        title: 'Multiple open + separated variant',
+        code: `import { Accordion } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Accordion
+      variant="separated"
+      multiple
+      defaultValue={['a', 'b']}
+      items={[
+        { value: 'a', title: 'Section A', content: 'Content A' },
+        { value: 'b', title: 'Section B', content: 'Content B' },
+        { value: 'c', title: 'Section C', content: 'Content C' },
+      ]}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  tooltip: {
+    name: 'Tooltip',
+    slug: 'tooltip',
+    description:
+      'A lightweight tooltip that appears on hover and focus using aria-describedby for accessibility. Supports four placement directions and an optional show delay.',
+    importLine: "import { Tooltip } from 'velocityui'",
+    props: [
+      { name: 'content', type: 'ReactNode', description: 'Tooltip body text or node.' },
+      { name: 'children', type: 'ReactElement', description: 'The trigger element. Must be a single React element.' },
+      { name: 'placement', type: "'top' | 'bottom' | 'left' | 'right'", default: "'top'", description: 'Preferred position of the tooltip relative to the trigger.' },
+      { name: 'delay', type: 'number', default: '0', description: 'Delay in milliseconds before the tooltip appears.' },
+    ],
+    examples: [
+      {
+        title: 'Placements',
+        code: `import { Tooltip, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', padding: '2rem' }}>
+      <Tooltip content="Top tooltip" placement="top">
+        <Button variant="outline">Top</Button>
+      </Tooltip>
+      <Tooltip content="Bottom tooltip" placement="bottom">
+        <Button variant="outline">Bottom</Button>
+      </Tooltip>
+      <Tooltip content="Left tooltip" placement="left">
+        <Button variant="outline">Left</Button>
+      </Tooltip>
+      <Tooltip content="Right tooltip" placement="right">
+        <Button variant="outline">Right</Button>
+      </Tooltip>
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'With delay',
+        code: `import { Tooltip, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Tooltip content="Appears after 300ms" delay={300}>
+      <Button>Hover me</Button>
+    </Tooltip>
+  )
+}`,
+      },
+    ],
+  },
+
+  divider: {
+    name: 'Divider',
+    slug: 'divider',
+    description:
+      'A horizontal or vertical separator line using role="separator". Supports an optional centered text label for section delineation.',
+    importLine: "import { Divider } from 'velocityui'",
+    props: [
+      { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'Direction of the separator line.' },
+      { name: 'label', type: 'string', description: 'Optional centered text that splits the line.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Divider } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <p>Above the divider</p>
+      <Divider />
+      <p>Below the divider</p>
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'With label',
+        code: `import { Divider } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <p>Section one</p>
+      <Divider label="or" />
+      <p>Section two</p>
+    </div>
+  )
+}`,
+      },
+    ],
+  },
 }

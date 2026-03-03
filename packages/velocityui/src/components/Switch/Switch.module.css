@@ -1,0 +1,106 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.labelRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+}
+
+/* The visible track */
+.track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Hidden native input */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+/* Visible thumb (acts as the track background too) */
+.thumb {
+  display: block;
+  border-radius: var(--vui-radius-pill, 9999px);
+  background-color: var(--vui-border-strong, #c3cfdd);
+  transition: background-color 0.15s ease;
+  position: relative;
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ffffff;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.input:checked + .thumb {
+  background-color: var(--vui-primary, #6366f1);
+}
+
+.input:focus-visible + .thumb {
+  outline: 2px solid var(--vui-primary, #6366f1);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--vui-focus-ring, rgba(99, 102, 241, 0.15));
+}
+
+.input:disabled + .thumb {
+  opacity: 0.5;
+}
+
+.input:disabled ~ .labelText {
+  opacity: 0.5;
+}
+
+.labelRow:has(.input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm .track { width: 2rem; height: 1rem; }
+.sm .thumb { width: 2rem; height: 1rem; }
+.sm .thumb::after { width: 0.75rem; height: 0.75rem; left: 0.125rem; }
+.sm .input:checked + .thumb::after { left: calc(2rem - 0.75rem - 0.125rem); }
+.sm .labelText { font-size: var(--vui-font-size-sm, 0.8125rem); }
+
+.md .track { width: 2.5rem; height: 1.25rem; }
+.md .thumb { width: 2.5rem; height: 1.25rem; }
+.md .thumb::after { width: 0.9375rem; height: 0.9375rem; left: 0.15625rem; }
+.md .input:checked + .thumb::after { left: calc(2.5rem - 0.9375rem - 0.15625rem); }
+.md .labelText { font-size: var(--vui-font-size-md, 0.9375rem); }
+
+.lg .track { width: 3rem; height: 1.5rem; }
+.lg .thumb { width: 3rem; height: 1.5rem; }
+.lg .thumb::after { width: 1.125rem; height: 1.125rem; left: 0.1875rem; }
+.lg .input:checked + .thumb::after { left: calc(3rem - 1.125rem - 0.1875rem); }
+.lg .labelText { font-size: var(--vui-font-size-lg, 1.0625rem); }
+
+.labelText {
+  font-weight: 500;
+  color: var(--vui-text, #0f172a);
+  line-height: 1.4;
+}
+
+.description {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-text-subtle, #64748b);
+  line-height: 1.4;
+  padding-left: 3.125rem;
+}
+
+.sm .description { padding-left: 2.625rem; }
+.lg .description { padding-left: 3.625rem; }

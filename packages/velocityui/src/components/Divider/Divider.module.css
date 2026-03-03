@@ -1,0 +1,38 @@
+.divider {
+  display: flex;
+  align-items: center;
+}
+
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background-color: var(--vui-divider, #e5e7eb);
+}
+
+.vertical {
+  height: 100%;
+  width: 1px;
+  background-color: var(--vui-divider, #e5e7eb);
+  align-self: stretch;
+}
+
+.withLabel {
+  gap: 0.75rem;
+  background-color: transparent;
+  height: auto;
+}
+
+.withLabel::before,
+.withLabel::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--vui-divider, #e5e7eb);
+}
+
+.label {
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  color: var(--vui-text-subtle, #64748b);
+  white-space: nowrap;
+  font-weight: 500;
+}

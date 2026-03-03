@@ -7,6 +7,17 @@ import { InputPreview } from '@/components/docs/previews/InputPreview'
 import { TitlePreview } from '@/components/docs/previews/TitlePreview'
 import { BadgePreview } from '@/components/docs/previews/BadgePreview'
 import { CardPreview } from '@/components/docs/previews/CardPreview'
+import { TextareaPreview } from '@/components/docs/previews/TextareaPreview'
+import { SelectPreview } from '@/components/docs/previews/SelectPreview'
+import { CheckboxPreview } from '@/components/docs/previews/CheckboxPreview'
+import { RadioGroupPreview } from '@/components/docs/previews/RadioGroupPreview'
+import { SwitchPreview } from '@/components/docs/previews/SwitchPreview'
+import { AlertPreview } from '@/components/docs/previews/AlertPreview'
+import { DialogPreview } from '@/components/docs/previews/DialogPreview'
+import { TabsPreview } from '@/components/docs/previews/TabsPreview'
+import { AccordionPreview } from '@/components/docs/previews/AccordionPreview'
+import { TooltipPreview } from '@/components/docs/previews/TooltipPreview'
+import { DividerPreview } from '@/components/docs/previews/DividerPreview'
 
 const previewMap: Record<string, React.ComponentType> = {
   button: ButtonPreview,
@@ -14,6 +25,17 @@ const previewMap: Record<string, React.ComponentType> = {
   title: TitlePreview,
   badge: BadgePreview,
   card: CardPreview,
+  textarea: TextareaPreview,
+  select: SelectPreview,
+  checkbox: CheckboxPreview,
+  radiogroup: RadioGroupPreview,
+  switch: SwitchPreview,
+  alert: AlertPreview,
+  dialog: DialogPreview,
+  tabs: TabsPreview,
+  accordion: AccordionPreview,
+  tooltip: TooltipPreview,
+  divider: DividerPreview,
 }
 
 export function generateStaticParams() {

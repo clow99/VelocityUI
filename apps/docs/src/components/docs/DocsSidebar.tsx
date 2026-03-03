@@ -6,9 +6,20 @@ import { usePathname } from 'next/navigation'
 export const docsComponents = [
   { slug: 'button', name: 'Button' },
   { slug: 'input', name: 'Input' },
+  { slug: 'textarea', name: 'Textarea' },
+  { slug: 'select', name: 'Select' },
+  { slug: 'checkbox', name: 'Checkbox' },
+  { slug: 'radiogroup', name: 'RadioGroup' },
+  { slug: 'switch', name: 'Switch' },
   { slug: 'title', name: 'Title' },
   { slug: 'badge', name: 'Badge' },
+  { slug: 'alert', name: 'Alert' },
   { slug: 'card', name: 'Card' },
+  { slug: 'dialog', name: 'Dialog' },
+  { slug: 'tabs', name: 'Tabs' },
+  { slug: 'accordion', name: 'Accordion' },
+  { slug: 'tooltip', name: 'Tooltip' },
+  { slug: 'divider', name: 'Divider' },
 ]
 
 export function DocsSidebar() {

@@ -1,0 +1,123 @@
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legend {
+  font-size: var(--vui-label-size, 0.875rem);
+  font-weight: 500;
+  color: var(--vui-input-label-color, #374151);
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+  padding: 0;
+}
+
+.required {
+  color: var(--vui-danger, #ef4444);
+  margin-left: 0.2em;
+}
+
+.group {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Custom radio */
+.radio {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: var(--vui-control-border-width, 2px) solid var(--vui-input-border, #d1d5db);
+  background-color: var(--vui-input-bg, #ffffff);
+  cursor: pointer;
+  position: relative;
+  margin-top: 0.1875rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.radio:checked {
+  background-color: var(--vui-primary, #6366f1);
+  border-color: var(--vui-primary, #6366f1);
+  box-shadow: inset 0 0 0 3px var(--vui-input-bg, #ffffff);
+}
+
+.radio:focus-visible {
+  outline: 2px solid var(--vui-primary, #6366f1);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--vui-focus-ring, rgba(99, 102, 241, 0.15));
+}
+
+.radio:checked:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--vui-input-bg, #ffffff),
+    0 0 0 3px var(--vui-focus-ring, rgba(99, 102, 241, 0.15));
+}
+
+.radio:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.radio.hasError {
+  border-color: var(--vui-danger, #ef4444);
+}
+
+/* Sizes */
+.sm .radio { width: 1rem; height: 1rem; }
+.md .radio { width: 1.125rem; height: 1.125rem; }
+.lg .radio { width: 1.25rem; height: 1.25rem; }
+
+.optionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.optionLabel {
+  font-size: var(--vui-font-size-md, 0.9375rem);
+  font-weight: 500;
+  color: var(--vui-text, #0f172a);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.sm .optionLabel { font-size: var(--vui-font-size-sm, 0.8125rem); }
+.lg .optionLabel { font-size: var(--vui-font-size-lg, 1.0625rem); }
+
+.optionDescription {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-text-subtle, #64748b);
+  line-height: 1.4;
+}
+
+.hint {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-input-hint-color, #6b7280);
+  line-height: 1.4;
+}
+
+.errorText {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-danger, #ef4444);
+  line-height: 1.4;
+}

@@ -12,6 +12,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   rightIcon?: React.ReactNode
   required?: boolean
   fullWidth?: boolean
+  floatingLabel?: boolean
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -25,8 +26,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       rightIcon,
       required,
       fullWidth,
+      floatingLabel,
       className,
       id,
+      placeholder,
       ...props
     },
     ref
@@ -38,6 +41,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputClasses = [
       styles.input,
       styles[size],
+      floatingLabel ? styles.inputFloating : '',
       error ? styles.error : '',
       leftIcon ? styles.hasLeft : '',
       rightIcon ? styles.hasRight : '',
@@ -46,15 +50,24 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       .filter(Boolean)
       .join(' ')
 
+    const floatingLabelClasses = [
+      styles.floatingLabelEl,
+      styles[`floatingLabel${size.charAt(0).toUpperCase() + size.slice(1)}`],
+      leftIcon ? styles.floatingLabelWithLeft : '',
+      error ? styles.floatingLabelError : '',
+    ]
+      .filter(Boolean)
+      .join(' ')
+
     return (
-      <div className={`${styles.wrapper} ${fullWidth ? '' : ''}`}>
-        {label && (
+      <div className={styles.wrapper}>
+        {label && !floatingLabel && (
           <label htmlFor={inputId} className={styles.label}>
             {label}
             {required && <span className={styles.required} aria-hidden="true">*</span>}
           </label>
         )}
-        <div className={styles.inputWrapper}>
+        <div className={`${styles.inputWrapper}${floatingLabel ? ` ${styles.floatingWrapper}` : ''}`}>
           {leftIcon && (
             <span className={styles.iconLeft} aria-hidden="true">
               {leftIcon}
@@ -69,8 +82,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             aria-describedby={
               [error ? errorId : null, hint ? hintId : null].filter(Boolean).join(' ') || undefined
             }
+            placeholder={floatingLabel ? ' ' : placeholder}
             {...props}
           />
+          {label && floatingLabel && (
+            <label htmlFor={inputId} className={floatingLabelClasses}>
+              {label}
+              {required && <span className={styles.required} aria-hidden="true">*</span>}
+            </label>
+          )}
           {rightIcon && (
             <span className={styles.iconRight} aria-hidden="true">
               {rightIcon}
