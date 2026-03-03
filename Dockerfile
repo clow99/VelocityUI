@@ -14,6 +14,7 @@ RUN pnpm install --frozen-lockfile
 COPY tsconfig.base.json ./
 COPY packages/velocityui/ ./packages/velocityui/
 COPY apps/docs/ ./apps/docs/
+RUN mkdir -p /app/apps/docs/public
 
 ARG NEXT_PUBLIC_APP_URL
 ARG NEXT_PUBLIC_APP_NAME
