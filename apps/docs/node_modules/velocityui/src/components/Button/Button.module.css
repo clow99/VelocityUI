@@ -1,0 +1,129 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--vui-color-primary, #6366f1);
+  outline-offset: 2px;
+}
+
+.button:disabled,
+.button.loading {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Sizes */
+.sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  height: 2rem;
+}
+
+.md {
+  padding: 0.5rem 1.125rem;
+  font-size: 0.9375rem;
+  height: 2.5rem;
+}
+
+.lg {
+  padding: 0.625rem 1.5rem;
+  font-size: 1.0625rem;
+  height: 3rem;
+}
+
+/* Variant: primary */
+.primary {
+  background-color: var(--vui-color-primary, #6366f1);
+  color: #ffffff;
+  border-color: var(--vui-color-primary, #6366f1);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--vui-color-primary-hover, #4f46e5);
+  border-color: var(--vui-color-primary-hover, #4f46e5);
+}
+
+/* Variant: secondary */
+.secondary {
+  background-color: var(--vui-color-secondary, #f1f5f9);
+  color: var(--vui-color-secondary-text, #1e293b);
+  border-color: var(--vui-color-secondary, #f1f5f9);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--vui-color-secondary-hover, #e2e8f0);
+  border-color: var(--vui-color-secondary-hover, #e2e8f0);
+}
+
+/* Variant: outline */
+.outline {
+  background-color: transparent;
+  color: var(--vui-color-primary, #6366f1);
+  border-color: var(--vui-color-primary, #6366f1);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--vui-color-primary, #6366f1);
+  color: #ffffff;
+}
+
+/* Variant: ghost */
+.ghost {
+  background-color: transparent;
+  color: var(--vui-color-primary, #6366f1);
+  border-color: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--vui-color-ghost-hover, rgba(99, 102, 241, 0.1));
+}
+
+/* Variant: danger */
+.danger {
+  background-color: var(--vui-color-danger, #ef4444);
+  color: #ffffff;
+  border-color: var(--vui-color-danger, #ef4444);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--vui-color-danger-hover, #dc2626);
+  border-color: var(--vui-color-danger-hover, #dc2626);
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,37 @@
+name: Build and Deploy VelocityUI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REGISTRY: localhost:5000
+      IMAGE_NAME: velocityui-docs
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            --file Dockerfile \
+            --build-arg NEXT_PUBLIC_APP_URL="${{ vars.NEXT_PUBLIC_APP_URL }}" \
+            --build-arg NEXT_PUBLIC_APP_NAME="${{ vars.NEXT_PUBLIC_APP_NAME }}" \
+            --build-arg NEXT_PUBLIC_ENABLE_LIVE_DATA="${{ vars.NEXT_PUBLIC_ENABLE_LIVE_DATA }}" \
+            --build-arg NEXT_PUBLIC_BETA="${{ vars.NEXT_PUBLIC_BETA }}" \
+            --tag "${IMAGE_NAME}:latest" \
+            .
+
+      - name: Tag Docker images
+        run: |
+          docker tag "${IMAGE_NAME}:latest" "${REGISTRY}/${IMAGE_NAME}:${{ gitea.sha }}"
+          docker tag "${IMAGE_NAME}:latest" "${REGISTRY}/${IMAGE_NAME}:latest"
+
+      - name: Push Docker images
+        run: |
+          docker push "${REGISTRY}/${IMAGE_NAME}:${{ gitea.sha }}"
+          docker push "${REGISTRY}/${IMAGE_NAME}:latest"

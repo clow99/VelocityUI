@@ -1,0 +1,17 @@
+{
+  "name": "velocityui-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "pnpm --filter docs dev",
+    "build": "pnpm --filter velocityui build && pnpm --filter docs build",
+    "build:lib": "pnpm --filter velocityui build",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

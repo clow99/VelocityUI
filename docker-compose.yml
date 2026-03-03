@@ -1,0 +1,12 @@
+services:
+  velocityui-docs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+        NEXT_PUBLIC_APP_NAME: ${NEXT_PUBLIC_APP_NAME:-VelocityUI}
+    container_name: velocityui-docs
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-3000}:3000"

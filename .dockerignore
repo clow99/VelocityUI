@@ -1,0 +1,34 @@
+# Root node_modules (includes pnpm virtual store at node_modules/.pnpm/)
+node_modules/
+
+# Workspace package node_modules
+packages/*/node_modules/
+apps/*/node_modules/
+
+# Any remaining nested node_modules (pnpm deeply nests these)
+**/node_modules/
+
+# Build outputs (rebuilt inside Docker)
+**/.next/
+**/dist/
+
+# Git
+.git/
+.gitea/
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.*.local
+
+# IDE / OS
+.cursor/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
