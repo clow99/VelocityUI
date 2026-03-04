@@ -2,7 +2,6 @@
 
 A modern, accessible React component library with zero-config setup, CSS Modules scoped styles, and full TypeScript support.
 
-
 ## Packages
 
 | Package | Description |
@@ -62,19 +61,19 @@ Builds the library first, then the docs site.
 Install the library in your project:
 
 ```bash
-npm install velocityui
+npm install @clow99/velocityui
 ```
 
 Import the stylesheet once at the root of your app:
 
 ```tsx
-import 'velocityui/dist/style.css';
+import '@clow99/velocityui/dist/style.css';
 ```
 
 Then use components:
 
 ```tsx
-import { Button, Input, Badge, Card, Title } from 'velocityui';
+import { Button, Input, Badge, Card, Title } from '@clow99/velocityui';
 
 export default function App() {
   return (

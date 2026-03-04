@@ -1,11 +1,11 @@
-# @cam/velocityui
+# @clow99/velocityui
 
 Modern, accessible React UI components with scoped styles and TypeScript support.
 
 ## Install
 
 ```bash
-npm install @cam/velocityui
+npm install @clow99/velocityui
 ```
 
 Peer dependencies:
@@ -18,13 +18,13 @@ Peer dependencies:
 Import the stylesheet once at your app root:
 
 ```tsx
-import '@cam/velocityui/dist/style.css'
+import '@clow99/velocityui/dist/style.css'
 ```
 
 Use components in your app:
 
 ```tsx
-import { Button, Card, Input, Title } from '@cam/velocityui'
+import { Button, Card, Input, Title } from '@clow99/velocityui'
 
 export function Example() {
   return (
