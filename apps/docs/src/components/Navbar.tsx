@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { useTheme, THEMES, DENSITIES, type ThemeName, type DensityName } from './ThemeContext'
@@ -22,9 +23,14 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-vui-divider bg-vui-surface/80 backdrop-blur-md transition-colors">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5 font-bold text-vui-text">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-vui-primary text-vui-primary-contrast text-sm font-black">
-            V
-          </span>
+          <Image
+            src="/new_logo.png"
+            alt="VelocityUI logo"
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-lg"
+            priority
+          />
           <span className="text-lg tracking-tight">VelocityUI</span>
         </Link>
 
