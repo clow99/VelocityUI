@@ -52,13 +52,20 @@ This app consumes the workspace library package and imports:
 - Components from `@velocityuikit/velocityui`
 - Styles from `@velocityuikit/velocityui/dist/style.css`
 
+Build the library before building or running the docs app if you are working outside of the workspace dev script:
+
+```bash
+pnpm --filter velocityui build
+```
+
 ## Key Paths
 
-- `src/app/` - App Router pages
-- `src/app/docs/[component]/page.tsx` - dynamic component docs route
-- `src/lib/componentDocs.ts` - component metadata, props tables, and example snippets
-- `src/components/docs/previews/` - interactive preview components
-- `src/components/ThemeContext.tsx` - docs theme and density state
+- `src/app/` — App Router pages
+- `src/app/docs/[component]/page.tsx` — dynamic component docs route
+- `src/lib/componentDocs.ts` — component metadata, props tables, and example snippets
+- `src/components/docs/previews/` — interactive preview components
+- `src/components/ThemeContext.tsx` — docs theme and density state
+- `src/components/docs/DocsSidebar.tsx` — sidebar navigation and shared component/example taxonomy
 
 ## Updating Component Docs
 
@@ -66,10 +73,14 @@ This app consumes the workspace library package and imports:
 2. Update the matching preview component in `src/components/docs/previews/` if needed.
 3. Verify the component route at `/docs/<component-slug>`.
 
-## Docker Notes
+## Docker
 
 The workspace `Dockerfile` builds this app in standalone mode when `NEXT_OUTPUT_STANDALONE=1` is set. Static assets are copied from `apps/docs/public`, and the server starts with:
 
 ```bash
 node apps/docs/server.js
 ```
+
+## Contributing
+
+See the root [CONTRIBUTING.md](../../CONTRIBUTING.md).

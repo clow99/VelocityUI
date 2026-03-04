@@ -17,6 +17,9 @@ importers:
       '@velocityuikit/velocityui':
         specifier: workspace:*
         version: link:../../packages/velocityui
+      marked:
+        specifier: ^17.0.4
+        version: 17.0.4
       next:
         specifier: ^16.1.6
         version: 16.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1503,6 +1506,11 @@ packages:
   make-dir@4.0.0:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
+
+  marked@17.0.4:
+    resolution: {integrity: sha512-NOmVMM+KAokHMvjWmC5N/ZOvgmSWuqJB8FoYI019j4ogb/PeRMKoKIjReZ2w3376kkA8dSJIP8uD993Kxc0iRQ==}
+    engines: {node: '>= 20'}
+    hasBin: true
 
   mdn-data@2.12.2:
     resolution: {integrity: sha512-IEn+pegP1aManZuckezWCO+XZQDplx1366JoVhTpMpBB1sPey/SbveZQUosKiKiGYjg1wH4pMlNgXbCiYgihQA==}
@@ -3319,6 +3327,8 @@ snapshots:
   make-dir@4.0.0:
     dependencies:
       semver: 7.7.4
+
+  marked@17.0.4: {}
 
   mdn-data@2.12.2: {}
 

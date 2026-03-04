@@ -50,6 +50,8 @@ const DialogFooter: React.FC<DialogFooterProps> = ({ children, className, ...pro
 )
 DialogFooter.displayName = 'Dialog.Footer'
 
+// Module-level counter ensures each Dialog instance gets unique IDs for
+// aria-labelledby / aria-describedby even when multiple dialogs are mounted.
 const titleIdCounter = { current: 0 }
 
 interface DialogComponent extends React.FC<DialogProps> {
@@ -76,15 +78,21 @@ const DialogBase: React.FC<DialogProps> = ({
   useEffect(() => {
     if (!open) return
 
+    // Save the element that was focused before the dialog opened so we can
+    // restore focus when it closes — required by WCAG 2.1 SC 2.4.3.
     previousFocusRef.current = document.activeElement as HTMLElement
     document.body.style.overflow = 'hidden'
 
+    // Defer initial focus by one animation frame so the dialog panel has been
+    // painted and is measurable by querySelectorAll.
     const focusFirst = () => {
       const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS)
       focusable?.[0]?.focus()
     }
     const frame = requestAnimationFrame(focusFirst)
 
+    // Focus trap: intercept Tab so keyboard focus cycles only within the dialog.
+    // Wrap from last element back to first and vice-versa for Shift+Tab.
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose()
@@ -120,6 +128,7 @@ const DialogBase: React.FC<DialogProps> = ({
       cancelAnimationFrame(frame)
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
+      // Restore focus to the element that was active before the dialog opened.
       previousFocusRef.current?.focus()
     }
   }, [open, onClose])

@@ -3,6 +3,7 @@
 import { Badge, Button, Card, Divider, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
+// Fictional metrics — replace with real data in production
 const metrics = [
   { value: '10,000+', label: 'Developers' },
   { value: '500+', label: 'Companies' },
@@ -31,6 +32,7 @@ const steps = [
   },
 ]
 
+// Fictional testimonials — replace with real quotes in production
 const testimonials = [
   {
     quote: 'VelocityUI cut our UI development time in half. The accessibility support alone saved us weeks of work.',
@@ -39,7 +41,7 @@ const testimonials = [
     initials: 'SK',
   },
   {
-    quote: "The TypeScript support is incredible. I've never had such a smooth experience working with a component library.",
+    quote: "The TypeScript support is excellent. I've never had such a smooth experience working with a component library.",
     author: 'Marcus T.',
     role: 'Frontend Architect, Buildly',
     initials: 'MT',
@@ -76,13 +78,13 @@ export default function StartupExamplePage() {
       </div>
 
       <section className="flex flex-col items-center gap-6 text-center">
-        <Badge variant="info">Now in v1.0 — stable release</Badge>
+        <Badge variant="info">Demo content</Badge>
         <Title as="h2" size="xxl" className="max-w-2xl">
-          Build beautiful React apps at the speed of thought
+          Build React apps with VelocityUI
         </Title>
         <p className="max-w-xl text-lg text-vui-text-muted">
-          VelocityUI is a fast, accessible, and fully-typed React component library. Everything you need to ship a
-          polished product — right out of the box.
+          VelocityUI is an accessible, fully-typed React component library. Install it, import what you need, and
+          start building.
         </p>
         {submitted ? (
           <div className="flex items-center gap-2 rounded-lg bg-green-50 px-6 py-3 text-sm font-medium text-green-700 ring-1 ring-green-200 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-800">
@@ -182,12 +184,12 @@ export default function StartupExamplePage() {
       <Divider />
 
       <section className="flex flex-col items-center gap-6 text-center">
-        <Title as="h3" size="xl">Ready to build faster?</Title>
+        <Title as="h3" size="xl">Get started</Title>
         <p className="max-w-lg text-vui-text-muted">
-          Join thousands of developers who ship polished UIs with VelocityUI every day.
+          Install VelocityUI and start building accessible UIs immediately.
         </p>
         <div className="flex gap-3">
-          <Button size="lg">Get started free</Button>
+          <Button size="lg">Get started</Button>
           <Button size="lg" variant="outline">View docs</Button>
         </div>
       </section>

@@ -20,6 +20,8 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
   placeholder?: string
 }
 
+// Normalises native <option> children into the same SelectOption shape used by
+// the options prop, so both approaches share a single rendering path.
 function getOptionsFromChildren(children: React.ReactNode): SelectOption[] {
   return React.Children.toArray(children).flatMap((child) => {
     if (!React.isValidElement(child) || child.type !== 'option') {
@@ -74,6 +76,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const hiddenSelectRef = React.useRef<HTMLSelectElement>(null)
     const wrapperRef = React.useRef<HTMLDivElement>(null)
 
+    // Forward the ref to the hidden <select> so callers can use standard form
+    // APIs (validity, focus, reset) even though the visible UI is a <button>.
     React.useImperativeHandle(ref, () => hiddenSelectRef.current as HTMLSelectElement)
 
     const selectId =
@@ -96,6 +100,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const [isOpen, setIsOpen] = React.useState(false)
     const [focusedIndex, setFocusedIndex] = React.useState(-1)
 
+    // When the options list changes (e.g. async load or filter), reset the
+    // internal value if the previously selected option no longer exists.
     React.useEffect(() => {
       if (isControlled) return
       if (!resolvedOptions.length) return
@@ -131,6 +137,11 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       .filter(Boolean)
       .join(' ')
 
+    // Programmatically update both React state and the hidden native select so
+    // that form libraries (react-hook-form, etc.) that listen for native change
+    // events see the new value.  The native property descriptor setter bypasses
+    // React's synthetic event system, allowing the manually dispatched 'change'
+    // event to reach external listeners.
     const updateValue = (nextValue: string) => {
       if (!isControlled) {
         setInternalValue(nextValue)
@@ -248,7 +259,9 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                 .filter(Boolean)
                 .join(' ') || undefined
             }
-            aria-hidden="true"
+            // Hidden from AT; the custom combobox + listbox is the accessible surface.
+          // tabIndex=-1 removes it from the tab order entirely.
+          aria-hidden="true"
             tabIndex={-1}
             onChange={onChange ?? (() => {})}
             {...props}

@@ -47,7 +47,7 @@ const features = [
     ),
     title: 'Tree-Shakeable',
     description:
-      'ESM build with sideEffects: false. Only pay for what you import.',
+      'ESM build. Import individual components and your bundler will eliminate the rest.',
   },
   {
     icon: (

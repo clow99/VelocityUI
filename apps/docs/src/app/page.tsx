@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ComponentPreviewGrid } from '@/components/landing/ComponentPreviewGrid'
 import { FeatureGrid } from '@/components/landing/FeatureGrid'
 import { InstallSnippet } from '@/components/landing/InstallSnippet'
@@ -6,7 +7,6 @@ import { InstallSnippet } from '@/components/landing/InstallSnippet'
 export default function HomePage() {
   return (
     <main>
-      {/* Hero */}
       <section className="relative overflow-hidden bg-vui-bg pb-20 pt-24 sm:pt-32 transition-colors">
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-vui-primary-soft opacity-60 blur-3xl" />
@@ -16,7 +16,7 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-vui-border bg-vui-surface px-4 py-1.5 text-sm font-medium text-vui-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-vui-primary" />
-            Open Source · v0.1.0
+            Open Source · MIT License
           </div>
 
           <h1 className="text-5xl font-extrabold tracking-tight text-vui-text sm:text-6xl lg:text-7xl">
@@ -27,8 +27,8 @@ export default function HomePage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-xl text-vui-text-subtle leading-relaxed">
-            A modern, accessible React component library. Zero config, CSS Modules scoped styles,
-            full TypeScript support. Drop it in any project and go.
+            Accessible React components with CSS Modules scoped styles and full TypeScript
+            support. No configuration required.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -52,43 +52,97 @@ export default function HomePage() {
               </svg>
               View on GitHub
             </a>
+            <Link
+              href="/docs/ai-guide"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-vui-border bg-vui-surface px-7 text-base font-semibold text-vui-text-muted transition-all hover:border-vui-border-strong hover:bg-vui-surface-muted hover:-translate-y-0.5"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+              AI Agent Guide
+            </Link>
           </div>
 
           <InstallSnippet />
         </div>
       </section>
 
-      {/* Component preview grid */}
+      {/* AI Agent Guide banner */}
+      <section className="border-y border-vui-border bg-vui-surface py-5 transition-colors">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-vui-primary-soft text-vui-primary">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-vui-text">AI-ready documentation</p>
+                <p className="text-xs text-vui-text-subtle">
+                  A guide for AI coding agents — setup, full API reference, pitfalls, and prompt templates.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <Link
+                href="/docs/ai-guide"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-vui-border bg-vui-surface-muted px-4 py-2 text-sm font-medium text-vui-text-muted transition-colors hover:border-vui-border-strong hover:text-vui-text"
+              >
+                View guide
+              </Link>
+              <a
+                href="/downloads/velocityui-ai-guide.md"
+                download="VelocityUI-AI-Guide.md"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-vui-primary px-4 py-2 text-sm font-medium text-vui-primary-contrast transition-colors hover:bg-vui-primary-hover"
+              >
+                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download .md
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-vui-surface-muted py-20 transition-colors">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-vui-text sm:text-4xl">
-              Everything you need
+              Components
             </h2>
             <p className="mt-3 text-lg text-vui-text-subtle">
-              Carefully crafted components, ready to ship.
+              35+ components covering forms, layout, feedback, and overlays.
             </p>
           </div>
           <ComponentPreviewGrid />
         </div>
       </section>
 
-      {/* Features */}
       <section className="bg-vui-bg py-20 transition-colors">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-vui-text sm:text-4xl">
-              Why VelocityUI?
+              Design decisions
             </h2>
             <p className="mt-3 text-lg text-vui-text-subtle">
-              Built for developers who care about quality and speed.
+              What makes VelocityUI different from other React component libraries.
             </p>
           </div>
           <FeatureGrid />
         </div>
       </section>
 
-      {/* Quick start CTA */}
       <section className="relative overflow-hidden bg-vui-primary py-20 transition-colors">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <div className="absolute -left-20 top-0 h-80 w-80 rounded-full bg-vui-primary-hover opacity-30 blur-3xl" />
@@ -96,10 +150,10 @@ export default function HomePage() {
         </div>
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-vui-primary-contrast sm:text-4xl">
-            Start building in seconds
+            Get started
           </h2>
           <p className="mt-4 text-lg text-vui-primary-contrast opacity-80">
-            Install VelocityUI, import what you need, and ship faster.
+            Install the package, import the stylesheet, and use components directly.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
@@ -112,14 +166,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-vui-divider bg-vui-bg py-10 transition-colors">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <div className="flex items-center gap-2 font-bold text-vui-text">
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-vui-primary text-vui-primary-contrast text-xs font-black">
-                V
-              </span>
+              <Image
+                src="/new_logo.png"
+                alt="VelocityUI logo"
+                width={28}
+                height={28}
+                className="h-7 w-7 rounded-md"
+              />
               VelocityUI
             </div>
             <p className="text-sm text-vui-text-subtle">

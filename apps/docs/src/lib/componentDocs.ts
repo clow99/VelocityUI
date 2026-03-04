@@ -20,7 +20,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
     name: 'Button',
     slug: 'button',
     description:
-      'An accessible button element that supports multiple visual variants, sizes, a loading state with spinner, and left/right icon slots. It forwards refs and spreads all native HTML button attributes.',
+      'Button with 5 variants, 3 sizes, a loading state with spinner, and left/right icon slots.',
     importLine: "import { Button } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -127,7 +127,7 @@ export default function Example() {
     name: 'Input',
     slug: 'input',
     description:
-      'A fully accessible text input with an optional label, hint text, error message, icon slots, search-icon helpers, and multiple sizes. Forwards refs and spreads all native input attributes.',
+      'Text input with label, hint text, error message, icon slots, and built-in search-icon helpers.',
     importLine: "import { Input } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -286,7 +286,7 @@ export default function Example() {
     name: 'Title',
     slug: 'title',
     description:
-      'A polymorphic heading component that renders any h1–h6 element with a visual size scale independent of semantic level, multiple font weights, text alignment, and color variants including a gradient.',
+      'Heading component that decouples visual size from semantic level. Renders any h1–h6 with independent size scale, font weight, alignment, and color variants including a gradient.',
     importLine: "import { Title } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -365,7 +365,7 @@ export default function Example() {
     name: 'Badge',
     slug: 'badge',
     description:
-      'Inline status labels with semantic color variants, an optional dot indicator, left icon, and three sizes. Built as a <span> for inline use.',
+      'Inline status label with 6 semantic color variants, an optional dot indicator, and a left icon slot.',
     importLine: "import { Badge } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -445,7 +445,7 @@ export default function Example() {
     name: 'Card',
     slug: 'card',
     description:
-      'A flexible container component with compound sub-components: Card.Header, Card.Body, and Card.Footer. Supports four visual variants and an optional hover animation.',
+      'Container component with compound sub-components: Card.Header, Card.Body, and Card.Footer. Supports four visual variants and an optional hover animation.',
     importLine: "import { Card } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -523,7 +523,7 @@ export default function Example() {
     name: 'Textarea',
     slug: 'textarea',
     description:
-      'A multi-line text input with label, hint, error, resize control, and three sizes. Mirrors the Input API with full accessibility wiring and ref forwarding.',
+      'Multi-line text input matching the Input API — label, hint, error, resize control, and three sizes.',
     importLine: "import { Textarea } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label rendered above the textarea.' },
@@ -572,7 +572,7 @@ export default function Example() {
     name: 'Select',
     slug: 'select',
     description:
-      'A fully styled native select element with custom arrow, label, hint, error, and size variants. Accepts an options array or native <option> children.',
+      'Native select element with custom styling, label, hint, error, and size variants. Accepts an options array or native children.',
     importLine: "import { Select } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label rendered above the select.' },
@@ -629,7 +629,7 @@ export default function Example() {
     name: 'Checkbox',
     slug: 'checkbox',
     description:
-      'A custom-styled accessible checkbox with label, description text, error state, and three sizes. Forwards refs and spreads all native input attributes.',
+      'Checkbox with label, description text, error state, and three sizes.',
     importLine: "import { Checkbox } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label text rendered beside the checkbox.' },
@@ -684,7 +684,7 @@ export default function Example() {
     name: 'RadioGroup',
     slug: 'radiogroup',
     description:
-      'An accessible radio group rendered as a fieldset with a legend. Accepts an options array supporting labels, descriptions, and disabled states. Supports both vertical and horizontal layouts.',
+      'Radio group rendered as a fieldset. Accepts an options array with labels, descriptions, and disabled states. Supports vertical and horizontal layouts.',
     importLine: "import { RadioGroup } from '@velocityuikit/velocityui'",
     props: [
       { name: 'name', type: 'string', description: 'Shared name attribute for the radio inputs.' },
@@ -744,7 +744,7 @@ export default function Example() {
     name: 'Switch',
     slug: 'switch',
     description:
-      'A toggle control rendered as a styled checkbox with role="switch". Accepts label and description text. Forwards refs and spreads native input attributes.',
+      'Toggle control rendered as a styled checkbox with role="switch". Accepts label and description text.',
     importLine: "import { Switch } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label text rendered beside the switch.' },
@@ -784,7 +784,7 @@ export default function Example() {
     name: 'Alert',
     slug: 'alert',
     description:
-      'A notification banner with four semantic color variants, an automatic icon, an optional title, and an optional dismiss button. Rendered with role="alert" for screen readers.',
+      'Notification banner with four semantic color variants, an automatic icon, an optional title, and a dismiss button.',
     importLine: "import { Alert } from '@velocityuikit/velocityui'",
     props: [
       { name: 'variant', type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'", description: 'Color scheme and icon of the alert.' },
@@ -831,7 +831,7 @@ export default function Example() {
     name: 'Dialog',
     slug: 'dialog',
     description:
-      'A modal dialog rendered with position:fixed, focus trapping, Escape-key close, and ARIA wiring. Supports compound sub-components Dialog.Header, Dialog.Body, and Dialog.Footer, plus four sizes.',
+      'Modal dialog with focus trapping, Escape-key close, and ARIA attributes. Supports compound sub-components Dialog.Header, Dialog.Body, and Dialog.Footer across four sizes.',
     importLine: "import { Dialog } from '@velocityuikit/velocityui'",
     props: [
       { name: 'open', type: 'boolean', description: 'Controls visibility of the dialog.' },
@@ -896,7 +896,7 @@ export default function Example() {
     name: 'Tabs',
     slug: 'tabs',
     description:
-      'An accessible tab component with keyboard navigation (Arrow keys, Home, End), three visual variants, and both controlled and uncontrolled modes.',
+      'Tab component with keyboard navigation (Arrow keys, Home, End), three visual variants, and controlled/uncontrolled modes.',
     importLine: "import { Tabs } from '@velocityuikit/velocityui'",
     props: [
       { name: 'items', type: 'TabItem[]', description: 'Array of { value, label, children, disabled? } tab definitions.' },
@@ -933,7 +933,7 @@ export default function Example() {
     name: 'Accordion',
     slug: 'accordion',
     description:
-      'Collapsible content sections with smooth CSS grid animation. Supports single or multiple open items, three visual variants, and both controlled and uncontrolled modes.',
+      'Collapsible sections with CSS grid animation. Supports single or multiple open items, three visual variants, and controlled/uncontrolled modes.',
     importLine: "import { Accordion } from '@velocityuikit/velocityui'",
     props: [
       { name: 'items', type: 'AccordionItem[]', description: 'Array of { value, title, content, disabled? } definitions.' },
@@ -984,7 +984,7 @@ export default function Example() {
     name: 'Tooltip',
     slug: 'tooltip',
     description:
-      'A lightweight tooltip that appears on hover and focus using aria-describedby for accessibility. Supports four placement directions and an optional show delay.',
+      'Tooltip shown on hover and focus. Supports four placement directions and an optional show delay.',
     importLine: "import { Tooltip } from '@velocityuikit/velocityui'",
     props: [
       { name: 'content', type: 'ReactNode', description: 'Tooltip body text or node.' },
@@ -1035,7 +1035,7 @@ export default function Example() {
     name: 'Divider',
     slug: 'divider',
     description:
-      'A horizontal or vertical separator line using role="separator". Supports an optional centered text label for section delineation.',
+      'Horizontal or vertical separator line. Supports an optional centered text label.',
     importLine: "import { Divider } from '@velocityuikit/velocityui'",
     props: [
       { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'Direction of the separator line.' },
@@ -1077,7 +1077,7 @@ export default function Example() {
     name: 'Spinner',
     slug: 'spinner',
     description:
-      'An animated SVG ring used to indicate a loading state. Supports three sizes and color options. Includes a screen-reader-accessible label via role="status".',
+      'Animated SVG ring for loading states. Supports three sizes and color options.',
     importLine: "import { Spinner } from '@velocityuikit/velocityui'",
     props: [
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls the width and height of the spinner.' },
@@ -1119,7 +1119,7 @@ export default function Example() {
     name: 'Skeleton',
     slug: 'skeleton',
     description:
-      'A shimmering placeholder used to represent loading content. Can render as a single block or as a stack of multiple lines, with full control over width, height, and border radius.',
+      'Shimmering placeholder for loading states. Renders a single block or a stack of lines, with configurable width, height, and border radius.',
     importLine: "import { Skeleton } from '@velocityuikit/velocityui'",
     props: [
       { name: 'width', type: 'string | number', description: 'Width of the skeleton block. Defaults to 100% for multi-line stacks.' },
@@ -1166,7 +1166,7 @@ export default function Example() {
     name: 'Progress',
     slug: 'progress',
     description:
-      'A linear progress bar that reflects a numeric value from 0 to 100. Supports four color variants, three sizes, an optional label, and a percentage readout. Renders with role="progressbar" and full ARIA attributes.',
+      'Linear progress bar for values 0–100. Supports four color variants, three sizes, an optional label, and a percentage readout.',
     importLine: "import { Progress } from '@velocityuikit/velocityui'",
     props: [
       { name: 'value', type: 'number', description: 'Current progress value from 0 to 100.' },
@@ -1206,7 +1206,7 @@ export default function Example() {
     name: 'Toast',
     slug: 'toast',
     description:
-      'Portal-based ephemeral notifications rendered in the bottom-right corner. Wrap your app in ToastProvider and call useToast() to programmatically fire toasts with variants, custom durations, and dismiss callbacks.',
+      'Portal-based notifications rendered in the bottom-right corner. Wrap your app in ToastProvider and call useToast() to fire toasts with variants, durations, and dismiss callbacks.',
     importLine: "import { ToastProvider, useToast } from '@velocityuikit/velocityui'",
     props: [
       { name: 'message', type: 'string', description: 'The notification text to display.' },
@@ -1267,7 +1267,7 @@ export default function Example() {
     name: 'Avatar',
     slug: 'avatar',
     description:
-      'Displays a user avatar image with an automatic initials fallback when no image is provided or when the image fails to load. Supports five sizes, two shapes, and an optional status indicator dot.',
+      'Avatar image with automatic initials fallback. Supports five sizes, two shapes, and an optional status indicator dot.',
     importLine: "import { Avatar } from '@velocityuikit/velocityui'",
     props: [
       { name: 'src', type: 'string', description: 'URL of the avatar image.' },
@@ -1315,7 +1315,7 @@ export default function Example() {
     name: 'Tag',
     slug: 'tag',
     description:
-      'An interactive chip component that extends the visual style of Badge with a removable close button. Ideal for filters, selections, and user-generated labels.',
+      'Interactive chip extending Badge with a removable close button. Use for filters, selections, and user-generated labels.',
     importLine: "import { Tag } from '@velocityuikit/velocityui'",
     props: [
       { name: 'variant', type: "'default' | 'info' | 'success' | 'warning' | 'danger' | 'primary'", default: "'default'", description: 'Color variant of the tag.' },
@@ -1366,7 +1366,7 @@ export default function Example() {
     name: 'EmptyState',
     slug: 'emptystate',
     description:
-      'A structured zero-data placeholder that centers an icon, title, description, and optional call-to-action. Use it to fill tables, lists, or panels that have no content to show.',
+      'Zero-data placeholder with an icon, title, description, and optional call-to-action. Use to fill tables, lists, or panels that have no content.',
     importLine: "import { EmptyState } from '@velocityuikit/velocityui'",
     props: [
       { name: 'title', type: 'string', description: 'Main heading of the empty state.' },
@@ -1418,7 +1418,7 @@ export default function Example() {
     name: 'Breadcrumb',
     slug: 'breadcrumb',
     description:
-      'A navigation trail that shows the current page location within a hierarchy. Uses a native <nav> with aria-label="Breadcrumb" and marks the last item with aria-current="page".',
+      'Navigation trail showing the current page location within a hierarchy. Marks the last item with aria-current="page".',
     importLine: "import { Breadcrumb } from '@velocityuikit/velocityui'",
     props: [
       { name: 'items', type: "{ label: string; href?: string }[]", description: 'Array of breadcrumb entries. The last item is rendered as static text (current page).' },
@@ -1465,7 +1465,7 @@ export default function Example() {
     name: 'Pagination',
     slug: 'pagination',
     description:
-      'Page navigation controls with previous/next buttons, numbered page buttons, smart ellipsis truncation, and optional first/last shortcuts. Fully keyboard accessible and uses aria-current="page".',
+      'Page navigation with previous/next buttons, numbered pages, ellipsis truncation, and optional first/last shortcuts.',
     importLine: "import { Pagination } from '@velocityuikit/velocityui'",
     props: [
       { name: 'page', type: 'number', description: 'The currently active page (1-indexed).' },
@@ -1502,7 +1502,7 @@ export default function Example() {
     name: 'Stepper',
     slug: 'stepper',
     description:
-      'A multi-step progress indicator that shows completed, active, and pending steps with connecting lines. Supports horizontal and vertical orientations and a compact variant that hides text labels.',
+      'Multi-step progress indicator showing completed, active, and pending steps. Supports horizontal, vertical, and compact (icon-only) orientations.',
     importLine: "import { Stepper } from '@velocityuikit/velocityui'",
     props: [
       { name: 'steps', type: "{ label: string; description?: string }[]", description: 'Array of step definitions.' },
@@ -1554,7 +1554,7 @@ export default function Example() {
     name: 'Popover',
     slug: 'popover',
     description:
-      'An interactive overlay anchored to a trigger element. Unlike Tooltip, Popover can contain any rich content. Supports four placements, a portal for stacking context isolation, click-outside and Escape-key dismissal, and both controlled and uncontrolled modes.',
+      'Overlay anchored to a trigger, capable of holding any rich content. Unlike Tooltip, it persists on click. Supports four placements, portal rendering, click-outside and Escape dismissal, and controlled/uncontrolled modes.',
     importLine: "import { Popover } from '@velocityuikit/velocityui'",
     props: [
       { name: 'trigger', type: 'ReactNode', description: 'The element that opens the popover when clicked.' },
@@ -1607,7 +1607,7 @@ export default function Example() {
     name: 'Dropdown',
     slug: 'dropdown',
     description:
-      'An action menu anchored to a trigger element. Items can include icons, disabled states, and separator rules. The menu is portal-rendered to avoid overflow clipping and closes on item click, outside click, or Escape key.',
+      'Action menu anchored to a trigger. Items support icons, disabled states, and separators. Portal-rendered to avoid overflow clipping.',
     importLine: "import { Dropdown } from '@velocityuikit/velocityui'",
     props: [
       { name: 'trigger', type: 'ReactNode', description: 'The element that opens the menu when clicked.' },
@@ -1657,7 +1657,7 @@ export default function Example() {
     name: 'Slider',
     slug: 'slider',
     description:
-      'A styled range input with a custom track and thumb. Provides a filled track that visually shows the current value. Supports labels, a live value readout, min/max/step configuration, and disabled state.',
+      'Range input with a custom track and thumb. Supports a label, live value readout, min/max/step configuration, and disabled state.',
     importLine: "import { Slider } from '@velocityuikit/velocityui'",
     props: [
       { name: 'value', type: 'number', description: 'Controlled value.' },
@@ -1698,7 +1698,7 @@ export default function Example() {
     name: 'NumberInput',
     slug: 'numberinput',
     description:
-      'A numeric text input with increment and decrement step buttons. Respects min/max bounds, supports label, error, and hint text, and hides the native browser spin buttons for a consistent cross-browser appearance.',
+      'Numeric input with increment and decrement buttons. Respects min/max bounds and supports label, error, and hint text.',
     importLine: "import { NumberInput } from '@velocityuikit/velocityui'",
     props: [
       { name: 'value', type: 'number', description: 'Controlled value.' },
@@ -1746,7 +1746,7 @@ export default function Example() {
     name: 'FileUpload',
     slug: 'fileupload',
     description:
-      'A drag-and-drop file upload zone with a click-to-browse fallback. Shows selected files in a removable list and validates file size against an optional maxSize cap. Supports single and multiple file selection.',
+      'Drag-and-drop file upload zone with click-to-browse fallback. Shows selected files in a removable list and validates against an optional maxSize cap.',
     importLine: "import { FileUpload } from '@velocityuikit/velocityui'",
     props: [
       { name: 'onChange', type: '(files: File[]) => void', description: 'Callback fired when the file selection changes.' },
@@ -1797,7 +1797,7 @@ export default function Example() {
     name: 'Table',
     slug: 'table',
     description:
-      'A sortable data table with optional striped rows and bordered cells. Column definitions support a custom render function for cell content. Sorting is fully controlled and includes proper aria-sort attributes.',
+      'Sortable data table with optional striped rows and bordered cells. Column definitions support a custom cell render function.',
     importLine: "import { Table } from '@velocityuikit/velocityui'",
     props: [
       { name: 'columns', type: "{ key: string; header: string; sortable?: boolean; render?: (value, row, index) => ReactNode }[]", description: 'Column definitions.' },

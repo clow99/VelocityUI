@@ -9,10 +9,11 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@velocityuikit/velocityui": "workspace:*",
+    "marked": "^17.0.4",
     "next": "^16.1.6",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@velocityuikit/velocityui": "workspace:*"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

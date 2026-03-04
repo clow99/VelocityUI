@@ -1,14 +1,13 @@
 # VelocityUI
 
-A modern, accessible React component library with zero-config setup, CSS Modules scoped styles, and full TypeScript support.
-
+An accessible React component library with scoped CSS Modules styles and full TypeScript support.
 
 ## Packages
 
 | Package | Description |
 |---|---|
-| [`packages/velocityui`](./packages/velocityui) | The component library (published package) |
-| [`apps/docs`](./apps/docs) | Documentation and demo site (Next.js 14) |
+| [`packages/velocityui`](./packages/velocityui) | Component library (published to npm) |
+| [`apps/docs`](./apps/docs) | Documentation and demo site (Next.js) |
 
 ## Components
 
@@ -20,11 +19,13 @@ A modern, accessible React component library with zero-config setup, CSS Modules
 | `Badge` | 6 semantic color variants with optional dot indicator |
 | `Card` | Compound container with `Card.Header`, `Card.Body`, `Card.Footer` |
 
+See the [docs site](https://github.com/clow99/VelocityUI) for the full component catalog.
+
 ## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18+
+- [Node.js](https://nodejs.org/) v20+
 - [pnpm](https://pnpm.io/) v8+
 
 ### Install dependencies
@@ -47,7 +48,7 @@ The docs site will be available at `http://localhost:3000`.
 pnpm build:lib
 ```
 
-This produces ESM (`dist/index.js`), CJS (`dist/index.cjs`), a CSS bundle (`dist/style.css`), and TypeScript declarations (`dist/index.d.ts`) in `packages/velocityui/dist/`.
+Produces ESM (`dist/index.js`), CJS (`dist/index.cjs`), a CSS bundle (`dist/style.css`), and TypeScript declarations (`dist/index.d.ts`) in `packages/velocityui/dist/`.
 
 ### Build everything
 
@@ -80,7 +81,7 @@ export default function App() {
   return (
     <Card variant="shadow">
       <Card.Header>
-        <Title level={2}>Welcome</Title>
+        <Title as="h2">Welcome</Title>
       </Card.Header>
       <Card.Body>
         <Input label="Email" placeholder="you@example.com" />
@@ -135,6 +136,14 @@ VelocityUI/
 | `pnpm build` | Build the library then the docs site |
 | `pnpm build:lib` | Build only the component library |
 | `pnpm lint` | Run type checking across all packages |
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, code style, and the pull request process.
+
+## Security
+
+Report vulnerabilities privately — see [SECURITY.md](./SECURITY.md).
 
 ## License
 

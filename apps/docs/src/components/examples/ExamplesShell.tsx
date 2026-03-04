@@ -3,55 +3,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { pageExamples } from '@/components/docs/DocsSidebar'
 
-const exampleCategories = [
-  {
-    label: 'Authentication',
-    pages: [
-      { slug: 'login', name: 'Login' },
-      { slug: 'register', name: 'Register' },
-      { slug: 'forgot-password', name: 'Forgot Password' },
-    ],
-  },
-  {
-    label: 'Dashboard',
-    pages: [
-      { slug: 'dashboard', name: 'Overview' },
-      { slug: 'analytics', name: 'Analytics' },
-      { slug: 'ecommerce', name: 'E-Commerce' },
-    ],
-  },
-  {
-    label: 'Forms',
-    pages: [
-      { slug: 'form', name: 'Contact Form' },
-      { slug: 'checkout', name: 'Checkout' },
-      { slug: 'survey', name: 'Survey' },
-    ],
-  },
-  {
-    label: 'Landing',
-    pages: [
-      { slug: 'landing', name: 'Marketing' },
-      { slug: 'startup', name: 'Startup' },
-    ],
-  },
-  {
-    label: 'Settings',
-    pages: [
-      { slug: 'settings', name: 'Account' },
-      { slug: 'billing', name: 'Billing' },
-    ],
-  },
-  {
-    label: 'Profile',
-    pages: [
-      { slug: 'profile', name: 'Developer' },
-      { slug: 'team', name: 'Team' },
-    ],
-  },
-]
-
+// Single source of truth for example page taxonomy lives in DocsSidebar.
+const exampleCategories = pageExamples
 const allPages = exampleCategories.flatMap((c) => c.pages)
 
 const NAV_WIDTH = 220
@@ -90,7 +45,7 @@ export function ExamplesShell({ children }: { children: React.ReactNode }) {
   const next = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null
 
   const sidebarWidth = open ? NAV_WIDTH : 0
-  const toggleOffset = 20
+  const toggleOffset = 24
 
   return (
     <div className="relative min-h-[calc(100vh-4rem)]">
@@ -99,60 +54,65 @@ export function ExamplesShell({ children }: { children: React.ReactNode }) {
         style={{ top: '4rem', height: 'calc(100vh - 4rem)' }}
       >
         <div
-          className="flex h-full flex-col overflow-hidden bg-vui-surface ring-1 ring-vui-border"
+          className="flex h-full flex-col overflow-hidden border-r border-vui-border bg-vui-surface"
           style={{
             width: sidebarWidth,
             transition: 'width 0.2s ease',
-            boxShadow: open ? '2px 0 12px 0 rgba(0,0,0,0.08)' : 'none',
           }}
         >
           {open && (
-            <nav className="flex flex-col gap-0.5 overflow-y-auto p-3">
-              <Link
-                href="/docs/button"
-                className="mb-2 flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs font-medium text-vui-text-muted transition-colors hover:bg-vui-surface-muted hover:text-vui-text"
-              >
-                <ArrowLeft />
-                Back to Docs
-              </Link>
+            <div className="flex h-full flex-col">
+              <div className="flex items-center justify-between border-b border-vui-border px-4 py-3">
+                <Link
+                  href="/docs/button"
+                  className="flex items-center gap-2 text-xs font-medium text-vui-text-muted transition-colors hover:text-vui-text"
+                >
+                  <ArrowLeft />
+                  Back to Docs
+                </Link>
+              </div>
 
-              {exampleCategories.map((category) => (
-                <div key={category.label} className="mb-2">
-                  <p className="mb-1 px-2.5 text-xs font-semibold uppercase tracking-widest text-vui-text-subtle">
-                    {category.label}
-                  </p>
-                  {category.pages.map((page) => {
-                    const isActive = pathname === `/examples/${page.slug}`
-                    return (
-                      <Link
-                        key={page.slug}
-                        href={`/examples/${page.slug}`}
-                        className={`whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition-colors block ${
-                          isActive
-                            ? 'bg-vui-primary-soft text-vui-primary'
-                            : 'text-vui-text-muted hover:bg-vui-surface-muted hover:text-vui-text'
-                        }`}
-                      >
-                        {page.name}
-                      </Link>
-                    )
-                  })}
-                </div>
-              ))}
-            </nav>
+              <nav className="flex flex-col gap-0.5 overflow-y-auto px-3 py-3">
+                {exampleCategories.map((category) => (
+                  <div key={category.label} className="mb-1">
+                    <p className="mb-1 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-vui-text-subtle">
+                      {category.label}
+                    </p>
+                    {category.pages.map((page) => {
+                      const isActive = pathname === `/examples/${page.slug}`
+                      return (
+                        <Link
+                          key={page.slug}
+                          href={`/examples/${page.slug}`}
+                          className={`relative flex whitespace-nowrap rounded-lg px-2.5 py-1.5 text-sm transition-colors ${
+                            isActive
+                              ? 'bg-vui-primary-soft font-medium text-vui-primary'
+                              : 'text-vui-text-muted hover:bg-vui-surface-muted hover:text-vui-text'
+                          }`}
+                        >
+                          {isActive && (
+                            <span className="absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full bg-vui-primary" />
+                          )}
+                          {page.name}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                ))}
+              </nav>
+            </div>
           )}
         </div>
 
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Collapse examples menu' : 'Expand examples menu'}
-          className="flex items-center justify-center self-start bg-vui-surface text-vui-text-muted ring-1 ring-vui-border transition-colors hover:bg-vui-surface-muted hover:text-vui-text"
+          className="flex items-center justify-center self-start border border-l-0 border-vui-border bg-vui-surface text-vui-text-muted transition-colors hover:bg-vui-surface-muted hover:text-vui-text"
           style={{
-            marginTop: '1rem',
+            marginTop: '1.25rem',
             width: toggleOffset,
-            height: 28,
-            borderRadius: '0 6px 6px 0',
-            boxShadow: '2px 0 6px 0 rgba(0,0,0,0.08)',
+            height: 32,
+            borderRadius: '0 8px 8px 0',
           }}
         >
           {open ? <ChevronLeft /> : <ChevronRight />}

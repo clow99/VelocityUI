@@ -75,6 +75,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
     setPos(computeMenuPosition(rect, menuRef.current, placement))
   }, [placement])
 
+  // Recompute position on open, and on any scroll/resize so the menu tracks
+  // the trigger if the page shifts while it is visible.
+  // Scroll uses capture=true to catch events on any scrollable ancestor.
   useEffect(() => {
     if (!open) return
     updatePosition()
@@ -99,9 +102,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false)
-        triggerRef.current?.querySelector('button, a, [tabindex]')?.dispatchEvent(
-          new Event('focus')
-        )
+        // Return focus to the first focusable element inside the trigger wrapper
+        // so keyboard users are not left stranded after dismissing the menu.
+        const focusTarget = triggerRef.current?.querySelector<HTMLElement>('button, a, [tabindex]')
+        focusTarget?.focus()
       }
     }
     document.addEventListener('mousedown', handleClick)

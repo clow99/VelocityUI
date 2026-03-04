@@ -5,10 +5,10 @@ import { Navbar } from '@/components/Navbar'
 import { ThemeProvider } from '@/components/ThemeContext'
 
 export const metadata: Metadata = {
-  title: 'VelocityUI — Fast, Beautiful React Components',
+  title: 'VelocityUI — Accessible React Components',
   description:
-    'A modern, accessible React component library with CSS Modules. Install once, use everywhere.',
-  keywords: ['react', 'component library', 'ui', 'typescript', 'css modules'],
+    'Open-source React component library with CSS Modules scoped styles and TypeScript support.',
+  keywords: ['react', 'component library', 'ui', 'typescript', 'css modules', 'open source'],
   manifest: '/site.webmanifest',
   icons: {
     icon: [
