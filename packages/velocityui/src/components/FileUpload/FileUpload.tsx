@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useId, useRef, useState } from 'react'
 import styles from './FileUpload.module.css'
 
