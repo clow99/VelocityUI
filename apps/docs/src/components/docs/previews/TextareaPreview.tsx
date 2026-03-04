@@ -1,6 +1,6 @@
 'use client'
 
-import { Textarea } from 'velocityui'
+import { Textarea } from '@clow99/velocityui'
 
 export function TextareaPreview() {
   return (
@@ -21,3 +21,4 @@ export function TextareaPreview() {
     </div>
   )
 }
+

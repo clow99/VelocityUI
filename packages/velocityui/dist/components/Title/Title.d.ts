@@ -6,6 +6,7 @@ export type TitleWeight = 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 
 export type TitleAlign = 'left' | 'center' | 'right';
 export type TitleColor = 'default' | 'muted' | 'primary' | 'gradient';
 export interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
+    as?: TitleLevel;
     level?: TitleLevel;
     size?: TitleSize;
     weight?: TitleWeight;

@@ -1,6 +1,6 @@
 'use client'
 
-import { EmptyState, Button } from 'velocityui'
+import { EmptyState, Button } from '@clow99/velocityui'
 
 const SearchIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
@@ -35,3 +35,4 @@ export function EmptyStatePreview() {
     </div>
   )
 }
+

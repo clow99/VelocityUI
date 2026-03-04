@@ -1,6 +1,6 @@
 'use client'
 
-import { FileUpload } from 'velocityui'
+import { FileUpload } from '@clow99/velocityui'
 
 export function FileUploadPreview() {
   return (
@@ -35,3 +35,4 @@ export function FileUploadPreview() {
     </div>
   )
 }
+

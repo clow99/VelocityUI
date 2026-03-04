@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Button, Card, Divider, Tabs, Title, Tooltip } from 'velocityui'
+import { Badge, Button, Card, Divider, Tabs, Title, Tooltip } from '@clow99/velocityui'
 
 const recentActivity = [
   { type: 'commit', text: 'Pushed 3 commits to velocityui/core', time: '2h ago' },
@@ -206,3 +206,4 @@ export default function ProfileExamplePage() {
     </div>
   )
 }
+

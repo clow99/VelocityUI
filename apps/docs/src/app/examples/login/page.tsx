@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Checkbox, Input, Divider, Title } from 'velocityui'
+import { Alert, Button, Card, Checkbox, Input, Divider, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export default function LoginExamplePage() {
@@ -138,3 +138,4 @@ export default function LoginExamplePage() {
     </div>
   )
 }
+

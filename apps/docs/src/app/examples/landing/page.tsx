@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion, Badge, Button, Card, Divider, Title } from 'velocityui'
+import { Accordion, Badge, Button, Card, Divider, Title } from '@clow99/velocityui'
 
 const features = [
   {
@@ -242,3 +242,4 @@ export default function LandingExamplePage() {
     </div>
   )
 }
+

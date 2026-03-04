@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion } from 'velocityui'
+import { Accordion } from '@clow99/velocityui'
 
 const items = [
   {
@@ -41,3 +41,4 @@ export function AccordionPreview() {
     </div>
   )
 }
+

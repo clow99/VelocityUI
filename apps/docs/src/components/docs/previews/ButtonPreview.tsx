@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from 'velocityui'
+import { Button } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export function ButtonPreview() {
@@ -44,3 +44,4 @@ export function ButtonPreview() {
     </div>
   )
 }
+

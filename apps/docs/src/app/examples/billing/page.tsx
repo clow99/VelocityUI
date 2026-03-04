@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Badge, Button, Card, Dialog, Divider, Progress, Title } from 'velocityui'
+import { Alert, Badge, Button, Card, Dialog, Divider, Progress, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 const plans = [
@@ -275,3 +275,4 @@ export default function BillingExamplePage() {
     </div>
   )
 }
+

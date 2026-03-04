@@ -3,9 +3,9 @@
 import { useState } from 'react'
 
 const managers = [
-  { label: 'npm', command: 'npm install velocityui' },
-  { label: 'pnpm', command: 'pnpm add velocityui' },
-  { label: 'yarn', command: 'yarn add velocityui' },
+  { label: 'npm', command: 'npm install @clow99/velocityui' },
+  { label: 'pnpm', command: 'pnpm add @clow99/velocityui' },
+  { label: 'yarn', command: 'yarn add @clow99/velocityui' },
 ]
 
 export function InstallSnippet() {
@@ -64,3 +64,4 @@ export function InstallSnippet() {
     </div>
   )
 }
+

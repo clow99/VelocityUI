@@ -1,6 +1,6 @@
 'use client'
 
-import { RadioGroup } from 'velocityui'
+import { RadioGroup } from '@clow99/velocityui'
 
 export function RadioGroupPreview() {
   return (
@@ -30,3 +30,4 @@ export function RadioGroupPreview() {
     </div>
   )
 }
+

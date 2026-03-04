@@ -17,6 +17,7 @@ const defaultSizeMap: Record<TitleLevel, TitleSize> = {
 }
 
 export interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  as?: TitleLevel
   level?: TitleLevel
   size?: TitleSize
   weight?: TitleWeight
@@ -26,6 +27,7 @@ export interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 }
 
 export const Title: React.FC<TitleProps> = ({
+  as,
   level = 'h1',
   size,
   weight = 'bold',
@@ -35,7 +37,8 @@ export const Title: React.FC<TitleProps> = ({
   className,
   ...props
 }) => {
-  const resolvedSize = size ?? defaultSizeMap[level]
+  const headingLevel = as ?? level
+  const resolvedSize = size ?? defaultSizeMap[headingLevel]
 
   const classes = [
     styles.title,
@@ -48,5 +51,5 @@ export const Title: React.FC<TitleProps> = ({
     .filter(Boolean)
     .join(' ')
 
-  return React.createElement(level, { className: classes, ...props }, children)
+  return React.createElement(headingLevel, { className: classes, ...props }, children)
 }

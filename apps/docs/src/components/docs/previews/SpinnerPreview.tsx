@@ -1,6 +1,6 @@
 'use client'
 
-import { Spinner } from 'velocityui'
+import { Spinner } from '@clow99/velocityui'
 
 export function SpinnerPreview() {
   return (
@@ -26,3 +26,4 @@ export function SpinnerPreview() {
     </div>
   )
 }
+

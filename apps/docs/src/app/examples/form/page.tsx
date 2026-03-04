@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Checkbox, Input, RadioGroup, Select, Textarea, Title } from 'velocityui'
+import { Alert, Button, Card, Checkbox, Input, RadioGroup, Select, Textarea, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export default function FormExamplePage() {
@@ -146,3 +146,4 @@ export default function FormExamplePage() {
     </div>
   )
 }
+

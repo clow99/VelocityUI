@@ -1,0 +1,52 @@
+name: Publish velocityui to GitHub npm Registry
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@clow99'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build library
+        run: pnpm build:lib
+
+      - name: Check if version already published
+        id: version_check
+        working-directory: packages/velocityui
+        run: |
+          VERSION=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "@clow99/velocityui@$VERSION" --registry https://npm.pkg.github.com 2>/dev/null; then
+            echo "already_published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to GitHub
+        if: steps.version_check.outputs.already_published == 'false'
+        working-directory: packages/velocityui
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

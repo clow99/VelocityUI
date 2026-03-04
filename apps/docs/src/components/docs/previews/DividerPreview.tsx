@@ -1,6 +1,6 @@
 'use client'
 
-import { Divider } from 'velocityui'
+import { Divider } from '@clow99/velocityui'
 
 export function DividerPreview() {
   return (
@@ -23,3 +23,4 @@ export function DividerPreview() {
     </div>
   )
 }
+

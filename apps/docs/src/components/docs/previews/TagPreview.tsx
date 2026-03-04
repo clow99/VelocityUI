@@ -1,6 +1,6 @@
 'use client'
 
-import { Tag } from 'velocityui'
+import { Tag } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export function TagPreview() {
@@ -52,3 +52,4 @@ export function TagPreview() {
     </div>
   )
 }
+

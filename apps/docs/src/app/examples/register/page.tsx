@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Checkbox, Divider, Input, Title } from 'velocityui'
+import { Alert, Button, Card, Checkbox, Divider, Input, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export default function RegisterExamplePage() {
@@ -159,3 +159,4 @@ export default function RegisterExamplePage() {
     </div>
   )
 }
+

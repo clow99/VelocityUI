@@ -1,6 +1,6 @@
 'use client'
 
-import { Tabs } from 'velocityui'
+import { Tabs } from '@clow99/velocityui'
 
 const items = [
   {
@@ -40,3 +40,4 @@ export function TabsPreview() {
     </div>
   )
 }
+

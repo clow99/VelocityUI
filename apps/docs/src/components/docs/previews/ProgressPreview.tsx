@@ -1,6 +1,6 @@
 'use client'
 
-import { Progress } from 'velocityui'
+import { Progress } from '@clow99/velocityui'
 
 export function ProgressPreview() {
   return (
@@ -29,3 +29,4 @@ export function ProgressPreview() {
     </div>
   )
 }
+

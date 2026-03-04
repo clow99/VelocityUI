@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Input, Title } from 'velocityui'
+import { Alert, Button, Card, Input, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 type Step = 'request' | 'sent' | 'reset' | 'done'
@@ -226,3 +226,4 @@ export default function ForgotPasswordExamplePage() {
     </div>
   )
 }
+

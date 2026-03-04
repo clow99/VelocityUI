@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Progress, RadioGroup, Slider, Textarea, Title } from 'velocityui'
+import { Alert, Button, Card, Progress, RadioGroup, Slider, Textarea, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 const totalSteps = 4
@@ -209,3 +209,4 @@ export default function SurveyExamplePage() {
     </div>
   )
 }
+

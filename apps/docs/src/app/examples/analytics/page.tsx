@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from 'velocityui'
+import { Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@clow99/velocityui'
 import { useState } from 'react'
 
 const kpis = [
@@ -184,3 +184,4 @@ export default function AnalyticsExamplePage() {
     </div>
   )
 }
+

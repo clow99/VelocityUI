@@ -1,8 +1,8 @@
 'use client'
 
-import { Table } from 'velocityui'
+import { Table } from '@clow99/velocityui'
 import { useState } from 'react'
-import type { SortDirection } from 'velocityui'
+import type { SortDirection } from '@clow99/velocityui'
 
 interface Row {
   name: string
@@ -64,3 +64,4 @@ export function TablePreview() {
     </div>
   )
 }
+

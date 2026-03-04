@@ -1,6 +1,6 @@
 'use client'
 
-import { Select } from 'velocityui'
+import { Select } from '@clow99/velocityui'
 
 const options = [
   { value: 'us', label: 'United States' },
@@ -34,3 +34,4 @@ export function SelectPreview() {
     </div>
   )
 }
+

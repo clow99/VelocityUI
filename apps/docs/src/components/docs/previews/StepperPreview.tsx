@@ -1,6 +1,6 @@
 'use client'
 
-import { Stepper, Button } from 'velocityui'
+import { Stepper, Button } from '@clow99/velocityui'
 import { useState } from 'react'
 
 const steps = [
@@ -34,3 +34,4 @@ export function StepperPreview() {
     </div>
   )
 }
+

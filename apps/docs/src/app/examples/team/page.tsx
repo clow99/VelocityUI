@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Avatar, Badge, Button, Card, Dialog, Divider, Input, Select, Tabs, Title } from 'velocityui'
+import { Alert, Avatar, Badge, Button, Card, Dialog, Divider, Input, Select, Tabs, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 type Role = 'Owner' | 'Admin' | 'Editor' | 'Viewer'
@@ -248,3 +248,4 @@ export default function TeamExamplePage() {
     </div>
   )
 }
+

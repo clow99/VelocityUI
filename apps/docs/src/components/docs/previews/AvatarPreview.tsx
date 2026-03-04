@@ -1,6 +1,6 @@
 'use client'
 
-import { Avatar } from 'velocityui'
+import { Avatar } from '@clow99/velocityui'
 
 export function AvatarPreview() {
   return (
@@ -49,3 +49,4 @@ export function AvatarPreview() {
     </div>
   )
 }
+

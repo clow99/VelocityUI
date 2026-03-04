@@ -1,6 +1,6 @@
 'use client'
 
-import { Pagination } from 'velocityui'
+import { Pagination } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export function PaginationPreview() {
@@ -28,3 +28,4 @@ export function PaginationPreview() {
     </div>
   )
 }
+

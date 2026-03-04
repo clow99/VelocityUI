@@ -1,6 +1,6 @@
 'use client'
 
-import { Tooltip, Button } from 'velocityui'
+import { Tooltip, Button } from '@clow99/velocityui'
 
 export function TooltipPreview() {
   return (
@@ -20,3 +20,4 @@ export function TooltipPreview() {
     </div>
   )
 }
+

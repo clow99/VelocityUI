@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert } from 'velocityui'
+import { Alert } from '@clow99/velocityui'
 
 export function AlertPreview() {
   return (
@@ -18,3 +18,4 @@ export function AlertPreview() {
     </div>
   )
 }
+

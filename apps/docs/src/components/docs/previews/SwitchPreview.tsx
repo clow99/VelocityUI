@@ -1,6 +1,6 @@
 'use client'
 
-import { Switch } from 'velocityui'
+import { Switch } from '@clow99/velocityui'
 
 export function SwitchPreview() {
   return (
@@ -19,3 +19,4 @@ export function SwitchPreview() {
     </div>
   )
 }
+

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card, Divider, Input, RadioGroup, Select, Stepper, Title } from 'velocityui'
+import { Button, Card, Divider, Input, RadioGroup, Select, Stepper, Title } from '@clow99/velocityui'
 import { useState } from 'react'
 
 const steps = [
@@ -235,3 +235,4 @@ export default function CheckoutExamplePage() {
     </div>
   )
 }
+

@@ -1,6 +1,6 @@
 'use client'
 
-import { Slider } from 'velocityui'
+import { Slider } from '@clow99/velocityui'
 import { useState } from 'react'
 
 export function SliderPreview() {
@@ -32,3 +32,4 @@ export function SliderPreview() {
     </div>
   )
 }
+

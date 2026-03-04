@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, Dialog } from 'velocityui'
+import { Button, Dialog } from '@clow99/velocityui'
 
 export function DialogPreview() {
   const [open, setOpen] = useState(false)
@@ -33,3 +33,4 @@ export function DialogPreview() {
     </div>
   )
 }
+

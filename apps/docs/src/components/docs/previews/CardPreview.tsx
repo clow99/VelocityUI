@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, Button, Badge } from 'velocityui'
+import { Card, Button, Badge } from '@clow99/velocityui'
 
 export function CardPreview() {
   return (
@@ -37,3 +37,4 @@ export function CardPreview() {
     </div>
   )
 }
+

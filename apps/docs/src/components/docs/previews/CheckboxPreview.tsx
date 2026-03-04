@@ -1,6 +1,6 @@
 'use client'
 
-import { Checkbox } from 'velocityui'
+import { Checkbox } from '@clow99/velocityui'
 
 export function CheckboxPreview() {
   return (
@@ -20,3 +20,4 @@ export function CheckboxPreview() {
     </div>
   )
 }
+
