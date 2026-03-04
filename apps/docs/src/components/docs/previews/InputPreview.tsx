@@ -1,6 +1,6 @@
 'use client'
 
-import { Input } from '@clow99/velocityui'
+import { Input } from '@velocityuikit/velocityui'
 
 const SearchIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">

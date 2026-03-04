@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@clow99/velocityui'
+import { Alert, Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const stats = [

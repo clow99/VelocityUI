@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton } from '@clow99/velocityui'
+import { Skeleton } from '@velocityuikit/velocityui'
 
 export function SkeletonPreview() {
   return (

@@ -30,15 +30,6 @@ jobs:
       - name: Build library
         run: pnpm build:lib
 
-      - name: Normalize package scope for npmjs owner
-        working-directory: packages/velocityui
-        run: |
-          OWNER_SCOPE="@${{ github.repository_owner }}"
-          PACKAGE_BASENAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name.split('/').pop()")
-          TARGET_PACKAGE_NAME="${OWNER_SCOPE}/${PACKAGE_BASENAME}"
-          npm pkg set name="$TARGET_PACKAGE_NAME"
-          echo "Publishing package as $TARGET_PACKAGE_NAME"
-
       - name: Check if version already published
         id: version_check
         working-directory: packages/velocityui
@@ -52,8 +43,12 @@ jobs:
           else
             echo "already_published=false" >> "$GITHUB_OUTPUT"
           fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npmjs
         if: steps.version_check.outputs.already_published == 'false'
         working-directory: packages/velocityui
         run: npm publish --access public --provenance --registry https://registry.npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

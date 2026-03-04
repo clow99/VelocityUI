@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Progress, RadioGroup, Slider, Textarea, Title } from '@clow99/velocityui'
+import { Alert, Button, Card, Progress, RadioGroup, Slider, Textarea, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const totalSteps = 4

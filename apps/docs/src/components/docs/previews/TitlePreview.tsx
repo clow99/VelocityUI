@@ -1,6 +1,6 @@
 'use client'
 
-import { Title } from '@clow99/velocityui'
+import { Title } from '@velocityuikit/velocityui'
 
 export function TitlePreview() {
   return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { Stepper, Button } from '@clow99/velocityui'
+import { Stepper, Button } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const steps = [

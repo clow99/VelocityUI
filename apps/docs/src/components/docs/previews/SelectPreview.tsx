@@ -1,6 +1,6 @@
 'use client'
 
-import { Select } from '@clow99/velocityui'
+import { Select } from '@velocityuikit/velocityui'
 
 const options = [
   { value: 'us', label: 'United States' },

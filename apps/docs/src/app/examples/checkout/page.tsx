@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card, Divider, Input, RadioGroup, Select, Stepper, Title } from '@clow99/velocityui'
+import { Button, Card, Divider, Input, RadioGroup, Select, Stepper, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const steps = [

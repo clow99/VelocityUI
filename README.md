@@ -62,19 +62,19 @@ Builds the library first, then the docs site.
 Install the library in your project:
 
 ```bash
-npm install @clow99/velocityui
+npm install @velocityuikit/velocityui
 ```
 
 Import the stylesheet once at the root of your app:
 
 ```tsx
-import '@clow99/velocityui/dist/style.css';
+import '@velocityuikit/velocityui/dist/style.css';
 ```
 
 Then use components:
 
 ```tsx
-import { Button, Input, Badge, Card, Title } from '@clow99/velocityui';
+import { Button, Input, Badge, Card, Title } from '@velocityuikit/velocityui';
 
 export default function App() {
   return (

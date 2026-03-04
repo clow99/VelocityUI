@@ -1,6 +1,6 @@
 'use client'
 
-import { Switch } from '@clow99/velocityui'
+import { Switch } from '@velocityuikit/velocityui'
 
 export function SwitchPreview() {
   return (

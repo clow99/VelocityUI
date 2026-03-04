@@ -1,6 +1,6 @@
 'use client'
 
-import { Slider } from '@clow99/velocityui'
+import { Slider } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export function SliderPreview() {

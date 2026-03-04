@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Button, Card, Divider, Tabs, Title, Tooltip } from '@clow99/velocityui'
+import { Badge, Button, Card, Divider, Tabs, Title, Tooltip } from '@velocityuikit/velocityui'
 
 const recentActivity = [
   { type: 'commit', text: 'Pushed 3 commits to velocityui/core', time: '2h ago' },

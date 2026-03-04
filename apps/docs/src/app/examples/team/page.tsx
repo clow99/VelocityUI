@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Avatar, Badge, Button, Card, Dialog, Divider, Input, Select, Tabs, Title } from '@clow99/velocityui'
+import { Alert, Avatar, Badge, Button, Card, Dialog, Divider, Input, Select, Tabs, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 type Role = 'Owner' | 'Admin' | 'Editor' | 'Viewer'

@@ -1,8 +1,8 @@
 'use client'
 
-import { Table } from '@clow99/velocityui'
+import { Table } from '@velocityuikit/velocityui'
 import { useState } from 'react'
-import type { SortDirection } from '@clow99/velocityui'
+import type { SortDirection } from '@velocityuikit/velocityui'
 
 interface Row {
   name: string

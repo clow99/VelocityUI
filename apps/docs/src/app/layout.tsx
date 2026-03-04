@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import '@clow99/velocityui/dist/style.css'
+import '@velocityuikit/velocityui/dist/style.css'
 import { Navbar } from '@/components/Navbar'
 import { ThemeProvider } from '@/components/ThemeContext'
 

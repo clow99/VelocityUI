@@ -1,6 +1,6 @@
 'use client'
 
-import { Avatar } from '@clow99/velocityui'
+import { Avatar } from '@velocityuikit/velocityui'
 
 export function AvatarPreview() {
   return (

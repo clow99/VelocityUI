@@ -21,7 +21,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
     slug: 'button',
     description:
       'An accessible button element that supports multiple visual variants, sizes, a loading state with spinner, and left/right icon slots. It forwards refs and spreads all native HTML button attributes.',
-    importLine: "import { Button } from '@clow99/velocityui'",
+    importLine: "import { Button } from '@velocityuikit/velocityui'",
     props: [
       {
         name: 'variant',
@@ -68,7 +68,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
       {
         title: 'Variants',
         description: 'Five visual styles to match any context.',
-        code: `import { Button } from '@clow99/velocityui'
+        code: `import { Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -84,7 +84,7 @@ export default function Example() {
       },
       {
         title: 'Sizes',
-        code: `import { Button } from '@clow99/velocityui'
+        code: `import { Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -98,7 +98,7 @@ export default function Example() {
       },
       {
         title: 'Loading state',
-        code: `import { Button } from '@clow99/velocityui'
+        code: `import { Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Button loading>Saving...</Button>
@@ -106,7 +106,7 @@ export default function Example() {
       },
       {
         title: 'With icons',
-        code: `import { Button } from '@clow99/velocityui'
+        code: `import { Button } from '@velocityuikit/velocityui'
 
 const ArrowIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ export default function Example() {
     slug: 'input',
     description:
       'A fully accessible text input with an optional label, hint text, error message, icon slots, search-icon helpers, and multiple sizes. Forwards refs and spreads all native input attributes.',
-    importLine: "import { Input } from '@clow99/velocityui'",
+    importLine: "import { Input } from '@velocityuikit/velocityui'",
     props: [
       {
         name: 'label',
@@ -206,7 +206,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Input } from '@clow99/velocityui'
+        code: `import { Input } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Input label="Email address" placeholder="you@example.com" type="email" />
@@ -214,7 +214,7 @@ export default function Example() {
       },
       {
         title: 'With error',
-        code: `import { Input } from '@clow99/velocityui'
+        code: `import { Input } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -229,7 +229,7 @@ export default function Example() {
       },
       {
         title: 'With hint',
-        code: `import { Input } from '@clow99/velocityui'
+        code: `import { Input } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -243,7 +243,7 @@ export default function Example() {
       },
       {
         title: 'Sizes',
-        code: `import { Input } from '@clow99/velocityui'
+        code: `import { Input } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -257,7 +257,7 @@ export default function Example() {
       },
       {
         title: 'Search style inputs',
-        code: `import { Input } from '@clow99/velocityui'
+        code: `import { Input } from '@velocityuikit/velocityui'
 
 const SearchIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -287,7 +287,7 @@ export default function Example() {
     slug: 'title',
     description:
       'A polymorphic heading component that renders any h1–h6 element with a visual size scale independent of semantic level, multiple font weights, text alignment, and color variants including a gradient.',
-    importLine: "import { Title } from '@clow99/velocityui'",
+    importLine: "import { Title } from '@velocityuikit/velocityui'",
     props: [
       {
         name: 'level',
@@ -322,7 +322,7 @@ export default function Example() {
     examples: [
       {
         title: 'Heading levels',
-        code: `import { Title } from '@clow99/velocityui'
+        code: `import { Title } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -336,7 +336,7 @@ export default function Example() {
       },
       {
         title: 'Color variants',
-        code: `import { Title } from '@clow99/velocityui'
+        code: `import { Title } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -351,7 +351,7 @@ export default function Example() {
       },
       {
         title: 'Size independent of level',
-        code: `import { Title } from '@clow99/velocityui'
+        code: `import { Title } from '@velocityuikit/velocityui'
 
 // Render an h2 but display it at xs (small body-text size)
 export default function Example() {
@@ -366,7 +366,7 @@ export default function Example() {
     slug: 'badge',
     description:
       'Inline status labels with semantic color variants, an optional dot indicator, left icon, and three sizes. Built as a <span> for inline use.',
-    importLine: "import { Badge } from '@clow99/velocityui'",
+    importLine: "import { Badge } from '@velocityuikit/velocityui'",
     props: [
       {
         name: 'variant',
@@ -395,7 +395,7 @@ export default function Example() {
     examples: [
       {
         title: 'Variants',
-        code: `import { Badge } from '@clow99/velocityui'
+        code: `import { Badge } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -412,7 +412,7 @@ export default function Example() {
       },
       {
         title: 'With dot',
-        code: `import { Badge } from '@clow99/velocityui'
+        code: `import { Badge } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -426,7 +426,7 @@ export default function Example() {
       },
       {
         title: 'Sizes',
-        code: `import { Badge } from '@clow99/velocityui'
+        code: `import { Badge } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -446,7 +446,7 @@ export default function Example() {
     slug: 'card',
     description:
       'A flexible container component with compound sub-components: Card.Header, Card.Body, and Card.Footer. Supports four visual variants and an optional hover animation.',
-    importLine: "import { Card } from '@clow99/velocityui'",
+    importLine: "import { Card } from '@velocityuikit/velocityui'",
     props: [
       {
         name: 'variant',
@@ -470,7 +470,7 @@ export default function Example() {
     examples: [
       {
         title: 'Compound usage',
-        code: `import { Card, Button } from '@clow99/velocityui'
+        code: `import { Card, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -492,7 +492,7 @@ export default function Example() {
       },
       {
         title: 'Variants',
-        code: `import { Card } from '@clow99/velocityui'
+        code: `import { Card } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -506,7 +506,7 @@ export default function Example() {
       },
       {
         title: 'Hoverable',
-        code: `import { Card } from '@clow99/velocityui'
+        code: `import { Card } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -524,7 +524,7 @@ export default function Example() {
     slug: 'textarea',
     description:
       'A multi-line text input with label, hint, error, resize control, and three sizes. Mirrors the Input API with full accessibility wiring and ref forwarding.',
-    importLine: "import { Textarea } from '@clow99/velocityui'",
+    importLine: "import { Textarea } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label rendered above the textarea.' },
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls padding and font size.' },
@@ -537,7 +537,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Textarea } from '@clow99/velocityui'
+        code: `import { Textarea } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Textarea label="Message" placeholder="Write your message here..." rows={4} />
@@ -545,7 +545,7 @@ export default function Example() {
       },
       {
         title: 'With error',
-        code: `import { Textarea } from '@clow99/velocityui'
+        code: `import { Textarea } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -559,7 +559,7 @@ export default function Example() {
       },
       {
         title: 'No resize',
-        code: `import { Textarea } from '@clow99/velocityui'
+        code: `import { Textarea } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Textarea label="Fixed height" resize="none" rows={3} />
@@ -573,7 +573,7 @@ export default function Example() {
     slug: 'select',
     description:
       'A fully styled native select element with custom arrow, label, hint, error, and size variants. Accepts an options array or native <option> children.',
-    importLine: "import { Select } from '@clow99/velocityui'",
+    importLine: "import { Select } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label rendered above the select.' },
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls height and font size.' },
@@ -587,7 +587,7 @@ export default function Example() {
     examples: [
       {
         title: 'With options array',
-        code: `import { Select } from '@clow99/velocityui'
+        code: `import { Select } from '@velocityuikit/velocityui'
 
 const countries = [
   { value: 'us', label: 'United States' },
@@ -607,7 +607,7 @@ export default function Example() {
       },
       {
         title: 'With error',
-        code: `import { Select } from '@clow99/velocityui'
+        code: `import { Select } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -630,7 +630,7 @@ export default function Example() {
     slug: 'checkbox',
     description:
       'A custom-styled accessible checkbox with label, description text, error state, and three sizes. Forwards refs and spreads all native input attributes.',
-    importLine: "import { Checkbox } from '@clow99/velocityui'",
+    importLine: "import { Checkbox } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label text rendered beside the checkbox.' },
       { name: 'description', type: 'string', description: 'Helper text rendered below the label.' },
@@ -643,7 +643,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Checkbox } from '@clow99/velocityui'
+        code: `import { Checkbox } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Checkbox label="Accept terms and conditions" />
@@ -651,7 +651,7 @@ export default function Example() {
       },
       {
         title: 'With description',
-        code: `import { Checkbox } from '@clow99/velocityui'
+        code: `import { Checkbox } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -665,7 +665,7 @@ export default function Example() {
       },
       {
         title: 'Sizes',
-        code: `import { Checkbox } from '@clow99/velocityui'
+        code: `import { Checkbox } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -685,7 +685,7 @@ export default function Example() {
     slug: 'radiogroup',
     description:
       'An accessible radio group rendered as a fieldset with a legend. Accepts an options array supporting labels, descriptions, and disabled states. Supports both vertical and horizontal layouts.',
-    importLine: "import { RadioGroup } from '@clow99/velocityui'",
+    importLine: "import { RadioGroup } from '@velocityuikit/velocityui'",
     props: [
       { name: 'name', type: 'string', description: 'Shared name attribute for the radio inputs.' },
       { name: 'label', type: 'string', description: 'Group label rendered as a <legend>.' },
@@ -700,7 +700,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { RadioGroup } from '@clow99/velocityui'
+        code: `import { RadioGroup } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -719,7 +719,7 @@ export default function Example() {
       },
       {
         title: 'Horizontal',
-        code: `import { RadioGroup } from '@clow99/velocityui'
+        code: `import { RadioGroup } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -745,7 +745,7 @@ export default function Example() {
     slug: 'switch',
     description:
       'A toggle control rendered as a styled checkbox with role="switch". Accepts label and description text. Forwards refs and spreads native input attributes.',
-    importLine: "import { Switch } from '@clow99/velocityui'",
+    importLine: "import { Switch } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label text rendered beside the switch.' },
       { name: 'description', type: 'string', description: 'Helper text rendered below.' },
@@ -757,7 +757,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Switch } from '@clow99/velocityui'
+        code: `import { Switch } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Switch label="Enable notifications" defaultChecked />
@@ -765,7 +765,7 @@ export default function Example() {
       },
       {
         title: 'Sizes',
-        code: `import { Switch } from '@clow99/velocityui'
+        code: `import { Switch } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -785,7 +785,7 @@ export default function Example() {
     slug: 'alert',
     description:
       'A notification banner with four semantic color variants, an automatic icon, an optional title, and an optional dismiss button. Rendered with role="alert" for screen readers.',
-    importLine: "import { Alert } from '@clow99/velocityui'",
+    importLine: "import { Alert } from '@velocityuikit/velocityui'",
     props: [
       { name: 'variant', type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'", description: 'Color scheme and icon of the alert.' },
       { name: 'title', type: 'string', description: 'Bold title line rendered above the body.' },
@@ -796,7 +796,7 @@ export default function Example() {
     examples: [
       {
         title: 'Variants',
-        code: `import { Alert } from '@clow99/velocityui'
+        code: `import { Alert } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -812,7 +812,7 @@ export default function Example() {
       {
         title: 'Dismissible',
         code: `import { useState } from 'react'
-import { Alert } from '@clow99/velocityui'
+import { Alert } from '@velocityuikit/velocityui'
 
 export default function Example() {
   const [visible, setVisible] = useState(true)
@@ -832,7 +832,7 @@ export default function Example() {
     slug: 'dialog',
     description:
       'A modal dialog rendered with position:fixed, focus trapping, Escape-key close, and ARIA wiring. Supports compound sub-components Dialog.Header, Dialog.Body, and Dialog.Footer, plus four sizes.',
-    importLine: "import { Dialog } from '@clow99/velocityui'",
+    importLine: "import { Dialog } from '@velocityuikit/velocityui'",
     props: [
       { name: 'open', type: 'boolean', description: 'Controls visibility of the dialog.' },
       { name: 'onClose', type: '() => void', description: 'Called when the user closes the dialog via overlay click or Escape.' },
@@ -845,7 +845,7 @@ export default function Example() {
       {
         title: 'Basic',
         code: `import { useState } from 'react'
-import { Button, Dialog } from '@clow99/velocityui'
+import { Button, Dialog } from '@velocityuikit/velocityui'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
@@ -868,7 +868,7 @@ export default function Example() {
       {
         title: 'Custom header via compound parts',
         code: `import { useState } from 'react'
-import { Button, Dialog, Badge } from '@clow99/velocityui'
+import { Button, Dialog, Badge } from '@velocityuikit/velocityui'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
@@ -897,7 +897,7 @@ export default function Example() {
     slug: 'tabs',
     description:
       'An accessible tab component with keyboard navigation (Arrow keys, Home, End), three visual variants, and both controlled and uncontrolled modes.',
-    importLine: "import { Tabs } from '@clow99/velocityui'",
+    importLine: "import { Tabs } from '@velocityuikit/velocityui'",
     props: [
       { name: 'items', type: 'TabItem[]', description: 'Array of { value, label, children, disabled? } tab definitions.' },
       { name: 'defaultValue', type: 'string', description: 'Initial active tab for uncontrolled mode.' },
@@ -908,7 +908,7 @@ export default function Example() {
     examples: [
       {
         title: 'Variants',
-        code: `import { Tabs } from '@clow99/velocityui'
+        code: `import { Tabs } from '@velocityuikit/velocityui'
 
 const items = [
   { value: 'overview', label: 'Overview', children: <p>Overview content</p> },
@@ -934,7 +934,7 @@ export default function Example() {
     slug: 'accordion',
     description:
       'Collapsible content sections with smooth CSS grid animation. Supports single or multiple open items, three visual variants, and both controlled and uncontrolled modes.',
-    importLine: "import { Accordion } from '@clow99/velocityui'",
+    importLine: "import { Accordion } from '@velocityuikit/velocityui'",
     props: [
       { name: 'items', type: 'AccordionItem[]', description: 'Array of { value, title, content, disabled? } definitions.' },
       { name: 'defaultValue', type: 'string | string[]', description: 'Initially open item(s) for uncontrolled mode.' },
@@ -946,7 +946,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Accordion } from '@clow99/velocityui'
+        code: `import { Accordion } from '@velocityuikit/velocityui'
 
 const items = [
   { value: 'q1', title: 'What is VelocityUI?', content: 'A modern, accessible React component library.' },
@@ -960,7 +960,7 @@ export default function Example() {
       },
       {
         title: 'Multiple open + separated variant',
-        code: `import { Accordion } from '@clow99/velocityui'
+        code: `import { Accordion } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -985,7 +985,7 @@ export default function Example() {
     slug: 'tooltip',
     description:
       'A lightweight tooltip that appears on hover and focus using aria-describedby for accessibility. Supports four placement directions and an optional show delay.',
-    importLine: "import { Tooltip } from '@clow99/velocityui'",
+    importLine: "import { Tooltip } from '@velocityuikit/velocityui'",
     props: [
       { name: 'content', type: 'ReactNode', description: 'Tooltip body text or node.' },
       { name: 'children', type: 'ReactElement', description: 'The trigger element. Must be a single React element.' },
@@ -995,7 +995,7 @@ export default function Example() {
     examples: [
       {
         title: 'Placements',
-        code: `import { Tooltip, Button } from '@clow99/velocityui'
+        code: `import { Tooltip, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1018,7 +1018,7 @@ export default function Example() {
       },
       {
         title: 'With delay',
-        code: `import { Tooltip, Button } from '@clow99/velocityui'
+        code: `import { Tooltip, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1036,7 +1036,7 @@ export default function Example() {
     slug: 'divider',
     description:
       'A horizontal or vertical separator line using role="separator". Supports an optional centered text label for section delineation.',
-    importLine: "import { Divider } from '@clow99/velocityui'",
+    importLine: "import { Divider } from '@velocityuikit/velocityui'",
     props: [
       { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'Direction of the separator line.' },
       { name: 'label', type: 'string', description: 'Optional centered text that splits the line.' },
@@ -1044,7 +1044,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Divider } from '@clow99/velocityui'
+        code: `import { Divider } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1058,7 +1058,7 @@ export default function Example() {
       },
       {
         title: 'With label',
-        code: `import { Divider } from '@clow99/velocityui'
+        code: `import { Divider } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1078,7 +1078,7 @@ export default function Example() {
     slug: 'spinner',
     description:
       'An animated SVG ring used to indicate a loading state. Supports three sizes and color options. Includes a screen-reader-accessible label via role="status".',
-    importLine: "import { Spinner } from '@clow99/velocityui'",
+    importLine: "import { Spinner } from '@velocityuikit/velocityui'",
     props: [
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls the width and height of the spinner.' },
       { name: 'color', type: "'primary' | 'muted' | 'white'", default: "'primary'", description: 'The color of the spinner arc.' },
@@ -1087,7 +1087,7 @@ export default function Example() {
     examples: [
       {
         title: 'Sizes',
-        code: `import { Spinner } from '@clow99/velocityui'
+        code: `import { Spinner } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1101,7 +1101,7 @@ export default function Example() {
       },
       {
         title: 'Colors',
-        code: `import { Spinner } from '@clow99/velocityui'
+        code: `import { Spinner } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1120,7 +1120,7 @@ export default function Example() {
     slug: 'skeleton',
     description:
       'A shimmering placeholder used to represent loading content. Can render as a single block or as a stack of multiple lines, with full control over width, height, and border radius.',
-    importLine: "import { Skeleton } from '@clow99/velocityui'",
+    importLine: "import { Skeleton } from '@velocityuikit/velocityui'",
     props: [
       { name: 'width', type: 'string | number', description: 'Width of the skeleton block. Defaults to 100% for multi-line stacks.' },
       { name: 'height', type: 'string | number', default: "'1rem'", description: 'Height of each skeleton block.' },
@@ -1131,7 +1131,7 @@ export default function Example() {
     examples: [
       {
         title: 'Single block',
-        code: `import { Skeleton } from '@clow99/velocityui'
+        code: `import { Skeleton } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Skeleton width={200} height={20} />
@@ -1139,7 +1139,7 @@ export default function Example() {
       },
       {
         title: 'Multi-line text',
-        code: `import { Skeleton } from '@clow99/velocityui'
+        code: `import { Skeleton } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Skeleton lines={4} height={14} />
@@ -1147,7 +1147,7 @@ export default function Example() {
       },
       {
         title: 'Card skeleton',
-        code: `import { Skeleton } from '@clow99/velocityui'
+        code: `import { Skeleton } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1167,7 +1167,7 @@ export default function Example() {
     slug: 'progress',
     description:
       'A linear progress bar that reflects a numeric value from 0 to 100. Supports four color variants, three sizes, an optional label, and a percentage readout. Renders with role="progressbar" and full ARIA attributes.',
-    importLine: "import { Progress } from '@clow99/velocityui'",
+    importLine: "import { Progress } from '@velocityuikit/velocityui'",
     props: [
       { name: 'value', type: 'number', description: 'Current progress value from 0 to 100.' },
       { name: 'variant', type: "'primary' | 'success' | 'warning' | 'danger'", default: "'primary'", description: 'Color of the filled bar.' },
@@ -1178,7 +1178,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Progress } from '@clow99/velocityui'
+        code: `import { Progress } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return <Progress value={65} label="Upload progress" showValue />
@@ -1186,7 +1186,7 @@ export default function Example() {
       },
       {
         title: 'Variants',
-        code: `import { Progress } from '@clow99/velocityui'
+        code: `import { Progress } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1207,7 +1207,7 @@ export default function Example() {
     slug: 'toast',
     description:
       'Portal-based ephemeral notifications rendered in the bottom-right corner. Wrap your app in ToastProvider and call useToast() to programmatically fire toasts with variants, custom durations, and dismiss callbacks.',
-    importLine: "import { ToastProvider, useToast } from '@clow99/velocityui'",
+    importLine: "import { ToastProvider, useToast } from '@velocityuikit/velocityui'",
     props: [
       { name: 'message', type: 'string', description: 'The notification text to display.' },
       { name: 'variant', type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'", description: 'Controls the color and semantic tone of the toast.' },
@@ -1217,7 +1217,7 @@ export default function Example() {
       {
         title: 'Setup and usage',
         description: 'Wrap your app with ToastProvider, then call addToast() anywhere inside.',
-        code: `import { ToastProvider, useToast, Button } from '@clow99/velocityui'
+        code: `import { ToastProvider, useToast, Button } from '@velocityuikit/velocityui'
 
 function Demo() {
   const { addToast } = useToast()
@@ -1238,7 +1238,7 @@ export default function Example() {
       },
       {
         title: 'All variants',
-        code: `import { ToastProvider, useToast, Button } from '@clow99/velocityui'
+        code: `import { ToastProvider, useToast, Button } from '@velocityuikit/velocityui'
 
 function Demo() {
   const { addToast } = useToast()
@@ -1268,7 +1268,7 @@ export default function Example() {
     slug: 'avatar',
     description:
       'Displays a user avatar image with an automatic initials fallback when no image is provided or when the image fails to load. Supports five sizes, two shapes, and an optional status indicator dot.',
-    importLine: "import { Avatar } from '@clow99/velocityui'",
+    importLine: "import { Avatar } from '@velocityuikit/velocityui'",
     props: [
       { name: 'src', type: 'string', description: 'URL of the avatar image.' },
       { name: 'alt', type: 'string', description: 'Alt text for the image.' },
@@ -1280,7 +1280,7 @@ export default function Example() {
     examples: [
       {
         title: 'Sizes',
-        code: `import { Avatar } from '@clow99/velocityui'
+        code: `import { Avatar } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1296,7 +1296,7 @@ export default function Example() {
       },
       {
         title: 'With status',
-        code: `import { Avatar } from '@clow99/velocityui'
+        code: `import { Avatar } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1316,7 +1316,7 @@ export default function Example() {
     slug: 'tag',
     description:
       'An interactive chip component that extends the visual style of Badge with a removable close button. Ideal for filters, selections, and user-generated labels.',
-    importLine: "import { Tag } from '@clow99/velocityui'",
+    importLine: "import { Tag } from '@velocityuikit/velocityui'",
     props: [
       { name: 'variant', type: "'default' | 'info' | 'success' | 'warning' | 'danger' | 'primary'", default: "'default'", description: 'Color variant of the tag.' },
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls padding and font size.' },
@@ -1326,7 +1326,7 @@ export default function Example() {
     examples: [
       {
         title: 'Removable tags',
-        code: `import { Tag } from '@clow99/velocityui'
+        code: `import { Tag } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export default function Example() {
@@ -1344,7 +1344,7 @@ export default function Example() {
       },
       {
         title: 'Variants',
-        code: `import { Tag } from '@clow99/velocityui'
+        code: `import { Tag } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1367,7 +1367,7 @@ export default function Example() {
     slug: 'emptystate',
     description:
       'A structured zero-data placeholder that centers an icon, title, description, and optional call-to-action. Use it to fill tables, lists, or panels that have no content to show.',
-    importLine: "import { EmptyState } from '@clow99/velocityui'",
+    importLine: "import { EmptyState } from '@velocityuikit/velocityui'",
     props: [
       { name: 'title', type: 'string', description: 'Main heading of the empty state.' },
       { name: 'description', type: 'string', description: 'Supporting text below the title.' },
@@ -1377,7 +1377,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { EmptyState, Button } from '@clow99/velocityui'
+        code: `import { EmptyState, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1391,7 +1391,7 @@ export default function Example() {
       },
       {
         title: 'With icon',
-        code: `import { EmptyState, Button } from '@clow99/velocityui'
+        code: `import { EmptyState, Button } from '@velocityuikit/velocityui'
 
 const FolderIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1419,7 +1419,7 @@ export default function Example() {
     slug: 'breadcrumb',
     description:
       'A navigation trail that shows the current page location within a hierarchy. Uses a native <nav> with aria-label="Breadcrumb" and marks the last item with aria-current="page".',
-    importLine: "import { Breadcrumb } from '@clow99/velocityui'",
+    importLine: "import { Breadcrumb } from '@velocityuikit/velocityui'",
     props: [
       { name: 'items', type: "{ label: string; href?: string }[]", description: 'Array of breadcrumb entries. The last item is rendered as static text (current page).' },
       { name: 'separator', type: 'ReactNode', description: 'Custom separator element. Defaults to a chevron-right icon.' },
@@ -1427,7 +1427,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Breadcrumb } from '@clow99/velocityui'
+        code: `import { Breadcrumb } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1443,7 +1443,7 @@ export default function Example() {
       },
       {
         title: 'Custom separator',
-        code: `import { Breadcrumb } from '@clow99/velocityui'
+        code: `import { Breadcrumb } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1466,7 +1466,7 @@ export default function Example() {
     slug: 'pagination',
     description:
       'Page navigation controls with previous/next buttons, numbered page buttons, smart ellipsis truncation, and optional first/last shortcuts. Fully keyboard accessible and uses aria-current="page".',
-    importLine: "import { Pagination } from '@clow99/velocityui'",
+    importLine: "import { Pagination } from '@velocityuikit/velocityui'",
     props: [
       { name: 'page', type: 'number', description: 'The currently active page (1-indexed).' },
       { name: 'totalPages', type: 'number', description: 'The total number of pages.' },
@@ -1477,7 +1477,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Pagination } from '@clow99/velocityui'
+        code: `import { Pagination } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export default function Example() {
@@ -1487,7 +1487,7 @@ export default function Example() {
       },
       {
         title: 'More siblings',
-        code: `import { Pagination } from '@clow99/velocityui'
+        code: `import { Pagination } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export default function Example() {
@@ -1503,7 +1503,7 @@ export default function Example() {
     slug: 'stepper',
     description:
       'A multi-step progress indicator that shows completed, active, and pending steps with connecting lines. Supports horizontal and vertical orientations and a compact variant that hides text labels.',
-    importLine: "import { Stepper } from '@clow99/velocityui'",
+    importLine: "import { Stepper } from '@velocityuikit/velocityui'",
     props: [
       { name: 'steps', type: "{ label: string; description?: string }[]", description: 'Array of step definitions.' },
       { name: 'currentStep', type: 'number', description: 'The 1-indexed step that is currently active.' },
@@ -1513,7 +1513,7 @@ export default function Example() {
     examples: [
       {
         title: 'Horizontal',
-        code: `import { Stepper } from '@clow99/velocityui'
+        code: `import { Stepper } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1530,7 +1530,7 @@ export default function Example() {
       },
       {
         title: 'Vertical',
-        code: `import { Stepper } from '@clow99/velocityui'
+        code: `import { Stepper } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1555,7 +1555,7 @@ export default function Example() {
     slug: 'popover',
     description:
       'An interactive overlay anchored to a trigger element. Unlike Tooltip, Popover can contain any rich content. Supports four placements, a portal for stacking context isolation, click-outside and Escape-key dismissal, and both controlled and uncontrolled modes.',
-    importLine: "import { Popover } from '@clow99/velocityui'",
+    importLine: "import { Popover } from '@velocityuikit/velocityui'",
     props: [
       { name: 'trigger', type: 'ReactNode', description: 'The element that opens the popover when clicked.' },
       { name: 'content', type: 'ReactNode', description: 'Content rendered inside the popover panel.' },
@@ -1566,7 +1566,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Popover, Button } from '@clow99/velocityui'
+        code: `import { Popover, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1586,7 +1586,7 @@ export default function Example() {
       },
       {
         title: 'Top placement',
-        code: `import { Popover, Button } from '@clow99/velocityui'
+        code: `import { Popover, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1608,7 +1608,7 @@ export default function Example() {
     slug: 'dropdown',
     description:
       'An action menu anchored to a trigger element. Items can include icons, disabled states, and separator rules. The menu is portal-rendered to avoid overflow clipping and closes on item click, outside click, or Escape key.',
-    importLine: "import { Dropdown } from '@clow99/velocityui'",
+    importLine: "import { Dropdown } from '@velocityuikit/velocityui'",
     props: [
       { name: 'trigger', type: 'ReactNode', description: 'The element that opens the menu when clicked.' },
       { name: 'items', type: "{ label: string; icon?: ReactNode; onClick?: () => void; disabled?: boolean; separator?: boolean }[]", description: 'Array of menu items. An item with separator: true renders a horizontal divider instead of a button.' },
@@ -1617,7 +1617,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic menu',
-        code: `import { Dropdown, Button } from '@clow99/velocityui'
+        code: `import { Dropdown, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1635,7 +1635,7 @@ export default function Example() {
       },
       {
         title: 'With disabled item',
-        code: `import { Dropdown, Button } from '@clow99/velocityui'
+        code: `import { Dropdown, Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1658,7 +1658,7 @@ export default function Example() {
     slug: 'slider',
     description:
       'A styled range input with a custom track and thumb. Provides a filled track that visually shows the current value. Supports labels, a live value readout, min/max/step configuration, and disabled state.',
-    importLine: "import { Slider } from '@clow99/velocityui'",
+    importLine: "import { Slider } from '@velocityuikit/velocityui'",
     props: [
       { name: 'value', type: 'number', description: 'Controlled value.' },
       { name: 'onChange', type: '(value: number) => void', description: 'Callback fired when the value changes.' },
@@ -1673,7 +1673,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { Slider } from '@clow99/velocityui'
+        code: `import { Slider } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export default function Example() {
@@ -1683,7 +1683,7 @@ export default function Example() {
       },
       {
         title: 'Stepped',
-        code: `import { Slider } from '@clow99/velocityui'
+        code: `import { Slider } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export default function Example() {
@@ -1699,7 +1699,7 @@ export default function Example() {
     slug: 'numberinput',
     description:
       'A numeric text input with increment and decrement step buttons. Respects min/max bounds, supports label, error, and hint text, and hides the native browser spin buttons for a consistent cross-browser appearance.',
-    importLine: "import { NumberInput } from '@clow99/velocityui'",
+    importLine: "import { NumberInput } from '@velocityuikit/velocityui'",
     props: [
       { name: 'value', type: 'number', description: 'Controlled value.' },
       { name: 'onChange', type: '(value: number) => void', description: 'Callback fired when the value changes.' },
@@ -1715,7 +1715,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { NumberInput } from '@clow99/velocityui'
+        code: `import { NumberInput } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export default function Example() {
@@ -1725,7 +1725,7 @@ export default function Example() {
       },
       {
         title: 'With error',
-        code: `import { NumberInput } from '@clow99/velocityui'
+        code: `import { NumberInput } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1747,7 +1747,7 @@ export default function Example() {
     slug: 'fileupload',
     description:
       'A drag-and-drop file upload zone with a click-to-browse fallback. Shows selected files in a removable list and validates file size against an optional maxSize cap. Supports single and multiple file selection.',
-    importLine: "import { FileUpload } from '@clow99/velocityui'",
+    importLine: "import { FileUpload } from '@velocityuikit/velocityui'",
     props: [
       { name: 'onChange', type: '(files: File[]) => void', description: 'Callback fired when the file selection changes.' },
       { name: 'accept', type: 'string', description: 'MIME types or file extensions to accept, e.g. "image/*" or ".pdf".' },
@@ -1761,7 +1761,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic',
-        code: `import { FileUpload } from '@clow99/velocityui'
+        code: `import { FileUpload } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1775,7 +1775,7 @@ export default function Example() {
       },
       {
         title: 'Multiple files with size limit',
-        code: `import { FileUpload } from '@clow99/velocityui'
+        code: `import { FileUpload } from '@velocityuikit/velocityui'
 
 export default function Example() {
   return (
@@ -1798,7 +1798,7 @@ export default function Example() {
     slug: 'table',
     description:
       'A sortable data table with optional striped rows and bordered cells. Column definitions support a custom render function for cell content. Sorting is fully controlled and includes proper aria-sort attributes.',
-    importLine: "import { Table } from '@clow99/velocityui'",
+    importLine: "import { Table } from '@velocityuikit/velocityui'",
     props: [
       { name: 'columns', type: "{ key: string; header: string; sortable?: boolean; render?: (value, row, index) => ReactNode }[]", description: 'Column definitions.' },
       { name: 'data', type: 'T[]', description: 'Array of row data objects.' },
@@ -1812,7 +1812,7 @@ export default function Example() {
     examples: [
       {
         title: 'Basic sortable table',
-        code: `import { Table } from '@clow99/velocityui'
+        code: `import { Table } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const data = [
@@ -1848,7 +1848,7 @@ export default function Example() {
       },
       {
         title: 'Striped and bordered',
-        code: `import { Table } from '@clow99/velocityui'
+        code: `import { Table } from '@velocityuikit/velocityui'
 
 const data = [
   { id: 1, product: 'Widget A', price: '$12.00' },

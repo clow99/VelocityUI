@@ -1,6 +1,6 @@
 'use client'
 
-import { NumberInput } from '@clow99/velocityui'
+import { NumberInput } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 export function NumberInputPreview() {

@@ -49,8 +49,8 @@ pnpm start
 
 This app consumes the workspace library package and imports:
 
-- Components from `@clow99/velocityui`
-- Styles from `@clow99/velocityui/dist/style.css`
+- Components from `@velocityuikit/velocityui`
+- Styles from `@velocityuikit/velocityui/dist/style.css`
 
 ## Key Paths
 

@@ -2,7 +2,7 @@ const path = require('path')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['velocityui'],
+  transpilePackages: ['@velocityuikit/velocityui'],
   ...(process.env.NEXT_OUTPUT_STANDALONE === '1'
     ? {
         output: 'standalone',

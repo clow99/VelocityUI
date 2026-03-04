@@ -35,11 +35,6 @@ import { NumberInputPreview } from '@/components/docs/previews/NumberInputPrevie
 import { FileUploadPreview } from '@/components/docs/previews/FileUploadPreview'
 import { TablePreview } from '@/components/docs/previews/TablePreview'
 
-const NPM_PACKAGE = '@clow99/velocityui'
-const GITEA_PACKAGE = 'https://git.cameronlow.com/cam/VelocityUI/packages'
-
-const formatSnippet = (code: string) => code.replaceAll(NPM_PACKAGE, GITEA_PACKAGE)
-
 const previewMap: Record<string, React.ComponentType> = {
   button: ButtonPreview,
   input: InputPreview,
@@ -105,7 +100,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
 
       <section className="mb-10">
         <h2 className="mb-3 text-lg font-semibold text-vui-text">Import</h2>
-        <CodeBlock code={formatSnippet(doc.importLine)} language="tsx" />
+        <CodeBlock code={doc.importLine} language="tsx" />
       </section>
 
       {Preview && (
@@ -131,7 +126,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
               {example.description && (
                 <p className="mb-3 text-sm text-vui-text-subtle">{example.description}</p>
               )}
-              <CodeBlock code={formatSnippet(example.code)} language="tsx" />
+              <CodeBlock code={example.code} language="tsx" />
             </div>
           ))}
         </div>

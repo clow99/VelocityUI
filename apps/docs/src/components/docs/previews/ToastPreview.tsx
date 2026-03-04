@@ -1,6 +1,6 @@
 'use client'
 
-import { ToastProvider, useToast, Button } from '@clow99/velocityui'
+import { ToastProvider, useToast, Button } from '@velocityuikit/velocityui'
 
 function ToastButtons() {
   const { addToast } = useToast()

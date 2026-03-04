@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Input, Title } from '@clow99/velocityui'
+import { Alert, Button, Card, Input, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 type Step = 'request' | 'sent' | 'reset' | 'done'

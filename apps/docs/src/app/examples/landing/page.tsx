@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion, Badge, Button, Card, Divider, Title } from '@clow99/velocityui'
+import { Accordion, Badge, Button, Card, Divider, Title } from '@velocityuikit/velocityui'
 
 const features = [
   {

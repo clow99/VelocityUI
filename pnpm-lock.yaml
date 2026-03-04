@@ -14,7 +14,7 @@ importers:
 
   apps/docs:
     dependencies:
-      '@clow99/velocityui':
+      '@velocityuikit/velocityui':
         specifier: workspace:*
         version: link:../../packages/velocityui
       next:

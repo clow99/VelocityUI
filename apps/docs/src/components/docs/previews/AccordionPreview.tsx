@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion } from '@clow99/velocityui'
+import { Accordion } from '@velocityuikit/velocityui'
 
 const items = [
   {

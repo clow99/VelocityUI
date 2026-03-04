@@ -1,6 +1,6 @@
 'use client'
 
-import { Tabs } from '@clow99/velocityui'
+import { Tabs } from '@velocityuikit/velocityui'
 
 const items = [
   {

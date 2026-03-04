@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Button, Card, Divider, Title } from '@clow99/velocityui'
+import { Badge, Button, Card, Divider, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const metrics = [
@@ -15,13 +15,13 @@ const steps = [
     step: '01',
     title: 'Install the package',
     description: 'Add VelocityUI to your project with a single npm command. No complex setup required.',
-    code: 'npm install https://git.cameronlow.com/cam/VelocityUI/packages',
+    code: 'npm install @velocityuikit/velocityui',
   },
   {
     step: '02',
     title: 'Import what you need',
     description: 'Tree-shakeable exports mean you only ship the components you actually use.',
-    code: "import { Button, Card } from 'https://git.cameronlow.com/cam/VelocityUI/packages'",
+    code: "import { Button, Card } from '@velocityuikit/velocityui'",
   },
   {
     step: '03',

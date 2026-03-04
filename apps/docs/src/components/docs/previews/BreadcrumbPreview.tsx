@@ -1,6 +1,6 @@
 'use client'
 
-import { Breadcrumb } from '@clow99/velocityui'
+import { Breadcrumb } from '@velocityuikit/velocityui'
 
 export function BreadcrumbPreview() {
   return (

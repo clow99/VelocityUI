@@ -1,6 +1,6 @@
 'use client'
 
-import { Popover, Button } from '@clow99/velocityui'
+import { Popover, Button } from '@velocityuikit/velocityui'
 
 export function PopoverPreview() {
   return (

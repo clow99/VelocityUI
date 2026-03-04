@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge } from '@clow99/velocityui'
+import { Badge } from '@velocityuikit/velocityui'
 
 export function BadgePreview() {
   return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Card, Dialog, Divider, Input, RadioGroup, Select, Switch, Tabs, Title } from '@clow99/velocityui'
+import { Alert, Button, Card, Dialog, Divider, Input, RadioGroup, Select, Switch, Tabs, Title } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 function AccountTab({ onSave, loading }: { onSave: () => void; loading: boolean }) {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@clow99/velocityui'
+import { Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const kpis = [

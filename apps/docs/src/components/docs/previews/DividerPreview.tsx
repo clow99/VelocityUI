@@ -1,6 +1,6 @@
 'use client'
 
-import { Divider } from '@clow99/velocityui'
+import { Divider } from '@velocityuikit/velocityui'
 
 export function DividerPreview() {
   return (
