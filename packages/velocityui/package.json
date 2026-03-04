@@ -1,6 +1,6 @@
 {
   "name": "@velocityuikit/velocityui",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A modern, accessible React component library",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "sideEffects": [
     "**/*.css"
