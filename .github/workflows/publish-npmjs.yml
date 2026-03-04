@@ -49,6 +49,8 @@ jobs:
       - name: Publish to npmjs
         if: steps.version_check.outputs.already_published == 'false'
         working-directory: packages/velocityui
-        run: npm publish --access public --provenance --registry https://registry.npmjs.org
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          npm publish --access public --provenance --registry https://registry.npmjs.org
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
