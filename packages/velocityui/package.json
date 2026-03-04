@@ -4,11 +4,11 @@
   "description": "A modern, accessible React component library",
   "repository": {
     "type": "git",
-    "url": "https://git.cameronlow.com/cam/VelocityUI.git"
+    "url": "https://github.com/clow99/VelocityUI.git"
   },
-  "homepage": "https://git.cameronlow.com/cam/VelocityUI",
+  "homepage": "https://github.com/clow99/VelocityUI",
   "bugs": {
-    "url": "https://git.cameronlow.com/cam/VelocityUI/issues"
+    "url": "https://github.com/clow99/VelocityUI/issues"
   },
   "type": "module",
   "main": "./dist/index.cjs",
