@@ -14,6 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          registry-url: 'https://git.cameronlow.com/api/packages/cam/npm/'
+          scope: '@clow99'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -26,8 +28,13 @@ jobs:
 
       - name: Configure npm registry
         run: |
+          if [ -z "${{ secrets.GITEATOKEN }}" ]; then
+            echo "GITEATOKEN secret is missing or empty"
+            exit 1
+          fi
           echo "@clow99:registry=https://git.cameronlow.com/api/packages/cam/npm/" >> ~/.npmrc
-          echo "//git.cameronlow.com/api/packages/cam/npm/:_authToken=${{ secrets.GITEA_TOKEN }}" >> ~/.npmrc
+          echo "//git.cameronlow.com/api/packages/cam/npm/:_authToken=${{ secrets.GITEATOKEN }}" >> ~/.npmrc
+          echo "always-auth=true" >> ~/.npmrc
 
       - name: Check if version already published
         id: version_check
@@ -35,13 +42,17 @@ jobs:
         run: |
           VERSION=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if npm view "@clow99/velocityui@$VERSION" 2>/dev/null; then
+          if npm view "@clow99/velocityui@$VERSION" --registry https://git.cameronlow.com/api/packages/cam/npm/ 2>/dev/null; then
             echo "already_published=true" >> "$GITHUB_OUTPUT"
           else
             echo "already_published=false" >> "$GITHUB_OUTPUT"
           fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITEATOKEN }}
 
       - name: Publish to Gitea
         if: steps.version_check.outputs.already_published == 'false'
         working-directory: packages/velocityui
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITEATOKEN }}
