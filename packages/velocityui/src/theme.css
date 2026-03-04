@@ -1,7 +1,7 @@
 /* ============================================================
    VelocityUI Theme System
    Apply a single class to <body> or any parent wrapper.
-   Usage:  <body class="vui-theme-forest vui-density-comfortable">
+  Usage:  <body class="vui-theme-midnight vui-density-comfortable">
    ============================================================ */
 
 /* ------------------------------------------------------------
@@ -206,77 +206,6 @@
   --vui-badge-success-bg: rgba(21, 128, 61, 0.25);
   --vui-badge-success-color: #86efac;
   --vui-badge-success-border: rgba(134, 239, 172, 0.3);
-  --vui-badge-warning-bg: rgba(180, 83, 9, 0.25);
-  --vui-badge-warning-color: #fcd34d;
-  --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
-  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
-  --vui-badge-danger-color: #fca5a5;
-  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
-}
-
-/* ------------------------------------------------------------
-   Forest — natural, earthy. Primary: Emerald #059669
-   ------------------------------------------------------------ */
-.vui-theme-forest {
-  color-scheme: dark;
-
-  --vui-bg: #0a120d;
-  --vui-surface: #0f1f14;
-  --vui-surface-muted: #162b1c;
-  --vui-surface-translucent: rgba(15, 31, 20, 0.8);
-
-  --vui-text: #ecfdf5;
-  --vui-text-muted: #d1fae5;
-  --vui-text-subtle: #6ee7b7;
-  --vui-text-inverse: #0a120d;
-
-  --vui-border: #1e4028;
-  --vui-border-strong: #2d5c3a;
-  --vui-divider: #1e4028;
-
-  --vui-primary: #34d399;
-  --vui-primary-hover: #059669;
-  --vui-primary-contrast: #022c22;
-  --vui-primary-soft: rgba(52, 211, 153, 0.18);
-
-  --vui-secondary: #162b1c;
-  --vui-secondary-hover: #1e4028;
-  --vui-secondary-text: #ecfdf5;
-
-  --vui-danger: #f87171;
-  --vui-danger-hover: #ef4444;
-  --vui-danger-contrast: #ffffff;
-
-  --vui-focus-ring: rgba(52, 211, 153, 0.25);
-  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
-
-  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.5);
-  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.6);
-
-  --vui-input-disabled-bg: #162b1c;
-  --vui-input-disabled-color: #4b7a5c;
-  --vui-input-placeholder: #4b7a5c;
-
-  --vui-success-soft: rgba(5, 150, 105, 0.28);
-  --vui-success-text: #6ee7b7;
-  --vui-success-border: rgba(110, 231, 183, 0.3);
-  --vui-warning-soft: rgba(180, 83, 9, 0.25);
-  --vui-warning-text: #fcd34d;
-  --vui-warning-border: rgba(252, 211, 77, 0.3);
-  --vui-info-soft: rgba(29, 78, 216, 0.2);
-  --vui-info-text: #93c5fd;
-  --vui-info-border: rgba(147, 197, 253, 0.25);
-
-  --vui-badge-default-bg: #162b1c;
-  --vui-badge-default-color: #d1fae5;
-  --vui-badge-default-border: #1e4028;
-  --vui-badge-info-bg: rgba(29, 78, 216, 0.2);
-  --vui-badge-info-color: #93c5fd;
-  --vui-badge-info-border: rgba(147, 197, 253, 0.25);
-  --vui-badge-success-bg: rgba(5, 150, 105, 0.28);
-  --vui-badge-success-color: #6ee7b7;
-  --vui-badge-success-border: rgba(110, 231, 183, 0.3);
   --vui-badge-warning-bg: rgba(180, 83, 9, 0.25);
   --vui-badge-warning-color: #fcd34d;
   --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
@@ -705,79 +634,74 @@
 }
 
 /* ------------------------------------------------------------
-   Cyberpunk — neon, edgy. Primary: Fuchsia #e879f9
+   Monochrome Red — white/gray/black with red accents
    ------------------------------------------------------------ */
-.vui-theme-cyberpunk {
+.vui-theme-monochrome-red {
   color-scheme: dark;
 
-  --vui-bg: #06000f;
-  --vui-surface: #100020;
-  --vui-surface-muted: #180030;
-  --vui-surface-translucent: rgba(16, 0, 32, 0.85);
+  --vui-bg: #111;
+  --vui-surface: #1f1f1f;
+  --vui-surface-muted: #111;
+  --vui-surface-translucent: rgba(31, 31, 31, 0.82);
 
-  --vui-text: #f0e6ff;
-  --vui-text-muted: #d8b4fe;
-  --vui-text-subtle: #a855f7;
-  --vui-text-inverse: #06000f;
+  --vui-text: #f3f4f6;
+  --vui-text-muted: #f3f4f6;
+  --vui-text-subtle: #f3f4f6;
+  --vui-text-inverse: #111;
 
-  --vui-border: #3b0764;
-  --vui-border-strong: #581c87;
-  --vui-divider: #3b0764;
+  --vui-border: #1f1f1f;
+  --vui-border-strong: #1f1f1f;
+  --vui-divider: #1f1f1f;
 
-  --vui-primary: #e879f9;
-  --vui-primary-hover: #d946ef;
-  --vui-primary-contrast: #06000f;
-  --vui-primary-soft: rgba(232, 121, 249, 0.2);
+  --vui-primary: #c52e3f;
+  --vui-primary-hover: #c52e3f;
+  --vui-primary-contrast: #f3f4f6;
+  --vui-primary-soft: rgba(197, 46, 63, 0.24);
 
-  --vui-secondary: #180030;
-  --vui-secondary-hover: #3b0764;
-  --vui-secondary-text: #f0e6ff;
+  --vui-secondary: #1f1f1f;
+  --vui-secondary-hover: #111;
+  --vui-secondary-text: #f3f4f6;
 
-  --vui-danger: #f87171;
-  --vui-danger-hover: #ef4444;
-  --vui-danger-contrast: #ffffff;
+  --vui-danger: #c52e3f;
+  --vui-danger-hover: #c52e3f;
+  --vui-danger-contrast: #f3f4f6;
 
-  --vui-focus-ring: rgba(232, 121, 249, 0.3);
-  --vui-focus-danger-ring: rgba(248, 113, 113, 0.3);
+  --vui-focus-ring: rgba(197, 46, 63, 0.32);
+  --vui-focus-danger-ring: rgba(197, 46, 63, 0.32);
 
-  --vui-radius-sm: 0rem;
-  --vui-radius-md: 0.125rem;
-  --vui-radius-lg: 0.25rem;
+  --vui-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.5);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.55);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.65);
 
-  --vui-shadow-sm: 0 0 8px rgba(232, 121, 249, 0.25);
-  --vui-shadow-md: 0 0 16px rgba(232, 121, 249, 0.3);
-  --vui-shadow-lg: 0 0 28px rgba(232, 121, 249, 0.4);
-  --vui-control-border-width: 1.5px;
+  --vui-input-disabled-bg: #1f1f1f;
+  --vui-input-disabled-color: #f3f4f6;
+  --vui-input-placeholder: #f3f4f6;
 
-  --vui-input-disabled-bg: #180030;
-  --vui-input-disabled-color: #7c3aed;
-  --vui-input-placeholder: #7c3aed;
+  --vui-success-soft: rgba(197, 46, 63, 0.12);
+  --vui-success-text: #f3f4f6;
+  --vui-success-border: rgba(243, 244, 246, 0.24);
+  --vui-warning-soft: rgba(197, 46, 63, 0.12);
+  --vui-warning-text: #f3f4f6;
+  --vui-warning-border: rgba(243, 244, 246, 0.24);
+  --vui-info-soft: rgba(197, 46, 63, 0.12);
+  --vui-info-text: #f3f4f6;
+  --vui-info-border: rgba(243, 244, 246, 0.24);
 
-  --vui-success-soft: rgba(0, 255, 136, 0.1);
-  --vui-success-text: #00ff88;
-  --vui-success-border: rgba(0, 255, 136, 0.35);
-  --vui-warning-soft: rgba(255, 170, 0, 0.12);
-  --vui-warning-text: #ffaa00;
-  --vui-warning-border: rgba(255, 170, 0, 0.35);
-  --vui-info-soft: rgba(14, 165, 233, 0.12);
-  --vui-info-text: #38bdf8;
-  --vui-info-border: rgba(56, 189, 248, 0.35);
-
-  --vui-badge-default-bg: #180030;
-  --vui-badge-default-color: #d8b4fe;
-  --vui-badge-default-border: #3b0764;
-  --vui-badge-info-bg: rgba(14, 165, 233, 0.12);
-  --vui-badge-info-color: #38bdf8;
-  --vui-badge-info-border: rgba(56, 189, 248, 0.35);
-  --vui-badge-success-bg: rgba(0, 255, 136, 0.1);
-  --vui-badge-success-color: #00ff88;
-  --vui-badge-success-border: rgba(0, 255, 136, 0.35);
-  --vui-badge-warning-bg: rgba(255, 170, 0, 0.12);
-  --vui-badge-warning-color: #ffaa00;
-  --vui-badge-warning-border: rgba(255, 170, 0, 0.35);
-  --vui-badge-danger-bg: rgba(248, 113, 113, 0.12);
-  --vui-badge-danger-color: #fca5a5;
-  --vui-badge-danger-border: rgba(252, 165, 165, 0.35);
+  --vui-badge-default-bg: #1f1f1f;
+  --vui-badge-default-color: #f3f4f6;
+  --vui-badge-default-border: #111;
+  --vui-badge-info-bg: rgba(197, 46, 63, 0.12);
+  --vui-badge-info-color: #f3f4f6;
+  --vui-badge-info-border: rgba(243, 244, 246, 0.24);
+  --vui-badge-success-bg: rgba(197, 46, 63, 0.12);
+  --vui-badge-success-color: #f3f4f6;
+  --vui-badge-success-border: rgba(243, 244, 246, 0.24);
+  --vui-badge-warning-bg: rgba(197, 46, 63, 0.12);
+  --vui-badge-warning-color: #f3f4f6;
+  --vui-badge-warning-border: rgba(243, 244, 246, 0.24);
+  --vui-badge-danger-bg: rgba(197, 46, 63, 0.2);
+  --vui-badge-danger-color: #f3f4f6;
+  --vui-badge-danger-border: rgba(197, 46, 63, 0.4);
 }
 
 /* ============================================================

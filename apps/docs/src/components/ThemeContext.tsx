@@ -5,14 +5,13 @@ import { createContext, useContext, useEffect, useState } from 'react'
 export type ThemeName =
   | 'default'
   | 'midnight'
-  | 'forest'
   | 'ocean'
   | 'sunset'
   | 'construction'
   | 'glass'
   | 'soft'
   | 'high-contrast'
-  | 'cyberpunk'
+  | 'monochrome-red'
 
 export type DensityName = 'compact' | 'comfortable' | 'spacious'
 
@@ -30,14 +29,17 @@ export interface DensityOption {
 export const THEMES: ThemeOption[] = [
   { value: 'default', label: 'Default', description: 'Light, clean — Indigo primary' },
   { value: 'midnight', label: 'Midnight', description: 'Dark, sleek — Violet primary' },
-  { value: 'forest', label: 'Forest', description: 'Natural, earthy — Emerald primary' },
   { value: 'ocean', label: 'Ocean', description: 'Cool, calming — Cyan primary' },
   { value: 'sunset', label: 'Sunset', description: 'Warm, vibrant — Amber primary' },
   { value: 'construction', label: 'Construction', description: 'Industrial, bold — Yellow primary' },
   { value: 'glass', label: 'Glass', description: 'Frosted transparency — Violet primary' },
   { value: 'soft', label: 'Soft', description: 'Neomorphic, gentle — Sky primary' },
   { value: 'high-contrast', label: 'High Contrast', description: 'WCAG accessible — Yellow primary' },
-  { value: 'cyberpunk', label: 'Cyberpunk', description: 'Neon, edgy — Fuchsia primary' },
+  {
+    value: 'monochrome-red',
+    label: 'Monochrome Red',
+    description: 'White/gray/black base — Red primary',
+  },
 ]
 
 export const DENSITIES: DensityOption[] = [
@@ -54,7 +56,7 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: 'default',
+  theme: 'midnight',
   density: 'comfortable',
   setTheme: () => {},
   setDensity: () => {},
@@ -68,14 +70,24 @@ function readStorage<T extends string>(key: string, fallback: T): T {
   return (localStorage.getItem(key) as T | null) ?? fallback
 }
 
+function isThemeName(value: string): value is ThemeName {
+  return THEMES.some((theme) => theme.value === value)
+}
+
+function isDensityName(value: string): value is DensityName {
+  return DENSITIES.some((density) => density.value === value)
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeName>('default')
+  const [theme, setThemeState] = useState<ThemeName>('midnight')
   const [density, setDensityState] = useState<DensityName>('comfortable')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setThemeState(readStorage<ThemeName>(STORAGE_KEY_THEME, 'default'))
-    setDensityState(readStorage<DensityName>(STORAGE_KEY_DENSITY, 'comfortable'))
+    const storedTheme = readStorage<string>(STORAGE_KEY_THEME, 'midnight')
+    const storedDensity = readStorage<string>(STORAGE_KEY_DENSITY, 'comfortable')
+    setThemeState(isThemeName(storedTheme) ? storedTheme : 'midnight')
+    setDensityState(isDensityName(storedDensity) ? storedDensity : 'comfortable')
     setMounted(true)
   }, [])
 

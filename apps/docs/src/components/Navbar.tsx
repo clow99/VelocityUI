@@ -110,7 +110,7 @@ export function Navbar() {
           </div>
 
           <a
-            href="https://www.npmjs.com/package/@clow99/velocityui"
+            href="https://git.cameronlow.com/cam/VelocityUI/packages"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-1 rounded-lg bg-vui-primary px-4 py-1.5 text-sm font-semibold text-vui-primary-contrast transition-colors hover:bg-vui-primary-hover"

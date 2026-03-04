@@ -17,18 +17,6 @@ describe('named theme presets', () => {
     expect(getVar(wrapper, '--vui-bg')).toBe('#09090b')
   })
 
-  it('forest theme sets dark green surfaces and emerald primary', () => {
-    render(
-      <div data-testid="wrapper" className="vui-theme-forest">
-        <Button>Press</Button>
-      </div>
-    )
-    const wrapper = screen.getByTestId('wrapper')
-    expect(getVar(wrapper, '--vui-primary')).toBe('#34d399')
-    expect(getVar(wrapper, '--vui-bg')).toBe('#0a120d')
-    expect(getVar(wrapper, '--vui-primary-contrast')).toBe('#022c22')
-  })
-
   it('ocean theme sets navy surfaces and cyan primary', () => {
     render(
       <div data-testid="wrapper" className="vui-theme-ocean">
@@ -98,16 +86,17 @@ describe('named theme presets', () => {
     expect(getVar(wrapper, '--vui-border')).toBe('#ffffff')
   })
 
-  it('cyberpunk theme sets purple-black surfaces, sharp corners, and fuchsia primary', () => {
+  it('monochrome-red theme sets white/gray/black surfaces with red primary', () => {
     render(
-      <div data-testid="wrapper" className="vui-theme-cyberpunk">
+      <div data-testid="wrapper" className="vui-theme-monochrome-red">
         <Button>Press</Button>
       </div>
     )
     const wrapper = screen.getByTestId('wrapper')
-    expect(getVar(wrapper, '--vui-primary')).toBe('#e879f9')
-    expect(getVar(wrapper, '--vui-radius-md')).toBe('0.125rem')
-    expect(getVar(wrapper, '--vui-bg')).toBe('#06000f')
+    expect(getVar(wrapper, '--vui-bg')).toBe('#111')
+    expect(getVar(wrapper, '--vui-surface')).toBe('#1f1f1f')
+    expect(getVar(wrapper, '--vui-text')).toBe('#f3f4f6')
+    expect(getVar(wrapper, '--vui-primary')).toBe('#c52e3f')
   })
 
   it('density compact reduces control height independently of theme', () => {

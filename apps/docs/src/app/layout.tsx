@@ -29,8 +29,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const themeBootScript = `
+    (function () {
+      var themes = ['default','midnight','ocean','sunset','construction','glass','soft','high-contrast','monochrome-red'];
+      var densities = ['compact','comfortable','spacious'];
+      var html = document.documentElement;
+      var storedTheme = localStorage.getItem('vui-docs-theme');
+      var storedDensity = localStorage.getItem('vui-docs-density');
+      var theme = themes.indexOf(storedTheme || '') >= 0 ? storedTheme : 'midnight';
+      var density = densities.indexOf(storedDensity || '') >= 0 ? storedDensity : 'comfortable';
+
+      for (var i = 0; i < themes.length; i++) {
+        html.classList.remove('vui-theme-' + themes[i]);
+      }
+      for (var j = 0; j < densities.length; j++) {
+        html.classList.remove('vui-density-' + densities[j]);
+      }
+
+      html.classList.add('vui-theme-' + theme);
+      html.classList.add('vui-density-' + density);
+    })();
+  `
+
   return (
-    <html lang="en" className="scroll-smooth vui-theme-default vui-density-comfortable">
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
       <body className="antialiased">
         <ThemeProvider>
           <Navbar />

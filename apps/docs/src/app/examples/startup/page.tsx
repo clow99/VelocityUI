@@ -15,13 +15,13 @@ const steps = [
     step: '01',
     title: 'Install the package',
     description: 'Add VelocityUI to your project with a single npm command. No complex setup required.',
-    code: 'npm install @clow99/velocityui',
+    code: 'npm install https://git.cameronlow.com/cam/VelocityUI/packages',
   },
   {
     step: '02',
     title: 'Import what you need',
     description: 'Tree-shakeable exports mean you only ship the components you actually use.',
-    code: "import { Button, Card } from '@clow99/velocityui'",
+    code: "import { Button, Card } from 'https://git.cameronlow.com/cam/VelocityUI/packages'",
   },
   {
     step: '03',

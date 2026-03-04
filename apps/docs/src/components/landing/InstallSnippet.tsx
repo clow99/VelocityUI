@@ -3,9 +3,9 @@
 import { useState } from 'react'
 
 const managers = [
-  { label: 'npm', command: 'npm install @clow99/velocityui' },
-  { label: 'pnpm', command: 'pnpm add @clow99/velocityui' },
-  { label: 'yarn', command: 'yarn add @clow99/velocityui' },
+  { label: 'npm', command: 'npm install https://git.cameronlow.com/cam/VelocityUI/packages' },
+  { label: 'pnpm', command: 'pnpm add https://git.cameronlow.com/cam/VelocityUI/packages' },
+  { label: 'yarn', command: 'yarn add https://git.cameronlow.com/cam/VelocityUI/packages' },
 ]
 
 export function InstallSnippet() {

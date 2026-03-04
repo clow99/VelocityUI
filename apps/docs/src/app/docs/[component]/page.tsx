@@ -35,6 +35,11 @@ import { NumberInputPreview } from '@/components/docs/previews/NumberInputPrevie
 import { FileUploadPreview } from '@/components/docs/previews/FileUploadPreview'
 import { TablePreview } from '@/components/docs/previews/TablePreview'
 
+const NPM_PACKAGE = '@clow99/velocityui'
+const GITEA_PACKAGE = 'https://git.cameronlow.com/cam/VelocityUI/packages'
+
+const formatSnippet = (code: string) => code.replaceAll(NPM_PACKAGE, GITEA_PACKAGE)
+
 const previewMap: Record<string, React.ComponentType> = {
   button: ButtonPreview,
   input: InputPreview,
@@ -100,7 +105,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
 
       <section className="mb-10">
         <h2 className="mb-3 text-lg font-semibold text-vui-text">Import</h2>
-        <CodeBlock code={doc.importLine} language="tsx" />
+        <CodeBlock code={formatSnippet(doc.importLine)} language="tsx" />
       </section>
 
       {Preview && (
@@ -126,7 +131,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
               {example.description && (
                 <p className="mb-3 text-sm text-vui-text-subtle">{example.description}</p>
               )}
-              <CodeBlock code={example.code} language="tsx" />
+              <CodeBlock code={formatSnippet(example.code)} language="tsx" />
             </div>
           ))}
         </div>
@@ -145,17 +150,15 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
         <CodeBlock
           language="css"
           code={`/* Pick any named theme */
-<body class="vui-theme-forest">
 <body class="vui-theme-ocean">
-<body class="vui-theme-cyberpunk">
 
 /* Add a density modifier (optional) */
 <body class="vui-theme-midnight vui-density-compact">
 <body class="vui-theme-sunset vui-density-spacious">
 
 /* Available themes */
-/* default  midnight  forest  ocean  sunset */
-/* construction  glass  soft  high-contrast  cyberpunk */
+/* default  midnight  ocean  sunset */
+/* construction  glass  soft  high-contrast  monochrome-red */
 
 /* Available densities */
 /* vui-density-compact  vui-density-comfortable  vui-density-spacious */`}
