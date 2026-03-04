@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--vui-panel-space-lg, 1.75rem) var(--vui-panel-space-md, 1.25rem);
+  gap: 0.5rem;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--vui-surface-muted, #f1f5f9);
+  color: var(--vui-text-subtle, #64748b);
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  font-size: var(--vui-font-size-lg, 1.0625rem);
+  font-weight: 600;
+  color: var(--vui-text, #0f172a);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  color: var(--vui-text-subtle, #64748b);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 26rem;
+}
+
+.action {
+  margin-top: 0.5rem;
+}

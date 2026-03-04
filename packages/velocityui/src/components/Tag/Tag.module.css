@@ -1,0 +1,97 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: var(--vui-radius-pill, 9999px);
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Sizes */
+.sm {
+  padding: 0.2rem 0.45rem;
+  font-size: 0.6875rem;
+}
+
+.md {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8125rem;
+}
+
+.lg {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9375rem;
+}
+
+/* Variants */
+.default {
+  background-color: var(--vui-badge-default-bg, #f3f4f6);
+  color: var(--vui-badge-default-color, #374151);
+  border-color: var(--vui-badge-default-border, #e5e7eb);
+}
+
+.info {
+  background-color: var(--vui-badge-info-bg, #eff6ff);
+  color: var(--vui-badge-info-color, #1d4ed8);
+  border-color: var(--vui-badge-info-border, #bfdbfe);
+}
+
+.success {
+  background-color: var(--vui-badge-success-bg, #f0fdf4);
+  color: var(--vui-badge-success-color, #15803d);
+  border-color: var(--vui-badge-success-border, #bbf7d0);
+}
+
+.warning {
+  background-color: var(--vui-badge-warning-bg, #fffbeb);
+  color: var(--vui-badge-warning-color, #b45309);
+  border-color: var(--vui-badge-warning-border, #fde68a);
+}
+
+.danger {
+  background-color: var(--vui-badge-danger-bg, #fef2f2);
+  color: var(--vui-badge-danger-color, #b91c1c);
+  border-color: var(--vui-badge-danger-border, #fecaca);
+}
+
+.primary {
+  background-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
+  border-color: var(--vui-primary, #6366f1);
+}
+
+.label {
+  line-height: 1;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+}
+
+.close:hover { opacity: 1; }
+
+.close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}

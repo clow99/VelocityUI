@@ -18,6 +18,22 @@ import { TabsPreview } from '@/components/docs/previews/TabsPreview'
 import { AccordionPreview } from '@/components/docs/previews/AccordionPreview'
 import { TooltipPreview } from '@/components/docs/previews/TooltipPreview'
 import { DividerPreview } from '@/components/docs/previews/DividerPreview'
+import { SpinnerPreview } from '@/components/docs/previews/SpinnerPreview'
+import { SkeletonPreview } from '@/components/docs/previews/SkeletonPreview'
+import { ProgressPreview } from '@/components/docs/previews/ProgressPreview'
+import { ToastPreview } from '@/components/docs/previews/ToastPreview'
+import { AvatarPreview } from '@/components/docs/previews/AvatarPreview'
+import { TagPreview } from '@/components/docs/previews/TagPreview'
+import { EmptyStatePreview } from '@/components/docs/previews/EmptyStatePreview'
+import { BreadcrumbPreview } from '@/components/docs/previews/BreadcrumbPreview'
+import { PaginationPreview } from '@/components/docs/previews/PaginationPreview'
+import { StepperPreview } from '@/components/docs/previews/StepperPreview'
+import { PopoverPreview } from '@/components/docs/previews/PopoverPreview'
+import { DropdownPreview } from '@/components/docs/previews/DropdownPreview'
+import { SliderPreview } from '@/components/docs/previews/SliderPreview'
+import { NumberInputPreview } from '@/components/docs/previews/NumberInputPreview'
+import { FileUploadPreview } from '@/components/docs/previews/FileUploadPreview'
+import { TablePreview } from '@/components/docs/previews/TablePreview'
 
 const previewMap: Record<string, React.ComponentType> = {
   button: ButtonPreview,
@@ -36,6 +52,22 @@ const previewMap: Record<string, React.ComponentType> = {
   accordion: AccordionPreview,
   tooltip: TooltipPreview,
   divider: DividerPreview,
+  spinner: SpinnerPreview,
+  skeleton: SkeletonPreview,
+  progress: ProgressPreview,
+  toast: ToastPreview,
+  avatar: AvatarPreview,
+  tag: TagPreview,
+  emptystate: EmptyStatePreview,
+  breadcrumb: BreadcrumbPreview,
+  pagination: PaginationPreview,
+  stepper: StepperPreview,
+  popover: PopoverPreview,
+  dropdown: DropdownPreview,
+  slider: SliderPreview,
+  numberinput: NumberInputPreview,
+  fileupload: FileUploadPreview,
+  table: TablePreview,
 }
 
 export function generateStaticParams() {

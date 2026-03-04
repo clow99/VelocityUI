@@ -1,0 +1,108 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.label {
+  font-size: var(--vui-label-size, 0.875rem);
+  font-weight: 500;
+  color: var(--vui-text-muted, #334155);
+  line-height: 1.4;
+}
+
+.required {
+  color: var(--vui-danger, #ef4444);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border-radius: var(--vui-radius-md, 0.5rem);
+  background-color: var(--vui-surface, #ffffff);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wrapper:focus-within {
+  border-color: var(--vui-primary, #6366f1);
+  box-shadow: 0 0 0 3px var(--vui-focus-ring, rgba(99, 102, 241, 0.15));
+}
+
+.hasError {
+  border-color: var(--vui-danger, #ef4444);
+}
+
+.hasError:focus-within {
+  box-shadow: 0 0 0 3px var(--vui-focus-danger-ring, rgba(239, 68, 68, 0.15));
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Sizes */
+.sm { height: var(--vui-control-height-sm, 2rem); }
+.md { height: var(--vui-control-height-md, 2.5rem); }
+.lg { height: var(--vui-control-height-lg, 3rem); }
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: var(--vui-font-size-md, 0.9375rem);
+  font-weight: 500;
+  color: var(--vui-text, #0f172a);
+  padding: 0;
+  outline: none;
+  font-family: inherit;
+  min-width: 0;
+  -moz-appearance: textfield;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--vui-text-subtle, #64748b);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.stepBtn:hover:not(:disabled) {
+  background-color: var(--vui-surface-muted, #f1f5f9);
+  color: var(--vui-text, #0f172a);
+}
+
+.stepBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.errorMsg {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-danger, #ef4444);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.hintMsg {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-text-subtle, #64748b);
+  margin: 0;
+  line-height: 1.4;
+}

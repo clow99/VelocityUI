@@ -1,0 +1,143 @@
+.root {
+  display: flex;
+}
+
+/* Orientations */
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* Step */
+.step {
+  display: flex;
+  flex: 1;
+}
+
+.horizontal .step {
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+  flex: unset;
+}
+
+.vertical .step:last-child .connector {
+  display: none;
+}
+
+/* Indicator: circle + connector */
+.indicator {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.horizontal .indicator {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.vertical .indicator {
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0.75rem;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  border: 2px solid;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.connector {
+  display: block;
+  background-color: var(--vui-border, #dbe2ea);
+  transition: background-color 0.15s ease;
+}
+
+.horizontal .connector {
+  height: 2px;
+  width: 100%;
+  margin: 0;
+}
+
+.vertical .connector {
+  width: 2px;
+  height: 2rem;
+  margin: 0.25rem 0;
+}
+
+/* Step states */
+.pending .circle {
+  border-color: var(--vui-border, #dbe2ea);
+  background-color: var(--vui-surface, #ffffff);
+  color: var(--vui-text-subtle, #64748b);
+}
+
+.active .circle {
+  border-color: var(--vui-primary, #6366f1);
+  background-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
+}
+
+.completed .circle {
+  border-color: var(--vui-primary, #6366f1);
+  background-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
+}
+
+.completed .connector {
+  background-color: var(--vui-primary, #6366f1);
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.horizontal .content {
+  align-items: center;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.vertical .content {
+  padding-bottom: 1.5rem;
+}
+
+.label {
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  font-weight: 600;
+  color: var(--vui-text, #0f172a);
+  line-height: 1.4;
+}
+
+.pending .label {
+  color: var(--vui-text-subtle, #64748b);
+  font-weight: 500;
+}
+
+.description {
+  font-size: 0.75rem;
+  color: var(--vui-text-subtle, #64748b);
+  line-height: 1.5;
+}

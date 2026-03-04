@@ -1,0 +1,64 @@
+.triggerWrapper {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.popover {
+  position: absolute;
+  z-index: 9000;
+  background-color: var(--vui-surface, #ffffff);
+  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border-radius: var(--vui-radius-lg, 0.75rem);
+  box-shadow: var(--vui-shadow-lg, 0 12px 22px rgba(2, 6, 23, 0.16));
+  padding: var(--vui-panel-space-md, 1.25rem);
+  min-width: 12rem;
+  max-width: 20rem;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.arrow {
+  position: absolute;
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: var(--vui-surface, #ffffff);
+  border: 1.5px solid var(--vui-border, #dbe2ea);
+  transform: rotate(45deg);
+}
+
+/* Arrow placement */
+.bottom .arrow {
+  top: -0.375rem;
+  left: 50%;
+  margin-left: -0.3125rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.top .arrow {
+  bottom: -0.375rem;
+  left: 50%;
+  margin-left: -0.3125rem;
+  border-left: none;
+  border-top: none;
+}
+
+.right .arrow {
+  left: -0.375rem;
+  top: 50%;
+  margin-top: -0.3125rem;
+  border-right: none;
+  border-top: none;
+}
+
+.left .arrow {
+  right: -0.375rem;
+  top: 50%;
+  margin-top: -0.3125rem;
+  border-left: none;
+  border-bottom: none;
+}

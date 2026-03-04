@@ -1,0 +1,110 @@
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--vui-radius-lg, 0.75rem);
+  border: 1.5px solid var(--vui-border, #dbe2ea);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: inherit;
+}
+
+/* Sizes */
+.sm .th,
+.sm .td {
+  padding: 0.5rem 0.75rem;
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+}
+
+.md .th,
+.md .td {
+  padding: 0.75rem 1rem;
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+}
+
+.lg .th,
+.lg .td {
+  padding: 1rem 1.25rem;
+  font-size: var(--vui-font-size-md, 0.9375rem);
+}
+
+.th {
+  background-color: var(--vui-surface-muted, #f1f5f9);
+  color: var(--vui-text-muted, #334155);
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1.5px solid var(--vui-border, #dbe2ea);
+  user-select: none;
+}
+
+.thContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sortable {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.sortable:hover {
+  background-color: var(--vui-secondary-hover, #e2e8f0);
+}
+
+.sortActive {
+  color: var(--vui-primary, #6366f1);
+}
+
+.sortIcon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--vui-text-subtle, #64748b);
+}
+
+.sortActive .sortIcon {
+  color: var(--vui-primary, #6366f1);
+}
+
+.tr {
+  border-bottom: 1px solid var(--vui-divider, #e5e7eb);
+  transition: background-color 0.15s ease;
+}
+
+.tr:last-child {
+  border-bottom: none;
+}
+
+.tr:hover {
+  background-color: var(--vui-surface-muted, #f1f5f9);
+}
+
+.td {
+  color: var(--vui-text, #0f172a);
+  vertical-align: middle;
+}
+
+/* Striped */
+.striped .tr:nth-child(even) {
+  background-color: var(--vui-surface-muted, #f1f5f9);
+}
+
+.striped .tr:nth-child(even):hover {
+  background-color: var(--vui-secondary-hover, #e2e8f0);
+}
+
+/* Bordered */
+.bordered .td,
+.bordered .th {
+  border: 1px solid var(--vui-divider, #e5e7eb);
+}
+
+.empty {
+  text-align: center;
+  color: var(--vui-text-subtle, #64748b);
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  padding: 2.5rem 1rem;
+}

@@ -1,0 +1,56 @@
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.svg {
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.track {
+  opacity: 0.2;
+}
+
+.arc {
+  stroke-dasharray: 40 60;
+  stroke-dashoffset: 0;
+}
+
+/* Sizes */
+.sm .svg,
+.sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.md .svg,
+.md {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.lg .svg,
+.lg {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Colors */
+.primary {
+  color: var(--vui-primary, #6366f1);
+}
+
+.muted {
+  color: var(--vui-text-subtle, #64748b);
+}
+
+.white {
+  color: #ffffff;
+}

@@ -1,0 +1,62 @@
+.nav {
+  display: inline-block;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.375rem;
+  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border-radius: var(--vui-radius-md, 0.5rem);
+  background-color: var(--vui-surface, #ffffff);
+  color: var(--vui-text-muted, #334155);
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  font-family: inherit;
+}
+
+.btn:hover:not(.disabled):not(.active) {
+  background-color: var(--vui-surface-muted, #f1f5f9);
+  border-color: var(--vui-border-strong, #c3cfdd);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--vui-primary, #6366f1);
+  outline-offset: 1px;
+}
+
+.active {
+  background-color: var(--vui-primary, #6366f1);
+  border-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
+  cursor: default;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  color: var(--vui-text-subtle, #64748b);
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+}

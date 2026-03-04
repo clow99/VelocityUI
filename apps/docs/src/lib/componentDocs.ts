@@ -1072,4 +1072,805 @@ export default function Example() {
       },
     ],
   },
+
+  spinner: {
+    name: 'Spinner',
+    slug: 'spinner',
+    description:
+      'An animated SVG ring used to indicate a loading state. Supports three sizes and color options. Includes a screen-reader-accessible label via role="status".',
+    importLine: "import { Spinner } from 'velocityui'",
+    props: [
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls the width and height of the spinner.' },
+      { name: 'color', type: "'primary' | 'muted' | 'white'", default: "'primary'", description: 'The color of the spinner arc.' },
+      { name: 'label', type: 'string', default: "'Loading…'", description: 'Screen-reader label set via aria-label on the container.' },
+    ],
+    examples: [
+      {
+        title: 'Sizes',
+        code: `import { Spinner } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <Spinner size="sm" />
+      <Spinner size="md" />
+      <Spinner size="lg" />
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Colors',
+        code: `import { Spinner } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <Spinner color="primary" />
+      <Spinner color="muted" />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  skeleton: {
+    name: 'Skeleton',
+    slug: 'skeleton',
+    description:
+      'A shimmering placeholder used to represent loading content. Can render as a single block or as a stack of multiple lines, with full control over width, height, and border radius.',
+    importLine: "import { Skeleton } from 'velocityui'",
+    props: [
+      { name: 'width', type: 'string | number', description: 'Width of the skeleton block. Defaults to 100% for multi-line stacks.' },
+      { name: 'height', type: 'string | number', default: "'1rem'", description: 'Height of each skeleton block.' },
+      { name: 'radius', type: 'string | number', description: 'Border radius. Defaults to --vui-radius-sm.' },
+      { name: 'lines', type: 'number', description: 'When greater than 1, renders a stacked column of blocks. The last line renders at 75% width.' },
+      { name: 'gap', type: 'string | number', default: "'0.5rem'", description: 'Gap between lines when using multi-line mode.' },
+    ],
+    examples: [
+      {
+        title: 'Single block',
+        code: `import { Skeleton } from 'velocityui'
+
+export default function Example() {
+  return <Skeleton width={200} height={20} />
+}`,
+      },
+      {
+        title: 'Multi-line text',
+        code: `import { Skeleton } from 'velocityui'
+
+export default function Example() {
+  return <Skeleton lines={4} height={14} />
+}`,
+      },
+      {
+        title: 'Card skeleton',
+        code: `import { Skeleton } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: 280 }}>
+      <Skeleton height={160} radius={12} />
+      <Skeleton height={18} width="60%" />
+      <Skeleton lines={3} height={13} />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  progress: {
+    name: 'Progress',
+    slug: 'progress',
+    description:
+      'A linear progress bar that reflects a numeric value from 0 to 100. Supports four color variants, three sizes, an optional label, and a percentage readout. Renders with role="progressbar" and full ARIA attributes.',
+    importLine: "import { Progress } from 'velocityui'",
+    props: [
+      { name: 'value', type: 'number', description: 'Current progress value from 0 to 100.' },
+      { name: 'variant', type: "'primary' | 'success' | 'warning' | 'danger'", default: "'primary'", description: 'Color of the filled bar.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Track height.' },
+      { name: 'label', type: 'string', description: 'Text label shown above the bar.' },
+      { name: 'showValue', type: 'boolean', default: 'false', description: 'Displays the numeric percentage to the right of the label.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Progress } from 'velocityui'
+
+export default function Example() {
+  return <Progress value={65} label="Upload progress" showValue />
+}`,
+      },
+      {
+        title: 'Variants',
+        code: `import { Progress } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <Progress value={40} variant="primary" />
+      <Progress value={72} variant="success" />
+      <Progress value={55} variant="warning" />
+      <Progress value={20} variant="danger" />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  toast: {
+    name: 'Toast',
+    slug: 'toast',
+    description:
+      'Portal-based ephemeral notifications rendered in the bottom-right corner. Wrap your app in ToastProvider and call useToast() to programmatically fire toasts with variants, custom durations, and dismiss callbacks.',
+    importLine: "import { ToastProvider, useToast } from 'velocityui'",
+    props: [
+      { name: 'message', type: 'string', description: 'The notification text to display.' },
+      { name: 'variant', type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'", description: 'Controls the color and semantic tone of the toast.' },
+      { name: 'duration', type: 'number', default: '4000', description: 'Auto-dismiss delay in milliseconds. Set to 0 to disable auto-dismiss.' },
+    ],
+    examples: [
+      {
+        title: 'Setup and usage',
+        description: 'Wrap your app with ToastProvider, then call addToast() anywhere inside.',
+        code: `import { ToastProvider, useToast, Button } from 'velocityui'
+
+function Demo() {
+  const { addToast } = useToast()
+  return (
+    <Button onClick={() => addToast({ message: 'Saved successfully!', variant: 'success' })}>
+      Save
+    </Button>
+  )
+}
+
+export default function Example() {
+  return (
+    <ToastProvider>
+      <Demo />
+    </ToastProvider>
+  )
+}`,
+      },
+      {
+        title: 'All variants',
+        code: `import { ToastProvider, useToast, Button } from 'velocityui'
+
+function Demo() {
+  const { addToast } = useToast()
+  return (
+    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <Button onClick={() => addToast({ message: 'Info message', variant: 'info' })}>Info</Button>
+      <Button variant="secondary" onClick={() => addToast({ message: 'Changes saved', variant: 'success' })}>Success</Button>
+      <Button variant="outline" onClick={() => addToast({ message: 'Please review', variant: 'warning' })}>Warning</Button>
+      <Button variant="danger" onClick={() => addToast({ message: 'Action failed', variant: 'danger' })}>Danger</Button>
+    </div>
+  )
+}
+
+export default function Example() {
+  return (
+    <ToastProvider>
+      <Demo />
+    </ToastProvider>
+  )
+}`,
+      },
+    ],
+  },
+
+  avatar: {
+    name: 'Avatar',
+    slug: 'avatar',
+    description:
+      'Displays a user avatar image with an automatic initials fallback when no image is provided or when the image fails to load. Supports five sizes, two shapes, and an optional status indicator dot.',
+    importLine: "import { Avatar } from 'velocityui'",
+    props: [
+      { name: 'src', type: 'string', description: 'URL of the avatar image.' },
+      { name: 'alt', type: 'string', description: 'Alt text for the image.' },
+      { name: 'name', type: 'string', description: 'Full name used to generate initials when no image is available.' },
+      { name: 'size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: 'Controls the overall dimensions of the avatar.' },
+      { name: 'shape', type: "'circle' | 'square'", default: "'circle'", description: 'Border radius shape.' },
+      { name: 'status', type: "'online' | 'away' | 'offline'", description: 'Shows a colored status dot in the bottom-right corner.' },
+    ],
+    examples: [
+      {
+        title: 'Sizes',
+        code: `import { Avatar } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Avatar name="Alice Brown" size="xs" />
+      <Avatar name="Alice Brown" size="sm" />
+      <Avatar name="Alice Brown" size="md" />
+      <Avatar name="Alice Brown" size="lg" />
+      <Avatar name="Alice Brown" size="xl" />
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'With status',
+        code: `import { Avatar } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Avatar name="Sam Lee" status="online" />
+      <Avatar name="Jordan Kim" status="away" />
+      <Avatar name="Alex Ng" status="offline" />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  tag: {
+    name: 'Tag',
+    slug: 'tag',
+    description:
+      'An interactive chip component that extends the visual style of Badge with a removable close button. Ideal for filters, selections, and user-generated labels.',
+    importLine: "import { Tag } from 'velocityui'",
+    props: [
+      { name: 'variant', type: "'default' | 'info' | 'success' | 'warning' | 'danger' | 'primary'", default: "'default'", description: 'Color variant of the tag.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls padding and font size.' },
+      { name: 'onClose', type: '() => void', description: 'When provided, renders an × close button inside the tag.' },
+      { name: 'leftIcon', type: 'ReactNode', description: 'Icon rendered to the left of the label.' },
+    ],
+    examples: [
+      {
+        title: 'Removable tags',
+        code: `import { Tag } from 'velocityui'
+import { useState } from 'react'
+
+export default function Example() {
+  const [tags, setTags] = useState(['React', 'TypeScript', 'Tailwind'])
+  return (
+    <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
+      {tags.map((t) => (
+        <Tag key={t} variant="primary" onClose={() => setTags(tags.filter((x) => x !== t))}>
+          {t}
+        </Tag>
+      ))}
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Variants',
+        code: `import { Tag } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
+      <Tag>Default</Tag>
+      <Tag variant="info">Info</Tag>
+      <Tag variant="success">Success</Tag>
+      <Tag variant="warning">Warning</Tag>
+      <Tag variant="danger">Danger</Tag>
+      <Tag variant="primary">Primary</Tag>
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  emptystate: {
+    name: 'EmptyState',
+    slug: 'emptystate',
+    description:
+      'A structured zero-data placeholder that centers an icon, title, description, and optional call-to-action. Use it to fill tables, lists, or panels that have no content to show.',
+    importLine: "import { EmptyState } from 'velocityui'",
+    props: [
+      { name: 'title', type: 'string', description: 'Main heading of the empty state.' },
+      { name: 'description', type: 'string', description: 'Supporting text below the title.' },
+      { name: 'icon', type: 'ReactNode', description: 'Icon or illustration rendered inside a circular background above the title.' },
+      { name: 'action', type: 'ReactNode', description: 'Call-to-action element (e.g. a Button) rendered below the description.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { EmptyState, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <EmptyState
+      title="No results found"
+      description="Try adjusting your search or filters to find what you're looking for."
+      action={<Button variant="outline">Clear filters</Button>}
+    />
+  )
+}`,
+      },
+      {
+        title: 'With icon',
+        code: `import { EmptyState, Button } from 'velocityui'
+
+const FolderIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+      d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+  </svg>
+)
+
+export default function Example() {
+  return (
+    <EmptyState
+      icon={<FolderIcon />}
+      title="No files yet"
+      description="Upload your first file to get started."
+      action={<Button>Upload file</Button>}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  breadcrumb: {
+    name: 'Breadcrumb',
+    slug: 'breadcrumb',
+    description:
+      'A navigation trail that shows the current page location within a hierarchy. Uses a native <nav> with aria-label="Breadcrumb" and marks the last item with aria-current="page".',
+    importLine: "import { Breadcrumb } from 'velocityui'",
+    props: [
+      { name: 'items', type: "{ label: string; href?: string }[]", description: 'Array of breadcrumb entries. The last item is rendered as static text (current page).' },
+      { name: 'separator', type: 'ReactNode', description: 'Custom separator element. Defaults to a chevron-right icon.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Breadcrumb } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Breadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Products', href: '/products' },
+        { label: 'Running Shoes' },
+      ]}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Custom separator',
+        code: `import { Breadcrumb } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Breadcrumb
+      separator={<span style={{ color: '#94a3b8' }}>/</span>}
+      items={[
+        { label: 'Dashboard', href: '/dashboard' },
+        { label: 'Settings', href: '/settings' },
+        { label: 'Profile' },
+      ]}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  pagination: {
+    name: 'Pagination',
+    slug: 'pagination',
+    description:
+      'Page navigation controls with previous/next buttons, numbered page buttons, smart ellipsis truncation, and optional first/last shortcuts. Fully keyboard accessible and uses aria-current="page".',
+    importLine: "import { Pagination } from 'velocityui'",
+    props: [
+      { name: 'page', type: 'number', description: 'The currently active page (1-indexed).' },
+      { name: 'totalPages', type: 'number', description: 'The total number of pages.' },
+      { name: 'onChange', type: '(page: number) => void', description: 'Callback fired when the user selects a new page.' },
+      { name: 'siblingCount', type: 'number', default: '1', description: 'Number of page buttons shown on each side of the current page.' },
+      { name: 'showFirstLast', type: 'boolean', default: 'true', description: 'Toggles the first-page and last-page shortcut buttons.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Pagination } from 'velocityui'
+import { useState } from 'react'
+
+export default function Example() {
+  const [page, setPage] = useState(1)
+  return <Pagination page={page} totalPages={12} onChange={setPage} />
+}`,
+      },
+      {
+        title: 'More siblings',
+        code: `import { Pagination } from 'velocityui'
+import { useState } from 'react'
+
+export default function Example() {
+  const [page, setPage] = useState(5)
+  return <Pagination page={page} totalPages={20} onChange={setPage} siblingCount={2} />
+}`,
+      },
+    ],
+  },
+
+  stepper: {
+    name: 'Stepper',
+    slug: 'stepper',
+    description:
+      'A multi-step progress indicator that shows completed, active, and pending steps with connecting lines. Supports horizontal and vertical orientations and a compact variant that hides text labels.',
+    importLine: "import { Stepper } from 'velocityui'",
+    props: [
+      { name: 'steps', type: "{ label: string; description?: string }[]", description: 'Array of step definitions.' },
+      { name: 'currentStep', type: 'number', description: 'The 1-indexed step that is currently active.' },
+      { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'Layout direction of the stepper.' },
+      { name: 'variant', type: "'default' | 'compact'", default: "'default'", description: 'Compact hides the label and description text.' },
+    ],
+    examples: [
+      {
+        title: 'Horizontal',
+        code: `import { Stepper } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Stepper
+      currentStep={2}
+      steps={[
+        { label: 'Account', description: 'Create your account' },
+        { label: 'Profile', description: 'Set up your profile' },
+        { label: 'Review', description: 'Confirm details' },
+      ]}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Vertical',
+        code: `import { Stepper } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Stepper
+      orientation="vertical"
+      currentStep={3}
+      steps={[
+        { label: 'Cart', description: 'Review your items' },
+        { label: 'Shipping', description: 'Enter your address' },
+        { label: 'Payment', description: 'Complete your purchase' },
+        { label: 'Confirmation' },
+      ]}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  popover: {
+    name: 'Popover',
+    slug: 'popover',
+    description:
+      'An interactive overlay anchored to a trigger element. Unlike Tooltip, Popover can contain any rich content. Supports four placements, a portal for stacking context isolation, click-outside and Escape-key dismissal, and both controlled and uncontrolled modes.',
+    importLine: "import { Popover } from 'velocityui'",
+    props: [
+      { name: 'trigger', type: 'ReactNode', description: 'The element that opens the popover when clicked.' },
+      { name: 'content', type: 'ReactNode', description: 'Content rendered inside the popover panel.' },
+      { name: 'placement', type: "'top' | 'bottom' | 'left' | 'right'", default: "'bottom'", description: 'Preferred placement relative to the trigger.' },
+      { name: 'open', type: 'boolean', description: 'Controls open state externally (controlled mode).' },
+      { name: 'onOpenChange', type: '(open: boolean) => void', description: 'Callback when open state changes (controlled mode).' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Popover, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Popover
+      trigger={<Button variant="outline">Open popover</Button>}
+      content={
+        <div>
+          <strong>Popover title</strong>
+          <p style={{ margin: '0.5rem 0 0', fontSize: '0.875rem', color: '#64748b' }}>
+            This is some popover content. Click outside to dismiss.
+          </p>
+        </div>
+      }
+    />
+  )
+}`,
+      },
+      {
+        title: 'Top placement',
+        code: `import { Popover, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ padding: '4rem 0 0' }}>
+      <Popover
+        placement="top"
+        trigger={<Button variant="secondary">Popover above</Button>}
+        content={<p style={{ margin: 0 }}>Placed above the trigger</p>}
+      />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  dropdown: {
+    name: 'Dropdown',
+    slug: 'dropdown',
+    description:
+      'An action menu anchored to a trigger element. Items can include icons, disabled states, and separator rules. The menu is portal-rendered to avoid overflow clipping and closes on item click, outside click, or Escape key.',
+    importLine: "import { Dropdown } from 'velocityui'",
+    props: [
+      { name: 'trigger', type: 'ReactNode', description: 'The element that opens the menu when clicked.' },
+      { name: 'items', type: "{ label: string; icon?: ReactNode; onClick?: () => void; disabled?: boolean; separator?: boolean }[]", description: 'Array of menu items. An item with separator: true renders a horizontal divider instead of a button.' },
+      { name: 'placement', type: "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'", default: "'bottom-start'", description: 'Menu placement relative to the trigger.' },
+    ],
+    examples: [
+      {
+        title: 'Basic menu',
+        code: `import { Dropdown, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Dropdown
+      trigger={<Button variant="outline">Actions ▾</Button>}
+      items={[
+        { label: 'Edit' },
+        { label: 'Duplicate' },
+        { separator: true },
+        { label: 'Delete', onClick: () => alert('Deleted') },
+      ]}
+    />
+  )
+}`,
+      },
+      {
+        title: 'With disabled item',
+        code: `import { Dropdown, Button } from 'velocityui'
+
+export default function Example() {
+  return (
+    <Dropdown
+      trigger={<Button>Options</Button>}
+      items={[
+        { label: 'View details' },
+        { label: 'Export', disabled: true },
+        { label: 'Archive' },
+      ]}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  slider: {
+    name: 'Slider',
+    slug: 'slider',
+    description:
+      'A styled range input with a custom track and thumb. Provides a filled track that visually shows the current value. Supports labels, a live value readout, min/max/step configuration, and disabled state.',
+    importLine: "import { Slider } from 'velocityui'",
+    props: [
+      { name: 'value', type: 'number', description: 'Controlled value.' },
+      { name: 'onChange', type: '(value: number) => void', description: 'Callback fired when the value changes.' },
+      { name: 'min', type: 'number', default: '0', description: 'Minimum value.' },
+      { name: 'max', type: 'number', default: '100', description: 'Maximum value.' },
+      { name: 'step', type: 'number', default: '1', description: 'Step increment.' },
+      { name: 'label', type: 'string', description: 'Label displayed above the slider.' },
+      { name: 'showValue', type: 'boolean', default: 'false', description: 'Shows the current numeric value to the right of the label.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Height of the track area.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables interaction.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { Slider } from 'velocityui'
+import { useState } from 'react'
+
+export default function Example() {
+  const [val, setVal] = useState(40)
+  return <Slider value={val} onChange={setVal} label="Volume" showValue />
+}`,
+      },
+      {
+        title: 'Stepped',
+        code: `import { Slider } from 'velocityui'
+import { useState } from 'react'
+
+export default function Example() {
+  const [val, setVal] = useState(50)
+  return <Slider value={val} onChange={setVal} min={0} max={200} step={25} label="Budget" showValue />
+}`,
+      },
+    ],
+  },
+
+  numberinput: {
+    name: 'NumberInput',
+    slug: 'numberinput',
+    description:
+      'A numeric text input with increment and decrement step buttons. Respects min/max bounds, supports label, error, and hint text, and hides the native browser spin buttons for a consistent cross-browser appearance.',
+    importLine: "import { NumberInput } from 'velocityui'",
+    props: [
+      { name: 'value', type: 'number', description: 'Controlled value.' },
+      { name: 'onChange', type: '(value: number) => void', description: 'Callback fired when the value changes.' },
+      { name: 'min', type: 'number', description: 'Minimum allowed value. Disables the decrement button at the boundary.' },
+      { name: 'max', type: 'number', description: 'Maximum allowed value. Disables the increment button at the boundary.' },
+      { name: 'step', type: 'number', default: '1', description: 'Amount to increment or decrement per button click.' },
+      { name: 'label', type: 'string', description: 'Label rendered above the input.' },
+      { name: 'error', type: 'string', description: 'Error message rendered below the input.' },
+      { name: 'hint', type: 'string', description: 'Hint text rendered below the input when there is no error.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Height of the input.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the input and buttons.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { NumberInput } from 'velocityui'
+import { useState } from 'react'
+
+export default function Example() {
+  const [qty, setQty] = useState(1)
+  return <NumberInput value={qty} onChange={setQty} min={1} max={99} label="Quantity" />
+}`,
+      },
+      {
+        title: 'With error',
+        code: `import { NumberInput } from 'velocityui'
+
+export default function Example() {
+  return (
+    <NumberInput
+      value={0}
+      onChange={() => {}}
+      min={1}
+      label="Age"
+      error="Must be at least 1"
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  fileupload: {
+    name: 'FileUpload',
+    slug: 'fileupload',
+    description:
+      'A drag-and-drop file upload zone with a click-to-browse fallback. Shows selected files in a removable list and validates file size against an optional maxSize cap. Supports single and multiple file selection.',
+    importLine: "import { FileUpload } from 'velocityui'",
+    props: [
+      { name: 'onChange', type: '(files: File[]) => void', description: 'Callback fired when the file selection changes.' },
+      { name: 'accept', type: 'string', description: 'MIME types or file extensions to accept, e.g. "image/*" or ".pdf".' },
+      { name: 'multiple', type: 'boolean', default: 'false', description: 'Allows selecting multiple files.' },
+      { name: 'maxSize', type: 'number', description: 'Maximum file size in bytes. Triggers an error message if exceeded.' },
+      { name: 'label', type: 'string', description: 'Label displayed above the drop zone.' },
+      { name: 'hint', type: 'string', description: 'Hint text rendered inside the drop zone.' },
+      { name: 'error', type: 'string', description: 'Error message rendered below the drop zone.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables interaction.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        code: `import { FileUpload } from 'velocityui'
+
+export default function Example() {
+  return (
+    <FileUpload
+      label="Attachment"
+      hint="PNG, JPG, PDF up to 10 MB"
+      onChange={(files) => console.log(files)}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Multiple files with size limit',
+        code: `import { FileUpload } from 'velocityui'
+
+export default function Example() {
+  return (
+    <FileUpload
+      multiple
+      accept="image/*"
+      maxSize={5 * 1024 * 1024}
+      label="Gallery images"
+      hint="Up to 5 MB each"
+      onChange={(files) => console.log(files)}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  table: {
+    name: 'Table',
+    slug: 'table',
+    description:
+      'A sortable data table with optional striped rows and bordered cells. Column definitions support a custom render function for cell content. Sorting is fully controlled and includes proper aria-sort attributes.',
+    importLine: "import { Table } from 'velocityui'",
+    props: [
+      { name: 'columns', type: "{ key: string; header: string; sortable?: boolean; render?: (value, row, index) => ReactNode }[]", description: 'Column definitions.' },
+      { name: 'data', type: 'T[]', description: 'Array of row data objects.' },
+      { name: 'sortKey', type: 'string', description: 'The column key currently sorted.' },
+      { name: 'sortDir', type: "'asc' | 'desc'", description: 'The current sort direction.' },
+      { name: 'onSort', type: '(key: string, dir: SortDirection) => void', description: 'Callback fired when a sortable header is clicked.' },
+      { name: 'striped', type: 'boolean', default: 'false', description: 'Alternates row background colors.' },
+      { name: 'bordered', type: 'boolean', default: 'false', description: 'Adds borders to individual cells.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls cell padding and font size.' },
+    ],
+    examples: [
+      {
+        title: 'Basic sortable table',
+        code: `import { Table } from 'velocityui'
+import { useState } from 'react'
+
+const data = [
+  { name: 'Alice', role: 'Engineer', status: 'Active' },
+  { name: 'Bob', role: 'Designer', status: 'Inactive' },
+  { name: 'Carol', role: 'Manager', status: 'Active' },
+]
+
+export default function Example() {
+  const [sortKey, setSortKey] = useState('')
+  const [sortDir, setSortDir] = useState('asc')
+
+  const sorted = [...data].sort((a, b) => {
+    if (!sortKey) return 0
+    const cmp = a[sortKey] < b[sortKey] ? -1 : a[sortKey] > b[sortKey] ? 1 : 0
+    return sortDir === 'asc' ? cmp : -cmp
+  })
+
+  return (
+    <Table
+      columns={[
+        { key: 'name', header: 'Name', sortable: true },
+        { key: 'role', header: 'Role', sortable: true },
+        { key: 'status', header: 'Status' },
+      ]}
+      data={sorted}
+      sortKey={sortKey}
+      sortDir={sortDir}
+      onSort={(key, dir) => { setSortKey(key); setSortDir(dir) }}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Striped and bordered',
+        code: `import { Table } from 'velocityui'
+
+const data = [
+  { id: 1, product: 'Widget A', price: '$12.00' },
+  { id: 2, product: 'Widget B', price: '$8.50' },
+  { id: 3, product: 'Widget C', price: '$24.99' },
+]
+
+export default function Example() {
+  return (
+    <Table
+      columns={[
+        { key: 'id', header: '#' },
+        { key: 'product', header: 'Product' },
+        { key: 'price', header: 'Price' },
+      ]}
+      data={data}
+      striped
+      bordered
+    />
+  )
+}`,
+      },
+    ],
+  },
 }

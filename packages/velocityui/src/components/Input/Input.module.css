@@ -97,6 +97,7 @@
   align-items: center;
   color: var(--vui-input-icon-color, #9ca3af);
   pointer-events: none;
+  z-index: 1;
 }
 
 .iconLeft {
