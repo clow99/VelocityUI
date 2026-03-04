@@ -4,13 +4,23 @@ import styles from './Dropdown.module.css'
 
 export type DropdownPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
 
-export interface DropdownItem {
+type DropdownActionItem = {
   label: string
   icon?: React.ReactNode
   onClick?: () => void
   disabled?: boolean
-  separator?: boolean
+  separator?: false
 }
+
+type DropdownSeparatorItem = {
+  separator: true
+  label?: never
+  icon?: never
+  onClick?: never
+  disabled?: never
+}
+
+export type DropdownItem = DropdownActionItem | DropdownSeparatorItem
 
 export interface DropdownProps {
   trigger: React.ReactNode

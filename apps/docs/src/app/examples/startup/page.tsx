@@ -77,7 +77,7 @@ export default function StartupExamplePage() {
 
       <section className="flex flex-col items-center gap-6 text-center">
         <Badge variant="info">Now in v1.0 — stable release</Badge>
-        <Title as="h2" size="2xl" className="max-w-2xl">
+        <Title as="h2" size="xxl" className="max-w-2xl">
           Build beautiful React apps at the speed of thought
         </Title>
         <p className="max-w-xl text-lg text-vui-text-muted">
