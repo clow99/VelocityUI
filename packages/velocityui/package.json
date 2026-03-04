@@ -2,6 +2,14 @@
   "name": "@cam/velocityui",
   "version": "0.1.3",
   "description": "A modern, accessible React component library",
+  "repository": {
+    "type": "git",
+    "url": "https://git.cameronlow.com/cam/VelocityUI.git"
+  },
+  "homepage": "https://git.cameronlow.com/cam/VelocityUI",
+  "bugs": {
+    "url": "https://git.cameronlow.com/cam/VelocityUI/issues"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
