@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: 'https://git.cameronlow.com/api/packages/cam/npm/'
-          scope: '@cam'
+          registry-url: 'https://git.cameronlow.com/api/packages/${{ gitea.repository_owner }}/npm/'
+          scope: '@${{ gitea.repository_owner }}'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -32,17 +32,31 @@ jobs:
             echo "GITEATOKEN secret is missing or empty"
             exit 1
           fi
-          echo "@cam:registry=https://git.cameronlow.com/api/packages/cam/npm/" >> ~/.npmrc
-          echo "//git.cameronlow.com/api/packages/cam/npm/:_authToken=${{ secrets.GITEATOKEN }}" >> ~/.npmrc
+          OWNER_SCOPE="@${{ gitea.repository_owner }}"
+          REGISTRY_URL="https://git.cameronlow.com/api/packages/${{ gitea.repository_owner }}/npm/"
+          REGISTRY_AUTH="//git.cameronlow.com/api/packages/${{ gitea.repository_owner }}/npm/:_authToken=${{ secrets.GITEATOKEN }}"
+          echo "${OWNER_SCOPE}:registry=${REGISTRY_URL}" >> ~/.npmrc
+          echo "${REGISTRY_AUTH}" >> ~/.npmrc
           echo "always-auth=true" >> ~/.npmrc
+
+      - name: Normalize package scope for Gitea owner
+        working-directory: packages/velocityui
+        run: |
+          OWNER_SCOPE="@${{ gitea.repository_owner }}"
+          PACKAGE_BASENAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name.split('/').pop()")
+          TARGET_PACKAGE_NAME="${OWNER_SCOPE}/${PACKAGE_BASENAME}"
+          npm pkg set name="$TARGET_PACKAGE_NAME"
+          echo "Publishing package as $TARGET_PACKAGE_NAME"
 
       - name: Check if version already published
         id: version_check
         working-directory: packages/velocityui
         run: |
+          PACKAGE_NAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name")
           VERSION=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).version")
+          echo "package_name=$PACKAGE_NAME" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if npm view "@cam/velocityui@$VERSION" --registry https://git.cameronlow.com/api/packages/cam/npm/ 2>/dev/null; then
+          if npm view "$PACKAGE_NAME@$VERSION" --registry https://git.cameronlow.com/api/packages/${{ gitea.repository_owner }}/npm/ 2>/dev/null; then
             echo "already_published=true" >> "$GITHUB_OUTPUT"
           else
             echo "already_published=false" >> "$GITHUB_OUTPUT"
@@ -53,6 +67,6 @@ jobs:
       - name: Publish to Gitea
         if: steps.version_check.outputs.already_published == 'false'
         working-directory: packages/velocityui
-        run: npm publish --registry https://git.cameronlow.com/api/packages/cam/npm/
+        run: npm publish --registry https://git.cameronlow.com/api/packages/${{ gitea.repository_owner }}/npm/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITEATOKEN }}

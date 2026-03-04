@@ -12,7 +12,7 @@ jobs:
       contents: read
       packages: write
     env:
-      GH_PACKAGES_TOKEN: ${{ secrets.TOKEN != '' && secrets.TOKEN || secrets.GITHUB_TOKEN }}
+      GH_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v4
@@ -21,14 +21,14 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@cam'
+          scope: '@${{ github.repository_owner }}'
 
       - name: Debug publish context
         run: |
           echo "Repository: ${{ github.repository }}"
           echo "Owner: ${{ github.repository_owner }}"
           if [ -z "$GH_PACKAGES_TOKEN" ]; then
-            echo "No package token available (TOKEN and GITHUB_TOKEN both empty)."
+            echo "No package token available (GITHUB_TOKEN is empty)."
             exit 1
           fi
           echo "Package token is set."
@@ -46,6 +46,15 @@ jobs:
 
       - name: Build library
         run: pnpm build:lib
+
+      - name: Normalize package scope for GitHub owner
+        working-directory: packages/velocityui
+        run: |
+          OWNER_SCOPE="@${{ github.repository_owner }}"
+          PACKAGE_BASENAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name.split('/').pop()")
+          TARGET_PACKAGE_NAME="${OWNER_SCOPE}/${PACKAGE_BASENAME}"
+          npm pkg set name="$TARGET_PACKAGE_NAME"
+          echo "Publishing package as $TARGET_PACKAGE_NAME"
 
       - name: Check if version already published
         id: version_check
