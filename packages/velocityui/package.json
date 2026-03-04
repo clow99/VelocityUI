@@ -1,5 +1,5 @@
 {
-  "name": "@clow99/velocityui",
+  "name": "@cam/velocityui",
   "version": "0.1.3",
   "description": "A modern, accessible React component library",
   "type": "module",
