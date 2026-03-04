@@ -1,6 +1,6 @@
 {
   "name": "velocityui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A modern, accessible React component library",
   "type": "module",
   "main": "./dist/index.cjs",
