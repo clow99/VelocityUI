@@ -29,17 +29,6 @@ describe('named theme presets', () => {
     expect(getVar(wrapper, '--vui-bg')).toBe('#020d1a')
   })
 
-  it('sunset theme sets warm surfaces and amber primary', () => {
-    render(
-      <div data-testid="wrapper" className="vui-theme-sunset">
-        <Button>Press</Button>
-      </div>
-    )
-    const wrapper = screen.getByTestId('wrapper')
-    expect(getVar(wrapper, '--vui-primary')).toBe('#f59e0b')
-    expect(getVar(wrapper, '--vui-primary-contrast')).toBe('#1c1108')
-  })
-
   it('construction theme sets zinc surfaces, sharp radii, and yellow primary', () => {
     render(
       <div data-testid="wrapper" className="vui-theme-construction">

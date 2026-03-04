@@ -154,10 +154,10 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
 
 /* Add a density modifier (optional) */
 <body class="vui-theme-midnight vui-density-compact">
-<body class="vui-theme-sunset vui-density-spacious">
+<body class="vui-theme-construction vui-density-spacious">
 
 /* Available themes */
-/* default  midnight  ocean  sunset */
+/* default  midnight  ocean */
 /* construction  glass  soft  high-contrast  monochrome-red */
 
 /* Available densities */

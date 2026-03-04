@@ -31,7 +31,7 @@ export default function RootLayout({
 }) {
   const themeBootScript = `
     (function () {
-      var themes = ['default','midnight','ocean','sunset','construction','glass','soft','high-contrast','monochrome-red'];
+      var themes = ['default','midnight','ocean','construction','glass','soft','high-contrast','monochrome-red'];
       var densities = ['compact','comfortable','spacious'];
       var html = document.documentElement;
       var storedTheme = localStorage.getItem('vui-docs-theme');

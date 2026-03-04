@@ -6,7 +6,6 @@ export type ThemeName =
   | 'default'
   | 'midnight'
   | 'ocean'
-  | 'sunset'
   | 'construction'
   | 'glass'
   | 'soft'
@@ -30,7 +29,6 @@ export const THEMES: ThemeOption[] = [
   { value: 'default', label: 'Default', description: 'Light, clean — Indigo primary' },
   { value: 'midnight', label: 'Midnight', description: 'Dark, sleek — Violet primary' },
   { value: 'ocean', label: 'Ocean', description: 'Cool, calming — Cyan primary' },
-  { value: 'sunset', label: 'Sunset', description: 'Warm, vibrant — Amber primary' },
   { value: 'construction', label: 'Construction', description: 'Industrial, bold — Yellow primary' },
   { value: 'glass', label: 'Glass', description: 'Frosted transparency — Violet primary' },
   { value: 'soft', label: 'Soft', description: 'Neomorphic, gentle — Sky primary' },
