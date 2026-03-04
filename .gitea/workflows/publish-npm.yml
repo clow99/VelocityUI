@@ -53,6 +53,6 @@ jobs:
       - name: Publish to Gitea
         if: steps.version_check.outputs.already_published == 'false'
         working-directory: packages/velocityui
-        run: npm publish
+        run: npm publish --registry https://git.cameronlow.com/api/packages/cam/npm/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITEATOKEN }}

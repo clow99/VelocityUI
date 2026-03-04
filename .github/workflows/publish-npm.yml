@@ -1,4 +1,4 @@
-name: Publish velocityui to GitHub npm Registry
+name: Publish velocityui to GitHub Packages
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@clow99'
+          scope: '@cam'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -34,9 +34,11 @@ jobs:
         id: version_check
         working-directory: packages/velocityui
         run: |
+          PACKAGE_NAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name")
           VERSION=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).version")
+          echo "package_name=$PACKAGE_NAME" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if npm view "@clow99/velocityui@$VERSION" --registry https://npm.pkg.github.com 2>/dev/null; then
+          if npm view "$PACKAGE_NAME@$VERSION" --registry https://npm.pkg.github.com 2>/dev/null; then
             echo "already_published=true" >> "$GITHUB_OUTPUT"
           else
             echo "already_published=false" >> "$GITHUB_OUTPUT"
@@ -47,6 +49,6 @@ jobs:
       - name: Publish to GitHub
         if: steps.version_check.outputs.already_published == 'false'
         working-directory: packages/velocityui
-        run: npm publish
+        run: npm publish --registry https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
