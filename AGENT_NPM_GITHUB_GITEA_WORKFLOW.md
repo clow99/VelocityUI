@@ -1,31 +1,36 @@
-# Agent Playbook: npm Package Flow with Gitea + GitHub + npmjs
+# Agent Playbook: VelocityUI npm Flow with Gitea + GitHub + npmjs
 
-This document is written for another AI agent to implement the same package release workflow in a different project.
+This document is now tailored to the current `VelocityUI` repo and its package release flow, including the newer animation-related components that ship from the same library package (`AnimatedBackground`, `GradientOrbs`, `GridGlow`, and related UI updates).
 
 ## Goal
 
-Implement this end-to-end flow:
+Implement this end-to-end flow for `@velocityuikit/velocityui`:
 
-1. **Gitea** auto-bumps package version when files under the package path change.
+1. **Gitea** auto-bumps the package version when files under `packages/velocityui` change.
 2. **GitHub Actions** publishes that package to **GitHub Packages**.
 3. **GitHub Actions** publishes that package to **npmjs**.
-4. Publishing is **idempotent** (skip publish if the version already exists).
+4. Publishing is **idempotent** and safely skips if that version already exists.
 
 ---
 
-## Inputs You Must Collect First
+## Resolved Repo Inputs
 
-Before editing anything, collect these values from the target repo and substitute placeholders in this playbook:
+Use these concrete values for this repository:
 
-- `PACKAGE_DIR` (example: `packages/my-lib`)
-- `PACKAGE_NAME` (from `PACKAGE_DIR/package.json`, example: `@myorg/my-lib`)
-- `PACKAGE_BASENAME` (example: `my-lib`)
-- `DEFAULT_BRANCH` (example: `main`)
-- `NODE_VERSION` (use `20` unless repo requires another version)
-- `BUILD_COMMAND` (example: `pnpm build:lib` or repo-specific package build command)
-- `PACKAGE_CHANGE_GLOB` (example: `^packages/my-lib/`)
+- `PACKAGE_DIR=packages/velocityui`
+- `PACKAGE_NAME=@velocityuikit/velocityui`
+- `PACKAGE_BASENAME=velocityui`
+- `DEFAULT_BRANCH=main`
+- `NODE_VERSION=20`
+- `BUILD_COMMAND=pnpm build:lib`
+- `PACKAGE_CHANGE_GLOB=^packages/velocityui/`
+- package manager: `pnpm`
+- repo shape: monorepo
 
-Also verify whether the repository is a monorepo and which package manager is used (`pnpm`, `npm`, or `yarn`).
+Why this matters:
+
+- The new animation components are part of the same publishable package, so any source changes under `packages/velocityui` should trigger the version bump and release flow.
+- `@velocityuikit/velocityui` is the npmjs package name, but GitHub Packages still requires publishing under the repository owner scope.
 
 ---
 
@@ -33,12 +38,12 @@ Also verify whether the repository is a monorepo and which package manager is us
 
 ### 1) Ensure package metadata is publish-ready
 
-Update `PACKAGE_DIR/package.json` to include:
+Verify `packages/velocityui/package.json` includes:
 
-- correct `name`
-- correct `version`
-- `files` including build output (usually `dist`)
-- `publishConfig` for npmjs if needed:
+- `name: "@velocityuikit/velocityui"`
+- a valid semver `version`
+- `files` including the built `dist` output
+- npm publish config:
 
 ```json
 "publishConfig": {
@@ -56,12 +61,12 @@ Do not hardcode secrets or tokens in any file.
 Create `.gitea/workflows/auto-bump-package.yml`:
 
 ```yaml
-name: Auto bump package
+name: Auto bump velocityui package
 
 on:
   push:
     branches:
-      - DEFAULT_BRANCH
+      - main
 
 permissions:
   contents: write
@@ -89,7 +94,7 @@ jobs:
             RANGE="$BEFORE_SHA..$AFTER_SHA"
           fi
 
-          if git diff --name-only "$RANGE" | grep -E 'PACKAGE_CHANGE_GLOB' > /dev/null; then
+          if git diff --name-only "$RANGE" | grep -E '^packages/velocityui/' > /dev/null; then
             echo "package_changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "package_changed=false" >> "$GITHUB_OUTPUT"
@@ -99,32 +104,34 @@ jobs:
         if: ${{ steps.changes.outputs.package_changed == 'true' }}
         uses: actions/setup-node@v4
         with:
-          node-version: NODE_VERSION
+          node-version: 20
 
       - name: Bump patch version
         if: ${{ steps.changes.outputs.package_changed == 'true' }}
         shell: bash
         run: |
-          npm version patch --no-git-tag-version --prefix PACKAGE_DIR
-          NEW_VERSION="$(node -p "require('./PACKAGE_DIR/package.json').version")"
+          npm version patch --no-git-tag-version --prefix packages/velocityui
+          NEW_VERSION="$(node -p "require('./packages/velocityui/package.json').version")"
 
           git config user.name "gitea-actions[bot]"
           git config user.email "gitea-actions[bot]@localhost"
 
-          git add PACKAGE_DIR/package.json
+          git add packages/velocityui/package.json
 
           if git diff --cached --quiet; then
             echo "No version change to commit."
             exit 0
           fi
 
-          git commit -m "chore(release): bump PACKAGE_BASENAME to v$NEW_VERSION [skip bump]"
+          git commit -m "chore(release): bump velocityui to v$NEW_VERSION [skip bump]"
           git push
 ```
 
 Notes:
+
 - Keep `[skip bump]` in the commit message to avoid infinite CI loops.
-- Scope bumps only to package path changes.
+- Scope bumps only to `packages/velocityui/**` changes.
+- This automatically covers the newer animation components because they ship from that same package path.
 
 ---
 
@@ -133,12 +140,12 @@ Notes:
 Create `.github/workflows/publish-github-packages.yml`:
 
 ```yaml
-name: Publish package to GitHub Packages
+name: Publish velocityui to GitHub Packages
 
 on:
   push:
     branches:
-      - DEFAULT_BRANCH
+      - main
 
 jobs:
   publish:
@@ -154,9 +161,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: NODE_VERSION
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@${{ github.repository_owner }}'
+          node-version: 20
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@${{ github.repository_owner }}"
 
       - name: Verify auth token exists
         run: |
@@ -177,10 +184,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build package
-        run: BUILD_COMMAND
+        run: pnpm build:lib
 
       - name: Normalize scope to repository owner
-        working-directory: PACKAGE_DIR
+        working-directory: packages/velocityui
         run: |
           OWNER_SCOPE="@${{ github.repository_owner }}"
           PACKAGE_BASENAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name.split('/').pop()")
@@ -190,7 +197,7 @@ jobs:
 
       - name: Check if version already published
         id: version_check
-        working-directory: PACKAGE_DIR
+        working-directory: packages/velocityui
         run: |
           PACKAGE_NAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name")
           VERSION=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).version")
@@ -206,14 +213,16 @@ jobs:
 
       - name: Publish to GitHub Packages
         if: steps.version_check.outputs.already_published == 'false'
-        working-directory: PACKAGE_DIR
+        working-directory: packages/velocityui
         run: npm publish --registry https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ env.GH_PACKAGES_TOKEN }}
 ```
 
 Why normalize scope:
-- GitHub Packages requires package scope to align with the owner (`@owner/package`).
+
+- GitHub Packages requires the package scope to match the repo owner (`@owner/package`).
+- The npmjs package name remains `@velocityuikit/velocityui`, so the GitHub Packages workflow needs this temporary scope rewrite before publish.
 
 ---
 
@@ -222,12 +231,12 @@ Why normalize scope:
 Create `.github/workflows/publish-npmjs.yml`:
 
 ```yaml
-name: Publish package to npmjs
+name: Publish velocityui to npmjs
 
 on:
   push:
     branches:
-      - DEFAULT_BRANCH
+      - main
   workflow_dispatch:
 
 jobs:
@@ -242,8 +251,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: NODE_VERSION
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install package manager
         run: npm install -g pnpm
@@ -252,11 +261,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build package
-        run: BUILD_COMMAND
+        run: pnpm build:lib
 
       - name: Check if version already published
         id: version_check
-        working-directory: PACKAGE_DIR
+        working-directory: packages/velocityui
         run: |
           PACKAGE_NAME=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).name")
           VERSION=$(node -p "JSON.parse(require('fs').readFileSync('./package.json','utf8')).version")
@@ -272,7 +281,7 @@ jobs:
 
       - name: Publish to npmjs
         if: steps.version_check.outputs.already_published == 'false'
-        working-directory: PACKAGE_DIR
+        working-directory: packages/velocityui
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
           npm publish --access public --provenance --registry https://registry.npmjs.org
@@ -286,8 +295,8 @@ jobs:
 
 In GitHub repository settings:
 
-- `NPM_TOKEN`: npm automation token with publish permissions.
-- `GITHUB_TOKEN`: default Actions token is usually enough for GitHub Packages publish (with `packages: write` permissions).
+- `NPM_TOKEN`: npm automation token with publish permissions for `@velocityuikit/velocityui`.
+- `GITHUB_TOKEN`: the default Actions token is usually enough for GitHub Packages publishing when `packages: write` permission is present.
 
 In npm package settings:
 
@@ -299,26 +308,27 @@ Never commit tokens or credentials into repo files.
 
 ## Validation Checklist (Agent Must Execute)
 
-1. Run local build command successfully.
-2. Push a change under `PACKAGE_DIR` and verify Gitea creates a bump commit.
-3. Verify bump commit includes `[skip bump]`.
+1. Run `pnpm build:lib` successfully.
+2. Push a change under `packages/velocityui` and verify Gitea creates a bump commit.
+3. Verify the bump commit includes `[skip bump]`.
 4. Confirm GitHub Actions run:
    - GitHub Packages publish workflow
    - npmjs publish workflow
-5. Re-run on same version and confirm publish jobs skip due to `already_published=true`.
-6. Confirm resulting package versions on:
-   - `https://npmjs.com/package/PACKAGE_NAME`
-   - `https://github.com/OWNER/REPO/packages`
+5. Re-run on the same version and confirm publish jobs skip because `already_published=true`.
+6. Confirm the resulting package versions for the current library release, including animation-related additions, on:
+   - `https://npmjs.com/package/@velocityuikit/velocityui`
+   - `https://github.com/clow99/VelocityUI/packages`
 
 ---
 
 ## Common Pitfalls
 
-- Package name scope mismatch for GitHub Packages (`@owner/package` required).
+- Package name scope mismatch for GitHub Packages (`@owner/package` is required there).
 - Missing `NPM_TOKEN` secret.
-- Build command not producing publishable `dist` content.
-- Gitea bump workflow triggering recursively (fix with `[skip bump]` guard).
-- Version not changed before publish, causing repeated no-op publishes.
+- `pnpm build:lib` not producing publishable `dist` output.
+- Gitea bump workflow triggering recursively without the `[skip bump]` guard.
+- Version not changing before publish, causing repeated no-op publish attempts.
+- Forgetting that the newer animation components are part of the same `velocityui` package, not a separate publish target.
 
 ---
 
@@ -326,8 +336,8 @@ Never commit tokens or credentials into repo files.
 
 Implementation is complete only when all are true:
 
-- Gitea auto-bumps package version on package changes.
-- GitHub publishes to GitHub Packages successfully.
-- GitHub publishes to npmjs successfully.
+- Gitea auto-bumps `packages/velocityui` on package changes.
+- GitHub publishes `@velocityuikit/velocityui` to GitHub Packages successfully.
+- GitHub publishes `@velocityuikit/velocityui` to npmjs successfully.
 - Both publish workflows skip safely when the version already exists.
 - No secrets are committed in source control.
