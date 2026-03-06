@@ -1,0 +1,134 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: var(--vui-ambient-opacity, 0.82);
+  filter: blur(var(--vui-ambient-blur, 112px));
+  transform: scale(var(--vui-ambient-scale, 1));
+  mix-blend-mode: screen;
+  animation: floatOrb var(--vui-ambient-duration, 18s) ease-in-out infinite;
+  will-change: transform;
+}
+
+.primary {
+  width: 24rem;
+  height: 24rem;
+  background: var(--vui-ambient-primary, rgba(99, 102, 241, 0.24));
+}
+
+.secondary {
+  width: 20rem;
+  height: 20rem;
+  background: var(--vui-ambient-secondary, rgba(168, 85, 247, 0.18));
+  animation-duration: calc(var(--vui-ambient-duration, 18s) * 1.15);
+  animation-direction: reverse;
+}
+
+.accent {
+  width: 16rem;
+  height: 16rem;
+  background: var(--vui-ambient-accent, rgba(56, 189, 248, 0.16));
+  animation-duration: calc(var(--vui-ambient-duration, 18s) * 0.9);
+}
+
+.highlight {
+  width: 10rem;
+  height: 10rem;
+  background: var(--vui-ambient-highlight, rgba(255, 255, 255, 0.5));
+  filter: blur(calc(var(--vui-ambient-blur, 112px) * 0.55));
+  animation-duration: calc(var(--vui-ambient-duration, 18s) * 0.75);
+}
+
+.hero .primary {
+  top: -6rem;
+  left: -2rem;
+}
+
+.hero .secondary {
+  right: -5rem;
+  top: 15%;
+}
+
+.hero .accent {
+  bottom: -4rem;
+  left: 24%;
+}
+
+.hero .highlight {
+  top: 22%;
+  right: 22%;
+}
+
+.diagonal .primary {
+  top: -8rem;
+  right: -4rem;
+}
+
+.diagonal .secondary {
+  bottom: -6rem;
+  left: -3rem;
+}
+
+.diagonal .accent {
+  top: 34%;
+  left: 28%;
+}
+
+.diagonal .highlight {
+  bottom: 18%;
+  right: 14%;
+}
+
+.spotlight .primary {
+  top: 50%;
+  left: 50%;
+  width: 28rem;
+  height: 28rem;
+  transform: translate(-50%, -50%) scale(var(--vui-ambient-scale, 1));
+}
+
+.spotlight .secondary {
+  top: 0;
+  right: 6%;
+}
+
+.spotlight .accent {
+  bottom: 0;
+  left: 10%;
+}
+
+.spotlight .highlight {
+  top: 50%;
+  left: 50%;
+  width: 12rem;
+  height: 12rem;
+  transform: translate(-50%, -50%) scale(var(--vui-ambient-scale, 1));
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(var(--vui-ambient-scale, 1));
+  }
+
+  50% {
+    transform: translate3d(
+        calc(16px * var(--vui-ambient-speed-multiplier, 1)),
+        calc(-22px * var(--vui-ambient-speed-multiplier, 1)),
+        0
+      )
+      scale(calc(var(--vui-ambient-scale, 1) * 1.05));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb {
+    animation: none;
+  }
+}

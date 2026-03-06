@@ -1,0 +1,83 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--vui-ambient-opacity, 0.82);
+}
+
+.grid,
+.glow,
+.beam {
+  position: absolute;
+  inset: 0;
+}
+
+.grid {
+  background-image:
+    linear-gradient(to right, transparent 0, transparent calc(100% - 1px), var(--vui-ambient-grid, rgba(99, 102, 241, 0.12)) calc(100% - 1px)),
+    linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), var(--vui-ambient-grid, rgba(99, 102, 241, 0.12)) calc(100% - 1px));
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
+}
+
+.glow {
+  background:
+    radial-gradient(circle at 50% 30%, var(--vui-ambient-primary, rgba(99, 102, 241, 0.24)) 0, transparent 45%),
+    radial-gradient(circle at 72% 70%, var(--vui-ambient-accent, rgba(56, 189, 248, 0.16)) 0, transparent 32%);
+  filter: blur(calc(var(--vui-ambient-blur, 112px) * 0.36));
+  transform: scale(var(--vui-ambient-scale, 1));
+}
+
+.beam {
+  background: linear-gradient(
+    120deg,
+    transparent 32%,
+    var(--vui-ambient-line, rgba(255, 255, 255, 0.4)) 50%,
+    transparent 68%
+  );
+  opacity: 0.55;
+  transform: translateX(-45%);
+  animation: sweepBeam calc(var(--vui-ambient-duration, 18s) * 0.9) linear infinite;
+  will-change: transform;
+}
+
+.default .glow {
+  mask-image: radial-gradient(circle at center, black 32%, transparent 76%);
+}
+
+.spotlight .grid {
+  mask-image: radial-gradient(circle at center, black 55%, transparent 92%);
+}
+
+.spotlight .beam {
+  opacity: 0.72;
+}
+
+.panel .grid {
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+}
+
+.panel .glow {
+  background:
+    radial-gradient(circle at 50% 0%, var(--vui-ambient-primary, rgba(99, 102, 241, 0.24)) 0, transparent 38%),
+    radial-gradient(circle at 10% 90%, var(--vui-ambient-secondary, rgba(168, 85, 247, 0.18)) 0, transparent 22%);
+}
+
+@keyframes sweepBeam {
+  from {
+    transform: translateX(-45%);
+  }
+
+  to {
+    transform: translateX(calc(45% * var(--vui-ambient-speed-multiplier, 1)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam {
+    animation: none;
+    transform: translateX(0);
+  }
+}

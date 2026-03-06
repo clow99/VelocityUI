@@ -7,6 +7,7 @@ import { InputPreview } from '@/components/docs/previews/InputPreview'
 import { TitlePreview } from '@/components/docs/previews/TitlePreview'
 import { BadgePreview } from '@/components/docs/previews/BadgePreview'
 import { CardPreview } from '@/components/docs/previews/CardPreview'
+import { AnimatedBackgroundPreview } from '@/components/docs/previews/AnimatedBackgroundPreview'
 import { TextareaPreview } from '@/components/docs/previews/TextareaPreview'
 import { SelectPreview } from '@/components/docs/previews/SelectPreview'
 import { CheckboxPreview } from '@/components/docs/previews/CheckboxPreview'
@@ -34,6 +35,8 @@ import { SliderPreview } from '@/components/docs/previews/SliderPreview'
 import { NumberInputPreview } from '@/components/docs/previews/NumberInputPreview'
 import { FileUploadPreview } from '@/components/docs/previews/FileUploadPreview'
 import { TablePreview } from '@/components/docs/previews/TablePreview'
+import { GradientOrbsPreview } from '@/components/docs/previews/GradientOrbsPreview'
+import { GridGlowPreview } from '@/components/docs/previews/GridGlowPreview'
 
 const previewMap: Record<string, React.ComponentType> = {
   button: ButtonPreview,
@@ -41,6 +44,7 @@ const previewMap: Record<string, React.ComponentType> = {
   title: TitlePreview,
   badge: BadgePreview,
   card: CardPreview,
+  animatedbackground: AnimatedBackgroundPreview,
   textarea: TextareaPreview,
   select: SelectPreview,
   checkbox: CheckboxPreview,
@@ -68,6 +72,8 @@ const previewMap: Record<string, React.ComponentType> = {
   numberinput: NumberInputPreview,
   fileupload: FileUploadPreview,
   table: TablePreview,
+  gradientorbs: GradientOrbsPreview,
+  gridglow: GridGlowPreview,
 }
 
 export function generateStaticParams() {

@@ -51,8 +51,11 @@ export const componentCategories: ComponentCategory[] = [
   {
     label: 'Layout',
     items: [
+      { slug: 'animatedbackground', name: 'AnimatedBackground' },
       { slug: 'card', name: 'Card' },
       { slug: 'divider', name: 'Divider' },
+      { slug: 'gradientorbs', name: 'GradientOrbs' },
+      { slug: 'gridglow', name: 'GridGlow' },
     ],
   },
   {
@@ -115,6 +118,7 @@ export const pageExamples = [
   {
     label: 'Landing',
     pages: [
+      { slug: 'animated-backgrounds', name: 'Animated Backgrounds' },
       { slug: 'landing', name: 'Marketing' },
       { slug: 'startup', name: 'Startup' },
     ],

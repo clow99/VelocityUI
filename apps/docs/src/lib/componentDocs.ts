@@ -519,6 +519,183 @@ export default function Example() {
     ],
   },
 
+  animatedbackground: {
+    name: 'AnimatedBackground',
+    slug: 'animatedbackground',
+    description:
+      'A composable wrapper for decorative animated layers. Handles content layering, reduced-motion friendly timing, and ambient intensity controls.',
+    importLine:
+      "import { AnimatedBackground, GradientOrbs } from '@velocityuikit/velocityui'",
+    props: [
+      {
+        name: 'background',
+        type: 'ReactNode',
+        description: 'Decorative layer rendered behind the content, such as GradientOrbs or GridGlow.',
+      },
+      {
+        name: 'contentClassName',
+        type: 'string',
+        description: 'Optional className applied to the foreground content wrapper.',
+      },
+      {
+        name: 'intensity',
+        type: "'subtle' | 'medium' | 'vivid'",
+        default: "'medium'",
+        description: 'Controls blur, scale, and overall ambient presence.',
+      },
+      {
+        name: 'speed',
+        type: "'slow' | 'medium' | 'fast'",
+        default: "'medium'",
+        description: 'Adjusts animation timing for child ambient effects.',
+      },
+      {
+        name: 'interactive',
+        type: 'boolean',
+        default: 'false',
+        description: 'Allows pointer events to pass through to the background layer when needed.',
+      },
+    ],
+    examples: [
+      {
+        title: 'Hero shell',
+        description: 'Wrap content and keep decorative motion isolated behind it.',
+        code: `import { AnimatedBackground, Button, GradientOrbs } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <AnimatedBackground
+      background={<GradientOrbs variant="hero" />}
+      intensity="medium"
+      speed="slow"
+      style={{ borderRadius: '1.5rem', border: '1px solid var(--vui-border)' }}
+      contentClassName="hero-content"
+    >
+      <div style={{ padding: '2rem', maxWidth: '28rem' }}>
+        <h2 style={{ margin: 0 }}>Launch faster</h2>
+        <p style={{ marginTop: '0.75rem', color: 'var(--vui-text-muted)' }}>
+          Add ambient motion behind marketing or auth content without disturbing layout.
+        </p>
+        <div style={{ marginTop: '1rem' }}>
+          <Button>Get started</Button>
+        </div>
+      </div>
+    </AnimatedBackground>
+  )
+}`,
+      },
+      {
+        title: 'Low-motion panel',
+        code: `import { AnimatedBackground, GridGlow } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <AnimatedBackground
+      background={<GridGlow variant="panel" />}
+      intensity="subtle"
+      speed="slow"
+      style={{ borderRadius: '1rem', minHeight: 240 }}
+    >
+      <div style={{ padding: '1.5rem' }}>Dashboard content</div>
+    </AnimatedBackground>
+  )
+}`,
+      },
+    ],
+  },
+
+  gradientorbs: {
+    name: 'GradientOrbs',
+    slug: 'gradientorbs',
+    description:
+      'A soft blurred ambient preset that places animated color fields around the edges of a container.',
+    importLine: "import { GradientOrbs } from '@velocityuikit/velocityui'",
+    props: [
+      {
+        name: 'variant',
+        type: "'hero' | 'diagonal' | 'spotlight'",
+        default: "'hero'",
+        description: 'Chooses the orb layout and focal area.',
+      },
+    ],
+    examples: [
+      {
+        title: 'Hero preset',
+        code: `import { AnimatedBackground, GradientOrbs } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <AnimatedBackground
+      background={<GradientOrbs variant="hero" />}
+      style={{ minHeight: 320, borderRadius: '1.5rem' }}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Centered spotlight',
+        code: `import { AnimatedBackground, GradientOrbs } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <AnimatedBackground
+      background={<GradientOrbs variant="spotlight" />}
+      intensity="vivid"
+      style={{ minHeight: 280, borderRadius: '1.5rem' }}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  gridglow: {
+    name: 'GridGlow',
+    slug: 'gridglow',
+    description:
+      'A structured ambient preset with a subtle grid, glow falloff, and animated beam for dashboard and technical surfaces.',
+    importLine: "import { GridGlow } from '@velocityuikit/velocityui'",
+    props: [
+      {
+        name: 'variant',
+        type: "'default' | 'spotlight' | 'panel'",
+        default: "'default'",
+        description: 'Switches between centered, focused, and panel-oriented grid treatments.',
+      },
+    ],
+    examples: [
+      {
+        title: 'Technical section background',
+        code: `import { AnimatedBackground, GridGlow } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <AnimatedBackground
+      background={<GridGlow variant="spotlight" />}
+      intensity="subtle"
+      style={{ minHeight: 320, borderRadius: '1.5rem' }}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Panel treatment',
+        code: `import { AnimatedBackground, GridGlow } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <AnimatedBackground
+      background={<GridGlow variant="panel" />}
+      intensity="subtle"
+      speed="fast"
+      style={{ minHeight: 220, borderRadius: '1rem' }}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
   textarea: {
     name: 'Textarea',
     slug: 'textarea',

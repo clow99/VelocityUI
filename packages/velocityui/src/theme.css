@@ -106,6 +106,12 @@
   --vui-title-color: var(--vui-text);
   --vui-title-muted-color: var(--vui-text-subtle);
   --vui-color-gradient-end: #a855f7;
+  --vui-ambient-primary: rgba(99, 102, 241, 0.24);
+  --vui-ambient-secondary: rgba(168, 85, 247, 0.18);
+  --vui-ambient-accent: rgba(56, 189, 248, 0.16);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.5);
+  --vui-ambient-grid: rgba(99, 102, 241, 0.12);
+  --vui-ambient-line: rgba(255, 255, 255, 0.42);
 
   --vui-badge-default-bg: var(--vui-surface-muted);
   --vui-badge-default-color: var(--vui-text-muted);
@@ -212,6 +218,12 @@
   --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
   --vui-badge-danger-color: #fca5a5;
   --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+  --vui-ambient-primary: rgba(167, 139, 250, 0.3);
+  --vui-ambient-secondary: rgba(124, 58, 237, 0.24);
+  --vui-ambient-accent: rgba(96, 165, 250, 0.18);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.18);
+  --vui-ambient-grid: rgba(167, 139, 250, 0.15);
+  --vui-ambient-line: rgba(255, 255, 255, 0.2);
 }
 
 /* ------------------------------------------------------------
@@ -283,6 +295,12 @@
   --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
   --vui-badge-danger-color: #fca5a5;
   --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+  --vui-ambient-primary: rgba(34, 211, 238, 0.28);
+  --vui-ambient-secondary: rgba(8, 145, 178, 0.24);
+  --vui-ambient-accent: rgba(110, 231, 183, 0.16);
+  --vui-ambient-highlight: rgba(224, 242, 254, 0.18);
+  --vui-ambient-grid: rgba(34, 211, 238, 0.14);
+  --vui-ambient-line: rgba(224, 242, 254, 0.18);
 }
 
 /* ------------------------------------------------------------
@@ -359,6 +377,12 @@
   --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
   --vui-badge-danger-color: #fca5a5;
   --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+  --vui-ambient-primary: rgba(250, 204, 21, 0.22);
+  --vui-ambient-secondary: rgba(245, 158, 11, 0.18);
+  --vui-ambient-accent: rgba(255, 255, 255, 0.1);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.12);
+  --vui-ambient-grid: rgba(250, 204, 21, 0.12);
+  --vui-ambient-line: rgba(255, 255, 255, 0.16);
 }
 
 /* ------------------------------------------------------------
@@ -432,6 +456,12 @@
   --vui-badge-danger-bg: rgba(239, 68, 68, 0.15);
   --vui-badge-danger-color: #991b1b;
   --vui-badge-danger-border: rgba(239, 68, 68, 0.3);
+  --vui-ambient-primary: rgba(124, 58, 237, 0.2);
+  --vui-ambient-secondary: rgba(59, 130, 246, 0.18);
+  --vui-ambient-accent: rgba(16, 185, 129, 0.14);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.42);
+  --vui-ambient-grid: rgba(124, 58, 237, 0.12);
+  --vui-ambient-line: rgba(255, 255, 255, 0.35);
 }
 
 /* ------------------------------------------------------------
@@ -488,6 +518,12 @@
   --vui-badge-default-bg: #dfe7f0;
   --vui-badge-default-color: #334155;
   --vui-badge-default-border: #cdd8e6;
+  --vui-ambient-primary: rgba(14, 165, 233, 0.16);
+  --vui-ambient-secondary: rgba(99, 102, 241, 0.14);
+  --vui-ambient-accent: rgba(255, 255, 255, 0.4);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.55);
+  --vui-ambient-grid: rgba(14, 165, 233, 0.08);
+  --vui-ambient-line: rgba(255, 255, 255, 0.46);
 }
 
 /* ------------------------------------------------------------
@@ -560,6 +596,12 @@
   --vui-badge-danger-bg: rgba(255, 77, 77, 0.2);
   --vui-badge-danger-color: #ff4d4d;
   --vui-badge-danger-border: rgba(255, 77, 77, 0.5);
+  --vui-ambient-primary: rgba(250, 204, 21, 0.16);
+  --vui-ambient-secondary: rgba(255, 255, 255, 0.12);
+  --vui-ambient-accent: rgba(255, 255, 255, 0.08);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.12);
+  --vui-ambient-grid: rgba(255, 255, 255, 0.14);
+  --vui-ambient-line: rgba(255, 255, 255, 0.18);
 }
 
 /* ------------------------------------------------------------
@@ -631,6 +673,12 @@
   --vui-badge-danger-bg: rgba(197, 46, 63, 0.2);
   --vui-badge-danger-color: #f3f4f6;
   --vui-badge-danger-border: rgba(197, 46, 63, 0.4);
+  --vui-ambient-primary: rgba(197, 46, 63, 0.24);
+  --vui-ambient-secondary: rgba(243, 244, 246, 0.1);
+  --vui-ambient-accent: rgba(197, 46, 63, 0.15);
+  --vui-ambient-highlight: rgba(243, 244, 246, 0.14);
+  --vui-ambient-grid: rgba(243, 244, 246, 0.1);
+  --vui-ambient-line: rgba(243, 244, 246, 0.16);
 }
 
 /* ============================================================
