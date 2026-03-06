@@ -25,9 +25,9 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
       </svg>
     ),
-    title: 'Named Theme System',
+    title: '9 Named Themes',
     description:
-      'One class on body applies a full visual identity — colors, surfaces, shadows. Switch themes at runtime.',
+      'One class on body applies a full visual identity. Switch themes at runtime with zero rebuilds.',
   },
   {
     icon: (
@@ -52,25 +52,32 @@ const features = [
   {
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
       </svg>
     ),
-    title: 'Compound Components',
+    title: 'Ambient Animations',
     description:
-      'Composable APIs like Card.Header, Card.Body, Card.Footer for maximum flexibility.',
+      'AnimatedBackground, GradientOrbs, and GridGlow presets for decorative motion — reduced-motion aware.',
   },
 ]
 
 export function FeatureGrid() {
   return (
-    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((f) => (
-        <div key={f.title} className="rounded-2xl border border-vui-border bg-vui-surface-muted p-6">
-          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-vui-primary-soft text-vui-primary">
-            {f.icon}
+        <div
+          key={f.title}
+          className="group relative overflow-hidden rounded-2xl border border-vui-border bg-vui-surface p-6 transition-all hover:border-vui-primary/40 hover:shadow-lg"
+        >
+          <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-vui-primary-soft opacity-0 blur-2xl transition-opacity group-hover:opacity-60" />
+
+          <div className="relative">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-vui-primary-soft text-vui-primary transition-colors group-hover:bg-vui-primary group-hover:text-vui-primary-contrast">
+              {f.icon}
+            </div>
+            <h3 className="mb-2 text-base font-semibold text-vui-text">{f.title}</h3>
+            <p className="text-sm text-vui-text-subtle leading-relaxed">{f.description}</p>
           </div>
-          <h3 className="mb-2 text-base font-semibold text-vui-text">{f.title}</h3>
-          <p className="text-sm text-vui-text-subtle leading-relaxed">{f.description}</p>
         </div>
       ))}
     </div>
