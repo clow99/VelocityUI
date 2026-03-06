@@ -158,7 +158,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
 <body class="vui-theme-construction vui-density-spacious">
 
 /* Available themes */
-/* default  midnight  ocean */
+/* default  midnight  ocean  tangerine */
 /* construction  glass  soft  high-contrast  monochrome-red */
 
 /* Available densities */

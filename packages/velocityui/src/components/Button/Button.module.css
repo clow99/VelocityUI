@@ -17,6 +17,14 @@
   overflow: hidden;
 }
 
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
 .button:focus-visible {
   outline: 2px solid var(--vui-primary, #6366f1);
   outline-offset: 2px;
@@ -115,6 +123,24 @@
   width: 100%;
 }
 
+.pulse {
+  animation: buttonPulse 2.6s ease-in-out infinite;
+}
+
+.shine::after {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.36) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  transform: translateX(-140%);
+  opacity: 0.9;
+  animation: buttonShine 2.8s linear infinite;
+}
+
 /* Loading spinner */
 .spinner {
   width: 1em;
@@ -129,5 +155,45 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes buttonPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: var(--vui-shadow-sm, none);
+  }
+
+  50% {
+    transform: translateY(calc(var(--vui-hover-lift, -1px) * 1.25));
+    box-shadow: var(--vui-shadow-md, none);
+  }
+}
+
+@keyframes buttonShine {
+  0% {
+    transform: translateX(-140%);
+  }
+
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse,
+  .shine::after,
+  .spinner {
+    animation: none;
+  }
+
+  .pulse {
+    box-shadow: var(--vui-shadow-sm, none);
+    transform: none;
+  }
+
+  .shine::after {
+    opacity: 0;
   }
 }

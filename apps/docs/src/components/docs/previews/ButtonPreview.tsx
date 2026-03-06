@@ -41,6 +41,18 @@ export function ButtonPreview() {
           <Button fullWidth>Full Width</Button>
         </div>
       </div>
+      <div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Animation</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button animation="pulse">Pulse CTA</Button>
+          <Button animation="shine" variant="secondary">
+            Shine sweep
+          </Button>
+          <Button animation="shine" variant="outline">
+            Outline shine
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }

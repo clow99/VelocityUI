@@ -24,6 +24,13 @@ export function AvatarPreview() {
         </div>
       </div>
       <div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Animated status</p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Avatar name="Sam Lee" status="online" statusAnimation="pulse" />
+          <Avatar name="Jordan Kim" status="away" statusAnimation="pulse" />
+        </div>
+      </div>
+      <div>
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Shapes</p>
         <div className="flex flex-wrap items-center gap-3">
           <Avatar name="Taylor Swift" shape="circle" size="lg" />

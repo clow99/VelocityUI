@@ -33,6 +33,20 @@ export function BadgePreview() {
           <Badge size="lg" variant="primary">Large</Badge>
         </div>
       </div>
+      <div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Animation</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="success" dot animation="pulse">
+            Live
+          </Badge>
+          <Badge variant="primary" animation="shine">
+            New release
+          </Badge>
+          <Badge variant="info" animation="pulse">
+            Syncing
+          </Badge>
+        </div>
+      </div>
     </div>
   )
 }

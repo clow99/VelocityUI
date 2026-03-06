@@ -20,7 +20,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
     name: 'Button',
     slug: 'button',
     description:
-      'Button with 5 variants, 3 sizes, a loading state with spinner, and left/right icon slots.',
+      'Button with 5 variants, 3 sizes, a loading state with spinner, icon slots, and optional attention-grabbing animations.',
     importLine: "import { Button } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -34,6 +34,12 @@ export const componentDocs: Record<string, ComponentDoc> = {
         type: "'sm' | 'md' | 'lg'",
         default: "'md'",
         description: 'Controls padding and font size.',
+      },
+      {
+        name: 'animation',
+        type: "'none' | 'pulse' | 'shine'",
+        default: "'none'",
+        description: 'Optional visual emphasis for CTAs and highlighted actions.',
       },
       {
         name: 'loading',
@@ -117,6 +123,19 @@ const ArrowIcon = () => (
 export default function Example() {
   return (
     <Button rightIcon={<ArrowIcon />}>Continue</Button>
+  )
+}`,
+      },
+      {
+        title: 'Animated emphasis',
+        code: `import { Button } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <Button animation="pulse">Primary CTA</Button>
+      <Button variant="secondary" animation="shine">Watch demo</Button>
+    </div>
   )
 }`,
       },
@@ -365,7 +384,7 @@ export default function Example() {
     name: 'Badge',
     slug: 'badge',
     description:
-      'Inline status label with 6 semantic color variants, an optional dot indicator, and a left icon slot.',
+      'Inline status label with 6 semantic color variants, an optional dot indicator, a left icon slot, and opt-in status animations.',
     importLine: "import { Badge } from '@velocityuikit/velocityui'",
     props: [
       {
@@ -379,6 +398,12 @@ export default function Example() {
         type: "'sm' | 'md' | 'lg'",
         default: "'md'",
         description: 'Padding and font size.',
+      },
+      {
+        name: 'animation',
+        type: "'none' | 'pulse' | 'shine'",
+        default: "'none'",
+        description: 'Adds subtle motion for live states, releases, or highlighted metadata.',
       },
       {
         name: 'dot',
@@ -434,6 +459,19 @@ export default function Example() {
       <Badge size="sm" variant="info">Small</Badge>
       <Badge size="md" variant="info">Medium</Badge>
       <Badge size="lg" variant="info">Large</Badge>
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Animated statuses',
+        code: `import { Badge } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <Badge variant="success" dot animation="pulse">Live</Badge>
+      <Badge variant="primary" animation="shine">New release</Badge>
     </div>
   )
 }`,
@@ -1444,7 +1482,7 @@ export default function Example() {
     name: 'Avatar',
     slug: 'avatar',
     description:
-      'Avatar image with automatic initials fallback. Supports five sizes, two shapes, and an optional status indicator dot.',
+      'Avatar image with automatic initials fallback. Supports five sizes, two shapes, an optional status indicator dot, and live-presence animation.',
     importLine: "import { Avatar } from '@velocityuikit/velocityui'",
     props: [
       { name: 'src', type: 'string', description: 'URL of the avatar image.' },
@@ -1453,6 +1491,7 @@ export default function Example() {
       { name: 'size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: 'Controls the overall dimensions of the avatar.' },
       { name: 'shape', type: "'circle' | 'square'", default: "'circle'", description: 'Border radius shape.' },
       { name: 'status', type: "'online' | 'away' | 'offline'", description: 'Shows a colored status dot in the bottom-right corner.' },
+      { name: 'statusAnimation', type: "'none' | 'pulse'", default: "'none'", description: 'Adds a pulsing live-status ring when a status indicator is shown.' },
     ],
     examples: [
       {
@@ -1481,6 +1520,19 @@ export default function Example() {
       <Avatar name="Sam Lee" status="online" />
       <Avatar name="Jordan Kim" status="away" />
       <Avatar name="Alex Ng" status="offline" />
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Animated live status',
+        code: `import { Avatar } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Avatar name="Sam Lee" status="online" statusAnimation="pulse" />
+      <Avatar name="Jordan Kim" status="away" statusAnimation="pulse" />
     </div>
   )
 }`,

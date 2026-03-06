@@ -527,6 +527,85 @@
 }
 
 /* ------------------------------------------------------------
+   Tangerine — bright, citrus warmth. Primary: Orange #e65908
+   ------------------------------------------------------------ */
+.vui-theme-tangerine {
+  color-scheme: dark;
+
+  --vui-bg: #09090b;
+  --vui-surface: #18181b;
+  --vui-surface-muted: #232326;
+  --vui-surface-translucent: rgba(24, 24, 27, 0.82);
+
+  --vui-text: #fafafa;
+  --vui-text-muted: #e4e4e7;
+  --vui-text-subtle: #a1a1aa;
+  --vui-text-inverse: #09090b;
+
+  --vui-border: #3f3f46;
+  --vui-border-strong: #52525b;
+  --vui-divider: #3f3f46;
+
+  --vui-primary: #e65908;
+  --vui-primary-hover: #fb923c;
+  --vui-primary-contrast: #09090b;
+  --vui-primary-soft: rgba(230, 89, 8, 0.2);
+
+  --vui-secondary: #232326;
+  --vui-secondary-hover: #323238;
+  --vui-secondary-text: #fafafa;
+
+  --vui-danger: #dc2626;
+  --vui-danger-hover: #b91c1c;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(230, 89, 8, 0.28);
+  --vui-focus-danger-ring: rgba(220, 38, 38, 0.22);
+
+  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.5);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.58);
+  --vui-control-border-width: 1.5px;
+
+  --vui-input-disabled-bg: #232326;
+  --vui-input-disabled-color: #71717a;
+  --vui-input-placeholder: #71717a;
+
+  --vui-success-soft: rgba(21, 128, 61, 0.24);
+  --vui-success-text: #86efac;
+  --vui-success-border: rgba(134, 239, 172, 0.28);
+  --vui-warning-soft: rgba(230, 89, 8, 0.16);
+  --vui-warning-text: #fdba74;
+  --vui-warning-border: rgba(253, 186, 116, 0.28);
+  --vui-info-soft: rgba(29, 78, 216, 0.22);
+  --vui-info-text: #93c5fd;
+  --vui-info-border: rgba(147, 197, 253, 0.28);
+
+  --vui-badge-default-bg: #232326;
+  --vui-badge-default-color: #e4e4e7;
+  --vui-badge-default-border: #3f3f46;
+  --vui-badge-info-bg: rgba(29, 78, 216, 0.22);
+  --vui-badge-info-color: #93c5fd;
+  --vui-badge-info-border: rgba(147, 197, 253, 0.28);
+  --vui-badge-success-bg: rgba(21, 128, 61, 0.24);
+  --vui-badge-success-color: #86efac;
+  --vui-badge-success-border: rgba(134, 239, 172, 0.28);
+  --vui-badge-warning-bg: rgba(230, 89, 8, 0.18);
+  --vui-badge-warning-color: #fdba74;
+  --vui-badge-warning-border: rgba(253, 186, 116, 0.28);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.24);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.28);
+  --vui-color-gradient-end: #fb923c;
+  --vui-ambient-primary: rgba(230, 89, 8, 0.24);
+  --vui-ambient-secondary: rgba(251, 146, 60, 0.2);
+  --vui-ambient-accent: rgba(251, 191, 36, 0.16);
+  --vui-ambient-highlight: rgba(255, 255, 255, 0.14);
+  --vui-ambient-grid: rgba(230, 89, 8, 0.14);
+  --vui-ambient-line: rgba(255, 255, 255, 0.18);
+}
+
+/* ------------------------------------------------------------
    High Contrast — WCAG accessible. Primary: Yellow #facc15
    ------------------------------------------------------------ */
 .vui-theme-high-contrast {

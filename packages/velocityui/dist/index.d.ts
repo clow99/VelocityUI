@@ -1,12 +1,12 @@
 
 export { Button } from './components/Button';
-export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button';
+export type { ButtonProps, ButtonVariant, ButtonSize, ButtonAnimation } from './components/Button';
 export { Input } from './components/Input';
 export type { InputProps, InputSize, InputIconPosition } from './components/Input';
 export { Title } from './components/Title';
 export type { TitleProps, TitleLevel, TitleSize, TitleWeight, TitleAlign, TitleColor } from './components/Title';
 export { Badge } from './components/Badge';
-export type { BadgeProps, BadgeVariant, BadgeSize } from './components/Badge';
+export type { BadgeProps, BadgeVariant, BadgeSize, BadgeAnimation } from './components/Badge';
 export { Card } from './components/Card';
 export type { CardProps, CardHeaderProps, CardBodyProps, CardFooterProps, CardVariant, CardSize } from './components/Card';
 export { AnimatedBackground } from './components/AnimatedBackground';
@@ -46,7 +46,7 @@ export type { ProgressProps, ProgressVariant, ProgressSize } from './components/
 export { ToastProvider, useToast } from './components/Toast';
 export type { ToastItem, ToastVariant, ToastContextValue } from './components/Toast';
 export { Avatar } from './components/Avatar';
-export type { AvatarProps, AvatarSize, AvatarShape, AvatarStatus } from './components/Avatar';
+export type { AvatarProps, AvatarSize, AvatarShape, AvatarStatus, AvatarStatusAnimation } from './components/Avatar';
 export { Tag } from './components/Tag';
 export type { TagProps, TagVariant, TagSize } from './components/Tag';
 export { EmptyState } from './components/EmptyState';

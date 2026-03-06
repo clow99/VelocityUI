@@ -51,8 +51,33 @@
   min-height: 0.5rem;
   border-radius: 50%;
   border: 2px solid var(--vui-surface, #ffffff);
+  box-sizing: border-box;
 }
 
 .online  { background-color: #22c55e; }
 .away    { background-color: #f59e0b; }
 .offline { background-color: var(--vui-text-subtle, #64748b); }
+
+.statusPulse {
+  animation: avatarStatusPulse 1.9s ease-out infinite;
+}
+
+@keyframes avatarStatusPulse {
+  0% {
+    box-shadow: 0 0 0 0 currentColor;
+  }
+
+  70% {
+    box-shadow: 0 0 0 0.45rem transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusPulse {
+    animation: none;
+  }
+}

@@ -8,6 +8,16 @@
   line-height: 1;
   border: 1px solid transparent;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
 }
 
 /* Sizes */
@@ -70,4 +80,72 @@
   border-radius: 50%;
   background-color: currentColor;
   flex-shrink: 0;
+}
+
+.pulse {
+  animation: badgePulse 2.2s ease-in-out infinite;
+}
+
+.pulse .dot {
+  animation: badgeDotPulse 1.8s ease-in-out infinite;
+}
+
+.shine::after {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  transform: translateX(-150%);
+  opacity: 0.8;
+  animation: badgeShine 2.6s linear infinite;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes badgeDotPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 currentColor;
+    opacity: 1;
+  }
+
+  70% {
+    box-shadow: 0 0 0 0.4rem transparent;
+    opacity: 0.8;
+  }
+}
+
+@keyframes badgeShine {
+  0% {
+    transform: translateX(-150%);
+  }
+
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse,
+  .pulse .dot,
+  .shine::after {
+    animation: none;
+  }
+
+  .shine::after {
+    opacity: 0;
+  }
 }

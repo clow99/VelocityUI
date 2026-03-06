@@ -6,6 +6,7 @@ import styles from './Avatar.module.css'
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type AvatarShape = 'circle' | 'square'
 export type AvatarStatus = 'online' | 'away' | 'offline'
+export type AvatarStatusAnimation = 'none' | 'pulse'
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
   src?: string
@@ -14,6 +15,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
   size?: AvatarSize
   shape?: AvatarShape
   status?: AvatarStatus
+  statusAnimation?: AvatarStatusAnimation
 }
 
 function getInitials(name: string): string {
@@ -29,6 +31,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   size = 'md',
   shape = 'circle',
   status,
+  statusAnimation = 'none',
   className,
   ...props
 }) => {
@@ -60,7 +63,16 @@ export const Avatar: React.FC<AvatarProps> = ({
         </svg>
       )}
       {status && (
-        <span className={[styles.status, styles[status]].filter(Boolean).join(' ')} aria-label={status} />
+        <span
+          className={[
+            styles.status,
+            styles[status],
+            statusAnimation === 'pulse' ? styles.statusPulse : '',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          aria-label={status}
+        />
       )}
     </span>
   )

@@ -11,6 +11,7 @@ const themes = [
   { name: 'default', label: 'Default', description: 'Clean neutral palette suitable for most products.' },
   { name: 'midnight', label: 'Midnight', description: 'Deep dark backgrounds with vibrant accent colors.' },
   { name: 'ocean', label: 'Ocean', description: 'Cool blues and teals for a calm, professional look.' },
+  { name: 'tangerine', label: 'Tangerine', description: 'Sunlit orange accents with warm, citrus-inspired surfaces.' },
   { name: 'construction', label: 'Construction', description: 'High-visibility yellows and blacks.' },
   { name: 'glass', label: 'Glass', description: 'Frosted glass surfaces with subtle blur effects.' },
   { name: 'soft', label: 'Soft', description: 'Muted pastels for a gentle, approachable feel.' },
@@ -120,6 +121,7 @@ export default function ThemingPage() {
 vui-theme-default
 vui-theme-midnight
 vui-theme-ocean
+vui-theme-tangerine
 vui-theme-construction
 vui-theme-glass
 vui-theme-soft
@@ -186,7 +188,7 @@ vui-theme-monochrome-red`}
           language="tsx"
           code={`import { useState } from 'react'
 
-const themes = ['default', 'midnight', 'ocean', 'construction', 'glass', 'soft'] as const
+const themes = ['default', 'midnight', 'ocean', 'tangerine', 'construction', 'glass', 'soft'] as const
 type Theme = (typeof themes)[number]
 
 export function ThemeSwitcher() {
