@@ -5,6 +5,21 @@ import { FeatureGrid } from '@/components/landing/FeatureGrid'
 import { InstallSnippet } from '@/components/landing/InstallSnippet'
 import { ExamplesShowcase } from '@/components/landing/ExamplesShowcase'
 
+const showcaseApps = [
+  {
+    name: 'SnapForge',
+    logo: '/logos/SnapForge.png',
+    alt: 'SnapForge logo',
+    href: 'https://getsnapforge.com',
+  },
+  {
+    name: 'StatusForge',
+    logo: '/logos/StatusForge.png',
+    alt: 'StatusForge logo',
+    href: 'https://getstatusforge.com',
+  },
+]
+
 export default function HomePage() {
   return (
     <main>
@@ -86,6 +101,49 @@ export default function HomePage() {
                 <p className="text-2xl font-bold text-vui-text sm:text-3xl">{stat.value}</p>
                 <p className="mt-1 text-xs font-medium text-vui-text-subtle sm:text-sm">{stat.label}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Apps Using VelocityUI ─── */}
+      <section className="bg-vui-bg py-16 transition-colors">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 text-center">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-vui-primary">
+              In Use
+            </p>
+            <h2 className="text-2xl font-bold tracking-tight text-vui-text sm:text-3xl">
+              Apps currently using VelocityUI
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-vui-text-subtle sm:text-base">
+              A couple of real apps already shipping with the VelocityUI npm package.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {showcaseApps.map((app) => (
+              <a
+                key={app.name}
+                href={app.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-2xl border border-vui-border bg-vui-surface p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-vui-border-strong hover:bg-vui-surface-muted focus:outline-none focus:ring-2 focus:ring-vui-primary focus:ring-offset-2 focus:ring-offset-vui-bg"
+              >
+                <div className="flex min-h-[176px] items-center justify-center rounded-xl border border-vui-divider bg-black/10 p-6">
+                  <Image
+                    src={app.logo}
+                    alt={app.alt}
+                    width={320}
+                    height={320}
+                    className="h-auto max-h-40 w-auto object-contain"
+                  />
+                </div>
+                <p className="mt-4 text-lg font-semibold text-vui-text">{app.name}</p>
+                <p className="mt-1 text-sm text-vui-text-subtle">
+                  Built with the `@velocityuikit/velocityui` package.
+                </p>
+              </a>
             ))}
           </div>
         </div>
