@@ -88,6 +88,18 @@ describe('named theme presets', () => {
     expect(getVar(wrapper, '--vui-primary')).toBe('#c52e3f')
   })
 
+  it('dark-cyan theme sets neutral dark surfaces and cyan primary', () => {
+    render(
+      <div data-testid="wrapper" className="vui-theme-dark-cyan">
+        <Button>Press</Button>
+      </div>
+    )
+    const wrapper = screen.getByTestId('wrapper')
+    expect(getVar(wrapper, '--vui-bg')).toBe('#0c0c0e')
+    expect(getVar(wrapper, '--vui-surface')).toBe('#161619')
+    expect(getVar(wrapper, '--vui-primary')).toBe('#06b6d4')
+  })
+
   it('density compact reduces control height independently of theme', () => {
     render(
       <div data-testid="midnight-compact" className="vui-theme-midnight vui-density-compact">

@@ -11,6 +11,7 @@ const themes = [
   { name: 'default', label: 'Default', description: 'Clean neutral palette suitable for most products.' },
   { name: 'midnight', label: 'Midnight', description: 'Deep dark backgrounds with vibrant accent colors.' },
   { name: 'ocean', label: 'Ocean', description: 'Cool blues and teals for a calm, professional look.' },
+  { name: 'dark-cyan', label: 'Dark Cyan', description: 'Neutral carbon dark base with vivid cyan accents.' },
   { name: 'tangerine', label: 'Tangerine', description: 'Sunlit orange accents with warm, citrus-inspired surfaces.' },
   { name: 'construction', label: 'Construction', description: 'High-visibility yellows and blacks.' },
   { name: 'glass', label: 'Glass', description: 'Frosted glass surfaces with subtle blur effects.' },
@@ -121,6 +122,7 @@ export default function ThemingPage() {
 vui-theme-default
 vui-theme-midnight
 vui-theme-ocean
+vui-theme-dark-cyan
 vui-theme-tangerine
 vui-theme-construction
 vui-theme-glass

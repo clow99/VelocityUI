@@ -780,6 +780,84 @@
   --vui-ambient-line: rgba(243, 244, 246, 0.16);
 }
 
+/* ------------------------------------------------------------
+   Dark Cyan — neutral carbon dark base with vivid cyan accents
+   ------------------------------------------------------------ */
+.vui-theme-dark-cyan {
+  color-scheme: dark;
+
+  --vui-bg: #0c0c0e;
+  --vui-surface: #161619;
+  --vui-surface-muted: #1e1e23;
+  --vui-surface-translucent: rgba(22, 22, 25, 0.82);
+
+  --vui-text: #f0f6fc;
+  --vui-text-muted: #d1d9e3;
+  --vui-text-subtle: #8b97a8;
+  --vui-text-inverse: #0c0c0e;
+
+  --vui-border: #2a2d35;
+  --vui-border-strong: #3a3e48;
+  --vui-divider: #2a2d35;
+
+  --vui-primary: #06b6d4;
+  --vui-primary-hover: #22d3ee;
+  --vui-primary-contrast: #020a0e;
+  --vui-primary-soft: rgba(6, 182, 212, 0.18);
+
+  --vui-secondary: #1e1e23;
+  --vui-secondary-hover: #2a2d35;
+  --vui-secondary-text: #f0f6fc;
+
+  --vui-danger: #f87171;
+  --vui-danger-hover: #ef4444;
+  --vui-danger-contrast: #ffffff;
+
+  --vui-focus-ring: rgba(6, 182, 212, 0.28);
+  --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
+
+  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.52);
+  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.62);
+
+  --vui-input-disabled-bg: #1e1e23;
+  --vui-input-disabled-color: #555c68;
+  --vui-input-placeholder: #555c68;
+
+  --vui-success-soft: rgba(21, 128, 61, 0.25);
+  --vui-success-text: #86efac;
+  --vui-success-border: rgba(134, 239, 172, 0.3);
+  --vui-warning-soft: rgba(180, 83, 9, 0.25);
+  --vui-warning-text: #fcd34d;
+  --vui-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-info-soft: rgba(6, 182, 212, 0.16);
+  --vui-info-text: #67e8f9;
+  --vui-info-border: rgba(103, 232, 249, 0.3);
+
+  --vui-badge-default-bg: #1e1e23;
+  --vui-badge-default-color: #d1d9e3;
+  --vui-badge-default-border: #2a2d35;
+  --vui-badge-info-bg: rgba(6, 182, 212, 0.16);
+  --vui-badge-info-color: #67e8f9;
+  --vui-badge-info-border: rgba(103, 232, 249, 0.3);
+  --vui-badge-success-bg: rgba(21, 128, 61, 0.25);
+  --vui-badge-success-color: #86efac;
+  --vui-badge-success-border: rgba(134, 239, 172, 0.3);
+  --vui-badge-warning-bg: rgba(180, 83, 9, 0.25);
+  --vui-badge-warning-color: #fcd34d;
+  --vui-badge-warning-border: rgba(252, 211, 77, 0.3);
+  --vui-badge-danger-bg: rgba(153, 27, 27, 0.25);
+  --vui-badge-danger-color: #fca5a5;
+  --vui-badge-danger-border: rgba(252, 165, 165, 0.3);
+  --vui-color-gradient-end: #22d3ee;
+  --vui-ambient-primary: rgba(6, 182, 212, 0.26);
+  --vui-ambient-secondary: rgba(34, 211, 238, 0.2);
+  --vui-ambient-accent: rgba(103, 232, 249, 0.14);
+  --vui-ambient-highlight: rgba(240, 246, 252, 0.14);
+  --vui-ambient-grid: rgba(6, 182, 212, 0.12);
+  --vui-ambient-line: rgba(240, 246, 252, 0.18);
+}
+
 /* ============================================================
    Density modifiers — composable with any named theme
    ============================================================ */
