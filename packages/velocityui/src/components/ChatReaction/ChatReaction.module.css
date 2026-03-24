@@ -1,0 +1,50 @@
+.reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  border-radius: var(--vui-radius-pill, 9999px);
+  border: var(--vui-control-border-width, 2px) solid var(--vui-border, #dbe2ea);
+  background-color: var(--vui-surface, #ffffff);
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.reaction:hover {
+  background-color: var(--vui-surface-muted, #f1f5f9);
+  border-color: var(--vui-border-strong, #c3cfdd);
+}
+
+.reaction:focus-visible {
+  outline: 2px solid var(--vui-primary, #6366f1);
+  outline-offset: 2px;
+}
+
+.active {
+  border-color: var(--vui-primary, #6366f1);
+  background-color: var(--vui-primary-soft, rgba(99, 102, 241, 0.1));
+}
+
+.active:hover {
+  background-color: var(--vui-primary-soft, rgba(99, 102, 241, 0.1));
+  border-color: var(--vui-primary, #6366f1);
+}
+
+.emoji {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.count {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-text-muted, #334155);
+  font-weight: 500;
+  min-width: 0.75rem;
+  text-align: center;
+}
+
+.active .count {
+  color: var(--vui-primary, #6366f1);
+}

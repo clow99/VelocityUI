@@ -37,6 +37,17 @@ import { FileUploadPreview } from '@/components/docs/previews/FileUploadPreview'
 import { TablePreview } from '@/components/docs/previews/TablePreview'
 import { GradientOrbsPreview } from '@/components/docs/previews/GradientOrbsPreview'
 import { GridGlowPreview } from '@/components/docs/previews/GridGlowPreview'
+import { ChatBubblePreview } from '@/components/docs/previews/ChatBubblePreview'
+import { ChatInputPreview } from '@/components/docs/previews/ChatInputPreview'
+import { ChatListPreview } from '@/components/docs/previews/ChatListPreview'
+import { ChatWindowPreview } from '@/components/docs/previews/ChatWindowPreview'
+import { ChatHeaderPreview } from '@/components/docs/previews/ChatHeaderPreview'
+import { TypingIndicatorPreview } from '@/components/docs/previews/TypingIndicatorPreview'
+import { ChatTimestampPreview } from '@/components/docs/previews/ChatTimestampPreview'
+import { ChatReactionPreview } from '@/components/docs/previews/ChatReactionPreview'
+import { ChatAttachmentPreview } from '@/components/docs/previews/ChatAttachmentPreview'
+import { ChatStatusPreview } from '@/components/docs/previews/ChatStatusPreview'
+import { ChatThreadPreview } from '@/components/docs/previews/ChatThreadPreview'
 
 const previewMap: Record<string, React.ComponentType> = {
   button: ButtonPreview,
@@ -74,6 +85,17 @@ const previewMap: Record<string, React.ComponentType> = {
   table: TablePreview,
   gradientorbs: GradientOrbsPreview,
   gridglow: GridGlowPreview,
+  chatbubble: ChatBubblePreview,
+  chatinput: ChatInputPreview,
+  chatlist: ChatListPreview,
+  chatwindow: ChatWindowPreview,
+  chatheader: ChatHeaderPreview,
+  typingindicator: TypingIndicatorPreview,
+  chattimestamp: ChatTimestampPreview,
+  chatreaction: ChatReactionPreview,
+  chatattachment: ChatAttachmentPreview,
+  chatstatus: ChatStatusPreview,
+  chatthread: ChatThreadPreview,
 }
 
 export function generateStaticParams() {

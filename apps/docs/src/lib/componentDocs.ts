@@ -2102,5 +2102,418 @@ export default function Example() {
       },
     ],
   },
+
+  chatbubble: {
+    name: 'ChatBubble',
+    slug: 'chatbubble',
+    description:
+      'Message bubble component with sent, received, system, and AI variants. Supports avatars, timestamps, delivery status, message grouping, and streaming cursors.',
+    importLine: "import { ChatBubble } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'variant', type: "'sent' | 'received' | 'system' | 'ai'", default: "'received'", description: 'Visual style and alignment of the message bubble.' },
+      { name: 'avatar', type: 'ReactNode', description: 'Avatar element displayed beside the bubble.' },
+      { name: 'username', type: 'string', description: 'Display name shown above the bubble.' },
+      { name: 'timestamp', type: 'string', description: 'Time string shown in the header.' },
+      { name: 'status', type: "'sent' | 'delivered' | 'read'", description: 'Delivery status icon (sent variant only).' },
+      { name: 'grouping', type: "'single' | 'first' | 'middle' | 'last'", default: "'single'", description: 'Controls border radius for consecutively grouped messages.' },
+      { name: 'isStreaming', type: 'boolean', default: 'false', description: 'Shows an animated cursor for streaming AI responses.' },
+      { name: 'actions', type: 'ReactNode', description: 'Slot for reaction buttons or actions below the bubble.' },
+      { name: 'children', type: 'ReactNode', description: 'Message content.' },
+    ],
+    examples: [
+      {
+        title: 'Sent & Received',
+        description: 'Basic two-party conversation.',
+        code: `import { ChatBubble } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <ChatBubble variant="received" username="Alice" timestamp="10:30 AM">
+        Hey! How are you?
+      </ChatBubble>
+      <ChatBubble variant="sent" timestamp="10:31 AM" status="read">
+        I'm doing great, thanks!
+      </ChatBubble>
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'AI Assistant',
+        description: 'AI-style message with streaming cursor.',
+        code: `import { ChatBubble } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <ChatBubble variant="ai" username="Assistant" isStreaming>
+      Let me help you with that...
+    </ChatBubble>
+  )
+}`,
+      },
+      {
+        title: 'System Message',
+        code: `import { ChatBubble } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <ChatBubble variant="system">Alice joined the conversation</ChatBubble>
+}`,
+      },
+    ],
+  },
+
+  chatinput: {
+    name: 'ChatInput',
+    slug: 'chatinput',
+    description:
+      'Auto-resizing message composer with send button, keyboard shortcuts, and customizable action slots for attachments and emoji pickers.',
+    importLine: "import { ChatInput } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'value', type: 'string', description: 'Controlled value of the textarea.' },
+      { name: 'onChange', type: '(value: string) => void', description: 'Called when the text changes.' },
+      { name: 'onSend', type: '(value: string) => void', description: 'Called when the user sends a message.' },
+      { name: 'onAttach', type: '() => void', description: 'Called when the attachment action is triggered.' },
+      { name: 'placeholder', type: 'string', default: "'Type a message…'", description: 'Placeholder text.' },
+      { name: 'maxRows', type: 'number', default: '5', description: 'Maximum number of visible rows before scrolling.' },
+      { name: 'leftSlot', type: 'ReactNode', description: 'Content rendered to the left of the textarea.' },
+      { name: 'rightSlot', type: 'ReactNode', description: 'Content rendered to the right of the textarea.' },
+      { name: 'showSendButton', type: 'boolean', default: 'true', description: 'Whether to show the send button.' },
+      { name: 'sendOnEnter', type: 'boolean', default: 'true', description: 'Send on Enter key (Shift+Enter for newline).' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the input.' },
+    ],
+    examples: [
+      {
+        title: 'Basic Usage',
+        code: `import { ChatInput } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <ChatInput onSend={(msg) => console.log(msg)} />
+}`,
+      },
+      {
+        title: 'Controlled',
+        code: `import { useState } from 'react'
+import { ChatInput } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  const [value, setValue] = useState('')
+  return (
+    <ChatInput
+      value={value}
+      onChange={setValue}
+      onSend={(msg) => { console.log(msg); setValue('') }}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  chatlist: {
+    name: 'ChatList',
+    slug: 'chatlist',
+    description:
+      'Conversation sidebar listing recent chats with avatars, last message preview, timestamps, unread badges, and online indicators.',
+    importLine: "import { ChatList } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'conversations', type: 'ChatConversation[]', description: 'Array of conversation objects to display.' },
+      { name: 'activeId', type: 'string', description: 'ID of the currently selected conversation.' },
+      { name: 'onSelect', type: '(id: string) => void', description: 'Called when a conversation is clicked.' },
+      { name: 'emptyText', type: 'string', default: "'No conversations'", description: 'Text shown when the list is empty.' },
+    ],
+    examples: [
+      {
+        title: 'Basic Usage',
+        code: `import { ChatList } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <ChatList
+      conversations={[
+        { id: '1', name: 'Alice', lastMessage: 'See you tomorrow!', timestamp: '2m', unread: 2, online: true },
+        { id: '2', name: 'Bob', lastMessage: 'Thanks for the update', timestamp: '1h' },
+        { id: '3', name: 'Team Chat', lastMessage: 'New deployment ready', timestamp: '3h', unread: 5 },
+      ]}
+      activeId="1"
+      onSelect={(id) => console.log(id)}
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  chatwindow: {
+    name: 'ChatWindow',
+    slug: 'chatwindow',
+    description:
+      'Full chat layout container with slot-based header, scrollable message area with auto-scroll, and footer for input.',
+    importLine: "import { ChatWindow } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'header', type: 'ReactNode', description: 'Content rendered as the sticky header.' },
+      { name: 'footer', type: 'ReactNode', description: 'Content rendered as the sticky footer (typically ChatInput).' },
+      { name: 'autoScroll', type: 'boolean', default: 'true', description: 'Automatically scrolls to the bottom when children change.' },
+      { name: 'children', type: 'ReactNode', description: 'Message area content.' },
+    ],
+    examples: [
+      {
+        title: 'Complete Chat Layout',
+        code: `import { ChatWindow, ChatHeader, ChatBubble, ChatInput } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ height: '400px' }}>
+      <ChatWindow
+        header={<ChatHeader title="Alice" subtitle="Online" />}
+        footer={<ChatInput onSend={(msg) => console.log(msg)} />}
+      >
+        <ChatBubble variant="received" username="Alice">Hello!</ChatBubble>
+        <ChatBubble variant="sent">Hi there!</ChatBubble>
+      </ChatWindow>
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  chatheader: {
+    name: 'ChatHeader',
+    slug: 'chatheader',
+    description:
+      'Top bar for a chat window displaying conversation title, avatar with status indicator, subtitle, and action button slots.',
+    importLine: "import { ChatHeader } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'title', type: 'string', description: 'Main title (user or channel name).' },
+      { name: 'subtitle', type: 'string', description: 'Secondary text (e.g. "Online" or member count).' },
+      { name: 'avatar', type: 'ReactNode', description: 'Avatar element.' },
+      { name: 'status', type: "'online' | 'offline' | 'away'", description: 'Status dot overlay on the avatar.' },
+      { name: 'actions', type: 'ReactNode', description: 'Action buttons rendered on the right side.' },
+      { name: 'onBack', type: '() => void', description: 'Shows a back arrow button when provided.' },
+    ],
+    examples: [
+      {
+        title: 'Basic Header',
+        code: `import { ChatHeader } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <ChatHeader title="Alice" subtitle="Online" status="online" />
+}`,
+      },
+      {
+        title: 'With Back Button',
+        code: `import { ChatHeader } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <ChatHeader title="Team Chat" subtitle="3 members" onBack={() => {}} />
+}`,
+      },
+    ],
+  },
+
+  typingindicator: {
+    name: 'TypingIndicator',
+    slug: 'typingindicator',
+    description:
+      'Animated bouncing dots indicator showing that one or more users are currently typing, with automatic text formatting.',
+    importLine: "import { TypingIndicator } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'users', type: 'string[]', default: '[]', description: 'Names of users who are typing.' },
+    ],
+    examples: [
+      {
+        title: 'Single User',
+        code: `import { TypingIndicator } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <TypingIndicator users={['Alice']} />
+}`,
+      },
+      {
+        title: 'Multiple Users',
+        code: `import { TypingIndicator } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <TypingIndicator users={['Alice', 'Bob']} />
+}`,
+      },
+    ],
+  },
+
+  chattimestamp: {
+    name: 'ChatTimestamp',
+    slug: 'chattimestamp',
+    description:
+      'Date/time separator with horizontal divider lines, used between message groups to indicate when messages were sent.',
+    importLine: "import { ChatTimestamp } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'children', type: 'ReactNode', description: 'Timestamp text (e.g. "Today", "March 24, 2026").' },
+    ],
+    examples: [
+      {
+        title: 'Basic Usage',
+        code: `import { ChatTimestamp } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return <ChatTimestamp>Today</ChatTimestamp>
+}`,
+      },
+    ],
+  },
+
+  chatreaction: {
+    name: 'ChatReaction',
+    slug: 'chatreaction',
+    description:
+      'Emoji reaction pill with count and active state, typically displayed below chat messages for team-style reactions.',
+    importLine: "import { ChatReaction } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'emoji', type: 'string', description: 'The emoji character to display.' },
+      { name: 'count', type: 'number', default: '1', description: 'Number of reactions.' },
+      { name: 'active', type: 'boolean', default: 'false', description: 'Whether the current user has reacted.' },
+      { name: 'onClick', type: '() => void', description: 'Called when the reaction is clicked.' },
+    ],
+    examples: [
+      {
+        title: 'Reactions',
+        code: `import { ChatReaction } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '0.25rem' }}>
+      <ChatReaction emoji="👍" count={3} active />
+      <ChatReaction emoji="❤️" count={1} />
+      <ChatReaction emoji="😂" count={2} />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  chatattachment: {
+    name: 'ChatAttachment',
+    slug: 'chatattachment',
+    description:
+      'Preview card for file, image, video, and audio attachments within chat messages, with download and preview actions.',
+    importLine: "import { ChatAttachment } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'variant', type: "'image' | 'file' | 'video' | 'audio'", default: "'file'", description: 'Type of attachment to display.' },
+      { name: 'src', type: 'string', description: 'URL for image/video/audio source.' },
+      { name: 'fileName', type: 'string', description: 'Name of the file.' },
+      { name: 'fileSize', type: 'string', description: 'Human-readable file size.' },
+      { name: 'onDownload', type: '() => void', description: 'Called when the download button is clicked.' },
+      { name: 'onPreview', type: '() => void', description: 'Called when an image is clicked for preview.' },
+    ],
+    examples: [
+      {
+        title: 'File Attachment',
+        code: `import { ChatAttachment } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <ChatAttachment
+      variant="file"
+      fileName="report.pdf"
+      fileSize="2.4 MB"
+      onDownload={() => {}}
+    />
+  )
+}`,
+      },
+      {
+        title: 'Image Attachment',
+        code: `import { ChatAttachment } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <ChatAttachment
+      variant="image"
+      src="https://placehold.co/300x200"
+      fileName="screenshot.png"
+    />
+  )
+}`,
+      },
+    ],
+  },
+
+  chatstatus: {
+    name: 'ChatStatus',
+    slug: 'chatstatus',
+    description:
+      'Presence indicator dot with optional label, supporting online, offline, away, busy, and do-not-disturb states with pulse animation.',
+    importLine: "import { ChatStatus } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'variant', type: "'online' | 'offline' | 'away' | 'busy' | 'dnd'", default: "'offline'", description: 'Presence state.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Size of the indicator dot.' },
+      { name: 'showLabel', type: 'boolean', default: 'false', description: 'Show text label next to the dot.' },
+      { name: 'pulse', type: 'boolean', default: 'false', description: 'Animate the dot when online.' },
+    ],
+    examples: [
+      {
+        title: 'All States',
+        code: `import { ChatStatus } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <ChatStatus variant="online" showLabel />
+      <ChatStatus variant="away" showLabel />
+      <ChatStatus variant="busy" showLabel />
+      <ChatStatus variant="dnd" showLabel />
+      <ChatStatus variant="offline" showLabel />
+    </div>
+  )
+}`,
+      },
+      {
+        title: 'Sizes with Pulse',
+        code: `import { ChatStatus } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <ChatStatus variant="online" size="sm" pulse />
+      <ChatStatus variant="online" size="md" pulse />
+      <ChatStatus variant="online" size="lg" pulse />
+    </div>
+  )
+}`,
+      },
+    ],
+  },
+
+  chatthread: {
+    name: 'ChatThread',
+    slug: 'chatthread',
+    description:
+      'Thread summary with reply count, participant avatars, and expandable content area for viewing threaded replies in team chat.',
+    importLine: "import { ChatThread } from '@velocityuikit/velocityui'",
+    props: [
+      { name: 'replyCount', type: 'number', default: '0', description: 'Number of replies in the thread.' },
+      { name: 'lastReplyTimestamp', type: 'string', description: 'Timestamp of the most recent reply.' },
+      { name: 'participants', type: 'ReactNode[]', default: '[]', description: 'Array of avatar elements for thread participants.' },
+      { name: 'expanded', type: 'boolean', default: 'false', description: 'Whether the thread content is visible.' },
+      { name: 'onToggle', type: '() => void', description: 'Called when the thread summary is clicked.' },
+      { name: 'children', type: 'ReactNode', description: 'Thread content shown when expanded.' },
+    ],
+    examples: [
+      {
+        title: 'Basic Thread',
+        code: `import { ChatThread, ChatBubble } from '@velocityuikit/velocityui'
+
+export default function Example() {
+  return (
+    <ChatThread replyCount={3} lastReplyTimestamp="2 min ago" expanded>
+      <ChatBubble variant="received" username="Bob">Great idea!</ChatBubble>
+      <ChatBubble variant="received" username="Carol">I agree</ChatBubble>
+    </ChatThread>
+  )
+}`,
+      },
+    ],
+  },
 }
 

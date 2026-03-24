@@ -86,6 +86,22 @@ export const componentCategories: ComponentCategory[] = [
       { slug: 'tooltip', name: 'Tooltip' },
     ],
   },
+  {
+    label: 'Chat',
+    items: [
+      { slug: 'chatbubble', name: 'ChatBubble' },
+      { slug: 'chatinput', name: 'ChatInput' },
+      { slug: 'chatlist', name: 'ChatList' },
+      { slug: 'chatwindow', name: 'ChatWindow' },
+      { slug: 'chatheader', name: 'ChatHeader' },
+      { slug: 'typingindicator', name: 'TypingIndicator' },
+      { slug: 'chattimestamp', name: 'ChatTimestamp' },
+      { slug: 'chatreaction', name: 'ChatReaction' },
+      { slug: 'chatattachment', name: 'ChatAttachment' },
+      { slug: 'chatstatus', name: 'ChatStatus' },
+      { slug: 'chatthread', name: 'ChatThread' },
+    ],
+  },
 ]
 
 export const docsComponents: ComponentEntry[] = componentCategories.flatMap((c) => c.items)
@@ -135,6 +151,14 @@ export const pageExamples = [
     pages: [
       { slug: 'profile', name: 'Developer' },
       { slug: 'team', name: 'Team' },
+    ],
+  },
+  {
+    label: 'Chat',
+    pages: [
+      { slug: 'direct-messages', name: 'Direct Messages' },
+      { slug: 'ai-chat', name: 'AI Assistant' },
+      { slug: 'team-chat', name: 'Team Channel' },
     ],
   },
 ]

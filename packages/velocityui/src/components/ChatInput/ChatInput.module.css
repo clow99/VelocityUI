@@ -1,0 +1,79 @@
+.root {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--vui-chat-input-bg, var(--vui-surface, #ffffff));
+  border: var(--vui-control-border-width, 2px) solid var(--vui-chat-input-border, var(--vui-border-strong, #c3cfdd));
+  border-radius: var(--vui-chat-bubble-radius, 0.75rem);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.root:focus-within {
+  border-color: var(--vui-input-focus-border, var(--vui-primary, #6366f1));
+  box-shadow: 0 0 0 3px var(--vui-input-focus-ring, var(--vui-focus-ring, rgba(99, 102, 241, 0.15)));
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--vui-font-size-sm, 0.8125rem);
+  line-height: 1.5;
+  color: var(--vui-text, #0f172a);
+  padding: 0.25rem 0;
+  min-height: 1.5rem;
+  max-height: 8rem;
+  overflow-y: auto;
+}
+
+.textarea::placeholder {
+  color: var(--vui-input-placeholder, #94a3b8);
+}
+
+.textarea:disabled {
+  cursor: not-allowed;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sendButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--vui-radius-md, 0.5rem);
+  border: none;
+  background-color: var(--vui-primary, #6366f1);
+  color: var(--vui-primary-contrast, #ffffff);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.sendButton:hover:not(:disabled) {
+  background-color: var(--vui-primary-hover, #4f46e5);
+}
+
+.sendButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sendButton:focus-visible {
+  outline: 2px solid var(--vui-primary, #6366f1);
+  outline-offset: 2px;
+}

@@ -1,0 +1,20 @@
+.timestamp {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--vui-divider, #e5e7eb);
+}
+
+.text {
+  font-size: var(--vui-help-size, 0.8125rem);
+  color: var(--vui-chat-system-text, var(--vui-text-subtle, #64748b));
+  white-space: nowrap;
+  font-weight: 500;
+}

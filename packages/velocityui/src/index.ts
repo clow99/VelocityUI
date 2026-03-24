@@ -108,3 +108,41 @@ export type { FileUploadProps } from './components/FileUpload'
 
 export { Table } from './components/Table'
 export type { TableProps, TableColumn, TableSize, SortDirection } from './components/Table'
+
+export { ChatBubble } from './components/ChatBubble'
+export type {
+  ChatBubbleProps,
+  ChatBubbleVariant,
+  ChatBubbleStatus,
+  ChatBubbleGrouping,
+} from './components/ChatBubble'
+
+export { ChatInput } from './components/ChatInput'
+export type { ChatInputProps } from './components/ChatInput'
+
+export { ChatList } from './components/ChatList'
+export type { ChatListProps, ChatConversation } from './components/ChatList'
+
+export { ChatWindow } from './components/ChatWindow'
+export type { ChatWindowProps } from './components/ChatWindow'
+
+export { ChatHeader } from './components/ChatHeader'
+export type { ChatHeaderProps, ChatHeaderStatus } from './components/ChatHeader'
+
+export { TypingIndicator } from './components/TypingIndicator'
+export type { TypingIndicatorProps } from './components/TypingIndicator'
+
+export { ChatTimestamp } from './components/ChatTimestamp'
+export type { ChatTimestampProps } from './components/ChatTimestamp'
+
+export { ChatReaction } from './components/ChatReaction'
+export type { ChatReactionProps } from './components/ChatReaction'
+
+export { ChatAttachment } from './components/ChatAttachment'
+export type { ChatAttachmentProps, ChatAttachmentVariant } from './components/ChatAttachment'
+
+export { ChatStatus } from './components/ChatStatus'
+export type { ChatStatusProps, ChatStatusVariant, ChatStatusSize } from './components/ChatStatus'
+
+export { ChatThread } from './components/ChatThread'
+export type { ChatThreadProps } from './components/ChatThread'
