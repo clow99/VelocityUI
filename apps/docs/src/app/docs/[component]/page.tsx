@@ -1,8 +1,11 @@
+import Link from 'next/link'
+import { Icon } from '@/components/Icon'
+import { docsComponents } from '@/lib/navigation'
 import { notFound } from 'next/navigation'
 import { componentDocs } from '@/lib/componentDocs'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { CodeBlock } from '@/components/docs/CodeBlock'
-import { ButtonPreview } from '@/components/docs/previews/ButtonPreview'
+import { ButtonPlayground } from '@/components/docs/ButtonPlayground'
 import { InputPreview } from '@/components/docs/previews/InputPreview'
 import { TitlePreview } from '@/components/docs/previews/TitlePreview'
 import { BadgePreview } from '@/components/docs/previews/BadgePreview'
@@ -50,7 +53,7 @@ import { ChatStatusPreview } from '@/components/docs/previews/ChatStatusPreview'
 import { ChatThreadPreview } from '@/components/docs/previews/ChatThreadPreview'
 
 const previewMap: Record<string, React.ComponentType> = {
-  button: ButtonPreview,
+  button: ButtonPlayground,
   input: InputPreview,
   title: TitlePreview,
   badge: BadgePreview,
@@ -112,40 +115,68 @@ export async function generateMetadata({ params }: { params: Promise<{ component
   }
 }
 
-export default async function ComponentPage({ params }: { params: Promise<{ component: string }> }) {
+export default async function ComponentPage({
+  params,
+}: {
+  params: Promise<{ component: string }>
+}) {
   const { component } = await params
   const doc = componentDocs[component]
   if (!doc) notFound()
 
   const Preview = previewMap[component]
+  const index = docsComponents.findIndex((c) => c.slug === component)
+  const previous = docsComponents[index - 1]
+  const next = docsComponents[index + 1]
 
   return (
     <article className="max-w-3xl">
       <div className="mb-8">
+        <nav className="doc-breadcrumb" aria-label="Breadcrumb">
+          <Link href="/docs">Components</Link>
+          <Icon name="chevron" size={12} />
+          <span>{doc.name}</span>
+        </nav>
         <h1 className="text-4xl font-extrabold tracking-tight text-vui-text">{doc.name}</h1>
         <p className="mt-3 text-lg text-vui-text-subtle leading-relaxed">{doc.description}</p>
+        <div className="doc-resource-links"><a href={`https://github.com/clow99/VelocityUI/tree/main/packages/velocityui/src/components/${doc.name}`} target="_blank" rel="noreferrer"><Icon name="code" size={15} />View source<Icon name="external" size={13} /></a><Link href="/docs/installation">Installation<Icon name="arrow" size={13} /></Link></div>
       </div>
 
-      <section className="mb-10">
-        <h2 className="mb-3 text-lg font-semibold text-vui-text">Import</h2>
-        <CodeBlock code={doc.importLine} language="tsx" />
-      </section>
+      <nav className="doc-section-links" aria-label="On this page">
+        {['Preview', 'Import', 'Props', 'Examples', 'Theming'].map((label) => (
+          <a key={label} href={'#' + label.toLowerCase()}>
+            {label}
+          </a>
+        ))}
+      </nav>
 
       {Preview && (
-        <section className="mb-10">
+        <section id="preview" className="mb-10">
           <h2 className="mb-3 text-lg font-semibold text-vui-text">Preview</h2>
-          <div className="rounded-xl border border-vui-border bg-vui-surface-muted p-8">
+          <div className="preview-panel">
+            <div className="preview-toolbar">
+              <span>
+                <span className="status-dot" />
+                Live preview
+              </span>
+              <Link href="/docs/theming">Customize theme</Link>
+            </div>
             <Preview />
           </div>
         </section>
       )}
 
-      <section className="mb-10">
+      <section id="import" className="mb-10">
+        <h2 className="mb-3 text-lg font-semibold text-vui-text">Import</h2>
+        <CodeBlock code={doc.importLine} language="tsx" />
+      </section>
+
+      <section id="props" className="mb-10">
         <h2 className="mb-3 text-lg font-semibold text-vui-text">Props</h2>
         <PropsTable rows={doc.props} />
       </section>
 
-      <section className="mb-10">
+      <section id="examples" className="mb-10">
         <h2 className="mb-3 text-lg font-semibold text-vui-text">Examples</h2>
         <div className="flex flex-col gap-8">
           {doc.examples.map((example) => (
@@ -160,7 +191,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
         </div>
       </section>
 
-      <section className="mb-10">
+      <section id="theming" className="mb-10">
         <h2 className="mb-3 text-lg font-semibold text-vui-text">Theming</h2>
         <p className="mb-4 text-sm text-vui-text-subtle leading-relaxed">
           Apply a named theme class to{' '}
@@ -168,10 +199,11 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
             {'<body>'}
           </code>{' '}
           or any parent element. All VelocityUI components inside that element will automatically
-          adopt its colors, shadows, and effects. Combine with a density modifier for complete control:
+          adopt its colors, shadows, and effects. Combine with a density modifier for complete
+          control:
         </p>
         <CodeBlock
-          language="css"
+          language="html"
           code={`/* Pick any named theme */
 <body class="vui-theme-ocean">
 
@@ -180,13 +212,29 @@ export default async function ComponentPage({ params }: { params: Promise<{ comp
 <body class="vui-theme-construction vui-density-spacious">
 
 /* Available themes */
-/* default  midnight  ocean  tangerine */
+/* default  midnight  ocean  dark-cyan  tangerine */
 /* construction  glass  soft  high-contrast  monochrome-red */
 
 /* Available densities */
 /* vui-density-compact  vui-density-comfortable  vui-density-spacious */`}
         />
       </section>
+      <nav className="doc-pagination" aria-label="Component pagination">
+        {previous ? (
+          <Link href={'/docs/' + previous.slug}>
+            <Icon name="arrow" size={16} style={{ transform: 'rotate(180deg)' }} />
+            {previous.name}
+          </Link>
+        ) : (
+          <Link href="/docs">All components</Link>
+        )}
+        {next && (
+          <Link href={'/docs/' + next.slug}>
+            {next.name}
+            <Icon name="arrow" size={16} />
+          </Link>
+        )}
+      </nav>
     </article>
   )
 }

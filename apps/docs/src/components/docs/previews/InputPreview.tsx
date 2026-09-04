@@ -1,71 +1,117 @@
-'use client'
-
-import { Input } from '@velocityuikit/velocityui'
-
-const SearchIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-  </svg>
-)
+"use client";
+import { useState } from "react";
+import { Input, Button, Badge } from "@velocityuikit/velocityui";
+import { Icon } from "@/components/Icon";
 
 export function InputPreview() {
+  const [saved, setSaved] = useState(false);
+  const [email, setEmail] = useState("maya@example.com");
+  const [error, setError] = useState("");
   return (
-    <div className="flex flex-col gap-4 max-w-sm w-full">
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Basic</p>
-        <Input label="Email address" placeholder="you@example.com" type="email" />
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Floating label</p>
-        <div className="flex flex-col gap-3">
-          <Input label="Email address" type="email" floatingLabel />
-          <Input label="Location name" floatingLabel />
-          <Input label="Search" leftIcon={<SearchIcon />} floatingLabel hint="Press Enter to search" />
+    <div className="component-studies">
+      <form
+        className="study-panel"
+        noValidate
+        onChange={() => setSaved(false)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setError("Enter a complete email address.");
+            setSaved(false);
+          } else {
+            setError("");
+            setSaved(true);
+          }
+        }}
+      >
+        <div className="study-heading">
+          <div>
+            <span className="study-kicker">SET THE SCENE</span>
+            <h3>A home for your next idea.</h3>
+          </div>
+          <span className="study-symbol">
+            <Icon name="layers" />
+          </span>
         </div>
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Search presets</p>
-        <div className="flex flex-col gap-3">
-          <Input label="Search users" search placeholder="Type a name..." />
+        <div className="study-form study-spaced">
           <Input
-            label="Search products"
+            name="project"
+            label="Project name"
+            defaultValue="Monday Studio"
+            leftIcon={<Icon name="layers" size={16} />}
+          />
+          <Input
+            name="website"
+            label="Project address"
+            leadingAddon="https://"
+            trailingAddon=".design"
+            defaultValue="monday-studio"
+            hint="Your own little corner of the internet."
+          />
+          <div className="study-field-grid">
+            <Input
+              name="budget"
+              label="Monthly budget"
+              leadingAddon="$"
+              trailingAddon="USD"
+              inputMode="decimal"
+              defaultValue="240"
+            />
+            <Input
+              name="contact"
+              label="Contact email"
+              type="email"
+              autoComplete="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                if (error) setError("");
+              }}
+              error={error}
+            />
+          </div>
+        </div>
+        <div className="study-footer">
+          <span role="status">
+            {saved
+              ? "Project saved in this preview."
+              : "You can change these details later."}
+          </span>
+          <Button
+            type="submit"
+            size="sm"
+            leftIcon={<Icon name={saved ? "check" : "plus"} size={15} />}
+          >
+            {saved ? "Saved" : "Save project"}
+          </Button>
+        </div>
+      </form>
+      <section className="study-panel">
+        <div className="study-heading">
+          <h3>Thoughtful in every state.</h3>
+          <Badge appearance="soft">Included</Badge>
+        </div>
+        <div className="study-form study-spaced">
+          <Input
+            label="Search components"
             search
-            searchIconPosition="right"
-            rightIconClassName="text-vui-primary"
-            placeholder="Type SKU or name..."
+            placeholder="Find your next building block…"
           />
           <Input
-            label="Custom search icon"
-            searchIcon={<SearchIcon />}
-            leftIconClassName="text-vui-danger"
-            placeholder="Custom icon color"
+            label="Workspace name"
+            floatingLabel
+            defaultValue="Monday Studio"
+            hint="Floating labels stay visible while you type."
+          />
+          <Input
+            label="Workspace ID"
+            value="workspace_monday_01"
+            readOnly
+            trailingAddon={<Icon name="shield" size={15} />}
+            hint="A read-only identifier, ready to select and copy."
           />
         </div>
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">With error</p>
-        <Input
-          label="Password"
-          type="password"
-          defaultValue="123"
-          error="Password must be at least 8 characters."
-        />
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Floating label with error</p>
-        <Input
-          label="Password"
-          type="password"
-          defaultValue="123"
-          error="Password must be at least 8 characters."
-          floatingLabel
-        />
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Disabled</p>
-        <Input label="Read only" value="Cannot edit this" disabled />
-      </div>
+      </section>
     </div>
-  )
+  );
 }
-

@@ -74,7 +74,7 @@ export { ToastProvider, useToast } from './components/Toast'
 export type { ToastItem, ToastVariant, ToastContextValue } from './components/Toast'
 
 export { Avatar } from './components/Avatar'
-export type { AvatarProps, AvatarSize, AvatarShape, AvatarStatus, AvatarStatusAnimation } from './components/Avatar'
+export type { AvatarProps, AvatarGroupProps, AvatarTone, AvatarSize, AvatarShape, AvatarStatus, AvatarStatusAnimation } from './components/Avatar'
 
 export { Tag } from './components/Tag'
 export type { TagProps, TagVariant, TagSize } from './components/Tag'

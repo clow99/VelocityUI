@@ -31,7 +31,7 @@ const suggestions = [
 const aiResponses = [
   "That's a great question! React hooks are functions that let you use state and other React features in functional components. The most commonly used hooks are `useState` for managing state, `useEffect` for side effects, and `useContext` for accessing context values. They were introduced in React 16.8 and have become the standard way to write React components.",
   "Here's a comprehensive approach: First, check your element's `display` property — flexbox and grid solve most layout challenges. Use browser DevTools to inspect the box model (margin, border, padding, content). Common pitfalls include forgetting that margins collapse vertically, that percentage heights need a defined parent height, and that `overflow: hidden` can clip positioned children.",
-  "REST and GraphQL take fundamentally different approaches to API design. REST uses multiple endpoints with fixed data structures, while GraphQL provides a single endpoint where clients specify exactly what data they need. GraphQL reduces over-fetching and under-fetching but adds complexity with schema management. Choose REST for simple CRUD APIs and GraphQL for complex, interconnected data models.",
+  'REST and GraphQL take fundamentally different approaches to API design. REST uses multiple endpoints with fixed data structures, while GraphQL provides a single endpoint where clients specify exactly what data they need. GraphQL reduces over-fetching and under-fetching but adds complexity with schema management. Choose REST for simple CRUD APIs and GraphQL for complex, interconnected data models.',
   "Absolutely! I'd be happy to help. Could you share the specific code or error you're working with? In the meantime, here are some common debugging strategies: check the console for errors, verify your data flow with logging, use React DevTools to inspect component state, and try isolating the problem in a minimal reproduction.",
 ]
 
@@ -62,7 +62,7 @@ export default function AiChatPage() {
       id: 1,
       variant: 'ai',
       text: "Hello! I'm your AI assistant. I can help you with coding questions, explain concepts, debug issues, and more. What would you like to work on today?",
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: 'Just now',
     },
   ])
   const [inputValue, setInputValue] = useState('')
@@ -105,14 +105,14 @@ export default function AiChatPage() {
           clearInterval(interval)
           setMessages((prev) =>
             prev.map((m) =>
-              m.id === streamingId ? { ...m, text: fullResponse, isStreaming: false } : m
-            )
+              m.id === streamingId ? { ...m, text: fullResponse, isStreaming: false } : m,
+            ),
           )
         } else {
           setMessages((prev) =>
             prev.map((m) =>
-              m.id === streamingId ? { ...m, text: fullResponse.slice(0, charIndex) } : m
-            )
+              m.id === streamingId ? { ...m, text: fullResponse.slice(0, charIndex) } : m,
+            ),
           )
         }
       }, 20)
@@ -123,15 +123,23 @@ export default function AiChatPage() {
     <div className="flex flex-col gap-6">
       <div>
         <div className="flex items-center gap-3">
-          <Title as="h1" size="xl">AI Assistant</Title>
-          <Badge variant="primary" size="sm">Beta</Badge>
+          <Title as="h1" size="xl">
+            AI Assistant
+          </Title>
+          <Badge variant="primary" size="sm">
+            Beta
+          </Badge>
         </div>
         <p className="mt-2 text-vui-text-muted">
-          An AI chat interface built with ChatWindow, ChatBubble (ai variant), ChatInput, streaming animation, and suggestion chips.
+          An AI chat interface built with ChatWindow, ChatBubble (ai variant), ChatInput, streaming
+          animation, and suggestion chips.
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-vui-border" style={{ height: '34rem' }}>
+      <div
+        className="overflow-hidden rounded-xl border border-vui-border"
+        style={{ height: '34rem' }}
+      >
         <ChatWindow
           header={
             <ChatHeader
@@ -145,12 +153,20 @@ export default function AiChatPage() {
                   size="sm"
                   onClick={() => {
                     setMessages([
-                      { id: Date.now(), variant: 'system', text: 'Conversation cleared', timestamp: '' },
+                      {
+                        id: Date.now(),
+                        variant: 'system',
+                        text: 'Conversation cleared',
+                        timestamp: '',
+                      },
                       {
                         id: Date.now() + 1,
                         variant: 'ai',
-                        text: "Fresh start! What would you like to explore?",
-                        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                        text: 'Fresh start! What would you like to explore?',
+                        timestamp: new Date().toLocaleTimeString([], {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        }),
                       },
                     ])
                   }}

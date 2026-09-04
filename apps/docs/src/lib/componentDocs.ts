@@ -20,12 +20,12 @@ export const componentDocs: Record<string, ComponentDoc> = {
     name: 'Button',
     slug: 'button',
     description:
-      'Button with 5 variants, 3 sizes, a loading state with spinner, icon slots, and optional attention-grabbing animations.',
+      'Six visual treatments, compact icon buttons, and clear loading and pressed states. Built for everyday actions and the moments that matter.',
     importLine: "import { Button } from '@velocityuikit/velocityui'",
     props: [
       {
         name: 'variant',
-        type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'",
+        type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'soft'",
         default: "'primary'",
         description: 'Visual style of the button.',
       },
@@ -45,7 +45,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
         name: 'loading',
         type: 'boolean',
         default: 'false',
-        description: 'Replaces content with a spinner and disables interaction.',
+        description: 'Shows a spinner and disables interaction. Text labels stay visible; icon-only content is replaced.',
       },
       {
         name: 'fullWidth',
@@ -53,6 +53,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
         default: 'false',
         description: 'Makes the button fill its container width.',
       },
+      { name: 'iconOnly', type: 'boolean', default: 'false', description: 'Equal width and height for icon actions. Supply an aria-label to name the button.' },
       {
         name: 'leftIcon',
         type: 'ReactNode',
@@ -72,8 +73,21 @@ export const componentDocs: Record<string, ComponentDoc> = {
     ],
     examples: [
       {
+        title: 'Quiet actions and icon buttons',
+        code: `import { Button } from '@velocityuikit/velocityui'
+
+export default function Actions() {
+  return <div style={{ display: 'flex', gap: 8 }}>
+    <Button type="button" variant="soft">Add to collection</Button>
+    <Button type="button" variant="outline" iconOnly aria-label="Add item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+    </Button>
+  </div>
+}`,
+      },
+      {
         title: 'Variants',
-        description: 'Five visual styles to match any context.',
+        description: 'Six visual styles to match any context.',
         code: `import { Button } from '@velocityuikit/velocityui'
 
 export default function Example() {
@@ -83,6 +97,7 @@ export default function Example() {
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
+      <Button variant="soft">Soft</Button>
       <Button variant="danger">Danger</Button>
     </div>
   )
@@ -180,6 +195,8 @@ export default function Example() {
         type: 'ReactNode',
         description: 'Icon rendered inside the input on the right.',
       },
+      { name: 'leadingAddon', type: 'ReactNode', description: 'Attached prefix outside the editable field, such as https:// or a currency symbol. Included in the accessible description.' },
+      { name: 'trailingAddon', type: 'ReactNode', description: 'Attached suffix such as units or a domain ending. Add-ons are not part of the submitted input value.' },
       {
         name: 'search',
         type: 'boolean',
@@ -223,6 +240,18 @@ export default function Example() {
       },
     ],
     examples: [
+      {
+        title: 'Prefixes and units',
+        description: 'Add-ons frame the editable value and stay out of form submission. Icon slots, sizes, error states, and forwarded input refs still work.',
+        code: `import { Input } from '@velocityuikit/velocityui'
+
+export default function ProjectFields() {
+  return <div style={{ display: 'grid', gap: 20 }}>
+    <Input label="Website" name="slug" leadingAddon="https://" trailingAddon=".design" defaultValue="monday-studio" />
+    <Input label="Budget" name="budget" leadingAddon="$" trailingAddon="USD" inputMode="decimal" />
+  </div>
+}`,
+      },
       {
         title: 'Basic',
         code: `import { Input } from '@velocityuikit/velocityui'
@@ -384,9 +413,10 @@ export default function Example() {
     name: 'Badge',
     slug: 'badge',
     description:
-      'Inline status label with 6 semantic color variants, an optional dot indicator, a left icon slot, and opt-in status animations.',
+      'Compact signals for status, metadata, and membership. Six semantic colors with soft, outline, and solid treatments, icon slots, and status dots.',
     importLine: "import { Badge } from '@velocityuikit/velocityui'",
     props: [
+      { name: 'appearance', type: "'soft' | 'outline' | 'solid'", description: 'Controls emphasis independently from semantic color. Omit to preserve the variant’s original treatment.' },
       {
         name: 'variant',
         type: "'default' | 'info' | 'success' | 'warning' | 'danger' | 'primary'",
@@ -418,6 +448,18 @@ export default function Example() {
       },
     ],
     examples: [
+      {
+        title: 'Color and emphasis',
+        code: `import { Badge } from '@velocityuikit/velocityui'
+
+export default function Status() {
+  return <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+    <Badge variant="success" appearance="soft" dot>Healthy</Badge>
+    <Badge variant="info" appearance="outline">Preview</Badge>
+    <Badge variant="primary" appearance="solid">Pro</Badge>
+  </div>
+}`,
+      },
       {
         title: 'Variants',
         code: `import { Badge } from '@velocityuikit/velocityui'
@@ -787,12 +829,12 @@ export default function Example() {
     name: 'Select',
     slug: 'select',
     description:
-      'Native select element with custom styling, label, hint, error, and size variants. Accepts an options array or native children.',
+      'A custom select with native form values, keyboard navigation, and optional icons and descriptions. Give people the context to choose confidently.',
     importLine: "import { Select } from '@velocityuikit/velocityui'",
     props: [
       { name: 'label', type: 'string', description: 'Label rendered above the select.' },
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls height and font size.' },
-      { name: 'options', type: 'SelectOption[]', description: 'Array of { value, label, disabled? } objects.' },
+      { name: 'options', type: 'SelectOption[]', description: 'Array of { value, label, description?, icon?, disabled? }. Icon content is decorative; labels remain plain strings for native form compatibility.' },
       { name: 'placeholder', type: 'string', description: 'Renders a disabled first option used as a prompt.' },
       { name: 'error', type: 'string', description: 'Error message below the field. Sets aria-invalid.' },
       { name: 'hint', type: 'string', description: 'Helper text shown when there is no error.' },
@@ -847,6 +889,7 @@ export default function Example() {
       'Checkbox with label, description text, error state, and three sizes.',
     importLine: "import { Checkbox } from '@velocityuikit/velocityui'",
     props: [
+      { name: 'variant', type: "'default' | 'card'", default: "'default'", description: 'Use card for a full clickable selection surface with a checked outline. Works with native checked/defaultChecked and form behavior.' },
       { name: 'label', type: 'string', description: 'Label text rendered beside the checkbox.' },
       { name: 'description', type: 'string', description: 'Helper text rendered below the label.' },
       { name: 'error', type: 'string', description: 'Error message rendered below. Sets aria-invalid.' },
@@ -899,12 +942,13 @@ export default function Example() {
     name: 'RadioGroup',
     slug: 'radiogroup',
     description:
-      'Radio group rendered as a fieldset. Accepts an options array with labels, descriptions, and disabled states. Supports vertical and horizontal layouts.',
+      'Clear choices, from simple radio lists to full selectable cards with icons, descriptions, and pricing. Native keyboard and form behavior included.',
     importLine: "import { RadioGroup } from '@velocityuikit/velocityui'",
     props: [
       { name: 'name', type: 'string', description: 'Shared name attribute for the radio inputs.' },
       { name: 'label', type: 'string', description: 'Group label rendered as a <legend>.' },
-      { name: 'options', type: 'RadioOption[]', description: 'Array of { value, label, description?, disabled? }.' },
+      { name: 'options', type: 'RadioOption[]', description: 'Array of { value, label, description?, icon?, meta?, disabled? }. Icons and metadata should be non-interactive content.' },
+      { name: 'variant', type: "'default' | 'cards'", default: "'default'", description: 'Render simple radio options or selectable cards with a full clickable surface.' },
       { name: 'value', type: 'string', description: 'Controlled selected value.' },
       { name: 'defaultValue', type: 'string', description: 'Uncontrolled default selected value.' },
       { name: 'onChange', type: '(value: string) => void', description: 'Callback fired when selection changes.' },
@@ -913,6 +957,24 @@ export default function Example() {
       { name: 'error', type: 'string', description: 'Error message for the entire group.' },
     ],
     examples: [
+      {
+        title: 'Selectable cards',
+        description: 'The whole card selects the native radio. Arrow keys and form submission continue to work without extra handlers.',
+        code: `import { RadioGroup } from '@velocityuikit/velocityui'
+
+export default function Plans() {
+  return <RadioGroup
+    name="plan"
+    label="Choose your workspace"
+    variant="cards"
+    defaultValue="team"
+    options={[
+      { value: 'personal', label: 'Personal', description: 'For side projects', meta: 'Free' },
+      { value: 'team', label: 'Team', description: 'Build together', meta: '$12 / month' },
+    ]}
+  />
+}`,
+      },
       {
         title: 'Basic',
         code: `import { RadioGroup } from '@velocityuikit/velocityui'
@@ -1482,7 +1544,7 @@ export default function Example() {
     name: 'Avatar',
     slug: 'avatar',
     description:
-      'Avatar image with automatic initials fallback. Supports five sizes, two shapes, an optional status indicator dot, and live-presence animation.',
+      'Distinct identities with softly colored initials, images, presence indicators, and optional rings. Compose overlapping teams with Avatar.Group and an accessible overflow count.',
     importLine: "import { Avatar } from '@velocityuikit/velocityui'",
     props: [
       { name: 'src', type: 'string', description: 'URL of the avatar image.' },
@@ -1490,10 +1552,29 @@ export default function Example() {
       { name: 'name', type: 'string', description: 'Full name used to generate initials when no image is available.' },
       { name: 'size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: 'Controls the overall dimensions of the avatar.' },
       { name: 'shape', type: "'circle' | 'square'", default: "'circle'", description: 'Border radius shape.' },
-      { name: 'status', type: "'online' | 'away' | 'offline'", description: 'Shows a colored status dot in the bottom-right corner.' },
+      { name: 'status', type: "'online' | 'away' | 'busy' | 'offline'", description: 'Shows a presence indicator and includes the status in the accessible name.' },
+      { name: 'tone', type: "'auto' | 'neutral' | 'blue' | 'violet' | 'rose' | 'amber' | 'emerald'", default: "'auto'", description: 'Initials color treatment. Auto chooses a stable color from the name.' },
+      { name: 'ring', type: 'boolean', default: 'false', description: 'Adds a separated accent ring around the avatar.' },
       { name: 'statusAnimation', type: "'none' | 'pulse'", default: "'none'", description: 'Adds a pulsing live-status ring when a status indicator is shown.' },
     ],
     examples: [
+      {
+        title: 'Teams and overflow',
+        description: 'Avatar.Group accepts Avatar children, a shared size (md by default), and max visible members (5 by default). Hidden names remain available in the overflow label. Use --vui-avatar-ring to match the surrounding surface.',
+        code: `import { Avatar } from '@velocityuikit/velocityui'
+
+export default function Team() {
+  return (
+    <Avatar.Group max={3} size="md" aria-label="Project contributors">
+      <Avatar name="Maya Chen" tone="violet" />
+      <Avatar name="Alex Morgan" tone="blue" />
+      <Avatar name="Sam Rivera" tone="emerald" />
+      <Avatar name="Jamie Parker" />
+      <Avatar name="Taylor Kim" />
+    </Avatar.Group>
+  )
+}`,
+      },
       {
         title: 'Sizes',
         code: `import { Avatar } from '@velocityuikit/velocityui'

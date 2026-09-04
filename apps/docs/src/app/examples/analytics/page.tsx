@@ -1,13 +1,40 @@
 'use client'
 
-import { Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@velocityuikit/velocityui'
+import {
+  Badge,
+  Button,
+  Card,
+  Progress,
+  Select,
+  Tabs,
+  Title,
+  Tooltip,
+} from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const kpis = [
-  { label: 'Total Visitors', value: '124,530', change: '+18.2%', up: true, tooltip: 'Unique visitors this month' },
-  { label: 'Page Views', value: '398,210', change: '+22.7%', up: true, tooltip: 'Total page views this month' },
+  {
+    label: 'Total Visitors',
+    value: '124,530',
+    change: '+18.2%',
+    up: true,
+    tooltip: 'Unique visitors this month',
+  },
+  {
+    label: 'Page Views',
+    value: '398,210',
+    change: '+22.7%',
+    up: true,
+    tooltip: 'Total page views this month',
+  },
   { label: 'Bounce Rate', value: '42.3%', change: '-4.1%', up: true, tooltip: 'Lower is better' },
-  { label: 'Avg. Session', value: '3m 28s', change: '+0:12', up: true, tooltip: 'Average time on site' },
+  {
+    label: 'Avg. Session',
+    value: '3m 28s',
+    change: '+0:12',
+    up: true,
+    tooltip: 'Average time on site',
+  },
 ]
 
 const topPages = [
@@ -96,10 +123,7 @@ const topPagesContent = (
                   {page.views.toLocaleString()}
                 </td>
                 <td className="py-3 text-right">
-                  <Badge
-                    variant={page.up ? 'success' : 'danger'}
-                    size="sm"
-                  >
+                  <Badge variant={page.up ? 'success' : 'danger'} size="sm">
                     {page.change}
                   </Badge>
                 </td>
@@ -138,7 +162,7 @@ export default function AnalyticsExamplePage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Title as="h1" size="xl">
             Analytics
@@ -153,7 +177,9 @@ export default function AnalyticsExamplePage() {
             <option value="30d">Last 30 days</option>
             <option value="90d">Last 90 days</option>
           </Select>
-          <Button size="sm" variant="outline">Export</Button>
+          <Button size="sm" variant="outline">
+            Export
+          </Button>
         </div>
       </div>
 
@@ -164,7 +190,9 @@ export default function AnalyticsExamplePage() {
               <p className="text-xs font-medium text-vui-text-muted">{kpi.label}</p>
               <p className="mt-1 text-2xl font-bold text-vui-text">{kpi.value}</p>
               <Tooltip content={kpi.tooltip} placement="bottom">
-                <p className={`mt-1 inline-block cursor-default text-xs font-medium ${kpi.up ? 'text-green-600' : 'text-red-500'}`}>
+                <p
+                  className={`mt-1 inline-block cursor-default text-xs font-medium ${kpi.up ? 'text-green-600' : 'text-red-500'}`}
+                >
                   {kpi.change} vs prev period
                 </p>
               </Tooltip>
@@ -184,4 +212,3 @@ export default function AnalyticsExamplePage() {
     </div>
   )
 }
-

@@ -1,8 +1,8 @@
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@11.17.0
 
 # Install dependencies - cached unless package files change
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
@@ -23,10 +23,10 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 ENV NEXT_OUTPUT_STANDALONE=1
 
-RUN pnpm --filter velocityui build
+RUN pnpm --filter @velocityuikit/velocityui build
 RUN pnpm --filter docs build
 
-FROM node:20-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production

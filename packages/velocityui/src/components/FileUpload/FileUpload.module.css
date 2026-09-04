@@ -92,7 +92,7 @@
   padding: 0.5rem 0.75rem;
   background-color: var(--vui-surface-muted, #f1f5f9);
   border-radius: var(--vui-radius-md, 0.5rem);
-  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border: 1px solid var(--vui-border, #dbe2ea);
 }
 
 .fileName {

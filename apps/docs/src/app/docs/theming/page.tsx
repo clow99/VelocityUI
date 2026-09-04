@@ -8,18 +8,46 @@ export const metadata = {
 }
 
 const themes = [
-  { name: 'default', label: 'Default', description: 'Clean neutral palette suitable for most products.' },
-  { name: 'midnight', label: 'Midnight', description: 'Deep dark backgrounds with vibrant accent colors.' },
-  { name: 'ocean', label: 'Ocean', description: 'Cool blues and teals for a calm, professional look.' },
-  { name: 'dark-cyan', label: 'Dark Cyan', description: 'Neutral carbon dark base with vivid cyan accents.' },
-  { name: 'tangerine', label: 'Tangerine', description: 'Sunlit orange accents with warm, citrus-inspired surfaces.' },
-  { name: 'construction', label: 'Construction', description: 'High-visibility yellows and blacks.' },
-  { name: 'glass', label: 'Glass', description: 'Frosted glass surfaces with subtle blur effects.' },
+  {
+    name: 'default',
+    label: 'Default',
+    description: 'Neutral surfaces, blue accents, and soft layered shadows.',
+  },
+  {
+    name: 'midnight',
+    label: 'Midnight',
+    description: 'Soft charcoal surfaces with a periwinkle accent.',
+  },
+  {
+    name: 'ocean',
+    label: 'Ocean',
+    description: 'Cool blues and teals for a calm, professional look.',
+  },
+  {
+    name: 'dark-cyan',
+    label: 'Dark Cyan',
+    description: 'Neutral carbon dark base with vivid cyan accents.',
+  },
+  {
+    name: 'tangerine',
+    label: 'Tangerine',
+    description: 'Sunlit orange accents with warm, citrus-inspired surfaces.',
+  },
+  {
+    name: 'construction',
+    label: 'Construction',
+    description: 'High-visibility yellows and blacks.',
+  },
+  {
+    name: 'glass',
+    label: 'Glass',
+    description: 'Frosted glass surfaces with subtle blur effects.',
+  },
   { name: 'soft', label: 'Soft', description: 'Muted pastels for a gentle, approachable feel.' },
   {
     name: 'high-contrast',
     label: 'High Contrast',
-    description: 'Maximum contrast ratios for accessibility compliance.',
+    description: 'Strong contrast with yellow accents on black surfaces.',
   },
   {
     name: 'monochrome-red',
@@ -55,6 +83,7 @@ export default function ThemingPage() {
           VelocityUI uses CSS custom properties scoped to theme classes. Switching themes requires
           adding a single class — no JavaScript, no re-renders.
         </p>
+        <Link href="/#theme-playground" className="text-link mt-5">Open the interactive theme workspace →</Link>
       </div>
 
       {/* How it works */}
@@ -287,16 +316,20 @@ export function ThemeSwitcher() {
             href="/docs/button"
             className="group rounded-xl border border-vui-border bg-vui-surface p-5 transition-colors hover:border-vui-primary hover:bg-vui-primary-soft"
           >
-            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">Browse components</p>
+            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">
+              Browse components
+            </p>
             <p className="text-sm text-vui-text-subtle">
-              Explore all 30+ components with live previews and code examples.
+              Explore all 46 components with live previews and code examples.
             </p>
           </Link>
           <Link
             href="/examples/dashboard"
             className="group rounded-xl border border-vui-border bg-vui-surface p-5 transition-colors hover:border-vui-primary hover:bg-vui-primary-soft"
           >
-            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">Page examples</p>
+            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">
+              Page examples
+            </p>
             <p className="text-sm text-vui-text-subtle">
               See themes in action across full-page layouts.
             </p>

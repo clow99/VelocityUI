@@ -4,14 +4,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "pnpm --filter docs dev",
-    "build": "pnpm --filter velocityui build && pnpm --filter docs build",
-    "build:lib": "pnpm --filter velocityui build",
-    "lint": "pnpm -r lint"
+    "build": "pnpm --filter @velocityuikit/velocityui build && pnpm --filter docs build",
+    "build:lib": "pnpm --filter @velocityuikit/velocityui build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm --filter @velocityuikit/velocityui test:run"
   },
   "devDependencies": {
-    "typescript": "^5.4.5"
+    "typescript": "^5.9.3"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
-  }
+  "packageManager": "pnpm@11.17.0"
 }

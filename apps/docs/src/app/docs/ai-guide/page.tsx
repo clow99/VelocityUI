@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default async function AiGuidePage() {
   const filePath = path.join(process.cwd(), 'public', 'downloads', 'velocityui-ai-guide.md')
   const raw = await readFile(filePath, 'utf-8')
-  const html = await marked(raw)
+  const html = await marked(raw.replace(/^# .+\r?\n/, ''))
 
   return (
     <article className="max-w-3xl">
@@ -47,10 +47,7 @@ export default async function AiGuidePage() {
         </a>
       </div>
 
-      <div
-        className="vui-prose"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div className="vui-prose" dangerouslySetInnerHTML={{ __html: html }} />
     </article>
   )
 }

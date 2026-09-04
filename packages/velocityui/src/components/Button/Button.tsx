@@ -3,7 +3,7 @@
 import React from 'react'
 import styles from './Button.module.css'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'soft'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 export type ButtonAnimation = 'none' | 'pulse' | 'shine'
 
@@ -13,6 +13,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   animation?: ButtonAnimation
   loading?: boolean
   fullWidth?: boolean
+  iconOnly?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   children?: React.ReactNode
@@ -26,6 +27,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       animation = 'none',
       loading = false,
       fullWidth = false,
+      iconOnly = false,
       leftIcon,
       rightIcon,
       children,
@@ -41,6 +43,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       styles[size],
       animation !== 'none' ? styles[animation] : '',
       fullWidth ? styles.fullWidth : '',
+      iconOnly ? styles.iconOnly : '',
       loading ? styles.loading : '',
       className ?? '',
     ]
@@ -57,7 +60,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && <span className={styles.spinner} aria-hidden="true" />}
         {!loading && leftIcon && <span aria-hidden="true">{leftIcon}</span>}
-        {children}
+        {!(iconOnly && loading) && children}
         {!loading && rightIcon && <span aria-hidden="true">{rightIcon}</span>}
       </button>
     )

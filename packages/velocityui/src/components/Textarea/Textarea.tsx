@@ -1,12 +1,15 @@
 'use client'
 
-import React from 'react'
+import React, { useId } from 'react'
 import styles from './Textarea.module.css'
 
 export type TextareaSize = 'sm' | 'md' | 'lg'
 export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both'
 
-export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+export interface TextareaProps extends Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  'size'
+> {
   label?: string
   size?: TextareaSize
   error?: string
@@ -30,10 +33,10 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       id,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const textareaId =
-      id ?? (label ? `vui-textarea-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined)
+    const generatedId = useId()
+    const textareaId = id ?? generatedId
     const errorId = textareaId ? `${textareaId}-error` : undefined
     const hintId = textareaId ? `${textareaId}-hint` : undefined
 
@@ -67,9 +70,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           required={required}
           aria-invalid={!!error}
           aria-describedby={
-            [error ? errorId : null, hint && !error ? hintId : null]
-              .filter(Boolean)
-              .join(' ') || undefined
+            [error ? errorId : null, hint && !error ? hintId : null].filter(Boolean).join(' ') ||
+            undefined
           }
           {...props}
         />
@@ -85,7 +87,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
       </div>
     )
-  }
+  },
 )
 
 Textarea.displayName = 'Textarea'

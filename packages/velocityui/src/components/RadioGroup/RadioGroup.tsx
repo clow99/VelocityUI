@@ -10,6 +10,8 @@ export interface RadioOption {
   value: string
   label: string
   description?: string
+  icon?: React.ReactNode
+  meta?: React.ReactNode
   disabled?: boolean
 }
 
@@ -22,6 +24,7 @@ export interface RadioGroupProps {
   onChange?: (value: string) => void
   size?: RadioGroupSize
   orientation?: RadioGroupOrientation
+  variant?: 'default' | 'cards'
   error?: string
   hint?: string
   required?: boolean
@@ -36,11 +39,13 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   onChange,
   size = 'md',
   orientation = 'vertical',
+  variant = 'default',
   error,
   hint,
   required,
 }) => {
-  const groupId = `vui-radiogroup-${name}`
+  const instanceId = React.useId()
+  const groupId = `vui-radiogroup-${instanceId.replace(/:/g, '')}`
   const errorId = `${groupId}-error`
   const hintId = `${groupId}-hint`
   const isControlled = value !== undefined
@@ -63,7 +68,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
           )}
         </legend>
       )}
-      <div className={`${styles.group} ${styles[orientation]}`}>
+      <div className={`${styles.group} ${styles[orientation]} ${variant === 'cards' ? styles.cards : ''}`}>
         {options.map((option) => {
           const optionId = `${groupId}-${option.value}`
           const radioProps = isControlled
@@ -71,7 +76,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
             : { defaultChecked: defaultValue === option.value }
 
           return (
-            <div key={option.value} className={styles.option}>
+            <label key={option.value} className={styles.option} htmlFor={optionId}>
               <input
                 type="radio"
                 id={optionId}
@@ -82,17 +87,21 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                 onChange={() => onChange?.(option.value)}
                 className={`${styles.radio} ${error ? styles.hasError : ''}`}
                 aria-invalid={error ? true : undefined}
+                aria-labelledby={`${optionId}-label`}
+                aria-describedby={option.description ? `${optionId}-description` : undefined}
                 {...radioProps}
               />
-              <div className={styles.optionContent}>
-                <label htmlFor={optionId} className={styles.optionLabel}>
+              {option.icon && <span className={styles.optionIcon} aria-hidden="true">{option.icon}</span>}
+              <span className={styles.optionContent}>
+                <span id={`${optionId}-label`} className={styles.optionLabel}>
                   {option.label}
-                </label>
+                </span>
                 {option.description && (
-                  <span className={styles.optionDescription}>{option.description}</span>
+                  <span id={`${optionId}-description`} className={styles.optionDescription}>{option.description}</span>
                 )}
-              </div>
-            </div>
+                {option.meta && <span className={styles.optionMeta}>{option.meta}</span>}
+              </span>
+            </label>
           )
         })}
       </div>

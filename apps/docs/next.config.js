@@ -1,16 +1,8 @@
 const path = require('path')
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   transpilePackages: ['@velocityuikit/velocityui'],
-  ...(process.env.NEXT_OUTPUT_STANDALONE === '1'
-    ? {
-        output: 'standalone',
-        experimental: {
-          outputFileTracingRoot: path.join(__dirname, '../../'),
-        },
-      }
-    : {}),
+  outputFileTracingRoot: path.join(__dirname, '../../'),
+  ...(process.env.NEXT_OUTPUT_STANDALONE === '1' ? { output: 'standalone' } : {}),
 }
-
-module.exports = nextConfig

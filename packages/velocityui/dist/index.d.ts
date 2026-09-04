@@ -1,4 +1,4 @@
-
+import './theme.css';
 export { Button } from './components/Button';
 export type { ButtonProps, ButtonVariant, ButtonSize, ButtonAnimation } from './components/Button';
 export { Input } from './components/Input';
@@ -46,7 +46,7 @@ export type { ProgressProps, ProgressVariant, ProgressSize } from './components/
 export { ToastProvider, useToast } from './components/Toast';
 export type { ToastItem, ToastVariant, ToastContextValue } from './components/Toast';
 export { Avatar } from './components/Avatar';
-export type { AvatarProps, AvatarSize, AvatarShape, AvatarStatus, AvatarStatusAnimation } from './components/Avatar';
+export type { AvatarProps, AvatarGroupProps, AvatarTone, AvatarSize, AvatarShape, AvatarStatus, AvatarStatusAnimation } from './components/Avatar';
 export { Tag } from './components/Tag';
 export type { TagProps, TagVariant, TagSize } from './components/Tag';
 export { EmptyState } from './components/EmptyState';

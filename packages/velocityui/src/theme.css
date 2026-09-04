@@ -5,33 +5,34 @@
    ============================================================ */
 
 /* ------------------------------------------------------------
-   Base tokens (Default theme — light, indigo)
+   Base tokens (Default theme — neutral light, blue accent)
    ------------------------------------------------------------ */
-:root {
+:root,
+.vui-theme-default {
   color-scheme: light;
 
-  --vui-bg: #f8fafc;
+  --vui-bg: #fafafa;
   --vui-surface: #ffffff;
-  --vui-surface-muted: #f1f5f9;
+  --vui-surface-muted: #f1f2f4;
   --vui-surface-translucent: rgba(255, 255, 255, 0.72);
 
-  --vui-text: #0f172a;
-  --vui-text-muted: #334155;
-  --vui-text-subtle: #64748b;
+  --vui-text: #25262a;
+  --vui-text-muted: #565960;
+  --vui-text-subtle: #696d76;
   --vui-text-inverse: #ffffff;
 
-  --vui-border: #dbe2ea;
-  --vui-border-strong: #c3cfdd;
-  --vui-divider: #e5e7eb;
+  --vui-border: #e7e8ec;
+  --vui-border-strong: #d5d7de;
+  --vui-divider: #eceef1;
 
-  --vui-primary: #6366f1;
-  --vui-primary-hover: #4f46e5;
+  --vui-primary: #315ddc;
+  --vui-primary-hover: #244bc0;
   --vui-primary-contrast: #ffffff;
-  --vui-primary-soft: rgba(99, 102, 241, 0.1);
+  --vui-primary-soft: rgba(49, 93, 220, 0.07);
 
-  --vui-secondary: #f1f5f9;
-  --vui-secondary-hover: #e2e8f0;
-  --vui-secondary-text: #1e293b;
+  --vui-secondary: #eff0f3;
+  --vui-secondary-hover: #e5e7eb;
+  --vui-secondary-text: #34363d;
 
   --vui-danger: #ef4444;
   --vui-danger-hover: #dc2626;
@@ -47,17 +48,18 @@
   --vui-info-text: #1d4ed8;
   --vui-info-border: #bfdbfe;
 
-  --vui-focus-ring: rgba(99, 102, 241, 0.15);
+  --vui-focus-ring: rgba(49, 93, 220, 0.15);
   --vui-focus-danger-ring: rgba(239, 68, 68, 0.15);
 
   --vui-radius-sm: 0.375rem;
-  --vui-radius-md: 0.5rem;
-  --vui-radius-lg: 0.75rem;
+  --vui-radius-md: 0.625rem;
+  --vui-radius-lg: 1rem;
   --vui-radius-pill: 9999px;
+  --vui-button-radius: var(--vui-radius-pill);
 
   --vui-font-size-sm: 0.8125rem;
-  --vui-font-size-md: 0.9375rem;
-  --vui-font-size-lg: 1.0625rem;
+  --vui-font-size-md: 0.875rem;
+  --vui-font-size-lg: 1rem;
   --vui-label-size: 0.875rem;
   --vui-help-size: 0.8125rem;
 
@@ -74,9 +76,9 @@
   --vui-panel-space-md: 1.25rem;
   --vui-panel-space-lg: 1.75rem;
 
-  --vui-shadow-sm: 0 1px 3px rgba(2, 6, 23, 0.12);
-  --vui-shadow-md: 0 4px 10px rgba(2, 6, 23, 0.12);
-  --vui-shadow-lg: 0 12px 22px rgba(2, 6, 23, 0.16);
+  --vui-shadow-sm: 0 1px 2px rgba(25, 28, 36, 0.04), 0 3px 8px rgba(25, 28, 36, 0.025);
+  --vui-shadow-md: 0 2px 5px rgba(25, 28, 36, 0.035), 0 10px 26px rgba(25, 28, 36, 0.065);
+  --vui-shadow-lg: 0 4px 8px rgba(25, 28, 36, 0.035), 0 18px 44px rgba(25, 28, 36, 0.09);
   --vui-hover-lift: -1px;
   --vui-backdrop-blur: 0px;
 
@@ -89,7 +91,7 @@
   --vui-card-radius: var(--vui-radius-lg);
   --vui-card-header-bg: transparent;
   --vui-card-footer-bg: transparent;
-  --vui-card-border-width: 1.5px;
+  --vui-card-border-width: 1px;
 
   --vui-input-bg: var(--vui-surface);
   --vui-input-color: var(--vui-text);
@@ -98,7 +100,7 @@
   --vui-input-focus-ring: var(--vui-focus-ring);
   --vui-input-disabled-bg: #f3f4f6;
   --vui-input-disabled-color: #9ca3af;
-  --vui-input-placeholder: #94a3b8;
+  --vui-input-placeholder: #696d76;
   --vui-input-label-color: var(--vui-text-muted);
   --vui-input-hint-color: var(--vui-text-subtle);
   --vui-input-icon-color: var(--vui-text-subtle);
@@ -129,20 +131,20 @@
   --vui-badge-danger-color: #b91c1c;
   --vui-badge-danger-border: #fecaca;
 
-  --vui-control-border-width: 2px;
+  --vui-control-border-width: 1px;
   --vui-ghost-hover: var(--vui-primary-soft);
 
   /* Chat tokens */
-  --vui-chat-sent-bg: var(--vui-primary);
-  --vui-chat-sent-text: var(--vui-primary-contrast);
-  --vui-chat-received-bg: var(--vui-surface-muted);
+  --vui-chat-sent-bg: var(--vui-surface-muted);
+  --vui-chat-sent-text: var(--vui-text);
+  --vui-chat-received-bg: var(--vui-surface);
   --vui-chat-received-text: var(--vui-text);
   --vui-chat-ai-bg: var(--vui-surface);
   --vui-chat-ai-border: var(--vui-border);
   --vui-chat-ai-text: var(--vui-text);
   --vui-chat-system-text: var(--vui-text-subtle);
-  --vui-chat-input-bg: var(--vui-surface);
-  --vui-chat-input-border: var(--vui-border-strong);
+  --vui-chat-input-bg: var(--vui-surface-muted);
+  --vui-chat-input-border: var(--vui-border);
   --vui-chat-bubble-radius: var(--vui-radius-lg, 0.75rem);
   --vui-chat-status-online: #22c55e;
   --vui-chat-status-away: #f59e0b;
@@ -170,29 +172,29 @@
 }
 
 /* ------------------------------------------------------------
-   Midnight — dark, sleek. Primary: Violet #7c3aed
+   Midnight — charcoal surfaces. Primary: Periwinkle #9bb6ff
    ------------------------------------------------------------ */
 .vui-theme-midnight {
   color-scheme: dark;
 
-  --vui-bg: #09090b;
-  --vui-surface: #18181b;
-  --vui-surface-muted: #27272a;
-  --vui-surface-translucent: rgba(24, 24, 27, 0.8);
+  --vui-bg: #17181a;
+  --vui-surface: #212225;
+  --vui-surface-muted: #2a2b2f;
+  --vui-surface-translucent: rgba(23, 24, 26, 0.86);
 
   --vui-text: #fafafa;
   --vui-text-muted: #d4d4d8;
   --vui-text-subtle: #a1a1aa;
   --vui-text-inverse: #09090b;
 
-  --vui-border: #3f3f46;
-  --vui-border-strong: #52525b;
-  --vui-divider: #3f3f46;
+  --vui-border: #34363b;
+  --vui-border-strong: #494c54;
+  --vui-divider: #303238;
 
-  --vui-primary: #a78bfa;
-  --vui-primary-hover: #7c3aed;
-  --vui-primary-contrast: #ffffff;
-  --vui-primary-soft: rgba(167, 139, 250, 0.18);
+  --vui-primary: #9bb6ff;
+  --vui-primary-hover: #bed0ff;
+  --vui-primary-contrast: #171b2a;
+  --vui-primary-soft: rgba(155, 182, 255, 0.1);
 
   --vui-secondary: #27272a;
   --vui-secondary-hover: #3f3f46;
@@ -202,12 +204,12 @@
   --vui-danger-hover: #ef4444;
   --vui-danger-contrast: #ffffff;
 
-  --vui-focus-ring: rgba(167, 139, 250, 0.25);
+  --vui-focus-ring: rgba(155, 182, 255, 0.2);
   --vui-focus-danger-ring: rgba(248, 113, 113, 0.25);
 
-  --vui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-  --vui-shadow-md: 0 8px 18px rgba(0, 0, 0, 0.5);
-  --vui-shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.6);
+  --vui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+  --vui-shadow-md: 0 3px 7px rgba(0, 0, 0, 0.12), 0 10px 28px rgba(0, 0, 0, 0.2);
+  --vui-shadow-lg: 0 5px 10px rgba(0, 0, 0, 0.16), 0 18px 44px rgba(0, 0, 0, 0.24);
 
   --vui-input-disabled-bg: #27272a;
   --vui-input-disabled-color: #71717a;
@@ -327,6 +329,7 @@
    Construction — industrial, bold. Primary: Yellow #eab308
    ------------------------------------------------------------ */
 .vui-theme-construction {
+  --vui-button-radius: var(--vui-radius-md);
   color-scheme: dark;
 
   --vui-bg: #0e0e0e;
@@ -446,9 +449,9 @@
   --vui-radius-md: 0.75rem;
   --vui-radius-lg: 1rem;
 
-  --vui-shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255,255,255,0.6);
-  --vui-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255,255,255,0.6);
-  --vui-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.2), inset 0 1px 0 rgba(255,255,255,0.6);
+  --vui-shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --vui-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --vui-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   --vui-backdrop-blur: 14px;
   --vui-control-border-width: 1.5px;
 

@@ -1,53 +1,128 @@
-'use client'
-
-import { Badge } from '@velocityuikit/velocityui'
+"use client";
+import { useState } from "react";
+import { Badge, Button } from "@velocityuikit/velocityui";
+import { Icon } from "@/components/Icon";
 
 export function BadgePreview() {
+  const [appearance, setAppearance] = useState<"soft" | "outline" | "solid">(
+    "soft",
+  );
+  const [ready, setReady] = useState(false);
   return (
-    <div className="flex flex-col gap-4">
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Variants</p>
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="default">Default</Badge>
-          <Badge variant="info">Info</Badge>
-          <Badge variant="success">Success</Badge>
-          <Badge variant="warning">Warning</Badge>
-          <Badge variant="danger">Danger</Badge>
-          <Badge variant="primary">Primary</Badge>
+    <div className="component-studies">
+      <section className="study-panel">
+        <div className="study-heading">
+          <div>
+            <span className="study-kicker">A SIGNAL, AT A GLANCE</span>
+            <h3>The state of things.</h3>
+          </div>
+          <span className="study-symbol">
+            <Icon name="bolt" />
+          </span>
         </div>
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">With dot</p>
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="success" dot>Active</Badge>
-          <Badge variant="warning" dot>Pending</Badge>
-          <Badge variant="danger" dot>Offline</Badge>
-          <Badge variant="info" dot>Processing</Badge>
+        <div
+          className="study-segmented"
+          role="group"
+          aria-label="Badge appearance"
+        >
+          {(["soft", "outline", "solid"] as const).map((value) => (
+            <button
+              type="button"
+              key={value}
+              aria-pressed={appearance === value}
+              onClick={() => setAppearance(value)}
+            >
+              {value}
+            </button>
+          ))}
         </div>
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Sizes</p>
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge size="sm" variant="primary">Small</Badge>
-          <Badge size="md" variant="primary">Medium</Badge>
-          <Badge size="lg" variant="primary">Large</Badge>
+        <div className="study-pipeline">
+          {[
+            {
+              name: "Production",
+              detail: "velocityui.dev",
+              variant: "success",
+              state: "Healthy",
+              icon: "check",
+            },
+            {
+              name: "Preview",
+              detail: "feature / new-components",
+              variant: ready ? "success" : "info",
+              state: ready ? "Ready" : "Building",
+              icon: ready ? "check" : "code",
+            },
+            {
+              name: "Design review",
+              detail: "3 updates to look over",
+              variant: ready ? "success" : "warning",
+              state: ready ? "Approved" : "Needs review",
+              icon: ready ? "check" : "layers",
+            },
+          ].map((item) => (
+            <div className="study-pipeline-row" key={item.name}>
+              <span className="study-symbol">
+                <Icon
+                  name={item.icon as "check" | "code" | "layers"}
+                  size={16}
+                />
+              </span>
+              <div>
+                <strong>{item.name}</strong>
+                <span>{item.detail}</span>
+              </div>
+              <Badge
+                appearance={appearance}
+                variant={item.variant as "success" | "info" | "warning"}
+                dot
+              >
+                {item.state}
+              </Badge>
+            </div>
+          ))}
         </div>
-      </div>
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Animation</p>
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="success" dot animation="pulse">
-            Live
+        <div className="study-footer">
+          <span role="status">
+            {ready
+              ? "All checks complete."
+              : "One place to see what needs you."}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            type="button"
+            onClick={() => setReady(!ready)}
+          >
+            {ready ? "Reset preview" : "Complete checks"}
+          </Button>
+        </div>
+      </section>
+      <section className="study-panel">
+        <h3>Small details, useful context.</h3>
+        <div className="study-row study-spaced">
+          <Badge
+            appearance={appearance}
+            variant="primary"
+            leftIcon={<Icon name="bolt" size={12} />}
+          >
+            Pro workspace
           </Badge>
-          <Badge variant="primary" animation="shine">
-            New release
+          <Badge
+            appearance={appearance}
+            variant="success"
+            leftIcon={<Icon name="shield" size={12} />}
+          >
+            Verified
           </Badge>
-          <Badge variant="info" animation="pulse">
-            Syncing
+          <Badge appearance={appearance}>⌘ K</Badge>
+          <Badge appearance={appearance} variant="danger" dot>
+            Action needed
+          </Badge>
+          <Badge appearance={appearance} variant="info">
+            v2.4.0
           </Badge>
         </div>
-      </div>
+      </section>
     </div>
-  )
+  );
 }
-

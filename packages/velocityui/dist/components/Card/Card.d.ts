@@ -1,5 +1,4 @@
-import { default as React } from 'react';
-
+import React from 'react';
 export type CardVariant = 'bordered' | 'shadow' | 'elevated' | 'ghost';
 export type CardSize = 'sm' | 'md' | 'lg';
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {

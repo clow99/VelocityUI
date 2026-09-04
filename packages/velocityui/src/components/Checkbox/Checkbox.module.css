@@ -125,3 +125,14 @@
   color: var(--vui-danger, #ef4444);
   line-height: 1.4;
 }
+.card { border: 1px solid var(--vui-border-strong); border-radius: var(--vui-radius-lg); background: var(--vui-surface); padding: 16px; gap: 7px; cursor: pointer; transition: border-color .15s, box-shadow .15s, background-color .15s; box-shadow: var(--vui-shadow-sm); }
+.card .checkbox { order: 2; margin-left: auto; }
+.card .label { flex: 1; }
+.card .description { padding-left: 0; padding-right: 22px; }
+.card:has(.checkbox:checked) { background: var(--vui-primary-soft); border-color: var(--vui-primary); box-shadow: 0 0 0 1px var(--vui-primary); }
+.card:has(.checkbox:focus-visible) { outline: 3px solid var(--vui-focus-ring); outline-offset: 3px; }
+.card:hover:not(:has(.checkbox:disabled)) { border-color: var(--vui-primary); }
+.card:has(.checkbox:disabled) { opacity: .5; cursor: not-allowed; }
+.card:has(.checkbox:disabled) .label { cursor: not-allowed; }
+.card:has(.checkbox.hasError) { border-color: var(--vui-danger); }
+@media (prefers-reduced-motion: reduce) { .checkbox, .card { transition: none; } }

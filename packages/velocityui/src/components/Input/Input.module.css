@@ -21,12 +21,14 @@
   position: relative;
   display: flex;
   align-items: center;
+  min-width: 0;
+  flex: 1;
 }
 
 .input {
   width: 100%;
   border-radius: var(--vui-radius-md, 0.5rem);
-  border: 1.5px solid var(--vui-input-border, #d1d5db);
+  border: 1px solid var(--vui-input-border, #d1d5db);
   background-color: var(--vui-input-bg, #ffffff);
   backdrop-filter: blur(var(--vui-backdrop-blur, 0px));
   color: var(--vui-input-color, #111827);
@@ -34,12 +36,34 @@
   font-size: var(--vui-font-size-md, 0.9375rem);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   outline: none;
+  min-width: 0;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 2px #00000004, 0 1px 2px #00000003;
   line-height: 1.5;
 }
 
 .input::placeholder {
   color: var(--vui-input-placeholder, #9ca3af);
 }
+.input:hover:not(:disabled):not(:focus):not(.error) { border-color: var(--vui-border-strong); }
+.inputWrapper:focus-within .iconLeft, .inputWrapper:focus-within .iconRight { color: var(--vui-primary); }
+.inputGroup { display: flex; align-items: stretch; padding: 0; width: 100%; box-sizing: border-box; border: 1px solid var(--vui-input-border); border-radius: var(--vui-radius-md); background: var(--vui-input-bg); box-shadow: var(--vui-shadow-sm); transition: border-color .15s, box-shadow .15s; }
+.inputGroup .input { border: 0; border-radius: 0; background: transparent; height: 100%; box-shadow: none; }
+.inputGroup .inputWrapper { align-self: stretch; }
+.inputGroup .addon { display: inline-flex; align-items: center; gap: .375rem; padding: 0 .75rem; color: var(--vui-text-subtle); background: var(--vui-surface-muted); font-size: var(--vui-font-size-sm); white-space: nowrap; }
+.addon:first-child { border-radius: calc(var(--vui-radius-md) - 1px) 0 0 calc(var(--vui-radius-md) - 1px); border-right: 1px solid var(--vui-border); }
+.addon:last-child { border-radius: 0 calc(var(--vui-radius-md) - 1px) calc(var(--vui-radius-md) - 1px) 0; border-left: 1px solid var(--vui-border); }
+.inputGroup:focus-within { border-color: var(--vui-primary); box-shadow: 0 0 0 3px var(--vui-input-focus-ring); }
+.inputGroup.groupError { border-color: var(--vui-danger); }
+.inputGroup.groupError:focus-within { box-shadow: 0 0 0 3px var(--vui-focus-danger-ring); }
+.inputGroup.groupDisabled { opacity: .6; }
+.inputGroup:has(.inputFloating) { height: auto; }
+.inputGroup .inputFloating.sm { height: 2.75rem; }
+.inputGroup .inputFloating.md { height: 3.25rem; }
+.inputGroup .inputFloating.lg { height: 3.75rem; }
+.inputGroup.sm, .inputGroup.md, .inputGroup.lg { padding: 0; }
+.inputGroup .input:focus { box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .input, .inputGroup, .floatingLabelEl { transition: none; } }
 
 .input:focus {
   border-color: var(--vui-input-focus-border, var(--vui-primary, #6366f1));

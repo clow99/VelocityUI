@@ -48,6 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 > **Rule:** Always add `ToastProvider` at the root if the application uses the `Toast` / `useToast()` API anywhere in the tree. Calling `useToast()` outside a provider will throw.
 
+### Next.js client boundaries
+
+Keep the root layout a Server Component. The package includes a client directive, but your own components that use state, event handlers, `useToast()`, or compound APIs such as `Card.Body` and `Dialog.Footer` must start with `'use client'`. Import the stylesheet in the root layout. No Tailwind configuration is needed.
+
 ---
 
 ## 2. Component Reference
@@ -62,12 +66,12 @@ import { Button, Input, Card, Badge, ... } from '@velocityuikit/velocityui';
 
 | Component | Import | Key Props |
 |---|---|---|
-| `Button` | `{ Button }` | `variant`, `size`, `loading`, `fullWidth`, `leftIcon`, `rightIcon`, `disabled` |
-| `Input` | `{ Input }` | `label`, `size`, `error`, `hint`, `leftIcon`, `rightIcon`, `search`, `required`, `fullWidth` |
+| `Button` | `{ Button }` | `variant`, `size`, `loading`, `iconOnly` (supply `aria-label`), `fullWidth`, `leftIcon`, `rightIcon`, `disabled` |
+| `Input` | `{ Input }` | `label`, `size`, `error`, `hint`, `leftIcon`, `rightIcon`, `leadingAddon`, `trailingAddon`, `search`, `required`, `fullWidth` |
 | `Textarea` | `{ Textarea }` | `label`, `size`, `error`, `hint`, `resize`, `required`, `fullWidth` |
 | `Select` | `{ Select }` | `label`, `options`, `placeholder`, `error`, `hint`, `size`, `required`, `fullWidth` |
-| `Checkbox` | `{ Checkbox }` | `label`, `description`, `error`, `size`, `checked`, `defaultChecked`, `disabled` |
-| `RadioGroup` | `{ RadioGroup }` | `name`, `label`, `options`, `value`, `defaultValue`, `onChange`, `orientation`, `size`, `error` |
+| `Checkbox` | `{ Checkbox }` | `label`, `description`, `variant` (`default` / `card`), `error`, `size`, `checked`, `defaultChecked`, `disabled` |
+| `RadioGroup` | `{ RadioGroup }` | `name`, `label`, `options` (with optional `icon`, `description`, `meta`), `variant` (`default` / `cards`), `value`, `defaultValue`, `onChange`, `orientation`, `size`, `error` |
 | `Switch` | `{ Switch }` | `label`, `description`, `size`, `checked`, `defaultChecked`, `disabled` |
 | `Slider` | `{ Slider }` | `value`, `onChange`, `min`, `max`, `step`, `label`, `showValue`, `size`, `disabled` |
 | `NumberInput` | `{ NumberInput }` | `value`, `onChange`, `min`, `max`, `step`, `label`, `error`, `hint`, `size`, `disabled` |
@@ -77,8 +81,8 @@ import { Button, Input, Card, Badge, ... } from '@velocityuikit/velocityui';
 
 | Component | Import | Key Props |
 |---|---|---|
-| `Avatar` | `{ Avatar }` | `src`, `alt`, `name` (initials fallback), `size`, `shape`, `status` |
-| `Badge` | `{ Badge }` | `variant`, `size`, `dot`, `leftIcon` |
+| `Avatar` | `{ Avatar }` | `src`, `alt`, `name` (initials fallback), `tone`, `ring`, `size`, `shape`, `status`; `Avatar.Group` accepts children, `max`, and `size` |
+| `Badge` | `{ Badge }` | `variant`, `appearance` (`soft` / `outline` / `solid`), `size`, `dot`, `leftIcon` |
 | `EmptyState` | `{ EmptyState }` | `title`, `description`, `icon`, `action` |
 | `Skeleton` | `{ Skeleton }` | `width`, `height`, `radius`, `lines`, `gap` |
 | `Table` | `{ Table }` | `columns`, `data`, `sortKey`, `sortDir`, `onSort`, `striped`, `bordered`, `size` |
@@ -132,7 +136,7 @@ Most components share a consistent size scale and variant system.
 - `"lg"` — spacious, larger text
 
 ### Button Variants
-`"primary"` | `"secondary"` | `"outline"` | `"ghost"` | `"danger"`
+`"primary"` | `"secondary"` | `"outline"` | `"ghost"` | `"danger"` | `"soft"`
 
 ### Badge / Tag Variants
 `"default"` | `"info"` | `"success"` | `"warning"` | `"danger"` | `"primary"`
@@ -253,16 +257,17 @@ VelocityUI uses CSS custom properties (design tokens) on `:root`. Override them 
 ```css
 /* No rebuild required — these take effect at runtime */
 :root {
-  --vui-color-primary: #6366f1;       /* primary brand color */
-  --vui-color-primary-hover: #4f46e5;
-  --vui-color-danger: #ef4444;
-  --vui-color-success: #22c55e;
-  --vui-color-warning: #f59e0b;
-  --vui-radius-md: 0.5rem;            /* default border radius */
+  --vui-primary: #315ddc;       /* primary brand color */
+  --vui-primary-hover: #244bc0;
+  --vui-danger: #ef4444;
+  --vui-success-text: #15803d;
+  --vui-warning-text: #b45309;
+  --vui-radius-md: 0.625rem;          /* default field radius */
+  --vui-button-radius: 9999px;        /* capsule button shape */
 }
 ```
 
-Named themes (e.g. `data-theme="dark"`) are supported — apply the attribute to your `<html>` element and override the same tokens inside the matching selector.
+Apply a named class such as `vui-theme-midnight` to `<html>`, `<body>`, or a wrapper. The 10 themes are `default`, `midnight`, `ocean`, `dark-cyan`, `tangerine`, `construction`, `glass`, `soft`, `high-contrast`, and `monochrome-red`. Combine with `vui-density-compact`, `vui-density-comfortable`, or `vui-density-spacious`. Load custom token overrides after the library stylesheet.
 
 **Rule:** Never hardcode color values when a VelocityUI token exists. Always use `var(--vui-*)` tokens when writing custom CSS that sits alongside library components.
 
@@ -389,9 +394,10 @@ Task: [describe the UI feature or change here]
 ### Button
 ```tsx
 <Button
-  variant="primary"       // "primary" | "secondary" | "outline" | "ghost" | "danger"
+  variant="primary"       // "primary" | "secondary" | "outline" | "ghost" | "danger" | "soft"
   size="md"               // "sm" | "md" | "lg"
   loading={false}         // shows spinner, disables interaction
+  iconOnly={false}        // equal width and height; requires an aria-label when true
   fullWidth={false}       // fills container width
   leftIcon={<Icon />}     // ReactNode
   rightIcon={<Icon />}    // ReactNode
@@ -414,6 +420,8 @@ Task: [describe the UI feature or change here]
   leftIcon={<Icon />}
   rightIcon={<Icon />}
   search={false}          // shows built-in search icon
+  leadingAddon="https://" // outside editable value; optional
+  trailingAddon=".design" // outside editable value; optional
   searchIconPosition="left" // "left" | "right"
   required={false}        // adds visual asterisk
   fullWidth={false}
@@ -442,6 +450,7 @@ Task: [describe the UI feature or change here]
 ```tsx
 <RadioGroup
   name="plan"             // required — shared name for radio inputs
+  variant="cards"        // "default" | "cards"
   label="Choose plan"
   options={[
     { value: 'free', label: 'Free', description: 'Up to 3 projects' },

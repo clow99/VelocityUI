@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useId } from 'react'
 import styles from './Tabs.module.css'
 
 export type TabsVariant = 'underline' | 'pills' | 'boxed'
@@ -27,9 +27,10 @@ export const Tabs: React.FC<TabsProps> = ({
   onChange,
   variant = 'underline',
 }) => {
+  const instanceId = useId()
   const isControlled = value !== undefined
   const [internalValue, setInternalValue] = useState<string>(
-    defaultValue ?? items[0]?.value ?? ''
+    defaultValue ?? items.find((item) => !item.disabled)?.value ?? '',
   )
 
   const activeValue = isControlled ? value! : internalValue
@@ -44,6 +45,7 @@ export const Tabs: React.FC<TabsProps> = ({
     const enabledItems = items.filter((item) => !item.disabled)
     const enabledIndex = enabledItems.findIndex((item) => item.value === items[currentIndex].value)
 
+    if (!enabledItems.length) return
     let nextIndex: number | null = null
 
     if (e.key === 'ArrowRight') {
@@ -60,15 +62,15 @@ export const Tabs: React.FC<TabsProps> = ({
       e.preventDefault()
       const nextItem = enabledItems[nextIndex]
       handleSelect(nextItem.value)
-      const btn = tablistRef.current?.querySelector<HTMLButtonElement>(
-        `[data-value="${nextItem.value}"]`
-      )
+      const btn = Array.from(
+        tablistRef.current?.querySelectorAll<HTMLButtonElement>('[role=tab]') ?? [],
+      ).find((button) => button.dataset.value === nextItem.value)
       btn?.focus()
     }
   }
 
-  const tabPanelId = (v: string) => `vui-tabpanel-${v}`
-  const tabId = (v: string) => `vui-tab-${v}`
+  const tabPanelId = (v: string) => `vui-${instanceId}-tabpanel-${v}`
+  const tabId = (v: string) => `vui-${instanceId}-tab-${v}`
 
   return (
     <div className={styles.tabs}>
@@ -88,10 +90,7 @@ export const Tabs: React.FC<TabsProps> = ({
             aria-controls={tabPanelId(item.value)}
             disabled={item.disabled}
             tabIndex={activeValue === item.value ? 0 : -1}
-            className={[
-              styles.tab,
-              activeValue === item.value ? styles.activeTab : '',
-            ]
+            className={[styles.tab, activeValue === item.value ? styles.activeTab : '']
               .filter(Boolean)
               .join(' ')}
             onClick={() => handleSelect(item.value)}

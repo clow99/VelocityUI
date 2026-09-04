@@ -1,5 +1,4 @@
-import { default as React } from 'react';
-
+import React from 'react';
 export type InputSize = 'sm' | 'md' | 'lg';
 export type InputIconPosition = 'left' | 'right';
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -9,6 +8,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
     hint?: string;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
+    leadingAddon?: React.ReactNode;
+    trailingAddon?: React.ReactNode;
     search?: boolean;
     searchIcon?: React.ReactNode;
     searchIconPosition?: InputIconPosition;

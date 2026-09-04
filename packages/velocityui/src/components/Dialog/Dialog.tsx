@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useId } from 'react'
 import styles from './Dialog.module.css'
 
 export type DialogSize = 'sm' | 'md' | 'lg' | 'xl'
@@ -52,10 +52,6 @@ const DialogFooter: React.FC<DialogFooterProps> = ({ children, className, ...pro
 )
 DialogFooter.displayName = 'Dialog.Footer'
 
-// Module-level counter ensures each Dialog instance gets unique IDs for
-// aria-labelledby / aria-describedby even when multiple dialogs are mounted.
-const titleIdCounter = { current: 0 }
-
 interface DialogComponent extends React.FC<DialogProps> {
   Header: typeof DialogHeader
   Body: typeof DialogBody
@@ -73,8 +69,11 @@ const DialogBase: React.FC<DialogProps> = ({
   closeOnOverlayClick = true,
 }) => {
   const dialogRef = useRef<HTMLDivElement>(null)
-  const titleId = useRef(`vui-dialog-title-${++titleIdCounter.current}`).current
-  const descId = useRef(`vui-dialog-desc-${titleIdCounter.current}`).current
+  const instanceId = useId()
+  const titleId = `vui-dialog-title-${instanceId}`
+  const descId = `vui-dialog-desc-${instanceId}`
+  const closeRef = useRef(onClose)
+  closeRef.current = onClose
   const previousFocusRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -83,6 +82,7 @@ const DialogBase: React.FC<DialogProps> = ({
     // Save the element that was focused before the dialog opened so we can
     // restore focus when it closes — required by WCAG 2.1 SC 2.4.3.
     previousFocusRef.current = document.activeElement as HTMLElement
+    const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
     // Defer initial focus by one animation frame so the dialog panel has been
@@ -97,12 +97,12 @@ const DialogBase: React.FC<DialogProps> = ({
     // Wrap from last element back to first and vice-versa for Shift+Tab.
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose()
+        closeRef.current()
         return
       }
       if (e.key === 'Tab' && dialogRef.current) {
         const focusable = Array.from(
-          dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS)
+          dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS),
         )
         if (focusable.length === 0) {
           e.preventDefault()
@@ -129,11 +129,11 @@ const DialogBase: React.FC<DialogProps> = ({
     return () => {
       cancelAnimationFrame(frame)
       document.removeEventListener('keydown', handleKeyDown)
-      document.body.style.overflow = ''
+      document.body.style.overflow = previousOverflow
       // Restore focus to the element that was active before the dialog opened.
       previousFocusRef.current?.focus()
     }
-  }, [open, onClose])
+  }, [open])
 
   if (!open) return null
 
@@ -142,17 +142,13 @@ const DialogBase: React.FC<DialogProps> = ({
   }
 
   return (
-    <div
-      className={styles.overlay}
-      onClick={handleOverlayClick}
-      aria-modal="true"
-      role="presentation"
-    >
+    <div className={styles.overlay} onClick={handleOverlayClick} role="presentation">
       <div
         ref={dialogRef}
         role="dialog"
+        aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
-        aria-describedby={description ? descId : undefined}
+        aria-describedby={title && description ? descId : undefined}
         className={[styles.dialog, styles[size], className ?? ''].filter(Boolean).join(' ')}
       >
         {title && (

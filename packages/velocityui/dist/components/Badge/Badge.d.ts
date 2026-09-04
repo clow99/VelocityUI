@@ -1,5 +1,4 @@
-import { default as React } from 'react';
-
+import React from 'react';
 export type BadgeVariant = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'primary';
 export type BadgeSize = 'sm' | 'md' | 'lg';
 export type BadgeAnimation = 'none' | 'pulse' | 'shine';
@@ -8,6 +7,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
     size?: BadgeSize;
     animation?: BadgeAnimation;
     dot?: boolean;
+    appearance?: 'soft' | 'outline' | 'solid';
     leftIcon?: React.ReactNode;
     children: React.ReactNode;
 }

@@ -2,7 +2,7 @@
   display: flex;
   align-items: flex-end;
   gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   background-color: var(--vui-chat-input-bg, var(--vui-surface, #ffffff));
   border: var(--vui-control-border-width, 2px) solid var(--vui-chat-input-border, var(--vui-border-strong, #c3cfdd));
   border-radius: var(--vui-chat-bubble-radius, 0.75rem);
@@ -55,17 +55,17 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: var(--vui-radius-md, 0.5rem);
+  border-radius: var(--vui-radius-pill, 9999px);
   border: none;
-  background-color: var(--vui-primary, #6366f1);
-  color: var(--vui-primary-contrast, #ffffff);
+  background-color: var(--vui-text, #25262a);
+  color: var(--vui-bg, #fafafa);
   cursor: pointer;
   flex-shrink: 0;
   transition: background-color 0.15s ease, opacity 0.15s ease;
 }
 
 .sendButton:hover:not(:disabled) {
-  background-color: var(--vui-primary-hover, #4f46e5);
+  background-color: var(--vui-text-muted, #565960);
 }
 
 .sendButton:disabled {

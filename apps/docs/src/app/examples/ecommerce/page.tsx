@@ -1,6 +1,16 @@
 'use client'
 
-import { Alert, Badge, Button, Card, Progress, Select, Tabs, Title, Tooltip } from '@velocityuikit/velocityui'
+import {
+  Alert,
+  Badge,
+  Button,
+  Card,
+  Progress,
+  Select,
+  Tabs,
+  Title,
+  Tooltip,
+} from '@velocityuikit/velocityui'
 import { useState } from 'react'
 
 const stats = [
@@ -11,11 +21,46 @@ const stats = [
 ]
 
 const orders = [
-  { id: '#5091', customer: 'Emma Wilson', product: 'Wireless Headphones', status: 'success', amount: '$89.99', date: 'Mar 4' },
-  { id: '#5090', customer: 'James Lee', product: 'USB-C Hub', status: 'warning', amount: '$49.00', date: 'Mar 4' },
-  { id: '#5089', customer: 'Sophia Chen', product: 'Mechanical Keyboard', status: 'success', amount: '$129.99', date: 'Mar 3' },
-  { id: '#5088', customer: 'Liam Patel', product: 'Webcam Pro', status: 'danger', amount: '$79.50', date: 'Mar 3' },
-  { id: '#5087', customer: 'Olivia Kim', product: 'Desk Mat XL', status: 'success', amount: '$34.99', date: 'Mar 2' },
+  {
+    id: '#5091',
+    customer: 'Emma Wilson',
+    product: 'Wireless Headphones',
+    status: 'success',
+    amount: '$89.99',
+    date: 'Mar 4',
+  },
+  {
+    id: '#5090',
+    customer: 'James Lee',
+    product: 'USB-C Hub',
+    status: 'warning',
+    amount: '$49.00',
+    date: 'Mar 4',
+  },
+  {
+    id: '#5089',
+    customer: 'Sophia Chen',
+    product: 'Mechanical Keyboard',
+    status: 'success',
+    amount: '$129.99',
+    date: 'Mar 3',
+  },
+  {
+    id: '#5088',
+    customer: 'Liam Patel',
+    product: 'Webcam Pro',
+    status: 'danger',
+    amount: '$79.50',
+    date: 'Mar 3',
+  },
+  {
+    id: '#5087',
+    customer: 'Olivia Kim',
+    product: 'Desk Mat XL',
+    status: 'success',
+    amount: '$34.99',
+    date: 'Mar 2',
+  },
 ]
 
 const statusLabel: Record<string, string> = {
@@ -85,17 +130,25 @@ const productsContent = (
                 <div className="flex items-center gap-2">
                   <span className="font-medium text-vui-text">{product.name}</span>
                   {product.stock < 20 && (
-                    <Badge variant="warning" size="sm">Low stock</Badge>
+                    <Badge variant="warning" size="sm">
+                      Low stock
+                    </Badge>
                   )}
                 </div>
                 <div className="flex items-center gap-4 text-vui-text-muted">
                   <Tooltip content={`${product.sold} units sold`} placement="left">
-                    <span className="cursor-default font-medium text-vui-text">{product.revenue}</span>
+                    <span className="cursor-default font-medium text-vui-text">
+                      {product.revenue}
+                    </span>
                   </Tooltip>
                   <span>{product.stock} in stock</span>
                 </div>
               </div>
-              <Progress value={product.pct} size="sm" variant={product.pct >= 60 ? 'success' : product.pct >= 30 ? 'primary' : 'warning'} />
+              <Progress
+                value={product.pct}
+                size="sm"
+                variant={product.pct >= 60 ? 'success' : product.pct >= 30 ? 'primary' : 'warning'}
+              />
             </div>
           ))}
         </div>
@@ -109,7 +162,7 @@ export default function EcommerceExamplePage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Title as="h1" size="xl">
             E-Commerce
@@ -124,7 +177,9 @@ export default function EcommerceExamplePage() {
             <option value="month">This month</option>
             <option value="quarter">This quarter</option>
           </Select>
-          <Button size="sm" variant="outline">Export</Button>
+          <Button size="sm" variant="outline">
+            Export
+          </Button>
         </div>
       </div>
 
@@ -134,7 +189,9 @@ export default function EcommerceExamplePage() {
             <Card.Body>
               <p className="text-xs font-medium text-vui-text-muted">{stat.label}</p>
               <p className="mt-1 text-2xl font-bold text-vui-text">{stat.value}</p>
-              <p className={`mt-1 text-xs font-medium ${stat.up ? 'text-green-600' : 'text-red-500'}`}>
+              <p
+                className={`mt-1 text-xs font-medium ${stat.up ? 'text-green-600' : 'text-red-500'}`}
+              >
                 {stat.change} vs last period
               </p>
             </Card.Body>
@@ -152,5 +209,3 @@ export default function EcommerceExamplePage() {
     </div>
   )
 }
-
-

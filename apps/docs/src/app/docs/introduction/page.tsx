@@ -31,9 +31,9 @@ export default function IntroductionPage() {
       <section className="mb-10">
         <h2 className="mb-4 text-xl font-semibold text-vui-text">What is VelocityUI?</h2>
         <p className="mb-4 text-sm leading-relaxed text-vui-text-subtle">
-          VelocityUI is an open-source component library for React that gives you 30+ production-ready
-          components out of the box. Every component is styled, accessible, and themeable — so you can
-          focus on building features, not fighting CSS.
+          VelocityUI is an open-source component library for React that gives you 46
+          production-ready components out of the box. Every component is styled, accessible, and
+          themeable — so you can focus on building features, not fighting CSS.
         </p>
         <p className="text-sm leading-relaxed text-vui-text-subtle">
           The library ships as a standard npm package with full TypeScript support, tree-shakeable
@@ -47,12 +47,12 @@ export default function IntroductionPage() {
         <h2 className="mb-4 text-xl font-semibold text-vui-text">Features</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <FeatureCard
-            title="30+ components"
+            title="46 components"
             description="Buttons, inputs, dialogs, tables, navigation, overlays — everything you need to build a complete product."
           />
           <FeatureCard
-            title="8 built-in themes"
-            description="Switch between Default, Midnight, Ocean, Construction, Glass, Soft, High Contrast, and Monochrome Red with a single class."
+            title="10 built-in themes"
+            description="Switch between Default, Midnight, Ocean, Dark Cyan, Tangerine, Construction, Glass, Soft, High Contrast, and Monochrome Red with a single class."
           />
           <FeatureCard
             title="Density modifiers"
@@ -97,13 +97,17 @@ export default function IntroductionPage() {
             <p className="mb-2 text-sm font-medium text-vui-text">3. Use components</p>
             <CodeBlock
               language="tsx"
-              code={`import { Button, Input, Card } from '@velocityuikit/velocityui'
+              code={`'use client'
+
+import { Button, Input, Card } from '@velocityuikit/velocityui'
 
 export default function App() {
   return (
     <Card>
-      <Input placeholder="Your email" />
-      <Button>Subscribe</Button>
+      <Card.Body>
+        <Input label="Email" type="email" placeholder="you@example.com" />
+        <Button>Subscribe</Button>
+      </Card.Body>
     </Card>
   )
 }`}
@@ -139,8 +143,8 @@ export default function App() {
       <section className="mb-10">
         <h2 className="mb-4 text-xl font-semibold text-vui-text">Open source</h2>
         <p className="mb-4 text-sm leading-relaxed text-vui-text-subtle">
-          VelocityUI is MIT licensed and developed in the open on GitHub. Contributions,
-          bug reports, and feature requests are all welcome.
+          VelocityUI is MIT licensed and developed in the open on GitHub. Contributions, bug
+          reports, and feature requests are all welcome.
         </p>
         <div className="flex flex-wrap gap-3">
           <a
@@ -184,7 +188,9 @@ export default function App() {
             href="/docs/installation"
             className="group rounded-xl border border-vui-border bg-vui-surface p-5 transition-colors hover:border-vui-primary hover:bg-vui-primary-soft"
           >
-            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">Installation</p>
+            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">
+              Installation
+            </p>
             <p className="text-sm text-vui-text-subtle">
               Full install guide with all package managers and framework setup.
             </p>

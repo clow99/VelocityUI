@@ -40,6 +40,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
 /* Custom radio */
@@ -91,7 +92,32 @@
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
+  min-width: 0;
 }
+
+.optionIcon { display: inline-flex; align-items: center; justify-content: center; color: var(--vui-text-subtle); flex-shrink: 0; }
+.optionMeta { margin-top: .625rem; font-size: var(--vui-font-size-md); color: var(--vui-text); font-weight: 600; }
+.cards { gap: .625rem; }
+.cards.horizontal { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); }
+.cards .option {
+  padding: 1rem;
+  border: 1px solid var(--vui-border-strong);
+  border-radius: var(--vui-radius-lg);
+  background: var(--vui-surface);
+  gap: .75rem;
+  transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  box-shadow: var(--vui-shadow-sm);
+}
+.cards .radio { order: 3; margin-left: auto; }
+.cards .optionContent { flex: 1; gap: .3rem; }
+.cards .optionIcon { width: 2.25rem; height: 2.25rem; border-radius: var(--vui-radius-md); background: var(--vui-surface-muted); border: 1px solid var(--vui-border); }
+.cards .option:has(.radio:checked) { border-color: var(--vui-primary); background: var(--vui-primary-soft); box-shadow: 0 0 0 1px var(--vui-primary); }
+.cards .option:has(.radio:checked) .optionIcon { color: var(--vui-primary); background: var(--vui-surface); border-color: color-mix(in srgb, var(--vui-primary) 20%, transparent); }
+.cards .option:has(.radio:focus-visible) { outline: 3px solid var(--vui-focus-ring); outline-offset: 3px; }
+.cards .option:hover:not(:has(.radio:disabled)) { border-color: var(--vui-primary); }
+.option:has(.radio:disabled) { cursor: not-allowed; opacity: .5; }
+.option:has(.radio:disabled) .optionLabel { cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .cards .option { transition: none; } }
 
 .optionLabel {
   font-size: var(--vui-font-size-md, 0.9375rem);

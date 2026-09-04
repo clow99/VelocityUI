@@ -1,12 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useId } from 'react'
 import styles from './Switch.module.css'
 
 export type SwitchSize = 'sm' | 'md' | 'lg'
 
-export interface SwitchProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+export interface SwitchProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'size'
+> {
   label?: string
   description?: string
   size?: SwitchSize
@@ -14,8 +16,8 @@ export interface SwitchProps
 
 export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
   ({ label, description, size = 'md', className, id, ...props }, ref) => {
-    const inputId =
-      id ?? (label ? `vui-switch-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined)
+    const generatedId = useId()
+    const inputId = id ?? generatedId
     const descId = inputId && description ? `${inputId}-desc` : undefined
 
     return (
@@ -42,7 +44,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         )}
       </div>
     )
-  }
+  },
 )
 
 Switch.displayName = 'Switch'

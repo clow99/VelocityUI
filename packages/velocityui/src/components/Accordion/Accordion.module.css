@@ -5,17 +5,17 @@
 
 /* Variants */
 .bordered {
-  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border: 1px solid var(--vui-border, #dbe2ea);
   border-radius: var(--vui-radius-lg, 0.75rem);
   overflow: hidden;
 }
 
 .bordered .item + .item {
-  border-top: 1.5px solid var(--vui-border, #dbe2ea);
+  border-top: 1px solid var(--vui-border, #dbe2ea);
 }
 
 .flush .item + .item {
-  border-top: 1.5px solid var(--vui-border, #dbe2ea);
+  border-top: 1px solid var(--vui-border, #dbe2ea);
 }
 
 .separated {
@@ -23,7 +23,7 @@
 }
 
 .separated .item {
-  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border: 1px solid var(--vui-border, #dbe2ea);
   border-radius: var(--vui-radius-md, 0.5rem);
   overflow: hidden;
 }

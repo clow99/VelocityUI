@@ -1,52 +1,40 @@
-'use client'
+import { CopyButton } from '@/components/CopyButton'
+import { codeToTokens, type BundledLanguage } from 'shiki'
 
-import { useState } from 'react'
-
-interface CodeBlockProps {
+export async function CodeBlock({
+  code,
+  language = 'tsx',
+  filename,
+}: {
   code: string
   language?: string
-}
-
-export function CodeBlock({ code, language = 'tsx' }: CodeBlockProps) {
-  const [copied, setCopied] = useState(false)
-
-  const copy = async () => {
-    await navigator.clipboard.writeText(code)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
+  filename?: string
+}) {
+  const { tokens } = await codeToTokens(code, {
+    lang: language as BundledLanguage,
+    theme: 'github-dark',
+  })
   return (
-    <div className="relative overflow-hidden rounded-xl border border-gray-800 bg-gray-950">
-      {/* Header bar */}
-      <div className="flex items-center justify-between border-b border-gray-800 px-4 py-2">
-        <span className="text-xs font-medium text-gray-500">{language}</span>
-        <button
-          onClick={copy}
-          aria-label="Copy code"
-          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-300"
-        >
-          {copied ? (
-            <>
-              <svg className="h-3.5 w-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-green-400">Copied</span>
-            </>
-          ) : (
-            <>
-              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              Copy
-            </>
-          )}
-        </button>
+    <div className="code-panel">
+      <div className="code-toolbar">
+        <span>
+          <span className="code-dot" />
+          {filename || language}
+        </span>
+        <CopyButton text={code} />
       </div>
-      {/* Code */}
-      <pre className="overflow-x-auto p-4">
-        <code className="font-mono text-sm leading-relaxed text-gray-300 whitespace-pre">
-          {code}
+      <pre tabIndex={0} aria-label={language + ' code example'}>
+        <code>
+          {tokens.map((line, index) => (
+            <span key={index}>
+              {line.map((token, i) => (
+                <span key={i} style={{ color: token.color }}>
+                  {token.content}
+                </span>
+              ))}
+              {index < tokens.length - 1 ? '\n' : ''}
+            </span>
+          ))}
         </code>
       </pre>
     </div>

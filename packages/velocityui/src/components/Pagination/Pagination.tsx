@@ -91,6 +91,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {showFirstLast && (
           <li>
             <button
+              type="button"
               className={[styles.btn, page === 1 ? styles.disabled : ''].filter(Boolean).join(' ')}
               onClick={() => goTo(1)}
               disabled={page === 1}
@@ -102,6 +103,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         )}
         <li>
           <button
+            type="button"
             className={[styles.btn, page === 1 ? styles.disabled : ''].filter(Boolean).join(' ')}
             onClick={() => goTo(page - 1)}
             disabled={page === 1}
@@ -119,6 +121,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           ) : (
             <li key={p}>
               <button
+                type="button"
                 className={[styles.btn, p === page ? styles.active : ''].filter(Boolean).join(' ')}
                 onClick={() => goTo(p)}
                 aria-label={`Page ${p}`}
@@ -132,6 +135,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
         <li>
           <button
+            type="button"
             className={[styles.btn, page === totalPages ? styles.disabled : ''].filter(Boolean).join(' ')}
             onClick={() => goTo(page + 1)}
             disabled={page === totalPages}
@@ -143,6 +147,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {showFirstLast && (
           <li>
             <button
+              type="button"
               className={[styles.btn, page === totalPages ? styles.disabled : ''].filter(Boolean).join(' ')}
               onClick={() => goTo(totalPages)}
               disabled={page === totalPages}

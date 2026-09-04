@@ -55,7 +55,7 @@ This app consumes the workspace library package and imports:
 Build the library before building or running the docs app if you are working outside of the workspace dev script:
 
 ```bash
-pnpm --filter velocityui build
+pnpm --filter @velocityuikit/velocityui build
 ```
 
 ## Key Paths
@@ -72,6 +72,12 @@ pnpm --filter velocityui build
 1. Add or update the component definition in `src/lib/componentDocs.ts`.
 2. Update the matching preview component in `src/components/docs/previews/` if needed.
 3. Verify the component route at `/docs/<component-slug>`.
+
+## Logo and App Icons
+
+`public/logo.svg` is the shared artwork for the header, footer, and SVG favicon: a vector refinement of the original purple-and-cyan folded mark preserved in `public/new_logo.png`. Keep the wordmark as live text so it inherits the selected theme and stays accessible.
+
+After editing the SVG, run `pnpm --filter docs brand:icons` from the workspace root to regenerate the ICO, PNG favicons, Apple touch icon, and Android icons. The generator uses Next.js's installed Sharp dependency. Update the icon cache version in `src/app/layout.tsx` and `public/site.webmanifest` when replacing published icons.
 
 ## Docker
 

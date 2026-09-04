@@ -1,31 +1,23 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
-import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    dts({
-      insertTypesEntry: true,
-      include: ['src'],
-    }),
-  ],
+  plugins: [react()],
   build: {
+    emptyOutDir: false,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'VelocityUI',
       formats: ['es', 'cjs'],
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
+      cssFileName: 'style',
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
-        },
+        banner: '"use client";',
+        globals: { react: 'React', 'react-dom': 'ReactDOM', 'react/jsx-runtime': 'jsxRuntime' },
       },
     },
     cssCodeSplit: false,
@@ -35,9 +27,6 @@ export default defineConfig({
     setupFiles: './tests/setup.ts',
     css: true,
     globals: true,
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'html'],
-    },
+    coverage: { provider: 'v8', reporter: ['text', 'html'] },
   },
 })

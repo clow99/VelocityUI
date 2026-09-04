@@ -1,4 +1,6 @@
 .card {
+  color: var(--vui-text);
+  min-width: 0;
   background-color: var(--vui-card-bg, #ffffff);
   border-radius: var(--vui-card-radius, var(--vui-radius-lg, 0.75rem));
   backdrop-filter: blur(var(--vui-backdrop-blur, 0px));
@@ -10,6 +12,7 @@
 /* Variants */
 .bordered {
   border: var(--vui-card-border-width, 1.5px) solid var(--vui-card-border, #e5e7eb);
+  box-shadow: var(--vui-shadow-sm);
 }
 
 .shadow {
@@ -51,7 +54,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  border-bottom: 1.5px solid var(--vui-card-divider, #f3f4f6);
+  border-bottom: 1px solid var(--vui-card-divider, #f3f4f6);
 }
 
 .cardBody {
@@ -62,10 +65,11 @@
 .cardFooter {
   padding: var(--vui-panel-space-md, 1.25rem);
   background-color: var(--vui-card-footer-bg, transparent);
-  border-top: 1.5px solid var(--vui-card-divider, #f3f4f6);
+  border-top: 1px solid var(--vui-card-divider, #f3f4f6);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 /* Interactive */
@@ -78,3 +82,5 @@
   box-shadow: var(--vui-card-hover-shadow, var(--vui-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1)));
   transform: translateY(var(--vui-hover-lift, -1px));
 }
+.hoverable:focus-within { box-shadow: var(--vui-card-hover-shadow, var(--vui-shadow-lg)); }
+@media (prefers-reduced-motion: reduce) { .hoverable { transition: none; } .hoverable:hover { transform: none; } }

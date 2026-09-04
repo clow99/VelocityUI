@@ -2,7 +2,7 @@
   width: 100%;
   overflow-x: auto;
   border-radius: var(--vui-radius-lg, 0.75rem);
-  border: 1.5px solid var(--vui-border, #dbe2ea);
+  border: 1px solid var(--vui-border, #dbe2ea);
 }
 
 .table {
@@ -36,7 +36,7 @@
   font-weight: 600;
   text-align: left;
   white-space: nowrap;
-  border-bottom: 1.5px solid var(--vui-border, #dbe2ea);
+  border-bottom: 1px solid var(--vui-border, #dbe2ea);
   user-select: none;
 }
 

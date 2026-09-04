@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useId } from 'react'
 import styles from './Input.module.css'
 
 export type InputSize = 'sm' | 'md' | 'lg'
@@ -13,6 +13,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   hint?: string
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
+  leadingAddon?: React.ReactNode
+  trailingAddon?: React.ReactNode
   search?: boolean
   searchIcon?: React.ReactNode
   searchIconPosition?: InputIconPosition
@@ -43,6 +45,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       hint,
       leftIcon,
       rightIcon,
+      leadingAddon,
+      trailingAddon,
       search = false,
       searchIcon,
       searchIconPosition = 'left',
@@ -54,13 +58,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       id,
       placeholder,
+      'aria-describedby': ariaDescribedBy,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const inputId = id ?? (label ? `vui-input-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined)
+    const generatedId = useId()
+    const inputId = id ?? generatedId
     const errorId = inputId ? `${inputId}-error` : undefined
     const hintId = inputId ? `${inputId}-hint` : undefined
+    const hasAddons = leadingAddon != null || trailingAddon != null
     const shouldRenderSearchIcon = search || !!searchIcon
     const resolvedSearchIcon = searchIcon ?? <DefaultSearchIcon />
 
@@ -107,10 +114,18 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && !floatingLabel && (
           <label htmlFor={inputId} className={styles.label}>
             {label}
-            {required && <span className={styles.required} aria-hidden="true">*</span>}
+            {required && (
+              <span className={styles.required} aria-hidden="true">
+                *
+              </span>
+            )}
           </label>
         )}
-        <div className={`${styles.inputWrapper}${floatingLabel ? ` ${styles.floatingWrapper}` : ''}`}>
+        <div className={hasAddons ? [styles.inputGroup, styles[size], error ? styles.groupError : '', props.disabled ? styles.groupDisabled : ''].filter(Boolean).join(' ') : undefined}>
+        {leadingAddon != null && <span id={`${inputId}-leading`} className={styles.addon}>{leadingAddon}</span>}
+        <div
+          className={`${styles.inputWrapper}${floatingLabel ? ` ${styles.floatingWrapper}` : ''}`}
+        >
           {resolvedLeftIcon && (
             <span
               className={[styles.iconLeft, leftIconClassName ?? ''].filter(Boolean).join(' ')}
@@ -128,7 +143,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             required={required}
             aria-invalid={!!error}
             aria-describedby={
-              [error ? errorId : null, hint ? hintId : null].filter(Boolean).join(' ') || undefined
+              [ariaDescribedBy, error ? errorId : null, hint && !error ? hintId : null, leadingAddon != null ? `${inputId}-leading` : null, trailingAddon != null ? `${inputId}-trailing` : null].filter(Boolean).join(' ') ||
+              undefined
             }
             placeholder={floatingLabel ? ' ' : placeholder}
             {...props}
@@ -136,7 +152,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {label && floatingLabel && (
             <label htmlFor={inputId} className={floatingLabelClasses}>
               {label}
-              {required && <span className={styles.required} aria-hidden="true">*</span>}
+              {required && (
+                <span className={styles.required} aria-hidden="true">
+                  *
+                </span>
+              )}
             </label>
           )}
           {resolvedRightIcon && (
@@ -150,6 +170,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </span>
           )}
         </div>
+        {trailingAddon != null && <span id={`${inputId}-trailing`} className={styles.addon}>{trailingAddon}</span>}
+        </div>
         {error && (
           <span id={errorId} className={styles.errorText} role="alert">
             {error}
@@ -162,7 +184,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     )
-  }
+  },
 )
 
 Input.displayName = 'Input'

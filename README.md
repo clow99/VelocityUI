@@ -1,150 +1,115 @@
 # VelocityUI
 
-An accessible React component library with scoped CSS Modules styles and full TypeScript support.
+A React component library and documentation site with 46 components, 10 themes, 3 density scales, and 19 interactive page examples.
 
-## Packages
+- **Library:** `packages/velocityui` — CSS Modules, TypeScript, ESM and CommonJS.
+- **Docs:** `apps/docs` — Next.js, searchable component/example catalogs, live previews, and an AI agent guide.
+- **Runtime dependencies:** React and React DOM only.
 
-| Package | Description |
-|---|---|
-| [`packages/velocityui`](./packages/velocityui) | Component library (published to npm) |
-| [`apps/docs`](./apps/docs) | Documentation and demo site (Next.js) |
+## Develop
 
-## Components
+Use Node.js 24+ and the pinned pnpm version (11.17.0).
 
-| Component | Description |
-|---|---|
-| `Button` | 5 variants, 3 sizes, loading state, icon slots |
-| `Input` | Label, hint, error, icon slots, validation states |
-| `Title` | Polymorphic heading (`h1`–`h6`) with independent size scale |
-| `Badge` | 6 semantic color variants with optional dot indicator |
-| `Card` | Compound container with `Card.Header`, `Card.Body`, `Card.Footer` |
-
-See the [docs site](https://github.com/clow99/VelocityUI) for the full component catalog.
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) v20+
-- [pnpm](https://pnpm.io/) v8+
-
-### Install dependencies
-
-```bash
-pnpm install
-```
-
-### Run the docs site locally
-
-```bash
+```sh
+pnpm install --frozen-lockfile
+pnpm build:lib
 pnpm dev
 ```
 
-The docs site will be available at `http://localhost:3000`.
+The documentation site defaults to http://localhost:3000. For an explicit local port:
 
-### Build the library
-
-```bash
-pnpm build:lib
+```sh
+pnpm --filter docs dev --hostname 127.0.0.1 --port 3002
 ```
 
-Produces ESM (`dist/index.js`), CJS (`dist/index.cjs`), a CSS bundle (`dist/style.css`), and TypeScript declarations (`dist/index.d.ts`) in `packages/velocityui/dist/`.
+Build the library again after library source or theme changes, or run `pnpm --filter @velocityuikit/velocityui dev` in another terminal to watch the library.
 
-### Build everything
+## Verify
 
-```bash
-pnpm build
-```
+| Command | Purpose |
+| --- | --- |
+| `pnpm build` | Build library declarations, JavaScript, CSS, and the production docs site |
+| `pnpm build:lib` | Build only the published library |
+| `pnpm lint` | Type-check both packages |
+| `pnpm test` | Run component and interaction regression tests |
+| `pnpm --filter @velocityuikit/velocityui test:coverage` | Generate a coverage report |
+| `pnpm audit` | Check the dependency lockfile for known advisories |
 
-Builds the library first, then the docs site.
+Coverage reports are generated artifacts; the repository contains historical tracked reports. Avoid including regenerated reports in source changes.
 
-## Usage
+## Use in your application
 
-Install the library in your project:
-
-```bash
+```sh
 npm install @velocityuikit/velocityui
 ```
 
-Import the stylesheet once at the root of your app:
+Import the stylesheet once at the application root, then use components in a React client component:
 
 ```tsx
-import '@velocityuikit/velocityui/dist/style.css';
-```
+'use client'
 
-Then use components:
+import '@velocityuikit/velocityui/dist/style.css'
+import { Button, Card, Input } from '@velocityuikit/velocityui'
 
-```tsx
-import { Button, Input, Badge, Card, Title } from '@velocityuikit/velocityui';
-
-export default function App() {
+export function Example() {
   return (
-    <Card variant="shadow">
-      <Card.Header>
-        <Title as="h2">Welcome</Title>
-      </Card.Header>
+    <Card>
       <Card.Body>
-        <Input label="Email" placeholder="you@example.com" />
-        <Button variant="primary">Sign in</Button>
+        <Input label="Email" type="email" placeholder="you@example.com" />
+        <Button>Continue</Button>
       </Card.Body>
     </Card>
-  );
+  )
 }
 ```
 
-## Theming
+React and React DOM 18 or later are peer dependencies. Toasts require `ToastProvider`; other components need no library provider. See the [library README](packages/velocityui/README.md) for exports.
 
-VelocityUI uses CSS custom properties for theming. Override any token on `:root` in your global CSS:
+## Themes
+
+The default theme pairs neutral surfaces with a blue accent, soft shadows, and rounded controls. Midnight uses a charcoal palette with a periwinkle accent. Other presets: Ocean, Dark Cyan, Tangerine, Construction, Glass, Soft, High Contrast, and Monochrome Red.
+
+Apply a theme and an optional density class:
+
+```html
+<body class="vui-theme-midnight vui-density-compact">
+```
+
+Override tokens after importing the library stylesheet:
 
 ```css
 :root {
-  --vui-color-primary: #6366f1;
-  --vui-color-danger: #ef4444;
+  --vui-primary: #315ddc;
+  --vui-primary-hover: #244bc0;
+  --vui-radius-md: 0.5rem;
 }
 ```
 
-No rebuild required.
+Use the same selector as an active theme when overriding a token set by that theme.
 
-## Project Structure
+## Documentation structure
 
-```
-VelocityUI/
-├── apps/
-│   └── docs/                  # Next.js documentation site
-│       └── src/
-│           ├── app/           # App Router pages
-│           ├── components/    # Docs-specific UI components
-│           └── lib/
-│               └── componentDocs.ts  # Props tables and code examples
-└── packages/
-    └── velocityui/            # Component library
-        └── src/
-            ├── index.ts       # Public API barrel export
-            └── components/
-                ├── Button/
-                ├── Input/
-                ├── Title/
-                ├── Badge/
-                └── Card/
-```
+- `src/lib/navigation.ts` — component and example catalog entries.
+- `src/lib/themes.ts` — theme names and density options.
+- `src/lib/componentDocs.ts` — component API references and code examples.
+- `src/components/docs/previews` — interactive component previews.
+- `src/components/SiteSearch.tsx` — global keyboard search across guides, components, and examples.
+- `src/components/landing/ThemeShowcase.tsx` — interactive theme and density workspace with configuration export.
+- `src/components/docs/ButtonPlayground.tsx` — configurable Button preview and copyable code.
+- `src/app/refresh.css` — shared site design and responsive layouts.
+- `src/app/workspace.css` — search, playgrounds, and documentation refinements.
+- `public/downloads/velocityui-ai-guide.md` — downloadable integration guide.
 
-## Scripts
+Paths above are relative to `apps/docs`. Keep the catalog, public exports, and documentation in sync when adding components.
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start the docs site in development mode |
-| `pnpm build` | Build the library then the docs site |
-| `pnpm build:lib` | Build only the component library |
-| `pnpm lint` | Run type checking across all packages |
+## Production
 
-## Contributing
+`pnpm build` creates a local production build. Start it with `pnpm --filter docs start`.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, code style, and the pull request process.
+The Dockerfile builds the library and standalone docs app using Node.js 24 and the pinned pnpm version. Set `NEXT_OUTPUT_STANDALONE=1` to produce the standalone output outside Docker. Building locally does not publish npm packages or deploy the website.
 
-## Security
+## Contributing and security
 
-Report vulnerabilities privately — see [SECURITY.md](./SECURITY.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-## License
-
-[MIT](./LICENSE)
+[MIT](LICENSE).

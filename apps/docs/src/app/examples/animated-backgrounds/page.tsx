@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   AnimatedBackground,
   Badge,
@@ -63,6 +63,7 @@ const containerMotion = {
 }
 
 export default function AnimatedBackgroundsExamplePage() {
+  const reduceMotion = useReducedMotion()
   const { theme, setTheme } = useTheme()
 
   const themeOptions = THEMES.filter((option) => featuredThemes.includes(option.value))
@@ -74,8 +75,8 @@ export default function AnimatedBackgroundsExamplePage() {
           Animated Backgrounds
         </Title>
         <p className="mt-2 max-w-3xl text-vui-text-muted">
-          Reusable ambient components for the npm package, paired with a richer showcase treatment in
-          the docs app. The components stay practical and theme-aware, while this page pushes the
+          Reusable ambient components for the npm package, paired with a richer showcase treatment
+          in the docs app. The components stay practical and theme-aware, while this page pushes the
           presentation a bit further.
         </p>
       </div>
@@ -101,7 +102,8 @@ export default function AnimatedBackgroundsExamplePage() {
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-vui-text-muted">
               Use `AnimatedBackground` as the container, then swap decorative presets like
-              `GradientOrbs` and `GridGlow` depending on whether the page needs softness or structure.
+              `GradientOrbs` and `GridGlow` depending on whether the page needs softness or
+              structure.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button>Use in package demos</Button>
@@ -129,7 +131,7 @@ export default function AnimatedBackgroundsExamplePage() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, delay: 0.15, ease: easeCurve }}
             className="grid gap-4"
@@ -137,7 +139,9 @@ export default function AnimatedBackgroundsExamplePage() {
             <Card variant="elevated" className="bg-vui-surface-translucent">
               <Card.Header>
                 <span className="text-sm font-semibold text-vui-text">Ambient System</span>
-                <span className="text-xs text-vui-text-subtle">Wrapper + presets + theme tokens</span>
+                <span className="text-xs text-vui-text-subtle">
+                  Wrapper + presets + theme tokens
+                </span>
               </Card.Header>
               <Card.Body>
                 <div className="grid gap-3 text-sm text-vui-text-muted">
@@ -183,7 +187,7 @@ export default function AnimatedBackgroundsExamplePage() {
           {presetCards.map((card, index) => (
             <motion.div
               key={card.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.55, delay: index * 0.08, ease: easeCurve }}
@@ -215,7 +219,7 @@ export default function AnimatedBackgroundsExamplePage() {
 
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.55, ease: easeCurve }}
@@ -255,30 +259,38 @@ export default function AnimatedBackgroundsExamplePage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.55, ease: easeCurve, delay: 0.08 }}
-          className="grid gap-5"
+          className="grid min-w-0 gap-5"
         >
           <Card variant="bordered">
             <Card.Header>
               <span className="text-sm font-semibold text-vui-text">When to use each preset</span>
-              <span className="text-xs text-vui-text-subtle">Keep the default system predictable</span>
+              <span className="text-xs text-vui-text-subtle">
+                Keep the default system predictable
+              </span>
             </Card.Header>
             <Card.Body>
               <div className="grid gap-4 text-sm text-vui-text-muted">
                 <div>
                   <p className="font-semibold text-vui-text">GradientOrbs</p>
-                  <p className="mt-1">Landing pages, auth screens, product launches, and premium hero sections.</p>
+                  <p className="mt-1">
+                    Landing pages, auth screens, product launches, and premium hero sections.
+                  </p>
                 </div>
                 <div>
                   <p className="font-semibold text-vui-text">GridGlow</p>
-                  <p className="mt-1">Dashboards, changelogs, feature grids, or more technical visual surfaces.</p>
+                  <p className="mt-1">
+                    Dashboards, changelogs, feature grids, or more technical visual surfaces.
+                  </p>
                 </div>
                 <div>
                   <p className="font-semibold text-vui-text">AnimatedBackground</p>
-                  <p className="mt-1">Any time you need a safe wrapper that manages layering and reduced motion.</p>
+                  <p className="mt-1">
+                    Any time you need a safe wrapper that manages layering and reduced motion.
+                  </p>
                 </div>
               </div>
             </Card.Body>
@@ -298,7 +310,7 @@ export default function AnimatedBackgroundsExamplePage() {
                 Consumers can mix the wrapper with whichever preset fits the page, without pulling
                 in a motion library or hand-authoring their own layered gradients.
               </p>
-              <div className="mt-5 flex gap-3">
+              <div className="mt-5 flex flex-wrap gap-3">
                 <Button size="sm">AnimatedBackground</Button>
                 <Button size="sm" variant="ghost">
                   GradientOrbs

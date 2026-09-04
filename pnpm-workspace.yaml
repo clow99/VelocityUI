@@ -1,3 +1,10 @@
 packages:
   - 'packages/*'
   - 'apps/*'
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+
+overrides:
+  browserslist: ^4.28.7

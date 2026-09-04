@@ -1,83 +1,181 @@
 .avatar {
+  --avatar-tone: var(--vui-primary, #315ddc);
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--vui-primary-soft, rgba(99, 102, 241, 0.1));
-  color: var(--vui-primary, #6366f1);
-  font-weight: 600;
   flex-shrink: 0;
-  overflow: hidden;
+  vertical-align: middle;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--avatar-tone) 10%, var(--vui-surface, #fff)),
+    color-mix(in srgb, var(--avatar-tone) 22%, var(--vui-surface, #fff))
+  );
+  color: color-mix(in srgb, var(--avatar-tone) 45%, var(--vui-text, #25262a));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--avatar-tone) 15%, transparent),
+    inset 0 1px 1px #ffffff35;
+  font-family: inherit;
+  font-weight: 600;
   user-select: none;
 }
-
-/* Sizes */
-.xs { width: 1.5rem;  height: 1.5rem;  font-size: 0.625rem; }
-.sm { width: 2rem;    height: 2rem;    font-size: 0.75rem; }
-.md { width: 2.5rem;  height: 2.5rem;  font-size: 0.9375rem; }
-.lg { width: 3.25rem; height: 3.25rem; font-size: 1.125rem; }
-.xl { width: 4rem;    height: 4rem;    font-size: 1.375rem; }
-
-/* Shapes */
-.circle { border-radius: 50%; }
-.square { border-radius: var(--vui-radius-md, 0.5rem); }
-
+.neutral {
+  --avatar-tone: var(--vui-text-subtle, #696d76);
+}
+.blue {
+  --avatar-tone: #4273df;
+}
+.violet {
+  --avatar-tone: #9160d7;
+}
+.rose {
+  --avatar-tone: #d45b85;
+}
+.amber {
+  --avatar-tone: #bf842e;
+}
+.emerald {
+  --avatar-tone: #299a7f;
+}
+.xs {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.625rem;
+}
+.sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+.md {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+}
+.lg {
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.0625rem;
+}
+.xl {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.3125rem;
+}
+.circle {
+  border-radius: 50%;
+}
+.square {
+  border-radius: 27%;
+}
+.ring {
+  outline: 2px solid color-mix(in srgb, var(--avatar-tone) 45%, transparent);
+  outline-offset: 3px;
+}
 .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: inherit;
 }
-
 .initials {
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.025em;
 }
-
 .fallbackIcon {
-  width: 60%;
-  height: 60%;
-  opacity: 0.5;
+  width: 56%;
+  height: 56%;
+  opacity: 0.7;
 }
-
-/* Status dot */
 .status {
   position: absolute;
-  bottom: 4%;
-  right: 4%;
-  width: 22%;
-  height: 22%;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 25%;
   min-width: 0.5rem;
   min-height: 0.5rem;
   border-radius: 50%;
-  border: 2px solid var(--vui-surface, #ffffff);
+  border: 2px solid var(--vui-avatar-ring, var(--vui-surface, #fff));
   box-sizing: border-box;
+  background: currentColor;
 }
-
-.online  { background-color: #22c55e; }
-.away    { background-color: #f59e0b; }
-.offline { background-color: var(--vui-text-subtle, #64748b); }
-
+.online {
+  color: var(--vui-success, #22c55e);
+}
+.away {
+  color: var(--vui-warning, #f59e0b);
+}
+.busy {
+  color: var(--vui-danger, #ef4444);
+}
+.offline {
+  color: var(--vui-text-subtle, #64748b);
+}
+.busy::after {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 0.5px) 20%;
+  height: 1px;
+  background: var(--vui-surface, #fff);
+}
 .statusPulse {
   animation: avatarStatusPulse 1.9s ease-out infinite;
 }
-
+.group {
+  display: inline-flex;
+  align-items: center;
+  isolation: isolate;
+  vertical-align: middle;
+}
+.groupItem {
+  display: inline-flex;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.18s ease;
+}
+.groupItem + .groupItem {
+  margin-left: -0.65rem;
+}
+.groupItem > .avatar {
+  outline: 2px solid var(--vui-avatar-ring, var(--vui-surface, #fff));
+}
+.groupItem:hover {
+  z-index: 1;
+  transform: translateY(-2px);
+}
+.overflow {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
 @keyframes avatarStatusPulse {
   0% {
     box-shadow: 0 0 0 0 currentColor;
   }
-
-  70% {
-    box-shadow: 0 0 0 0.45rem transparent;
-  }
-
+  75%,
   100% {
-    box-shadow: 0 0 0 0 transparent;
+    box-shadow: 0 0 0 0.35rem transparent;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .statusPulse {
     animation: none;
+  }
+  .groupItem {
+    transition: none;
+  }
+  .groupItem:hover {
+    transform: none;
+  }
+}
+@media (forced-colors: active) {
+  .avatar {
+    background: Canvas;
+    color: CanvasText;
+    border: 1px solid CanvasText;
+  }
+  .status {
+    forced-color-adjust: none;
   }
 }

@@ -1,6 +1,5 @@
-import { default as React } from 'react';
-
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+import React from 'react';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'soft';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonAnimation = 'none' | 'pulse' | 'shine';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,6 +8,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     animation?: ButtonAnimation;
     loading?: boolean;
     fullWidth?: boolean;
+    iconOnly?: boolean;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
     children?: React.ReactNode;

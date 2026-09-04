@@ -23,7 +23,7 @@
 .textarea {
   width: 100%;
   border-radius: var(--vui-radius-md, 0.5rem);
-  border: 1.5px solid var(--vui-input-border, #d1d5db);
+  border: 1px solid var(--vui-input-border, #d1d5db);
   background-color: var(--vui-input-bg, #ffffff);
   backdrop-filter: blur(var(--vui-backdrop-blur, 0px));
   color: var(--vui-input-color, #111827);

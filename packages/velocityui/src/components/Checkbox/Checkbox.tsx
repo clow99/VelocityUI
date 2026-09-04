@@ -1,22 +1,25 @@
 'use client'
 
-import React from 'react'
+import React, { useId } from 'react'
 import styles from './Checkbox.module.css'
 
 export type CheckboxSize = 'sm' | 'md' | 'lg'
 
-export interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+export interface CheckboxProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'size'
+> {
   label?: string
   description?: string
   error?: string
   size?: CheckboxSize
+  variant?: 'default' | 'card'
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, description, error, size = 'md', className, id, ...props }, ref) => {
-    const inputId =
-      id ?? (label ? `vui-checkbox-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined)
+  ({ label, description, error, size = 'md', variant = 'default', className, id, ...props }, ref) => {
+    const generatedId = useId()
+    const inputId = id ?? generatedId
     const errorId = inputId ? `${inputId}-error` : undefined
     const descId = inputId && description ? `${inputId}-desc` : undefined
 
@@ -30,25 +33,27 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       .join(' ')
 
     return (
-      <div className={`${styles.wrapper} ${styles[size]}`}>
-        <div className={styles.row}>
+      <label htmlFor={inputId} className={`${styles.wrapper} ${styles[size]} ${variant === 'card' ? styles.card : ''}`}>
+        <span className={styles.row}>
           <input
             ref={ref}
             type="checkbox"
             id={inputId}
             className={checkboxClasses}
             aria-invalid={!!error}
+            aria-labelledby={label ? `${inputId}-label` : undefined}
             aria-describedby={
-              [error ? errorId : null, descId].filter(Boolean).join(' ') || undefined
+              [error ? errorId : null, !error ? descId : null].filter(Boolean).join(' ') ||
+              undefined
             }
             {...props}
           />
           {label && (
-            <label htmlFor={inputId} className={styles.label}>
+            <span id={`${inputId}-label`} className={styles.label}>
               {label}
-            </label>
+            </span>
           )}
-        </div>
+        </span>
         {description && !error && (
           <span id={descId} className={styles.description}>
             {description}
@@ -59,9 +64,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             {error}
           </span>
         )}
-      </div>
+      </label>
     )
-  }
+  },
 )
 
 Checkbox.displayName = 'Checkbox'

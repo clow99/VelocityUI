@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <title>VelocityUI</title>
+  <defs>
+    <linearGradient id="rear" x1="14" y1="43" x2="72" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CF56F8" />
+      <stop offset=".46" stop-color="#852EF0" />
+      <stop offset=".8" stop-color="#4164FF" />
+      <stop offset="1" stop-color="#77DEFF" />
+    </linearGradient>
+    <linearGradient id="rear-fold" x1="24" y1="38" x2="45" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7932D8" />
+      <stop offset="1" stop-color="#291075" />
+    </linearGradient>
+    <linearGradient id="body" x1="34" y1="53" x2="76" y2="105" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6730DC" />
+      <stop offset=".36" stop-color="#3415AA" />
+      <stop offset=".7" stop-color="#6424DC" />
+      <stop offset="1" stop-color="#BB58F2" />
+    </linearGradient>
+    <linearGradient id="wing" x1="25" y1="67" x2="117" y2="13" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#AC46FA" />
+      <stop offset=".35" stop-color="#6A32EE" />
+      <stop offset=".72" stop-color="#3A59FF" />
+      <stop offset="1" stop-color="#80E8FF" />
+    </linearGradient>
+    <linearGradient id="leading-edge" x1="112" y1="19" x2="53" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#61DDFF" />
+      <stop offset=".35" stop-color="#496BFF" />
+      <stop offset=".7" stop-color="#8940F5" />
+      <stop offset="1" stop-color="#E88AFF" />
+    </linearGradient>
+    <linearGradient id="rim" x1="21" y1="65" x2="117" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D681FF" />
+      <stop offset=".5" stop-color="#8D8BFF" />
+      <stop offset="1" stop-color="#D6FAFF" />
+    </linearGradient>
+  </defs>
+  <!-- The rear fold preserves the original mark's smaller, swept-back wing. -->
+  <path d="M7 26C29 29 48 34 72 28L29 55C21 44 13 34 7 26Z" fill="url(#rear-fold)" />
+  <path d="M7 26C29 29 48 34 72 28L39 43C33 46 29 46 24 42L7 26Z" fill="url(#rear)" />
+  <path d="M8 26.5C30 30 49 34 71 28.5" stroke="url(#rim)" stroke-width=".8" stroke-linecap="round" />
+  <path d="M8 27L24 42C29 46 33 46 39 43L71 28.5" stroke="#E7B1FF" stroke-opacity=".5" stroke-width=".65" />
+  <!-- Broad, continuous faces stay legible when the mark is used as a favicon. -->
+  <path d="M15 57C33 59 77 34 122 9C112 33 77 82 52 116C49 95 36 75 15 57Z" fill="url(#body)" />
+  <path d="M15 57C33 59 77 34 122 9C109 20 80 39 48 60C39 66 32 70 26 65L15 57Z" fill="url(#wing)" />
+  <path d="M122 9C112 33 77 82 52 116C50 101 47 92 58 78C76 57 102 28 122 9Z" fill="url(#leading-edge)" />
+  <path d="M15 57C33 59 77 34 122 9" stroke="url(#rim)" stroke-width=".8" stroke-linecap="round" />
+  <path d="M15 57L26 65C32 70 39 66 48 60C80 39 109 20 122 9" stroke="url(#rim)" stroke-width=".75" stroke-linejoin="round" />
+  <path d="M122 9C102 28 76 57 58 78C47 92 50 101 52 116" stroke="url(#rim)" stroke-width="1" stroke-linecap="round" />
+  <path d="M122 9C112 33 77 82 52 116C49 95 36 75 15 57" stroke="url(#leading-edge)" stroke-width=".8" stroke-linejoin="round" />
+</svg>

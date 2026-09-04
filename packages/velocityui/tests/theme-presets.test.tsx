@@ -5,16 +5,16 @@ const getVar = (element: Element, variableName: string) =>
   getComputedStyle(element).getPropertyValue(variableName).trim()
 
 describe('named theme presets', () => {
-  it('midnight theme sets dark surfaces and violet primary', () => {
+  it('midnight theme sets charcoal surfaces and periwinkle primary', () => {
     render(
       <div data-testid="wrapper" className="vui-theme-midnight">
         <Button>Press</Button>
       </div>
     )
     const wrapper = screen.getByTestId('wrapper')
-    expect(getVar(wrapper, '--vui-surface')).toBe('#18181b')
-    expect(getVar(wrapper, '--vui-primary')).toBe('#a78bfa')
-    expect(getVar(wrapper, '--vui-bg')).toBe('#09090b')
+    expect(getVar(wrapper, '--vui-surface')).toBe('#212225')
+    expect(getVar(wrapper, '--vui-primary')).toBe('#9bb6ff')
+    expect(getVar(wrapper, '--vui-bg')).toBe('#17181a')
   })
 
   it('ocean theme sets navy surfaces and cyan primary', () => {

@@ -10,6 +10,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   size?: BadgeSize
   animation?: BadgeAnimation
   dot?: boolean
+  appearance?: 'soft' | 'outline' | 'solid'
   leftIcon?: React.ReactNode
   children: React.ReactNode
 }
@@ -19,6 +20,7 @@ export const Badge: React.FC<BadgeProps> = ({
   size = 'md',
   animation = 'none',
   dot = false,
+  appearance,
   leftIcon,
   children,
   className,
@@ -28,6 +30,7 @@ export const Badge: React.FC<BadgeProps> = ({
     styles.badge,
     styles[variant],
     styles[size],
+    appearance ? styles[appearance] : '',
     animation !== 'none' ? styles[animation] : '',
     className ?? '',
   ]

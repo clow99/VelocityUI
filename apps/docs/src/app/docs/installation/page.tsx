@@ -58,8 +58,8 @@ export default function InstallationPage() {
                 <td className="px-4 py-3 text-vui-text-subtle">≥ 18.0.0</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-mono text-vui-text">node</td>
-                <td className="px-4 py-3 text-vui-text-subtle">≥ 18.0.0</td>
+                <td className="px-4 py-3 font-mono text-vui-text">Build tooling</td>
+                <td className="px-4 py-3 text-vui-text-subtle">Use the Node.js version required by your framework.</td>
               </tr>
             </tbody>
           </table>
@@ -87,8 +87,15 @@ export default function InstallationPage() {
           </div>
           <p className="mb-3 text-sm text-vui-text-subtle">
             Import the CSS file once at the root of your application. In Next.js App Router this is
-            your root <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">layout.tsx</code>.
-            In Vite projects, add it to <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">main.tsx</code>.
+            your root{' '}
+            <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">
+              layout.tsx
+            </code>
+            . In Vite projects, add it to{' '}
+            <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">
+              main.tsx
+            </code>
+            .
           </p>
           <CodeBlock language="tsx" code={`import '@velocityuikit/velocityui/dist/style.css'`} />
         </div>
@@ -100,17 +107,23 @@ export default function InstallationPage() {
             <h3 className="text-base font-semibold text-vui-text">Start using components</h3>
           </div>
           <p className="mb-3 text-sm text-vui-text-subtle">
-            Import any component directly from the package — no provider or global setup required.
+            Import components directly from the package. No Tailwind configuration is needed.
+            Toast notifications require ToastProvider; other components need no library provider.
           </p>
           <CodeBlock
             language="tsx"
-            code={`import { Button, Input, Card } from '@velocityuikit/velocityui'
+            filename="components/subscribe.tsx"
+            code={`'use client'
+
+import { Button, Input, Card } from '@velocityuikit/velocityui'
 
 export default function App() {
   return (
     <Card>
-      <Input placeholder="Your email" />
-      <Button>Subscribe</Button>
+      <Card.Body>
+        <Input label="Email" type="email" placeholder="you@example.com" />
+        <Button>Subscribe</Button>
+      </Card.Body>
     </Card>
   )
 }`}
@@ -126,10 +139,13 @@ export default function App() {
         <div className="mb-8">
           <h3 className="mb-3 text-base font-semibold text-vui-text">Next.js (App Router)</h3>
           <p className="mb-3 text-sm text-vui-text-subtle">
-            Import the stylesheet in your root layout. Components work in both Server and Client
-            Components — interactive ones (Dialog, Dropdown, etc.) are already marked{' '}
-            <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">&apos;use client&apos;</code>{' '}
-            internally.
+            Import the stylesheet in your root layout. The package declares a client boundary.
+            Add{' '}
+            <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">
+              &apos;use client&apos;
+            </code>{' '}
+            to your own component when using event handlers, state, or compound APIs such as
+            Card.Body and Dialog.Footer. Keep your root layout a Server Component.
           </p>
           <CodeBlock
             language="tsx"
@@ -201,29 +217,25 @@ export const links: LinksFunction = () => [
         </div>
       </section>
 
-      {/* CDN */}
+      {/* Stylesheet distribution */}
       <section className="mb-10">
-        <SectionTitle>CDN (no build step)</SectionTitle>
+        <SectionTitle>Stylesheet via CDN</SectionTitle>
         <p className="mb-3 text-sm text-vui-text-subtle">
-          For quick prototypes or environments without a bundler, you can load VelocityUI from a
-          CDN. Note: this approach does not support tree-shaking.
+          You can load the stylesheet from a CDN. Install the JavaScript package through your
+          bundler so React and React DOM resolve to the same versions used by your application.
         </p>
         <Note>
-          CDN usage is intended for prototyping only. For production apps, use the npm package to
-          benefit from tree-shaking and optimized bundle sizes.
+          Match the stylesheet version to your installed package version. Importing the raw
+          JavaScript bundle into a browser without a bundler or import map will not resolve its
+          React dependencies.
         </Note>
         <CodeBlock
           language="html"
           code={`<!-- CSS -->
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@velocityuikit/velocityui@latest/dist/style.css"
-/>
-
-<!-- ES Module (modern browsers) -->
-<script type="module">
-  import { Button } from 'https://cdn.jsdelivr.net/npm/@velocityuikit/velocityui@latest/dist/index.js'
-</script>`}
+  href="https://cdn.jsdelivr.net/npm/@velocityuikit/velocityui@0.1.19/dist/style.css"
+/>`}
         />
       </section>
 
@@ -232,12 +244,16 @@ export const links: LinksFunction = () => [
         <SectionTitle>TypeScript</SectionTitle>
         <p className="mb-4 text-sm text-vui-text-subtle leading-relaxed">
           VelocityUI is written in TypeScript and ships with full type definitions — no{' '}
-          <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">@types</code>{' '}
+          <code className="rounded bg-vui-surface-muted px-1.5 py-0.5 font-mono text-xs text-vui-primary">
+            @types
+          </code>{' '}
           package needed. All component props, variants, and callbacks are typed.
         </p>
         <CodeBlock
           language="tsx"
-          code={`import { Button } from '@velocityuikit/velocityui'
+          code={`'use client'
+
+import { Button } from '@velocityuikit/velocityui'
 import type { ButtonProps } from '@velocityuikit/velocityui'
 
 function MyButton(props: ButtonProps) {
@@ -255,7 +271,9 @@ function MyButton(props: ButtonProps) {
         </p>
         <CodeBlock
           language="tsx"
-          code={`import { Button } from '@velocityuikit/velocityui'
+          code={`'use client'
+
+import { Button } from '@velocityuikit/velocityui'
 
 export default function Test() {
   return (
@@ -284,9 +302,11 @@ export default function Test() {
             href="/docs/button"
             className="group rounded-xl border border-vui-border bg-vui-surface p-5 transition-colors hover:border-vui-primary hover:bg-vui-primary-soft"
           >
-            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">Browse components</p>
+            <p className="mb-1 font-semibold text-vui-text group-hover:text-vui-primary">
+              Browse components
+            </p>
             <p className="text-sm text-vui-text-subtle">
-              Explore all 30+ components with live previews and code examples.
+              Explore all 46 components with live previews and code examples.
             </p>
           </Link>
         </div>

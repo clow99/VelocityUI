@@ -97,12 +97,10 @@ const channelMessages: Message[] = [
   {
     id: 4,
     username: 'Eva Martinez',
-    text: "Quick reminder: sprint retro is at 2pm today. Please add your notes to the board beforehand.",
+    text: 'Quick reminder: sprint retro is at 2pm today. Please add your notes to the board beforehand.',
     timestamp: '10:45 AM',
     isPinned: true,
-    reactions: [
-      { emoji: '✅', count: 4, active: true },
-    ],
+    reactions: [{ emoji: '✅', count: 4, active: true }],
   },
   {
     id: 5,
@@ -119,7 +117,10 @@ const channelMessages: Message[] = [
       expanded: false,
       replies: [
         { username: 'Alice Chen', text: 'Incredible improvement! What was the bottleneck?' },
-        { username: 'David Park', text: 'N+1 queries on the dashboard endpoint. Batched them with a DataLoader.' },
+        {
+          username: 'David Park',
+          text: 'N+1 queries on the dashboard endpoint. Batched them with a DataLoader.',
+        },
       ],
     },
   },
@@ -131,7 +132,16 @@ function MemberAvatar({ name }: { name: string }) {
 
 function ChannelIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="4" y1="9" x2="20" y2="9" />
       <line x1="4" y1="15" x2="20" y2="15" />
       <line x1="10" y1="3" x2="8" y2="21" />
@@ -143,7 +153,7 @@ function ChannelIcon() {
 export default function TeamChatPage() {
   const [msgs, setMsgs] = useState(channelMessages)
   const [inputValue, setInputValue] = useState('')
-  const [showMembers, setShowMembers] = useState(true)
+  const [showMembers, setShowMembers] = useState(false)
 
   const handleSend = (text: string) => {
     const newMsg: Message = {
@@ -161,8 +171,8 @@ export default function TeamChatPage() {
       prev.map((m) =>
         m.id === msgId && m.thread
           ? { ...m, thread: { ...m.thread, expanded: !m.thread.expanded } }
-          : m
-      )
+          : m,
+      ),
     )
   }
 
@@ -173,10 +183,10 @@ export default function TeamChatPage() {
         const reactions = (m.reactions ?? []).map((r) =>
           r.emoji === emoji
             ? { ...r, active: !r.active, count: r.active ? r.count - 1 : r.count + 1 }
-            : r
+            : r,
         )
         return { ...m, reactions }
-      })
+      }),
     )
   }
 
@@ -185,14 +195,20 @@ export default function TeamChatPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Title as="h1" size="xl">Team Channel</Title>
+        <Title as="h1" size="xl">
+          Team Channel
+        </Title>
         <p className="mt-2 text-vui-text-muted">
-          A Slack/Discord-style team chat with threads, reactions, file attachments, member list, and presence indicators.
+          A Slack/Discord-style team chat with threads, reactions, file attachments, member list,
+          and presence indicators.
         </p>
       </div>
 
-      <div className="flex overflow-hidden rounded-xl border border-vui-border" style={{ height: '36rem' }}>
-        <div className="flex flex-1 flex-col">
+      <div
+        className="team-chat-layout relative flex overflow-hidden rounded-xl border border-vui-border"
+        style={{ height: '36rem' }}
+      >
+        <div className="flex min-w-0 flex-1 flex-col">
           <ChatWindow
             header={
               <ChatHeader
@@ -245,7 +261,9 @@ export default function TeamChatPage() {
                 >
                   {msg.isPinned && (
                     <div style={{ marginBottom: '0.375rem' }}>
-                      <Badge variant="warning" size="sm">📌 Pinned</Badge>
+                      <Badge variant="warning" size="sm">
+                        📌 Pinned
+                      </Badge>
                     </div>
                   )}
                   {msg.text}
@@ -289,14 +307,22 @@ export default function TeamChatPage() {
         </div>
 
         {showMembers && (
-          <div className="w-56 flex-shrink-0 border-l border-vui-border bg-vui-surface">
+          <div className="team-members w-56 flex-shrink-0 border-l border-vui-border bg-vui-surface">
             <div className="border-b border-vui-border p-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">
                 Members — {members.length}
+                <button
+                  type="button"
+                  className="member-close"
+                  aria-label="Close members"
+                  onClick={() => setShowMembers(false)}
+                >
+                  ×
+                </button>
               </p>
             </div>
             <div className="flex flex-col gap-0.5 p-2">
-              {members
+              {[...members]
                 .sort((a, b) => {
                   const order = { online: 0, away: 1, offline: 2 }
                   return order[a.status] - order[b.status]
@@ -307,7 +333,9 @@ export default function TeamChatPage() {
                     className="flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-sm transition-colors hover:bg-vui-surface-muted"
                   >
                     <MemberAvatar name={member.name} />
-                    <span className={`flex-1 truncate ${member.status === 'offline' ? 'text-vui-text-subtle' : 'text-vui-text'}`}>
+                    <span
+                      className={`flex-1 truncate ${member.status === 'offline' ? 'text-vui-text-subtle' : 'text-vui-text'}`}
+                    >
                       {member.name}
                     </span>
                     <ChatStatus variant={member.status} size="sm" />

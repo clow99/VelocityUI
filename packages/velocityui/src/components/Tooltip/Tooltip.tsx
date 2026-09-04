@@ -24,6 +24,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const timerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const show = () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
     if (delay > 0) {
       timerRef.current = setTimeout(() => setVisible(true), delay)
     } else {
@@ -36,8 +37,25 @@ export const Tooltip: React.FC<TooltipProps> = ({
     setVisible(false)
   }
 
+  React.useEffect(
+    () => () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    },
+    [],
+  )
+  React.useEffect(() => {
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') hide()
+    }
+    document.addEventListener('keydown', dismiss)
+    return () => document.removeEventListener('keydown', dismiss)
+  }, [])
+
   const trigger = React.cloneElement(children, {
-    'aria-describedby': visible ? tooltipId : undefined,
+    'aria-describedby':
+      [children.props['aria-describedby'], visible ? tooltipId : undefined]
+        .filter(Boolean)
+        .join(' ') || undefined,
   })
 
   return (
@@ -58,7 +76,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
         aria-hidden={!visible}
       >
         {content}
-        <span className={`${styles.arrow} ${styles[`arrow${placement.charAt(0).toUpperCase()}${placement.slice(1)}`]}`} aria-hidden="true" />
+        <span
+          className={`${styles.arrow} ${styles[`arrow${placement.charAt(0).toUpperCase()}${placement.slice(1)}`]}`}
+          aria-hidden="true"
+        />
       </span>
     </span>
   )
