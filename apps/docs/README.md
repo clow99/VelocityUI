@@ -79,6 +79,21 @@ pnpm --filter @velocityuikit/velocityui build
 
 After editing the SVG, run `pnpm --filter docs brand:icons` from the workspace root to regenerate the ICO, PNG favicons, Apple touch icon, and Android icons. The generator uses Next.js's installed Sharp dependency. Update the icon cache version in `src/app/layout.tsx` and `public/site.webmanifest` when replacing published icons.
 
+## Example Gallery Previews
+
+The gallery and example picker use lightweight WebP captures of the actual demo pages, shared with the homepage. Descriptions and feature tags live in `src/lib/examples.ts`; the page inventory remains in `src/lib/navigation.ts`.
+
+To refresh previews after changing a demo, start the local server on port 3000 and run these commands from the workspace root:
+
+```bash
+npx --yes --package @playwright/cli playwright-cli -s=example-captures open http://127.0.0.1:3000/examples
+npx --yes --package @playwright/cli playwright-cli -s=example-captures run-code --filename apps/docs/scripts/capture-example-previews.js
+node apps/docs/scripts/optimize-example-previews.mjs
+npx --yes --package @playwright/cli playwright-cli -s=example-captures close
+```
+
+Inspect the generated previews before committing them. Raw PNG captures stay in the ignored `output/playwright/example-captures/` folder. WebP files in `public/examples/previews/` are the shipped assets; below-the-fold gallery images load lazily.
+
 ## Docker
 
 The workspace `Dockerfile` builds this app in standalone mode when `NEXT_OUTPUT_STANDALONE=1` is set. Static assets are copied from `apps/docs/public`, and the server starts with:

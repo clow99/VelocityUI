@@ -1,80 +1,65 @@
 import Link from 'next/link'
+import { examples } from '@/lib/examples'
 import { Icon } from './Icon'
+import styles from './examples/ExampleGallery.module.css'
+
 export function ExampleCard({
   slug,
   name,
   category,
+  featured = false,
 }: {
   slug: string
   name: string
   category: string
+  featured?: boolean
 }) {
-  const chat = category === 'Chat'
-  const form = ['Authentication', 'Forms', 'Settings'].includes(category)
+  const example = examples.find((item) => item.slug === slug)
+  if (!example) return null
   return (
-    <Link href={'/examples/' + slug} className="example-card">
-      <div
-        className={'example-art ' + (chat ? 'art-chat' : form ? 'art-form' : 'art-dashboard')}
-        aria-hidden="true"
-      >
-        <div className="art-window">
-          <div className="art-top">
+    <Link
+      href={example.href}
+      className={`${styles.card} ${featured ? styles.featuredCard : ''}`}
+    >
+      <div className={styles.art}>
+        <div className={styles.browserBar} aria-hidden="true">
+          <span>
             <i />
             <i />
             <i />
-            <span />
-          </div>
-          <div className="art-body">
-            {chat ? (
-              <>
-                <div className="art-message" />
-                <div className="art-message sent" />
-                <div className="art-message" />
-                <div className="art-input" />
-              </>
-            ) : form ? (
-              <>
-                <div className="art-title" />
-                <div className="art-line" />
-                <div className="art-field" />
-                <div className="art-field" />
-                <div className="art-submit" />
-              </>
-            ) : (
-              <>
-                <div className="art-side">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <div className="art-content">
-                  <div className="art-title" />
-                  <div className="art-stats">
-                    <i />
-                    <i />
-                    <i />
-                  </div>
-                  <div className="art-chart">
-                    {[35, 50, 42, 67, 57, 82, 74, 98].map((h, i) => (
-                      <i key={i} style={{ height: h + '%' }} />
-                    ))}
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
+          </span>
+          <small>velocityui / {slug}</small>
+          <Icon name="external" size={12} />
         </div>
-        <span className="example-open">
-          Open example <Icon name="external" size={14} />
+        <img
+          src={example.preview}
+          alt={`${example.name} interface preview`}
+          width={1120}
+          height={740}
+          loading={featured ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+        <span className={styles.open}>
+          Explore example <Icon name="arrow" size={15} />
         </span>
       </div>
-      <div className="example-caption">
-        <div>
+      <div className={styles.caption}>
+        <div className={styles.cardLabel}>
           <span>{category}</span>
-          <h3>{name}</h3>
+          <span>
+            Live demo <Icon name="external" size={12} />
+          </span>
         </div>
-        <Icon name="arrow" size={18} />
+        <h3>
+          {name}
+          <Icon name="arrow" size={19} />
+        </h3>
+        <p>{example.description}</p>
+        <div className={styles.features}>
+          {example.features.map((feature) => (
+            <span key={feature}>{feature}</span>
+          ))}
+        </div>
       </div>
     </Link>
   )

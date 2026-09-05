@@ -145,3 +145,13 @@ The nonmodal dialog supports native radio arrow keys, visible keyboard focus, Es
 Verification: 85 browser assertions pass, including all ten themes, real control heights of 36/40/44px for the three densities, persistence, reset, keyboard behavior, reduced motion, and reading-position preservation. Layout checks cover Default, Midnight, and Glass at six viewport sizes from 320px to 1440px, including a 480px-tall screen. No horizontal page overflow or browser runtime errors. The docs type check and production build pass with all 74 routes generated.
 
 The refreshed menu is open in the existing in-app homepage preview at http://127.0.0.1:3000/. Changes remain local, uncommitted, and unpublished.
+
+## Example collection and picker — September 5, 2026
+
+Rebuilt the examples index around the actual interfaces: two featured examples, 19 distinct preview images, useful descriptions and feature tags, category counts, and search. Filters persist in the URL and support reload and browser history. The homepage's shared example cards also use the new previews. All 19 optimized WebP images total approximately 500 KiB; capture and optimization scripts are documented in the docs README.
+
+Replaced the example toolbar's native select with a searchable modal picker. Grouped results include thumbnails, features, and the current example. It supports arrow-key navigation, Enter selection, contained Tab navigation, Escape and backdrop dismissal, focus restoration, and background scroll locking. Layouts adapt to narrow screens and Default, Midnight, and Glass themes, with reduced-motion support.
+
+Verification: 182 browser assertions pass with no runtime errors or layout findings. Coverage includes all 19 example routes at desktop and mobile sizes, gallery and picker layouts down to 320px, URL filter persistence, keyboard and focus behavior, and all preview image responses. The docs lint and production build pass with all 74 routes generated. Final visual inspection confirms the gallery's visible previews load correctly.
+
+Review at http://127.0.0.1:3000/examples. This refinement remains local, uncommitted, and unpublished.
