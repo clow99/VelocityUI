@@ -79,7 +79,7 @@ const channelMessages: Message[] = [
     attachment: {
       variant: 'image',
       fileName: 'nav-bug.png',
-      src: 'https://placehold.co/280x160/ef4444/ffffff?text=Nav+Bug',
+      src: '/example-preview.svg',
     },
     reactions: [{ emoji: '👀', count: 1, active: false }],
   },

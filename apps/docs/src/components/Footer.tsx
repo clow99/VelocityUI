@@ -36,6 +36,12 @@ export function Footer() {
           <p>MIT licensed · React + TypeScript</p>
         </div>
       </div>
+      <nav className="page-container policy-links" aria-label="Policies">
+        <Link href="/privacy">Privacy</Link>
+        <Link href="/terms">Terms</Link>
+        <Link href="/accessibility">Accessibility</Link>
+        <a href="mailto:hello@cameronlow.com">Contact</a>
+      </nav>
       <div className="page-container footer-bottom">
         <span>Designed & built by <a href="https://cameronlow.com">Cameron Low <Icon name="external" size={13} /></a> · {new Date().getFullYear()}</span>
         <a

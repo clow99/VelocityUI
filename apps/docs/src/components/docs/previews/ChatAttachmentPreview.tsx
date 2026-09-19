@@ -11,7 +11,7 @@ export function ChatAttachmentPreview() {
       </div>
       <div>
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Image</p>
-        <ChatAttachment variant="image" src="https://placehold.co/300x200/6366f1/ffffff?text=Preview" fileName="screenshot.png" />
+        <ChatAttachment variant="image" src="/example-preview.svg" fileName="screenshot.png" />
       </div>
       <div>
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-vui-text-subtle">Video</p>

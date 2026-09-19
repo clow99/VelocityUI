@@ -157,7 +157,7 @@ const initialMessages: Record<string, Message[]> = {
       attachment: {
         variant: 'image',
         fileName: 'dashboard-preview.png',
-        src: 'https://placehold.co/300x180/6366f1/ffffff?text=Dashboard+Preview',
+        src: '/example-preview.svg',
       },
     },
   ],

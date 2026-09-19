@@ -5,7 +5,6 @@ import { InstallSnippet } from '@/components/landing/InstallSnippet'
 import { WorkspacePreview } from '@/components/landing/WorkspacePreview'
 import { ThemeShowcase } from '@/components/landing/ThemeShowcase'
 import { ExamplesShowcase } from '@/components/landing/ExamplesShowcase'
-import { Footer } from '@/components/Footer'
 import { Icon } from '@/components/Icon'
 import { docsComponents, pageExamples } from '@/lib/navigation'
 import { THEMES } from '@/lib/themes'
@@ -137,7 +136,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

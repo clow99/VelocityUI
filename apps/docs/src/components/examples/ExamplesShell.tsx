@@ -28,6 +28,7 @@ export function ExamplesShell({ children }: { children: React.ReactNode }) {
         </span>
       </div>
       <main id="main-content" className="example-main">
+        <p className="example-data-notice">Fictional browser demo. No account, order or payment is created. Use made-up details and files. <Link href="/privacy">Privacy notice</Link></p>
         {children}
       </main>
       <nav className="example-pagination" aria-label="Example pagination">

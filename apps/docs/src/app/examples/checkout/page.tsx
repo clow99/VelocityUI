@@ -23,6 +23,7 @@ const total = subtotal + shipping + tax
 function ShippingStep({ onNext }: { onNext: () => void }) {
   return (
     <form
+      autoComplete="off"
       onSubmit={(e) => {
         e.preventDefault()
         onNext()
@@ -67,6 +68,7 @@ function ShippingStep({ onNext }: { onNext: () => void }) {
 function PaymentStep({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
   return (
     <form
+      autoComplete="off"
       onSubmit={(e) => {
         e.preventDefault()
         onNext()
@@ -84,16 +86,16 @@ function PaymentStep({ onNext, onBack }: { onNext: () => void; onBack: () => voi
         ]}
       />
       <Divider />
-      <Input label="Cardholder name" placeholder="Alice Johnson" fullWidth required />
+      <Input label="Demo cardholder name" value="Demo User" readOnly fullWidth />
       <Input
-        label="Card number"
-        placeholder="1234 5678 9012 3456"
+        label="Demo card number"
+        value="0000 0000 0000 0000"
+        readOnly
         fullWidth
-        required
       />
       <div className="grid grid-cols-2 gap-3">
-        <Input label="Expiry date" placeholder="MM / YY" fullWidth required />
-        <Input label="CVC" placeholder="123" fullWidth required />
+        <Input label="Demo expiry date" value="12 / 99" readOnly fullWidth />
+        <Input label="Demo CVC" value="000" readOnly fullWidth />
       </div>
       <div className="flex justify-between pt-2">
         <Button variant="outline" type="button" onClick={onBack}>Back</Button>
@@ -155,7 +157,7 @@ function ReviewStep({ onBack, onPlace }: { onBack: () => void; onPlace: () => vo
       <div className="flex justify-between">
         <Button variant="outline" onClick={onBack}>Back</Button>
         <Button loading={placing} onClick={handlePlace}>
-          {placing ? 'Placing order...' : `Place order — $${total.toFixed(2)}`}
+          {placing ? 'Simulating...' : `Simulate order — $${total.toFixed(2)}`}
         </Button>
       </div>
     </div>
@@ -180,9 +182,9 @@ function SuccessState({ onReset }: { onReset: () => void }) {
         </svg>
       </div>
       <div>
-        <h2 className="text-lg font-semibold text-vui-text">Order placed!</h2>
+        <h2 className="text-lg font-semibold text-vui-text">Demo complete</h2>
         <p className="mt-1 text-sm text-vui-text-muted">
-          You&apos;ll receive a confirmation email shortly.
+          No order, payment or confirmation email was created.
         </p>
         <p className="mt-1 text-xs text-vui-text-muted">
           Order #5092 · ${total.toFixed(2)}
